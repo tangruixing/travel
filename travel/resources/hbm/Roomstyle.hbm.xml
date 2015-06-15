@@ -1,0 +1,46 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-14 14:39:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.travel.model.Roomstyle" table="ROOMSTYLE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        <many-to-one name="hotel" class="cn.travel.model.Hotel">
+        	 <column name="HOTID" />
+        </many-to-one>
+     
+        <property name="realName" type="java.lang.String">
+            <column name="REALNAME" />
+        </property>
+        <property name="bedStyle" type="java.lang.Integer">
+            <column name="BEDSTYLE" />
+        </property>
+        <property name="limitPerson" type="java.lang.Integer">
+            <column name="LIMITPERSON" />
+        </property>
+        <property name="breakfast" type="java.lang.Integer">
+            <column name="BREAKFAST" />
+        </property>
+        <property name="broadband" type="java.lang.Integer">
+            <column name="BROADBAND" />
+        </property>
+        <property name="cancel" type="java.lang.Integer">
+            <column name="CANCEL" />
+        </property>
+        <property name="price" type="java.lang.Float">
+            <column name="PRICE" />
+        </property>
+        <property name="number" type="java.lang.Integer">
+            <column name="NUMBER" />
+        </property>
+        <property name="picture" type="java.lang.String">
+            <column name="PICTURE" />
+        </property>
+        <property name="introduce" type="java.lang.String">
+            <column name="INTRODUCE" />
+        </property>
+    </class>
+</hibernate-mapping>

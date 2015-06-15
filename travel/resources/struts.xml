@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC 
+"-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
+"http://struts.apache.org/dtds/struts-2.0.dtd">
+<struts>
+	<!-- 简单主题 -->
+	<constant name="struts.ui.theme" value="simple" />
+	<constant name="struts.action.extension" value="do"/> 
+	<!-- 开发模式 -->
+	<constant name="struts.devMode" value="true" />
+	<!-- <constant name="struts.multipart.maxSize" value="67108864" /> --><!-- 1024*1024*64 -->
+	
+	<package name="travelPkg" namespace="/" extends="struts-default">
+		
+		<interceptors>
+			<!-- <interceptor name="loginInterceptor" class=""></interceptor> -->
+			<interceptor-stack name="travelStack">
+			<!-- 	<interceptor-ref name="loginInterceptor"></interceptor-ref>
+				<interceptor-ref name=""></interceptor-ref> -->
+				<interceptor-ref name="defaultStack">
+					<param name="modelDriven.refreshModelBeforeResult">true</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="travelStack"></default-interceptor-ref>
+		
+		 <action name="*_*" class="{1}Action" method="{2}" >
+			<result name="goUI">/WEB-INF/back/{1}/${resultUI}</result>
+		</action>
+	</package >
+
+
+	<!-- <include file="front.xml"></include> -->
+
+</struts>

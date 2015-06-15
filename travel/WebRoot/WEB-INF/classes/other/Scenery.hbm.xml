@@ -1,0 +1,215 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.travel.model">
+    <class name="Scenery" table="scenery">
+
+        <id name="id" column="ID" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+		
+		
+		
+		<property 
+			name="sceId" 
+			column="sceID" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="false" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="realName" 
+			column="realName" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="true" 
+			unique="false" 
+			length="20"/>
+		
+		<property 
+			name="address" 
+			column="address" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="true" 
+			unique="false" 
+			length="255"/>
+		
+		<property 
+			name="longitude" 
+			column="longitude" 
+			update="true"
+            insert="true"
+            type="Long"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="latitude" 
+			column="latitude" 
+			update="true"
+            insert="true"
+            type="Long"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="logo" 
+			column="logo" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="false" 
+			unique="false" 
+			length="1024"/>
+		
+		<property 
+			name="introduction" 
+			column="introduction" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="true" 
+			unique="false" 
+			length="65535"/>
+		
+		<property 
+			name="url" 
+			column="url" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="false" 
+			unique="false" 
+			length="255"/>
+		
+		<property 
+			name="openDime" 
+			column="openDime" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="true" 
+			unique="false" 
+			length="50"/>
+		
+		<property 
+			name="grade" 
+			column="grade" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="false" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="telphone" 
+			column="telphone" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="false" 
+			unique="false" 
+			length="12"/>
+		
+		<property 
+			name="viwepager" 
+			column="viwepager" 
+			update="true"
+            insert="true"
+            type="java.lang.Boolean"
+			not-null="true" 
+			unique="false" 
+			length="0"/>
+		
+		<property 
+			name="suggest" 
+			column="suggest" 
+			update="true"
+            insert="true"
+            type="java.lang.Boolean"
+			not-null="false" 
+			unique="false" 
+			length="0"/>
+		
+		<!-- One-To-Many attributes -->
+		
+		<set name="routeplans"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="sceID"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Routeplan"/>
+		</set> 
+		
+		<set name="imagess"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="sceID"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Images"/>
+		</set> 
+		
+		<set name="scenerys"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="sceID"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Scenery"/>
+		</set> 
+		
+		<set name="comments"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="sceID"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Comment"/>
+		</set> 
+		
+		<set name="collects"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="sceID"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Collect"/>
+		</set> 
+
+		<!-- Many-To-One attributes -->
+		
+		<many-to-one
+			name="scenery"
+            not-null="false"
+	        update="false"
+	        insert="false"
+			cascade="none"
+		>	
+       		<column name="sceID"/>
+		</many-to-one> 
+
+    </class>
+</hibernate-mapping>
+

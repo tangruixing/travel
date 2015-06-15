@@ -1,0 +1,53 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-14 14:39:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.travel.model.Scenery" table="SCENERY">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        
+        <many-to-one name="scenery" class="cn.travel.model.Scenery">
+        	<column name="SCEID" />
+        </many-to-one>
+      
+        <property name="realName" type="java.lang.String">
+            <column name="REALNAME" />
+        </property>
+        <property name="address" type="java.lang.String">
+            <column name="ADDRESS" />
+        </property>
+        <property name="longitude" type="java.lang.Long">
+            <column name="LONGITUDE" />
+        </property>
+        <property name="latitude" type="java.lang.Long">
+            <column name="LATITUDE" />
+        </property>
+        <property name="logo" type="java.lang.String">
+            <column name="LOGO" />
+        </property>
+        <property name="introduction" type="java.lang.String">
+            <column name="INTRODUCTION" />
+        </property>
+        <property name="url" type="java.lang.String">
+            <column name="URL" />
+        </property>
+        <property name="openDime" type="java.lang.String">
+            <column name="OPENDIME" />
+        </property>
+        <property name="grade" type="java.lang.Integer">
+            <column name="GRADE" />
+        </property>
+        <property name="telphone" type="java.lang.String">
+            <column name="TELPHONE" />
+        </property>
+        <property name="viwepager" type="java.lang.Boolean">
+            <column name="VIWEPAGER" />
+        </property>
+        <property name="suggest" type="java.lang.Boolean">
+            <column name="SUGGEST" />
+        </property>
+    </class>
+</hibernate-mapping>
