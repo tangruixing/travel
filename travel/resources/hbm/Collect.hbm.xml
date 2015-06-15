@@ -1,0 +1,39 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-14 14:39:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.travel.model.Collect" table="COLLECT">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        
+        <many-to-one name="user" class="cn.travel.model.User">
+        	<column name="USEID" />
+        </many-to-one>
+        <many-to-one name="route" class="cn.travel.model.Route">
+        	<column name="ROUID" />
+        </many-to-one>
+        <many-to-one name="scenery" class="cn.travel.model.Scenery">
+        	<column name="SCEID" />
+        </many-to-one>
+        
+       <!--  <property name="useid" type="java.lang.Integer">
+            <column name="USEID" />
+        </property>
+        <property name="rouId" type="java.lang.Integer">
+            <column name="ROUID" />
+        </property>
+        <property name="sceId" type="java.lang.Integer">
+            <column name="SCEID" />
+        </property> -->
+        
+        <property name="colType" type="java.lang.Integer">
+            <column name="COLTYPE" />
+        </property>
+        <property name="creatDate" type="java.util.Date">
+            <column name="CREATDATE" />
+        </property>
+    </class>
+</hibernate-mapping>

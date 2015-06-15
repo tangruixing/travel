@@ -1,0 +1,151 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.travel.model">
+    <class name="Roomstyle" table="roomstyle">
+
+        <id name="id" column="ID" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+		
+		
+		
+		<property 
+			name="hotId" 
+			column="hotID" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="realName" 
+			column="realName" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="true" 
+			unique="false" 
+			length="20"/>
+		
+		<property 
+			name="bedStyle" 
+			column="bedStyle" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="limitPerson" 
+			column="limitPerson" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="breakfast" 
+			column="breakfast" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="broadband" 
+			column="broadband" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="cancel" 
+			column="cancel" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="price" 
+			column="price" 
+			update="true"
+            insert="true"
+            type="java.lang.Float"
+			not-null="true" 
+			unique="false" 
+			length="8"/>
+		
+		<property 
+			name="number" 
+			column="number" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="picture" 
+			column="picture" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="false" 
+			unique="false" 
+			length="200"/>
+		
+		<property 
+			name="introduce" 
+			column="introduce" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="false" 
+			unique="false" 
+			length="65535"/>
+		
+		<!-- One-To-Many attributes -->
+		
+		<set name="roombooks"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="rooID"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Roombook"/>
+		</set> 
+
+		<!-- Many-To-One attributes -->
+		
+		<many-to-one
+			name="hotel"
+            not-null="false"
+	        update="false"
+	        insert="false"
+			cascade="none"
+		>	
+       		<column name="hotID"/>
+		</many-to-one> 
+
+    </class>
+</hibernate-mapping>
+

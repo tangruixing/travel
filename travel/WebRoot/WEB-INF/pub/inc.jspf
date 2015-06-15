@@ -1,0 +1,53 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
+<%@ page import="java.util.Map"%>
+<%@ page import="java.util.HashMap"%>
+<%@ page import="org.apache.commons.lang3.StringUtils"%>
+	<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
+<%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
+<%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<%
+	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()
+			+ request.getContextPath();
+			
+	String contextPath=request.getContextPath();
+%> 
+
+
+<%
+Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
+Cookie[] cookies = request.getCookies();
+if (null != cookies) {
+	for (Cookie cookie : cookies) {
+		cookieMap.put(cookie.getName(), cookie);
+	}
+}
+String easyuiTheme = "default";//指定如果用户未选择样式，那么初始化一个默认样式
+if (cookieMap.containsKey("easyuiTheme")) {
+	Cookie cookie = (Cookie) cookieMap.get("easyuiTheme");
+	easyuiTheme = cookie.getValue();
+}
+%>
+<script type="text/javascript" charset="utf-8"> 
+    var sy = sy || {};
+    sy.contextPath = '<%=contextPath%>';
+</script>
+
+<%-- 引入my97日期时间控件 --%>
+<script type="text/javascript" src="<%=contextPath%>/jslib/My97DatePicker4.8Beta3/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
+
+<%-- 引入ueditor控件 --%>
+<script type="text/javascript" charset="utf-8">window.UEDITOR_HOME_URL = '<%=contextPath%>/jslib/ueditor1_2_6_1-utf8-jsp/';</script>
+<script src="<%=contextPath%>/jslib/ueditor1_2_6_1-utf8-jsp/ueditor.config.js" type="text/javascript" charset="utf-8"></script>
+<script src="<%=contextPath%>/jslib/ueditor1_2_6_1-utf8-jsp/ueditor.all.min.js" type="text/javascript" charset="utf-8"></script>
+
+<%-- 引入jQuery --%>
+<%
+String User_Agent = request.getHeader("User-Agent");
+if (StringUtils.indexOfIgnoreCase(User_Agent, "MSIE") > -1 && (StringUtils.indexOfIgnoreCase(User_Agent, "MSIE 6") > -1 || StringUtils.indexOfIgnoreCase(User_Agent, "MSIE 7") > -1 || StringUtils.indexOfIgnoreCase(User_Agent, "MSIE 8") > -1)) {
+	out.println("<script src='" + contextPath + "/jslib/jquery-1.9.1.js' type='text/javascript' charset='utf-8'></script>");
+} else {
+	out.println("<script src='" + contextPath + "/jslib/jquery-2.0.3.js' type='text/javascript' charset='utf-8'></script>");
+}
+%>

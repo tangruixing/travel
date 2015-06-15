@@ -1,0 +1,200 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="cn.travel.model">
+    <class name="User" table="user">
+
+        <id name="id" column="id" type="java.lang.Integer">
+            <generator class="increment"/>
+        </id>
+		
+		
+		
+		<property 
+			name="mobile" 
+			column="mobile" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="true" 
+			unique="false" 
+			length="12"/>
+		
+		<property 
+			name="pwd" 
+			column="pwd" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="true" 
+			unique="false" 
+			length="20"/>
+		
+		<property 
+			name="role" 
+			column="role" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="true" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="email" 
+			column="email" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="false" 
+			unique="false" 
+			length="30"/>
+		
+		<property 
+			name="realName" 
+			column="realName" 
+			update="true"
+            insert="true"
+            type="java.lang.String"
+			not-null="true" 
+			unique="false" 
+			length="20"/>
+		
+		<property 
+			name="sex" 
+			column="sex" 
+			update="true"
+            insert="true"
+            type="java.lang.Integer"
+			not-null="false" 
+			unique="false" 
+			length="10"/>
+		
+		<property 
+			name="birth" 
+			column="birth" 
+			update="true"
+            insert="true"
+            type="java.util.Date"
+			not-null="false" 
+			unique="false" 
+			length="0"/>
+		
+		<!-- One-To-Many attributes -->
+		
+		<set name="messages"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="adminId"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Message"/>
+		</set> 
+		
+		<set name="newss"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.News"/>
+		</set> 
+		
+		<set name="travelss"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Travels"/>
+		</set> 
+		
+		<set name="routes"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Route"/>
+		</set> 
+		
+		<set name="roombooks"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Roombook"/>
+		</set> 
+		
+		<set name="friendlinks"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Friendlink"/>
+		</set> 
+		
+		<set name="hotels"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Hotel"/>
+		</set> 
+		
+		<set name="comments"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Comment"/>
+		</set> 
+		
+		<set name="routebooks"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Routebook"/>
+		</set> 
+		
+		<set name="collects"
+		     lazy="true"
+		     inverse="true"
+		     cascade="none"
+		>
+			<key>
+	       		<column name="useid"/>
+	        </key>
+			<one-to-many class="cn.travel.model.Collect"/>
+		</set> 
+
+		<!-- Many-To-One attributes -->
+
+    </class>
+</hibernate-mapping>
+
