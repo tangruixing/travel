@@ -8,7 +8,7 @@
 <%@ page import="java.io.File"%>
 <%@ page import="java.io.FileOutputStream"%>
 <%@ page import="java.util.Date"%>
-<%@ page import="sy.util.base.UEditorUtil"%>
+<%@ page import="cn.util.web.UEditorUtil"%>
 <%
 	request.setCharacterEncoding("utf-8");
 	response.setCharacterEncoding("utf-8");
