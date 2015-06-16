@@ -52,7 +52,7 @@
         <table>
             <tr>
                 <td>原来密码:</td>
-                <td> <input class="easyui-textbox easyui-validatebox"  type="password"  data-options="iconCls:'icon-lock',required:true,missingMessage:'请输入原密码'"  id="oldpassword" >
+                <td> <input  id="oldpassword" class="easyui-textbox easyui-validatebox"  type="password"  data-options="iconCls:'icon-lock',required:true,missingMessage:'请输入原密码'"  >
                 <td>
                     <div id="unique"  style="float:left;display: none"></div>
                 </td>

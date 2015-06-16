@@ -1,3 +1,4 @@
+
 /**
  * 
  */
@@ -25,9 +26,9 @@ var editpassword={
         	editpassword._function.editPasswordUI();
         });
         
-		$("#oldpassword").off("blur");
+        $("#oldpassword").off("blur");
         $("#oldpassword").on("blur", function () {
-        	editpassword.oldpasswordIsVaild=false;
+        	console.info("blursdf");
             editpassword._function.checkOldPassword($(this).val());
         });
         
@@ -67,7 +68,7 @@ var editpassword={
                 }else{
                     html+=sy.fs("<img src='{0}' title='{1}' style='float:left'><div style='float:left;color: #ac2925'>{2}</div>",sy.contextPath+"/jslib/easyui-1.4.2/themes/icons/no.png",data.msg,data.msg);
                 }
-                editpassword.oldpasswordIsVaild=data.success;
+
                 $("#unique").append(html).show();
 
             },'json');
