@@ -1,49 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://java.sun.com/xml/ns/javaee" xmlns:web="http://java.sun.com/xml/ns/javaee" xsi:schemaLocation="http://java.sun.com/xml/ns/javaee http://java.sun.com/xml/ns/javaee/web-app_2_5.xsd" id="WebApp_ID" version="2.5">
   <display-name>travel</display-name>
-   <!-- web 服务器启动时，完成 spring 容器的初始化 ,放在了application中-->
-	<!-- 监听器Spring -->
-	<listener>
-		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
-	</listener>
+  <listener>
+    <listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
   <servlet>
     <description>This is the description of my J2EE component</description>
     <display-name>This is the display name of my J2EE component</display-name>
     <servlet-name>WebUploadServlet</servlet-name>
-    <servlet-class>cn.model.WebUploadServlet</servlet-class>
+    <servlet-class>cn.servlet.WebUploadServlet</servlet-class>
   </servlet>
-
   <servlet-mapping>
     <servlet-name>WebUploadServlet</servlet-name>
     <url-pattern>/servlet/WebUploadServlet</url-pattern>
   </servlet-mapping>
-
-	<!-- 通过上下文参数，定位applicationContext.xml的物理位置 -->
-	<context-param>
-		<param-name>contextConfigLocation</param-name>
-		<param-value>classpath:applicationContext.xml</param-value>
-	</context-param>
-
-	<!-- Spring的OpenSessionInView实现，注意：放在 struts2 过滤器的前面
-	<filter> 
-		<filter-name>openSessionInViewFilter</filter-name> 
-		<filter-class> org.springframework.orm.hibernate3.support.OpenSessionInViewFilter 
-		</filter-class> 
-	</filter> 
-	<filter-mapping> 
-		<filter-name>openSessionInViewFilter</filter-name> 
-		<url-pattern>/*</url-pattern> 
-	</filter-mapping>-->
-	
-	<filter>
-		<filter-name>struts2</filter-name>
-		<filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
-	</filter>
-	<filter-mapping>
-		<filter-name>struts2</filter-name>
-		<url-pattern>*.do</url-pattern>
-	</filter-mapping>
-	
+  <context-param>
+    <param-name>contextConfigLocation</param-name>
+    <param-value>classpath:applicationContext.xml</param-value>
+  </context-param>
+  <filter>
+    <filter-name>struts2</filter-name>
+    <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
+  </filter>
+  <filter-mapping>
+    <filter-name>struts2</filter-name>
+    <url-pattern>*.do</url-pattern>
+  </filter-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>
@@ -52,4 +34,12 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  <servlet>
+    <servlet-name>UploadImageServlet</servlet-name>
+    <servlet-class>cn.servlet.UploadImageServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UploadImageServlet</servlet-name>
+    <url-pattern>/UploadImageServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

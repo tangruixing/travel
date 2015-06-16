@@ -152,8 +152,9 @@
             chunked: false,
             chunkSize: 512 * 1024,
            // server: '../../server/fileupload.php',
-            server: 'http://localhost:8090/travel/servlet/WebUploadServlet?type=shaonian',
-            // runtimeOrder: 'flash',
+            server: 'http://localhost:8080/travel/UploadImageServlet',
+/*            server: 'http://localhost:8080/travel/jslib/ueditor1_2_6_1-utf8-jsp/jsp/imageUp.jsp',
+*/            // runtimeOrder: 'flash',
 
             // accept: {
             //     title: 'Images',
@@ -248,7 +249,7 @@
                 $wrap.text( '预览中' );
                 uploader.makeThumb( file, function( error, src ) {
                     var img;
-
+                    console.info(src);
                     if ( error ) {
                         $wrap.text( '不能预览' );
                         return;

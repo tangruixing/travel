@@ -1,0 +1,43 @@
+jnotify — jquery弹出层提示插件下载和使用方法 我爱模板推荐
+
+使用方法：
+1、在头部引入下面的代码：
+<link rel="stylesheet" href="css/jNotify.jquery.css" type="text/css" />
+<script type="text/javascript" src="http://www.5imoban.net/download/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jNotify.jquery.js"></script>
+
+注释：jNotify.jquery.css为jNotify提示框的样式，可以在这里面修改成你喜欢的样式。
+      jNotify.jquery.js为jNotify提示框代码。
+
+2、调用函数。在body中加入触发的条件，比如一个ID为jnotify_success的a被点击后触发jNotify提示框，调用代码效果就如下：
+<script type="text/javascript">
+	$(document).ready(function(){
+		//正确提示
+		$("a#jnotify_success").click(function(e){  //定义了ID为jnotify_success的a被点击后触发下面的函数
+			e.preventDefault();
+			jSuccess(      //jSuccess为正确提示框，jError为错误提示，jNotify为一般提示。
+				//下面的内容为提示的内容。
+				'输入正确，欢迎登陆 !!点击对话框关闭本提示框。<br />您也可以应用下面的样式 <strong>加粗</strong>, <i>斜体</i>, <u>下划线</u>',
+				{
+					//下面为提示框的具体参数设置。
+					autoHide : false,   //jnotify自动隐藏 true false
+					clickOverlay : false,  //jnotify弹出层单击遮罩层才关闭提示条（遮罩层即半透明黑色背景）
+					MinWidth : 250,   //jnotify弹出层宽度
+					TimeShown : 3000,   //显示时长。只有当autoHide（自动隐藏）参数为true时起作用。
+					ShowTimeEffect : 200,   //jnotify完全显示出来花费时间。
+					HideTimeEffect : 200,   //与上面参数相反，jnotify从页面上消失所需时间
+					LongTrip : 20,          //当jnotify弹出层提示条显示和隐藏时的位移
+					HorizontalPosition : 'center',  //jnotify弹出层提示条位于水平方向上的位置，参数有left,center,right
+					VerticalPosition : 'center',    //jnotify弹出层提示条位于垂直方向上的位置，参数有top,center,bottom
+					ShowOverlay : false,   //是否显示遮罩层（遮罩层即半透明黑色背景）
+					ColorOverlay : '#000',   //遮罩层颜色
+					OpacityOverlay : 0.3,   //遮罩层透明度，最大是1，最小是0.1
+					onClosed : function(){},   //关闭jnotify弹出层提示条调用的函数
+					onCompleted : function(){}   //打开jnotify弹出层提示条调用的函数
+				}
+			);
+		});
+	});
+</script>
+
+更多特效欢迎访问：http://www.5imoban.net/texiao/
