@@ -1,0 +1,123 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
+<title>jnotify — jquery弹出层提示插件下载和使用方法_我爱模板 www.5imoban.net</title>
+<!--引入开始-->
+<link rel="stylesheet" href="css/jNotify.jquery.css" type="text/css" />
+<script type="text/javascript" src="http://www.5imoban.net/download/jquery/jquery-1.8.3.min.js"></script>
+<script type="text/javascript" src="js/jNotify.jquery.js"></script>
+<!--引入结束-->
+<style>
+body{margin:0; padding:0;}
+ul#wimoban_nav{padding-left:50px; margin-bottom:10px; border-bottom:2px solid #ccc; overflow:hidden; _zoom:1;}
+ul#wimoban_nav li{float:left; display:inline; margin:10px;}
+ul#wimoban_nav li a{display:block; font-size:16px;}
+ul#wimoban_nav li a,#wimoban_p,#wimoban_p a{color:#000; font-family:"微软雅黑";}
+ul#wimoban_nav li a:hover,#wimoban_p a:hover{color:red;}
+#wimoban_p{text-align:center; font-size:14px; clear:both;}
+.jnotify_demo{display:block; width:100px; height:30px; line-height:30px; background:#333; color:#fff; text-align:center; font-size:12px; font-weight:bold; text-decoration:none; font-family:"微软雅黑"; margin:20px auto; border-radius:3px;}
+</style>
+</head>	
+<body>
+<ul id="wimoban_nav">
+    <li><a title="返回网站首页" href="http://www.5imoban.net/">首页</a></li>
+    <li><a title="网页PSD模板下载" href="http://www.5imoban.net/psdmoban/">PSD模板</a></li>
+    <li><a title="网页CSS模板下载" href="http://www.5imoban.net/cssmoban/">CSS模板</a></li>
+    <li><a title="网页特效、网页插件" href="http://www.5imoban.net/texiao/">特效插件</a></li>
+    <li><a title="整站源码下载" href="http://www.5imoban.net/yuanma/">源码下载</a></li>
+    <li><a title="酷站欣赏" href="http://www.5imoban.net/kuzhan/">酷站欣赏</a></li>
+    <li><a title="建站资源" href="http://www.5imoban.net/ziyuan/">建站资源</a></li>
+    <li><a title="建站视频教程、建站教程" href="http://www.5imoban.net/jiaocheng/">建站教程</a></li>
+    <li><a title="建站心得、互联网事、心境之旅" href="http://www.5imoban.net/article/">心境之旅</a></li>
+</ul>
+</head>	
+<body>
+<!-- 代码开始 -->
+<a href="javascript:void(0)" class="jnotify_demo jnotify_success">显示正确提示</a>
+<a href="javascript:void(0)" class="jnotify_demo jnotify_error">显示错误提示</a>
+<a href="javascript:void(0)" class="jnotify_demo jnotify_other">显示其他提示</a>
+<script type="text/javascript">
+	$(document).ready(function(){
+		//正确提示
+		$("a.jnotify_success").click(function(e){
+			e.preventDefault();
+			jSuccess(
+				//显示内容。
+				'输入正确，欢迎登陆 !!点击对话框关闭本提示框。<br />您也可以应用下面的样式 <strong>加粗</strong>, <i>斜体</i>, <u>下划线</u>',
+				{
+					autoHide : false,   //jnotify自动隐藏 true false
+					clickOverlay : false,  //jnotify弹出层单击遮罩层才关闭提示条（遮罩层即半透明黑色背景）
+					MinWidth : 250,   //jnotify弹出层宽度
+					TimeShown : 3000,   //显示时长。只有当autoHide（自动隐藏）参数为true时起作用。
+					ShowTimeEffect : 200,   //jnotify完全显示出来花费时间。
+					HideTimeEffect : 200,   //与上面参数相反，jnotify从页面上消失所需时间
+					LongTrip : 20,          //当jnotify弹出层提示条显示和隐藏时的位移
+					HorizontalPosition : 'center',  //jnotify弹出层提示条位于水平方向上的位置，参数有left,center,right
+					VerticalPosition : 'center',    //jnotify弹出层提示条位于垂直方向上的位置，参数有top,center,bottom
+					ShowOverlay : false,   //是否显示遮罩层（遮罩层即半透明黑色背景）
+					ColorOverlay : '#000',   //遮罩层颜色
+					OpacityOverlay : 0.3,   //遮罩层透明度，最大是1，最小是0.1
+					onClosed : function(){},   //关闭jnotify弹出层提示条调用的函数
+					onCompleted : function(){}   //打开jnotify弹出层提示条调用的函数
+				}
+			);
+		});
+		//错误提示
+		$("a.jnotify_error").click(function(e){
+			e.preventDefault();
+			jError(
+				//显示内容。
+				'您输入有误 !!<br />您也可以应用下面的样式 <strong>加粗</strong>, <i>斜体</i>, <u>下划线</u>',
+				{
+					autoHide : false,   //jnotify自动隐藏 true false
+					clickOverlay : false,  //jnotify弹出层单击遮罩层才关闭提示条（遮罩层即半透明黑色背景）
+					MinWidth : 250,   //jnotify弹出层宽度
+					TimeShown : 3000,   //显示时长。只有当autoHide（自动隐藏）参数为true时起作用。
+					ShowTimeEffect : 200,   //jnotify完全显示出来花费时间。
+					HideTimeEffect : 200,   //与上面参数相反，jnotify从页面上消失所需时间
+					LongTrip : 20,          //当jnotify弹出层提示条显示和隐藏时的位移
+					HorizontalPosition : 'center',  //jnotify弹出层提示条位于水平方向上的位置，参数有left,center,right
+					VerticalPosition : 'center',    //jnotify弹出层提示条位于垂直方向上的位置，参数有top,center,bottom
+					ShowOverlay : false,   //是否显示遮罩层（遮罩层即半透明黑色背景）
+					ColorOverlay : '#000',   //遮罩层颜色
+					OpacityOverlay : 0.3,   //遮罩层透明度，最大是1，最小是0.1
+					onClosed : function(){alert('jNofity 提示框关闭 !')},   //关闭jnotify弹出层提示条调用的函数
+					onCompleted : function(){alert("jNofity 提示框显示 !")}   //打开jnotify弹出层提示条调用的函数
+				}
+			);
+		});
+		//其他提示
+		$("a.jnotify_other").click(function(e){
+			e.preventDefault();
+			jNotify(
+				//显示内容。
+				'欢迎登陆 !本对话框将在三秒后消失<br />您也可以应用下面的样式 <strong>加粗</strong>, <i>斜体</i>, <u>下划线</u>',
+				{
+					autoHide : true,   //jnotify自动隐藏 true false
+					clickOverlay : false,  //jnotify弹出层单击遮罩层才关闭提示条（遮罩层即半透明黑色背景）
+					MinWidth : 250,   //jnotify弹出层宽度
+					TimeShown : 3000,   //显示时长。只有当autoHide（自动隐藏）参数为true时起作用。
+					ShowTimeEffect : 200,   //jnotify完全显示出来花费时间。
+					HideTimeEffect : 200,   //与上面参数相反，jnotify从页面上消失所需时间
+					LongTrip : 20,          //当jnotify弹出层提示条显示和隐藏时的位移
+					HorizontalPosition : 'center',  //jnotify弹出层提示条位于水平方向上的位置，参数有left,center,right
+					VerticalPosition : 'center',    //jnotify弹出层提示条位于垂直方向上的位置，参数有top,center,bottom
+					ShowOverlay : false,   //是否显示遮罩层（遮罩层即半透明黑色背景）
+					ColorOverlay : '#000',   //遮罩层颜色
+					OpacityOverlay : 0.3,   //遮罩层透明度，最大是1，最小是0.1
+					onClosed : function(){},   //关闭jnotify弹出层提示条调用的函数
+					onCompleted :  function(){}  //打开jnotify弹出层提示条调用的函数
+				}
+			);
+		});
+	});
+</script>
+<!-- 代码结束 -->
+<div id="wimoban_p">
+    <p>代码整理：<a href="http://www.5imoban.net/" title="模板网" alt="模板网">我爱模板网</a></p>
+    <p>＊尊重他人劳动成果，转载请自觉注明出处！注：此代码仅供学习交流，请勿用于商业用途。</p>
+    <p></p>
+</div>
+</body>
+</html>

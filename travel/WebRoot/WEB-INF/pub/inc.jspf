@@ -2,7 +2,7 @@
 <%@ page import="java.util.Map"%>
 <%@ page import="java.util.HashMap"%>
 <%@ page import="org.apache.commons.lang3.StringUtils"%>
-	<%@taglib prefix="s" uri="/struts-tags"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
@@ -51,3 +51,20 @@ if (StringUtils.indexOfIgnoreCase(User_Agent, "MSIE") > -1 && (StringUtils.index
 	out.println("<script src='" + contextPath + "/jslib/jquery-2.0.3.js' type='text/javascript' charset='utf-8'></script>");
 }
 %>
+<%-- 工具类的引入 --%>
+<script type="text/javascript"	src="<%=contextPath%>/jslib/util/function.js"	charset="utf-8"></script> 
+<script type="text/javascript"	src="<%=contextPath%>/jslib/util/common.js"	charset="utf-8"></script> 
+<script type="text/javascript"	src="<%=contextPath%>/jslib/jNotify/js/jNotify.jquery.js"	charset="utf-8"></script>
+ 
+  <%-- 上传图片--%>
+<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/webuploader.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/manyimageloader.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/singeimageloader.css" />
+
+<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/webuploader.js"></script>
+<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/utils.js"></script>
+<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/uploadImages.js"></script> 
+

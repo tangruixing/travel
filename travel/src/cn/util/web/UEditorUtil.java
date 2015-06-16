@@ -24,12 +24,17 @@ import org.apache.commons.fileupload.disk.DiskFileItemFactory;
 import org.apache.commons.fileupload.servlet.ServletFileUpload;
 import org.apache.commons.fileupload.util.Streams;
 
+import com.alibaba.fastjson.JSON;
+
 import sun.misc.BASE64Decoder;
+import cn.model.UEFile;
 
 /**
  * UEditor文件上传辅助类
  */
 public class UEditorUtil {
+	
+	
 	// 输出文件地址
 	private String url = "";
 	// 上传文件名
@@ -41,10 +46,14 @@ public class UEditorUtil {
 	// 原始文件名
 	private String originalName = "";
 	// 文件大小
-	private String size = "";
+	private long size =0;
 
-	private HttpServletRequest request = null;
 	private String title = "";
+	
+	
+	private UEFile uefile;
+	
+	private HttpServletRequest request = null;
 
 	// 保存路径
 	private String savePath = "upload";
@@ -86,6 +95,7 @@ public class UEditorUtil {
 			FileItemIterator fii = sfu.getItemIterator(this.request);
 			while (fii.hasNext()) {
 				FileItemStream fis = fii.next();
+				
 				if (!fis.isFormField()) {
 					this.originalName = fis.getName().substring(fis.getName().lastIndexOf(System.getProperty("file.separator")) + 1);
 					if (!this.checkFileType(this.originalName)) {
@@ -96,9 +106,11 @@ public class UEditorUtil {
 					this.type = this.getFileExt(this.fileName);
 					this.url = savePath + "/" + this.fileName;
 					BufferedInputStream in = new BufferedInputStream(fis.openStream());
-					FileOutputStream out = new FileOutputStream(new File(this.getPhysicalPath(this.url)));
+					File file = new File(this.getPhysicalPath(this.url));
+					FileOutputStream out = new FileOutputStream(file);
 					BufferedOutputStream output = new BufferedOutputStream(out);
 					Streams.copy(in, output, true);
+					this.size = file.length();
 					this.state = this.errorInfo.get("SUCCESS");
 					// UE中只会处理单张上传，完成后即退出
 					break;
@@ -238,9 +250,7 @@ public class UEditorUtil {
 		this.maxSize = size;
 	}
 
-	public String getSize() {
-		return this.size;
-	}
+
 
 	public String getUrl() {
 		return this.url;
@@ -255,6 +265,9 @@ public class UEditorUtil {
 	}
 
 	public String getTitle() {
+		if(this.title==null&&this.originalName!=null){
+			this.title=this.originalName;
+		}
 		return this.title;
 	}
 
@@ -264,5 +277,14 @@ public class UEditorUtil {
 
 	public String getOriginalName() {
 		return this.originalName;
+	}
+
+	public UEFile getUefile() {
+		return new UEFile(this.state, this.originalName,this.size, this.title, this.type, this.url);
+	}
+
+	public void setUefile(UEFile uefile) {
+		
+		this.uefile = uefile;
 	}
 }
