@@ -13,6 +13,8 @@ import java.util.Properties;
 public class ConfigUtil {
 
 	private static Properties config=new Properties();
+	public static final String loginUserKey="loginUser";
+	
 	
 	static{
 		try {
@@ -34,7 +36,7 @@ public class ConfigUtil {
 	}
 
 	/**
-	 * 通过键获取�??
+	 * 通过键获取值
 	 * 
 	 * @param key
 	 * @return
@@ -53,5 +55,6 @@ public class ConfigUtil {
 	public static int getPageSize(){
 		return Integer.parseInt(config.getProperty("pageSize"));
 	}
+	
 
 }

@@ -8,7 +8,7 @@
 
 var uploaderSwf = './Uploader.swf';
 var expressInstallSwf = './expressInstall.swf';
-var server = sy.contextPath = "/travel/UploadImageServlet";
+var server = sy.contextPath + "/travel/UploadImageServlet";
 
 function uploadImage(icon, iconName, picker) {
 	this.init(icon, iconName, picker)

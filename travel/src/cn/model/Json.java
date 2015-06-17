@@ -10,7 +10,7 @@ package cn.model;
  * 
  */
 public class Json implements java.io.Serializable {
-
+	
 	private boolean success = false;
 
 	private String msg = "";

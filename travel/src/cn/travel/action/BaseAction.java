@@ -2,15 +2,19 @@ package cn.travel.action;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
+import java.util.Map;
 
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.apache.struts2.interceptor.ServletResponseAware;
+import org.apache.struts2.interceptor.SessionAware;
 
 import cn.model.Json;
 import cn.model.Page;
+import cn.travel.model.User;
+import cn.util.ConfigUtil;
 
 import com.alibaba.fastjson.JSON;
 import com.opensymphony.xwork2.ActionSupport;
@@ -25,7 +29,7 @@ import com.opensymphony.xwork2.Preparable;
  */
 
 @SuppressWarnings("unchecked")
-public abstract class BaseAction<T> extends ActionSupport implements ModelDriven<T>,Preparable,ServletResponseAware{
+public abstract class BaseAction<T> extends ActionSupport implements ModelDriven<T>,Preparable,ServletResponseAware,SessionAware{
 	/**
 	 * Logger for this class
 	 */
@@ -67,7 +71,10 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	
 	protected String deleteIds;
 	
-	private HttpServletResponse response;
+	protected HttpServletResponse response;
+
+
+	protected Map<String, Object> session;
 	
 	public BaseAction(){
 		try {
@@ -214,8 +221,35 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	public void setDeleteIds(String deleteIds) {
 		this.deleteIds = deleteIds;
 	}
+
+	public void setSession(Map<String, Object> session) {
+		this.session=session;
+	}
 	
 	
+	public User getSessionUser(){
+		 Object obj = session.get(ConfigUtil.loginUserKey);
+		 if(obj!=null){
+			 return (User)obj;
+		 }
+		 return null;
+	}
+	
+	public void removeSessionUser(){
+
+		 if(this.getSessionUser()==null){
+			 return;			 
+		 }
+		 session.remove(ConfigUtil.loginUserKey);
+	}
+	
+	public int getSessionUserId(){
+		return this.getSessionUser().getId();
+	}
+	
+	public int getSessionUserRole(){
+		return this.getSessionUser().getRole();
+	}
 	
 	
 

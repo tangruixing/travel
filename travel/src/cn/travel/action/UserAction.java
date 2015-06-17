@@ -2,6 +2,8 @@ package cn.travel.action;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.codec.digest.DigestUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -22,6 +24,14 @@ public class UserAction extends BaseAction<User>{
 	
 	@Resource(name="userService")
 	private UserService userService;
+
+	/**
+	 * 修改密码
+	 */
+	private String oldPwd; //原密码
+	private String newPwd; //新密码
+	private String confirmPwd;//确认密码
+	
 	
 	/**
 	 * 
@@ -65,12 +75,16 @@ public class UserAction extends BaseAction<User>{
 
 	
 	/**
-	 * 保存/更新操作
+	 * 保存/更新操作(不包括修改用户名和密码)
 	 */
 	public void doSaveOrUpdate() {
 		
 		j=new Json();
-		try{			
+		
+		try{
+			if(StringUtils.isEmpty(model.getPwd())){
+				model.setPwd(DigestUtils.md5Hex("123456"));
+			}
 			userService.saveOrUpdateEntity(this.model);
 			j.setSuccess(true);
 			j.setMsg("操作成功");
@@ -80,6 +94,88 @@ public class UserAction extends BaseAction<User>{
 			write2Response(j);
 		}
 	}
+	
+	/**
+	 * 失去焦点触发
+	 */
+	public void checkOldPwd(){
+		
+		j=new Json();
+		try {
+			User user = userService.getEntity(this.getSessionUserId());
+			oldPwd = DigestUtils.md5Hex(oldPwd);
+			if(user.getPwd().equals(oldPwd)){
+				j.setSuccess(true);
+			}else{
+				j.setMsg("原密码不正确");
+			}
+		} catch (Exception e) {
+			j.setMsg("出错了："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+		
+	}
+	
+	
+	/**
+	 * 提交按钮触发
+	 */
+	public void eidtPassword(){
+		
+		j=new Json();
+		try {
+			
+			if(StringUtils.isNotEmpty(oldPwd)){
+				User user = userService.getEntity(this.getSessionUserId());
+				oldPwd = DigestUtils.md5Hex(oldPwd);
+				if(user.getPwd().equals(oldPwd)){
+				
+					j.setSuccess(true);
+				}else{
+					j.setMsg("原密码不正确");
+				}
+			}	
+			
+			userService.editPassword(this.newPwd);
+			j.setSuccess(true);
+		} catch (Exception e) {
+			j.setMsg("出错了："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+		
+	}
+	
+
+	
+
+	public String getOldPwd() {
+		return oldPwd;
+	}
+
+	public void setOldPwd(String oldPwd) {
+		this.oldPwd = oldPwd;
+	}
+
+	public String getNewPwd() {
+		return newPwd;
+	}
+
+	public void setNewPwd(String newPwd) {
+		this.newPwd = newPwd;
+	}
+
+	public String getConfirmPwd() {
+		return confirmPwd;
+	}
+
+	public void setConfirmPwd(String confirmPwd) {
+		this.confirmPwd = confirmPwd;
+	}
+	
+	
+	
 	
 	
 	

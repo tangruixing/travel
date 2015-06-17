@@ -33,6 +33,7 @@ if (cookieMap.containsKey("easyuiTheme")) {
     var sy = sy || {};
     sy.contextPath = '<%=contextPath%>';
     window.UEDITOR_HOME_URL = sy.contextPath+"/jslib/ueditor1_4_3-utf8-jsp/";
+ 
 </script>
 
 <%-- 引入my97日期时间控件 --%>

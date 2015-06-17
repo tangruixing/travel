@@ -11,7 +11,7 @@
         <property name="mobile" type="java.lang.String">
             <column name="MOBILE" />
         </property>
-        <property name="pwd" type="java.lang.String">
+        <property name="pwd" type="java.lang.String" update="false">
             <column name="PWD" />
         </property>
         <property name="role" type="java.lang.Integer">

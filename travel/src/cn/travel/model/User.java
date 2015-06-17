@@ -29,8 +29,18 @@ public class User implements Serializable{
 	){
 		this.id = id;
 	}
+	
+	
+	
 
 	
+		public User(String mobile, String pwd, Integer role) {
+		super();
+		this.mobile = mobile;
+		this.pwd = pwd;
+		this.role = role;
+	}
+
 		public void setId(java.lang.Integer value) {
 			this.id = value;
 		}

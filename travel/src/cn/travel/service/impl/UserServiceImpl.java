@@ -3,6 +3,7 @@ package cn.travel.service.impl;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
@@ -46,6 +47,29 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		
 		this.dao.batchEntityByHQL(hql);
 	}
+
+	public User login(String mobile, String pwd) throws Exception {
+		// TODO Auto-generated method stub
+		
+		pwd=DigestUtils.md5Hex(pwd);
+		
+		String hql="from User u where u.mobile=? and u.pwd=?";
+		User user = (User) this.uniqueResult(hql, mobile,pwd);
+		if(user==null){
+			throw new Exception("用户名密码错误");
+		}else{
+			return user;
+		}
+	}
+
+	public void editPassword(String newPwd) {
+		newPwd=DigestUtils.md5Hex(newPwd);
+		String hql="update User u where u.pwd=?";
+		this.batchEntityByHQL(hql, newPwd);
+	}
+
+	
+	
 	
 	
 	
