@@ -3,6 +3,10 @@ package cn.model;
 public class Constant {
 
 	/**
+	 * 超级管理员
+	 */
+	public static int ROLE_SUPER=0;
+	/**
 	 * 管理员
 	 */
 	public static int ROLE_ADMIN=1;
