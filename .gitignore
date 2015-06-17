@@ -1,0 +1,5 @@
+/travel/*.class
+/travel/*.log
+/travel/*.temp
+/travel/resources/jdbc.properties
+/.gitignore
