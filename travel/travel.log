@@ -4884,3 +4884,181 @@
 [INFO][2015-06-17 11:02:22,837][cn.travel.action.BaseAction]实例化一个模型:User
 [INFO][2015-06-17 11:02:22,864][cn.travel.action.UserAction]User_toIndex
 [INFO][2015-06-17 11:02:24,517][cn.travel.action.BaseAction]实例化一个模型:User
+[INFO][2015-06-17 11:20:31,230][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2015-06-17 11:20:31,252][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Wed Jun 17 11:20:31 CST 2015]; root of context hierarchy
+[INFO][2015-06-17 11:20:31,283][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+[INFO][2015-06-17 11:20:31,358][org.springframework.context.annotation.ClassPathBeanDefinitionScanner]JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+[INFO][2015-06-17 11:20:31,558][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO][2015-06-17 11:20:31,589][org.springframework.beans.factory.support.DefaultListableBeanFactory]Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@13e9934: defining beans [collectDao,commentDao,friendlinkDao,hotelDao,imagesDao,messageDao,newsDao,roombookDao,roomstyleDao,routebookDao,routeDao,routeplanDao,sceneryDao,travelsDao,userDao,collectService,commentService,friendlinkService,hotelService,imagesService,messageService,newsService,roombookService,roomstyleService,routebookService,routeplanService,routeService,sceneryService,travelsService,userService,collectAction,commentAction,friendlinkAction,hotelAction,imagesAction,loginAction,messageAction,newsAction,roombookAction,roomstyleAction,routeAction,routebookAction,routeplanAction,sceneryAction,travelsAction,userAction,webUploadAction,frontUserAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0]; root of factory hierarchy
+[INFO][2015-06-17 11:20:31,639][com.mchange.v2.log.MLog]MLog clients using log4j logging.
+[INFO][2015-06-17 11:20:31,675][com.mchange.v2.c3p0.C3P0Registry]Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[INFO][2015-06-17 11:20:31,903][org.hibernate.cfg.Environment]Hibernate 3.5.6-Final
+[INFO][2015-06-17 11:20:31,904][org.hibernate.cfg.Environment]hibernate.properties not found
+[INFO][2015-06-17 11:20:31,906][org.hibernate.cfg.Environment]Bytecode provider name : javassist
+[INFO][2015-06-17 11:20:31,907][org.hibernate.cfg.Environment]using JDK 1.4 java.sql.Timestamp handling
+[INFO][2015-06-17 11:20:31,949][org.hibernate.cfg.Configuration]configuring from url: file:/D:/code/git/travel/travel/WebRoot/WEB-INF/classes/hibernate.cfg.xml
+[INFO][2015-06-17 11:20:31,974][org.hibernate.cfg.Configuration]Configured SessionFactory: null
+[INFO][2015-06-17 11:20:32,008][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Collect -> COLLECT
+[INFO][2015-06-17 11:20:32,044][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Comment -> COMMENT
+[INFO][2015-06-17 11:20:32,051][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Friendlink -> FRIENDLINK
+[INFO][2015-06-17 11:20:32,056][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Hotel -> HOTEL
+[INFO][2015-06-17 11:20:32,060][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Images -> IMAGES
+[INFO][2015-06-17 11:20:32,066][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Message -> MESSAGE
+[INFO][2015-06-17 11:20:32,073][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.News -> NEWS
+[INFO][2015-06-17 11:20:32,077][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Roombook -> ROOMBOOK
+[INFO][2015-06-17 11:20:32,081][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Roomstyle -> ROOMSTYLE
+[INFO][2015-06-17 11:20:32,086][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Route -> ROUTE
+[INFO][2015-06-17 11:20:32,090][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Routebook -> ROUTEBOOK
+[INFO][2015-06-17 11:20:32,093][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Routeplan -> ROUTEPLAN
+[INFO][2015-06-17 11:20:32,097][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Scenery -> SCENERY
+[INFO][2015-06-17 11:20:32,101][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Travels -> TRAVELS
+[INFO][2015-06-17 11:20:32,104][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.User -> USER
+[INFO][2015-06-17 11:20:32,105][org.springframework.orm.hibernate3.LocalSessionFactoryBean]Building new Hibernate SessionFactory
+[INFO][2015-06-17 11:20:32,108][org.hibernate.connection.ConnectionProviderFactory]Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[INFO][2015-06-17 11:20:32,148][com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource]Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge2vl991ywfwkm1mp107q|dfd643, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge2vl991ywfwkm1mp107q|dfd643, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:6033/travel, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 10, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
+[INFO][2015-06-17 11:20:32,351][org.hibernate.cfg.SettingsFactory]RDBMS: MySQL, version: 5.0.24-community-nt
+[INFO][2015-06-17 11:20:32,351][org.hibernate.cfg.SettingsFactory]JDBC driver: MySQL Connector Java, version: mysql-connector-java-5.1.30 ( Revision: alexander.soklakov@oracle.com-20140310090514-8xt1yoht5ksg2e7c )
+[INFO][2015-06-17 11:20:32,362][org.hibernate.dialect.Dialect]Using dialect: org.hibernate.dialect.MySQL5Dialect
+[INFO][2015-06-17 11:20:32,364][org.hibernate.engine.jdbc.JdbcSupportLoader]Disabling contextual LOB creation as createClob() method threw error : java.lang.reflect.InvocationTargetException
+[INFO][2015-06-17 11:20:32,365][org.hibernate.transaction.TransactionFactoryFactory]Transaction strategy: org.springframework.orm.hibernate3.SpringTransactionFactory
+[INFO][2015-06-17 11:20:32,366][org.hibernate.transaction.TransactionManagerLookupFactory]No TransactionManagerLookup configured (in JTA environment, use of read-write or transactional second-level cache is not recommended)
+[INFO][2015-06-17 11:20:32,366][org.hibernate.cfg.SettingsFactory]Automatic flush during beforeCompletion(): disabled
+[INFO][2015-06-17 11:20:32,366][org.hibernate.cfg.SettingsFactory]Automatic session close at end of transaction: disabled
+[INFO][2015-06-17 11:20:32,366][org.hibernate.cfg.SettingsFactory]JDBC batch size: 15
+[INFO][2015-06-17 11:20:32,366][org.hibernate.cfg.SettingsFactory]JDBC batch updates for versioned data: disabled
+[INFO][2015-06-17 11:20:32,366][org.hibernate.cfg.SettingsFactory]Scrollable result sets: enabled
+[INFO][2015-06-17 11:20:32,366][org.hibernate.cfg.SettingsFactory]JDBC3 getGeneratedKeys(): enabled
+[INFO][2015-06-17 11:20:32,367][org.hibernate.cfg.SettingsFactory]Connection release mode: auto
+[INFO][2015-06-17 11:20:32,367][org.hibernate.cfg.SettingsFactory]Maximum outer join fetch depth: 2
+[INFO][2015-06-17 11:20:32,367][org.hibernate.cfg.SettingsFactory]Default batch fetch size: 1
+[INFO][2015-06-17 11:20:32,367][org.hibernate.cfg.SettingsFactory]Generate SQL with comments: disabled
+[INFO][2015-06-17 11:20:32,367][org.hibernate.cfg.SettingsFactory]Order SQL updates by primary key: disabled
+[INFO][2015-06-17 11:20:32,367][org.hibernate.cfg.SettingsFactory]Order SQL inserts for batching: disabled
+[INFO][2015-06-17 11:20:32,367][org.hibernate.cfg.SettingsFactory]Query translator: org.hibernate.hql.ast.ASTQueryTranslatorFactory
+[INFO][2015-06-17 11:20:32,368][org.hibernate.hql.ast.ASTQueryTranslatorFactory]Using ASTQueryTranslatorFactory
+[INFO][2015-06-17 11:20:32,368][org.hibernate.cfg.SettingsFactory]Query language substitutions: {}
+[INFO][2015-06-17 11:20:32,368][org.hibernate.cfg.SettingsFactory]JPA-QL strict compliance: disabled
+[INFO][2015-06-17 11:20:32,368][org.hibernate.cfg.SettingsFactory]Second-level cache: enabled
+[INFO][2015-06-17 11:20:32,368][org.hibernate.cfg.SettingsFactory]Query cache: disabled
+[INFO][2015-06-17 11:20:32,368][org.hibernate.cfg.SettingsFactory]Cache region factory : org.hibernate.cache.impl.NoCachingRegionFactory
+[INFO][2015-06-17 11:20:32,368][org.hibernate.cfg.SettingsFactory]Optimize cache for minimal puts: disabled
+[INFO][2015-06-17 11:20:32,368][org.hibernate.cfg.SettingsFactory]Structured second-level cache entries: disabled
+[INFO][2015-06-17 11:20:32,370][org.hibernate.cfg.SettingsFactory]Echoing all SQL to stdout
+[INFO][2015-06-17 11:20:32,370][org.hibernate.cfg.SettingsFactory]Statistics: disabled
+[INFO][2015-06-17 11:20:32,370][org.hibernate.cfg.SettingsFactory]Deleted entity synthetic identifier rollback: disabled
+[INFO][2015-06-17 11:20:32,370][org.hibernate.cfg.SettingsFactory]Default entity-mode: pojo
+[INFO][2015-06-17 11:20:32,370][org.hibernate.cfg.SettingsFactory]Named query checking : enabled
+[INFO][2015-06-17 11:20:32,371][org.hibernate.cfg.SettingsFactory]Check Nullability in Core (should be disabled when Bean Validation is on): enabled
+[INFO][2015-06-17 11:20:32,387][org.hibernate.impl.SessionFactoryImpl]building session factory
+[INFO][2015-06-17 11:20:32,553][org.hibernate.impl.SessionFactoryObjectFactory]Not binding factory to JNDI, no JNDI name configured
+[INFO][2015-06-17 11:20:32,556][org.hibernate.tool.hbm2ddl.SchemaUpdate]Running hbm2ddl schema update
+[INFO][2015-06-17 11:20:32,556][org.hibernate.tool.hbm2ddl.SchemaUpdate]fetching database metadata
+[INFO][2015-06-17 11:20:32,558][org.hibernate.tool.hbm2ddl.SchemaUpdate]updating schema
+[INFO][2015-06-17 11:20:32,579][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.collect
+[INFO][2015-06-17 11:20:32,579][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, rouid, useid, creatdate, coltype, sceid]
+[INFO][2015-06-17 11:20:32,579][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk6362ed0af52f8bad, fk6362ed0a3cc595a6, fk6362ed0a8685103]
+[INFO][2015-06-17 11:20:32,579][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fk6362ed0af52f8bad, primary, fk6362ed0a3cc595a6, fk6362ed0a8685103]
+[INFO][2015-06-17 11:20:32,585][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.comment
+[INFO][2015-06-17 11:20:32,585][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [content, id, useid, createdate, score, sceid]
+[INFO][2015-06-17 11:20:32,585][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk63717a3f8685103, fk63717a3ff52f8bad]
+[INFO][2015-06-17 11:20:32,585][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fk63717a3f8685103, primary, fk63717a3ff52f8bad]
+[INFO][2015-06-17 11:20:32,590][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.friendlink
+[INFO][2015-06-17 11:20:32,590][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [summary, id, logo, useid, grade, url]
+[INFO][2015-06-17 11:20:32,590][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fkb44027988685103]
+[INFO][2015-06-17 11:20:32,590][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary, fkb44027988685103]
+[INFO][2015-06-17 11:20:32,596][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.hotel
+[INFO][2015-06-17 11:20:32,596][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [picture, id, logo, useid, address, grade, longitude, latitude, realname, telphone]
+[INFO][2015-06-17 11:20:32,596][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk41bc9948685103]
+[INFO][2015-06-17 11:20:32,596][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fk41bc9948685103, primary]
+[INFO][2015-06-17 11:20:32,602][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.images
+[INFO][2015-06-17 11:20:32,602][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, useid, description, sceid, url]
+[INFO][2015-06-17 11:20:32,602][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk80ed76788685103, fk80ed7678f52f8bad]
+[INFO][2015-06-17 11:20:32,602][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fk80ed76788685103, primary, fk80ed7678f52f8bad]
+[INFO][2015-06-17 11:20:32,607][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.message
+[INFO][2015-06-17 11:20:32,607][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [content, id, stats, createdate, userid, adminid]
+[INFO][2015-06-17 11:20:32,607][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk63b68be7bdd43ccb, fk63b68be7cfecf647]
+[INFO][2015-06-17 11:20:32,607][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary, fk63b68be7bdd43ccb, fk63b68be7cfecf647]
+[INFO][2015-06-17 11:20:32,613][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.news
+[INFO][2015-06-17 11:20:32,613][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [publictime, content, summary, id, author, title, useid, subtitle, hot, click]
+[INFO][2015-06-17 11:20:32,613][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk2482d38685103]
+[INFO][2015-06-17 11:20:32,613][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fk2482d38685103, primary]
+[INFO][2015-06-17 11:20:32,618][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.roombook
+[INFO][2015-06-17 11:20:32,619][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, enterdate, rooid, useid, email, creatdate, realname, leavedate, roomnum, telphone]
+[INFO][2015-06-17 11:20:32,619][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk2457c6448685103, fk2457c6445632758d]
+[INFO][2015-06-17 11:20:32,619][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fk2457c6448685103, primary, fk2457c6445632758d]
+[INFO][2015-06-17 11:20:32,624][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.roomstyle
+[INFO][2015-06-17 11:20:32,624][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [picture, id, price, breakfast, introduce, bedstyle, broadband, hotid, number, cancel, realname, limitperson]
+[INFO][2015-06-17 11:20:32,624][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk6792fd963babb646]
+[INFO][2015-06-17 11:20:32,624][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary, fk6792fd963babb646]
+[INFO][2015-06-17 11:20:32,630][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.route
+[INFO][2015-06-17 11:20:32,630][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [content, routetype, id, logo, startdate, useid, description, money, suggest, realname, enddate, numpeople]
+[INFO][2015-06-17 11:20:32,630][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk4a8ba298685103]
+[INFO][2015-06-17 11:20:32,630][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fk4a8ba298685103, primary]
+[INFO][2015-06-17 11:20:32,635][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.routebook
+[INFO][2015-06-17 11:20:32,635][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [leavename, id, leavetel, rouid, useid, totalprice, peoplenum]
+[INFO][2015-06-17 11:20:32,635][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fkb01cb0929ebc3f0f, fkb01cb0928685103]
+[INFO][2015-06-17 11:20:32,635][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fkb01cb0929ebc3f0f, primary, fkb01cb0928685103]
+[INFO][2015-06-17 11:20:32,640][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.routeplan
+[INFO][2015-06-17 11:20:32,640][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, rouid, description, day, sceid, step]
+[INFO][2015-06-17 11:20:32,640][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fkb02300d23cc595a6, fkb02300d2f52f8bad]
+[INFO][2015-06-17 11:20:32,640][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fkb02300d23cc595a6, fkb02300d2f52f8bad, primary]
+[INFO][2015-06-17 11:20:32,644][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.scenery
+[INFO][2015-06-17 11:20:32,645][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [logo, suggest, sceid, url, telphone, id, address, opendime, grade, longitude, realname, latitude, viwepager, introduction]
+[INFO][2015-06-17 11:20:32,645][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fk9ceabfb3f52f8bad]
+[INFO][2015-06-17 11:20:32,645][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fk9ceabfb3f52f8bad, primary]
+[INFO][2015-06-17 11:20:32,649][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.travels
+[INFO][2015-06-17 11:20:32,649][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [publictime, content, id, title, useid, click]
+[INFO][2015-06-17 11:20:32,649][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: [fkeb34f0798685103]
+[INFO][2015-06-17 11:20:32,649][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [fkeb34f0798685103, primary]
+[INFO][2015-06-17 11:20:32,653][org.hibernate.tool.hbm2ddl.TableMetadata]table found: travel.user
+[INFO][2015-06-17 11:20:32,653][org.hibernate.tool.hbm2ddl.TableMetadata]columns: [id, birth, sex, pwd, email, role, realname, mobile]
+[INFO][2015-06-17 11:20:32,653][org.hibernate.tool.hbm2ddl.TableMetadata]foreign keys: []
+[INFO][2015-06-17 11:20:32,653][org.hibernate.tool.hbm2ddl.TableMetadata]indexes: [primary]
+[INFO][2015-06-17 11:20:32,654][org.hibernate.tool.hbm2ddl.SchemaUpdate]schema update complete
+[INFO][2015-06-17 11:20:32,812][org.springframework.orm.hibernate3.HibernateTransactionManager]Using DataSource [com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 1hge2vl991ywfwkm1mp107q|dfd643, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 1hge2vl991ywfwkm1mp107q|dfd643, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:6033/travel, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 10, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]] of Hibernate SessionFactory for HibernateTransactionManager
+[INFO][2015-06-17 11:20:32,973][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization completed in 1743 ms
+[INFO][2015-06-17 11:20:33,156][com.opensymphony.xwork2.config.providers.XmlConfigurationProvider]Parsing configuration file [struts-default.xml]
+[INFO][2015-06-17 11:20:33,205][com.opensymphony.xwork2.config.providers.XmlConfigurationProvider]Parsing configuration file [struts-plugin.xml]
+[INFO][2015-06-17 11:20:33,220][com.opensymphony.xwork2.config.providers.XmlConfigurationProvider]Parsing configuration file [struts.xml]
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (spring) for (com.opensymphony.xwork2.ObjectFactory)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.FileManagerFactory)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.XWorkConverter)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.CollectionConverter)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.ArrayConverter)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.DateConverter)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.NumberConverter)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.impl.StringConverter)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionPropertiesProcessor)
+[INFO][2015-06-17 11:20:33,222][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionFileProcessor)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ConversionAnnotationProcessor)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterCreator)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.TypeConverterHolder)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.TextProvider)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.LocaleProvider)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.ActionProxyFactory)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.conversion.ObjectTypeDeterminer)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (org.apache.struts2.dispatcher.mapper.ActionMapper)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (jakarta) for (org.apache.struts2.dispatcher.multipart.MultiPartRequest)
+[INFO][2015-06-17 11:20:33,223][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (org.apache.struts2.views.freemarker.FreemarkerManager)
+[INFO][2015-06-17 11:20:33,225][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (org.apache.struts2.components.UrlRenderer)
+[INFO][2015-06-17 11:20:33,225][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.validator.ActionValidatorManager)
+[INFO][2015-06-17 11:20:33,225][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.util.ValueStackFactory)
+[INFO][2015-06-17 11:20:33,225][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionProvider)
+[INFO][2015-06-17 11:20:33,225][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.util.reflection.ReflectionContextFactory)
+[INFO][2015-06-17 11:20:33,225][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.util.PatternMatcher)
+[INFO][2015-06-17 11:20:33,225][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (org.apache.struts2.dispatcher.StaticContentLoader)
+[INFO][2015-06-17 11:20:33,225][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.UnknownHandlerManager)
+[INFO][2015-06-17 11:20:33,226][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (org.apache.struts2.views.util.UrlHelper)
+[INFO][2015-06-17 11:20:33,226][org.apache.struts2.config.BeanSelectionProvider]Choosing bean (struts) for (com.opensymphony.xwork2.util.TextParser)
+[INFO][2015-06-17 11:20:33,226][com.opensymphony.xwork2.config.impl.DefaultConfiguration]Overriding property struts.i18n.reload - old value: false new value: true
+[INFO][2015-06-17 11:20:33,226][com.opensymphony.xwork2.config.impl.DefaultConfiguration]Overriding property struts.configuration.xml.reload - old value: false new value: true
+[INFO][2015-06-17 11:20:33,240][org.apache.struts2.spring.StrutsSpringObjectFactory]Initializing Struts-Spring integration...
+[INFO][2015-06-17 11:20:33,240][com.opensymphony.xwork2.spring.SpringObjectFactory]Setting autowire strategy to name
+[INFO][2015-06-17 11:20:33,240][org.apache.struts2.spring.StrutsSpringObjectFactory]... initialized Struts-Spring integration successfully
+[INFO][2015-06-17 11:20:39,260][cn.travel.action.BaseAction]实例化一个模型:User
+[INFO][2015-06-17 11:20:43,276][cn.travel.action.BaseAction]实例化一个模型:User
+[INFO][2015-06-17 11:20:43,317][cn.travel.action.UserAction]User_toIndex
+[INFO][2015-06-17 11:20:44,740][cn.travel.action.BaseAction]实例化一个模型:User
+[INFO][2015-06-17 11:20:46,374][cn.travel.action.BaseAction]实例化一个模型:Message
+[INFO][2015-06-17 11:20:46,401][cn.travel.action.MessageAction]Message_toIndex
+[INFO][2015-06-17 11:20:47,839][cn.travel.action.BaseAction]实例化一个模型:Message
