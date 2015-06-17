@@ -3,16 +3,38 @@
 	
 <%@ include file="inc.jspf" %>
 
-<!-- easyui -->
+ <%-- 引入 ueditor 编辑器 --%>
+<script type="text/javascript" src="<%=contextPath%>/jslib/ueditor1_4_3-utf8-jsp/ueditor.config.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/jslib/ueditor1_4_3-utf8-jsp/ueditor.all.min.js"> </script>
+<script type="text/javascript" src="<%=contextPath%>/jslib/ueditor1_4_3-utf8-jsp/lang/zh-cn/zh-cn.js""></script>
 
-<link rel="stylesheet" type="text/css" href="<%=contextPath%>/back/plugin/easyui/themes/<%=easyuiTheme%>/easyui.css">
-<link rel="stylesheet" type="text/css" href="<%=contextPath%>/back/plugin/easyui/themes/icon.css">
-<script type="text/javascript" src="<%=contextPath%>/back/plugin/easyui/locale/easyui-lang-zh_CN.js"></script>
-<script type="text/javascript" src="<%=contextPath%>/back/plugin/easyui/jquery.easyui.min.js"></script>
+  <%-- 上传图片--%>
+<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/webuploader.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/manyimageloader.css" />
+<link rel="stylesheet" type="text/css"
+	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/singeimageloader.css" />
+
+<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/webuploader.js"></script>
+<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/utils.js"></script>
+<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/uploadImages.js"></script> 
 
 
-<script type="text/javascript" src="<%=contextPath%>/back/plugin/easyui/syExtEasyUI.js"></script>
+<%-- easyui--%>
+
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/jslib/easyui-1.4.2/themes/<%=easyuiTheme%>/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/jslib/easyui-1.4.2/themes/icon.css">
+<script type="text/javascript" src="<%=contextPath%>/jslib/easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/jslib/easyui-1.4.2/jquery.easyui.min.js"></script>
+
+
+
+ 
+
+
+
+<script type="text/javascript" src="<%=contextPath%>/jslib/easyui-1.4.2/syExtEasyUI.js"></script>
 <script type="text/javascript" src="<%=contextPath%>/jslib/syExtJquery.js"></script>
-<script type="text/javascript" src="<%=contextPath%>/back/style/js/util.js"></script>
 
 <script type="text/javascript" src="<%=contextPath%>/back/style/js/Curd.js"></script>

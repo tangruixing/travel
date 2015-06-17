@@ -42,4 +42,5 @@
     <servlet-name>UploadImageServlet</servlet-name>
     <url-pattern>/UploadImageServlet</url-pattern>
   </servlet-mapping>
+
 </web-app>

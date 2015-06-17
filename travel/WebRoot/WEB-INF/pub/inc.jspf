@@ -32,15 +32,11 @@ if (cookieMap.containsKey("easyuiTheme")) {
 <script type="text/javascript" charset="utf-8"> 
     var sy = sy || {};
     sy.contextPath = '<%=contextPath%>';
+    window.UEDITOR_HOME_URL = sy.contextPath+"/jslib/ueditor1_4_3-utf8-jsp/";
 </script>
 
 <%-- 引入my97日期时间控件 --%>
 <script type="text/javascript" src="<%=contextPath%>/jslib/My97DatePicker4.8Beta3/My97DatePicker/WdatePicker.js" charset="utf-8"></script>
-
-<%-- 引入ueditor控件 --%>
-<script type="text/javascript" charset="utf-8">window.UEDITOR_HOME_URL = '<%=contextPath%>/jslib/ueditor1_2_6_1-utf8-jsp/';</script>
-<script src="<%=contextPath%>/jslib/ueditor1_2_6_1-utf8-jsp/ueditor.config.js" type="text/javascript" charset="utf-8"></script>
-<script src="<%=contextPath%>/jslib/ueditor1_2_6_1-utf8-jsp/ueditor.all.min.js" type="text/javascript" charset="utf-8"></script>
 
 <%-- 引入jQuery --%>
 <%
@@ -55,16 +51,5 @@ if (StringUtils.indexOfIgnoreCase(User_Agent, "MSIE") > -1 && (StringUtils.index
 <script type="text/javascript"	src="<%=contextPath%>/jslib/util/function.js"	charset="utf-8"></script> 
 <script type="text/javascript"	src="<%=contextPath%>/jslib/util/common.js"	charset="utf-8"></script> 
 <script type="text/javascript"	src="<%=contextPath%>/jslib/jNotify/js/jNotify.jquery.js"	charset="utf-8"></script>
- 
-  <%-- 上传图片--%>
-<link rel="stylesheet" type="text/css"
-	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/webuploader.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/manyimageloader.css" />
-<link rel="stylesheet" type="text/css"
-	href="<%=contextPath%>/jslib/webuploader-0.1.5/css/singeimageloader.css" />
 
-<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/webuploader.js"></script>
-<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/utils.js"></script>
-<script src="<%=contextPath%>/jslib/webuploader-0.1.5/js/uploadImages.js"></script> 
 
