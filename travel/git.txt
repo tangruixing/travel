@@ -1,9 +1,10 @@
-1. do my(在本地分支工作)
-2. pull develop( 从远程 pull 代码 到本地仓库)
-3. rebase develop(合并本地仓库主代码到本地分支)
-4. merge my(解决冲突)
-5. rebase my(合并主分支代码)
-6. push develop(push到远端)
-注意：
-	向上箭头：commit
-	向下箭头：pull/fetch
+0. 从远程仓库 import 一个 develop 分支
+1. 在本地新建一个 分支 "my"
+2. 在 my 这个分支中写代码(这个属于你在的本地仓库,不提交到远程仓库)
+3. 代码写好后，开始提交。
+    3.1 切换到(checkout) 本地的 develop 分支
+    3.2 从远程仓库中(pull) 远程的 develop 分支 到本地的 develop 分支.( 更新其他开发人员提交的新代码,保持远程仓库 develop 分支和本地分支 develop 代码一致)
+    3.3 切换到(checkout) my 分支
+    3.4 合并(Rebase) 本地的 develop 分支, 如果有冲突,解决冲突(Merge)
+    3.5 在 my 分支解决完冲突后, 切换到(checkout) 本地的 develop 分支, 合并(Rebase) my 分支 到 本地 develop 分支。
+    3.6 推送(push) 本地 develop 分支到远程 develop 分支。
