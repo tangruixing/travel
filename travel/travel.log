@@ -7756,3 +7756,35 @@
 [INFO][2015-06-17 17:51:11,840][cn.travel.action.BaseAction]实例化一个模型:User
 [INFO][2015-06-17 17:51:14,995][cn.travel.action.BaseAction]实例化一个模型:User
 [INFO][2015-06-17 17:51:15,065][cn.travel.action.BaseAction]实例化一个模型:User
+[INFO][2015-06-17 23:14:06,351][org.springframework.web.context.ContextLoader]Root WebApplicationContext: initialization started
+[INFO][2015-06-17 23:14:06,397][org.springframework.web.context.support.XmlWebApplicationContext]Refreshing Root WebApplicationContext: startup date [Wed Jun 17 23:14:06 CST 2015]; root of context hierarchy
+[INFO][2015-06-17 23:14:06,477][org.springframework.beans.factory.xml.XmlBeanDefinitionReader]Loading XML bean definitions from class path resource [applicationContext.xml]
+[INFO][2015-06-17 23:14:08,326][org.springframework.context.annotation.ClassPathBeanDefinitionScanner]JSR-250 'javax.annotation.ManagedBean' found and supported for component scanning
+[INFO][2015-06-17 23:14:09,075][org.springframework.beans.factory.config.PropertyPlaceholderConfigurer]Loading properties file from class path resource [jdbc.properties]
+[INFO][2015-06-17 23:14:09,216][org.springframework.beans.factory.support.DefaultListableBeanFactory]Pre-instantiating singletons in org.springframework.beans.factory.support.DefaultListableBeanFactory@7fc6de5b: defining beans [collectDao,commentDao,friendlinkDao,hotelDao,imagesDao,messageDao,newsDao,roombookDao,roomstyleDao,routebookDao,routeDao,routeplanDao,sceneryDao,travelsDao,userDao,collectService,commentService,friendlinkService,hotelService,imagesService,messageService,newsService,roombookService,roomstyleService,routebookService,routeplanService,routeService,sceneryService,travelsService,userService,collectAction,commentAction,friendlinkAction,hotelAction,imagesAction,loginAction,messageAction,newsAction,roombookAction,roomstyleAction,routeAction,routebookAction,routeplanAction,sceneryAction,travelsAction,userAction,webUploadAction,frontUserAction,org.springframework.context.annotation.internalConfigurationAnnotationProcessor,org.springframework.context.annotation.internalAutowiredAnnotationProcessor,org.springframework.context.annotation.internalRequiredAnnotationProcessor,org.springframework.context.annotation.internalCommonAnnotationProcessor,org.springframework.context.annotation.internalPersistenceAnnotationProcessor,org.springframework.beans.factory.config.PropertyPlaceholderConfigurer#0,dataSource,sessionFactory,txManager,txAdvice,org.springframework.aop.config.internalAutoProxyCreator,org.springframework.aop.support.DefaultBeanFactoryPointcutAdvisor#0]; root of factory hierarchy
+[INFO][2015-06-17 23:14:09,537][com.mchange.v2.log.MLog]MLog clients using log4j logging.
+[INFO][2015-06-17 23:14:09,932][com.mchange.v2.c3p0.C3P0Registry]Initializing c3p0-0.9.1.2 [built 21-May-2007 15:04:56; debug? true; trace: 10]
+[INFO][2015-06-17 23:14:10,740][org.hibernate.cfg.Environment]Hibernate 3.5.6-Final
+[INFO][2015-06-17 23:14:10,742][org.hibernate.cfg.Environment]hibernate.properties not found
+[INFO][2015-06-17 23:14:10,746][org.hibernate.cfg.Environment]Bytecode provider name : javassist
+[INFO][2015-06-17 23:14:10,753][org.hibernate.cfg.Environment]using JDK 1.4 java.sql.Timestamp handling
+[INFO][2015-06-17 23:14:10,844][org.hibernate.cfg.Configuration]configuring from url: file:/P:/Users/always/git/travel/travel/WebRoot/WEB-INF/classes/hibernate.cfg.xml
+[INFO][2015-06-17 23:14:10,999][org.hibernate.cfg.Configuration]Configured SessionFactory: null
+[INFO][2015-06-17 23:14:11,089][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Collect -> COLLECT
+[INFO][2015-06-17 23:14:11,181][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Comment -> COMMENT
+[INFO][2015-06-17 23:14:11,195][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Friendlink -> FRIENDLINK
+[INFO][2015-06-17 23:14:11,213][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Hotel -> HOTEL
+[INFO][2015-06-17 23:14:11,235][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Images -> IMAGES
+[INFO][2015-06-17 23:14:11,264][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Message -> MESSAGE
+[INFO][2015-06-17 23:14:11,296][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.News -> NEWS
+[INFO][2015-06-17 23:14:11,328][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Roombook -> ROOMBOOK
+[INFO][2015-06-17 23:14:11,353][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Roomstyle -> ROOMSTYLE
+[INFO][2015-06-17 23:14:11,368][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Route -> ROUTE
+[INFO][2015-06-17 23:14:11,392][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Routebook -> ROUTEBOOK
+[INFO][2015-06-17 23:14:11,411][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Routeplan -> ROUTEPLAN
+[INFO][2015-06-17 23:14:11,431][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Scenery -> SCENERY
+[INFO][2015-06-17 23:14:11,480][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.Travels -> TRAVELS
+[INFO][2015-06-17 23:14:11,541][org.hibernate.cfg.HbmBinder]Mapping class: cn.travel.model.User -> USER
+[INFO][2015-06-17 23:14:11,543][org.springframework.orm.hibernate3.LocalSessionFactoryBean]Building new Hibernate SessionFactory
+[INFO][2015-06-17 23:14:11,555][org.hibernate.connection.ConnectionProviderFactory]Initializing connection provider: org.springframework.orm.hibernate3.LocalDataSourceConnectionProvider
+[INFO][2015-06-17 23:14:11,858][com.mchange.v2.c3p0.impl.AbstractPoolBackedDataSource]Initializing c3p0 pool... com.mchange.v2.c3p0.ComboPooledDataSource [ acquireIncrement -> 2, acquireRetryAttempts -> 30, acquireRetryDelay -> 1000, autoCommitOnClose -> false, automaticTestTable -> null, breakAfterAcquireFailure -> false, checkoutTimeout -> 0, connectionCustomizerClassName -> null, connectionTesterClassName -> com.mchange.v2.c3p0.impl.DefaultConnectionTester, dataSourceName -> 2scz0l9aktl4f1hufc50|5d8445d7, debugUnreturnedConnectionStackTraces -> false, description -> null, driverClass -> com.mysql.jdbc.Driver, factoryClassLocation -> null, forceIgnoreUnresolvedTransactions -> false, identityToken -> 2scz0l9aktl4f1hufc50|5d8445d7, idleConnectionTestPeriod -> 0, initialPoolSize -> 3, jdbcUrl -> jdbc:mysql://localhost:6033/travel, maxAdministrativeTaskTime -> 0, maxConnectionAge -> 0, maxIdleTime -> 0, maxIdleTimeExcessConnections -> 0, maxPoolSize -> 10, maxStatements -> 0, maxStatementsPerConnection -> 0, minPoolSize -> 2, numHelperThreads -> 3, numThreadsAwaitingCheckoutDefaultUser -> 0, preferredTestQuery -> null, properties -> {user=******, password=******}, propertyCycle -> 0, testConnectionOnCheckin -> false, testConnectionOnCheckout -> false, unreturnedConnectionTimeout -> 0, usesTraditionalReflectiveProxies -> false ]
