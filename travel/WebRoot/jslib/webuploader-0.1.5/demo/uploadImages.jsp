@@ -14,10 +14,10 @@
         <div id="container">
             <!--头部，相册选择和格式选择-->
 
-            <div id="uploader" class="uploader">
+            <div id="router" class="uploader">
                 <div class="queueList">
-                    <div id="uploader_dndArea" class="placeholder">
-                        <div id="uploader_startPicker"></div>
+                    <div id="router_dndArea" class="placeholder">
+                        <div id="router_startPicker"></div>
                         <p>或将照片拖到这里，单次最多可选300张</p>
                     </div>
                 </div>
@@ -27,7 +27,7 @@
                         <span class="percentage"></span>
                     </div><div class="info"></div>
                     <div class="btns">
-                        <div id="uploader_nextPicker" class="nextPicker"></div><div class="uploadBtn">开始上传</div>
+                        <div id="router_nextPicker" class="nextPicker"></div><div class="uploadBtn">开始上传</div>
                     </div>
                 </div>
             </div>
@@ -45,7 +45,7 @@
 
         $(function(){
 
-            var up=new uploadImages("uploader","logoId",5);
+            var up=new uploadImages("router","logoId",5);
             
             $("#getImageSrc").on("click",function(){
             	var str=up.getImageList().join("#");

@@ -5,6 +5,8 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>User管理</title>
+    
+    <script type="text/javascript" src="<%=contextPath%>/back/style/js/UniqueCheck.js"></script>
 </head>
 <body>
 	<div class="easyui-layout" fit="true" id="gridLayout">
@@ -54,22 +56,15 @@
 				<span class="required">*</span>手机号
 			</td>	
 			<td>
-			<input name="mobile" class="easyui-validatebox textbox" required="true"  missingMessage="手机号不能为空">
+			<input id="user_mobile" name="mobile" class="easyui-validatebox" required="true"  missingMessage="手机号不能为空" >
+		
 			</td>
+			
+			 <td>
+                <div id="unique_user_mobile"  style="float:left;display: none"></div>
+             </td>
 		</tr>
 	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>密码
-			</td>	
-			<td>
-			<input name="pwd" class="easyui-validatebox textbox" required="true"  missingMessage="密码不能为空">
-			</td>
-		</tr>
-	
-		
 		
 		<tr>	
 			<td>
@@ -78,6 +73,7 @@
 			<td>
 			<input name="role" class="easyui-validatebox textbox" required="true"  missingMessage="角色不能为空">
 			</td>
+			
 		</tr>
 	
 		
@@ -127,7 +123,7 @@
     </form>
 </div>
 <div id="user_dlg-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="user_save" style="width:90px">保存</a>
+    <a href="http://www.baidu.com" class="easyui-linkbutton" iconCls="icon-ok" id="user_save"  style="width:90px">保存</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" id="user_close" style="width:90px">取消</a>
 </div>
 </body>
@@ -156,7 +152,19 @@ sortable : true
 title : '角色',
 field : 'role',
 width : 100,
-sortable : true
+sortable : true,
+formatter : function(value, row, index) {
+	
+	switch(row.role)
+	{
+	case 1:
+		return "普通用户";
+	  break;
+	case 2:
+		return "管理员";
+	  break;
+	}
+}
 },								{
 title : '邮箱',
 field : 'email',
@@ -171,7 +179,22 @@ sortable : true
 title : '性别',
 field : 'sex',
 width : 100,
-sortable : true
+sortable : true,
+formatter : function(value, row, index) {
+	
+	switch(row.sex)
+	{
+	case 1:
+		return "男";
+	  break;
+	case 2:
+		return "女";
+	  break;
+	default:
+		return "保密";
+	}
+
+}
 },								{
 title : '出生日期',
 field : 'birth',
@@ -192,6 +215,14 @@ sortable : true
                     
             var user=new Curd("<%=contextPath%>","user",columns);
             user.init();
+            
+            <%-- var userCheck= new UniqueCheck("<%=contextPath%>/user_check"); --%>
+           
+            
+            
+            
         });
+        
+        
     </script>
 </html>

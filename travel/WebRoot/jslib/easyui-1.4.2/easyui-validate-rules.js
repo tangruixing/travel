@@ -41,6 +41,33 @@
         },
         message: '两次输入的字符不一至'
     },
+    ltDate: {
+    	validator: function (value, param) {
+    		
+    		    var tarValue=$(param[0]).val();
+    		    
+    		    var srcDate=new Date(value.replace(/-/g,"/"));
+	        	var tarDate=new Date(tarValue.replace(/-/g,"/"));
+	
+    		
+    		return srcDate < tarDate;
+    	},
+    	message: '活动开始日期应在结束日期之前'
+    },
+    gtDate: {
+    	validator: function (value, param) {
+    		
+    	    var tarValue=$(param[0]).val();
+		    
+		    var srcDate=new Date(value.replace(/-/g,"/"));
+        	var tarDate=new Date(tarValue.replace(/-/g,"/"));
+
+		
+		return srcDate > tarDate;
+    		
+    	},
+    	message: '活动结束日期应在开始日期之后'
+    },
     number: {
         validator: function (value, param) {
             return /^\d+$/.test(value);

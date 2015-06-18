@@ -33,4 +33,5 @@ public class Constant {
 	 * 景点
 	 */
 	public static int scenery_child=2;
+	
 }

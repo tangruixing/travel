@@ -8,21 +8,29 @@ function Curd(baseUrl,clz,columns){
     this.clz=clz;
     
     console.info(this.clz);
-    this.dg=$("#"+this.clz+"_dg");
-    this.dlg=$("#"+this.clz+"_dlg");
+    this.dg=$("#"+this.clz+"_dg")||null;
+    this.dlg=$("#"+this.clz+"_dlg")||null;
     this.fm=$("#"+this.clz+"_fm");
     this.fmSaveBtn=$("#"+this.clz+"_save");
     this.fmCloseBtn=$("#"+this.clz+"_close");
     this.baseUrl=baseUrl+"/"+this.clz;
     console.info(this.baseUrl);
+    this.jsUrl=null;
+    this.easyui=true;
 }
 
 Curd.prototype={
+	useCommon:function(){
+		this.easyui=false;
+	},
+	addJs:function(jsUrl){
+		this.jsUrl=jsUrl;
+	},
     init:function(url,columns,sortName){
         var _this=this;
         var defaultUrl={
-            save:_this.baseUrl+"_doSave.do",
-            update:_this.baseUrl+"_doUpdate.do",
+            save:_this.baseUrl+"_toSave.do",
+            update:_this.baseUrl+"_toUpdate.do",
             list:_this.baseUrl+"_doList.do",
             saveOrUpdate:_this.baseUrl+"_doSaveOrUpdate.do",
             remove:_this.baseUrl+"_doDeletes.do"
@@ -39,13 +47,18 @@ Curd.prototype={
                 text : '增加',
                 iconCls : 'icon-add',
                 handler :function(){
-                    _this._function.toSave.call(_this);
+            
+                	 _this._function.toSave.call(_this);                		 
                 }
             }, '-', {
                 text : '修改',
                 iconCls : 'icon-edit',
                 handler : function(){
-                    _this._function.toUpdate.call(_this);
+                	
+                	
+                		 _this._function.toUpdate.call(_this);
+                	
+                    
                 }// 点击修改
             },'-', {
                 text : '删除',
@@ -137,9 +150,19 @@ Curd.prototype={
     _function:{
 
         toSave:function(){
-            console.info(this.fm);
-            this.fm.form('clear');
-            this.dlg.show().dialog('open').dialog('setTitle',"添加");
+        	
+        	var _this=this;
+        	
+       	 if(this.easyui){
+       		console.info(_this.fm);
+			_this.fm.form('clear');
+			_this.dlg.show().dialog('open').dialog('setTitle',"添加");
+    	 }else{
+    		 location.href=_this.save;
+    	 }
+        	
+        	
+        	
         },
         toUpdate:function(){
             var rows=this.dg.datagrid("getSelections");
@@ -155,8 +178,14 @@ Curd.prototype={
             }
             if (rows.length==1){
                 var row=rows[0];
+                console.info(row);
                 this.dlg.show().dialog('open').dialog('setTitle','修改');
-                this.fm.form('load',row);
+                if(this.easyui){
+                	 this.fm.form('load',row);
+	           	 }else{
+	           		 location.href=this.update+"?id="+row.id;
+	           	 }
+               
             }
         },
         doSaveOrUpdate:function(){

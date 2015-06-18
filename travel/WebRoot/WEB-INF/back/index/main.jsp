@@ -56,6 +56,8 @@
                 <td>
                     <div id="unique"  style="float:left;display: none"></div>
                 </td>
+                
+  
             </tr>
             <tr>
                 <td>新密码:</td>
@@ -117,7 +119,11 @@
 									{"menuid":"42","menuname":"景点列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do"}
 								]
 						},{"menuid":"39","icon":"icon-sys","menuname":"其他 ",
-							"menus":[{"menuid":"51","menuname":"友情连接列表","icon":"icon-nav","url":"<%=contextPath%>/friendlink_toIndex.do"}
+							"menus":[
+							         {"menuid":"51","menuname":"友情连接列表","icon":"icon-nav","url":"<%=contextPath%>/friendlink_toIndex.do"},
+							         {"menuid":"51","menuname":"单张图片演示","icon":"icon-nav","url":"<%=contextPath%>/jslib/webuploader-0.1.5/demo/uploadImage.jsp"},
+							         {"menuid":"51","menuname":"多张图片演示","icon":"icon-nav","url":"<%=contextPath%>/jslib/webuploader-0.1.5/demo/uploadImages.jsp"},
+							         {"menuid":"51","menuname":"ueditor演示","icon":"icon-nav","url":"<%=contextPath%>/jslib/ueditor1_4_3-utf8-jsp/demo/index.jsp"}
 								]
 						}
 				]};

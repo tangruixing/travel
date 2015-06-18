@@ -29261,6 +29261,7 @@ UE.ui = baidu.editor.ui = {};
                     if (opt.initialFrameWidth) {
                         opt.minFrameWidth = opt.initialFrameWidth;
                     } else {
+                    	console.info(holder);
                         opt.minFrameWidth = opt.initialFrameWidth = holder.offsetWidth;
                         var styleWidth = holder.style.width;
                         if(/%$/.test(styleWidth)) {

@@ -17,7 +17,7 @@ public class User implements Serializable{
 	private java.lang.Integer role;		/*角色*/
 	private java.lang.String email;		/*邮箱*/
 	private java.lang.String realName;		/*名字*/
-	private java.lang.Integer sex;		/*性别*/
+	private java.lang.Integer sex;		/*性别:男1，女2*/
 	private java.util.Date birth;		/*出生日期*/
 	//columns END
 

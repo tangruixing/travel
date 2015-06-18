@@ -23,6 +23,7 @@ public class RouteAction extends BaseAction<Route>{
 	@Resource(name="routeService")
 	private RouteService routeService;
 	
+	
 	/**
 	 * 
 	 */
@@ -62,7 +63,7 @@ public class RouteAction extends BaseAction<Route>{
 		
 		
 	}
-
+	
 	
 	/**
 	 * 保存/更新操作
@@ -81,6 +82,23 @@ public class RouteAction extends BaseAction<Route>{
 		}
 	}
 	
+	
+	/*普通方式*/
+	
+	public String toSave(){
+		
+		return goUI("save.jsp");
+	}
+	
+	public String toUpdate(){
+		
+		return goUI("save.jsp");
+	}
+	
+	public String doSaveOrUpdateAction(){
+		
+		return goAction();
+	}
 	
 	
 }

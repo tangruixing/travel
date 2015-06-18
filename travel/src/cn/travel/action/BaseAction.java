@@ -80,6 +80,8 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	 * 通过登录拦截器注入
 	 */
 	protected User loginUser;
+
+	private String resultAction;
 	
 	public BaseAction(){
 		try {
@@ -246,7 +248,10 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 		this.loginUser=user;
 	}
 	
-	
+	public String goAction(String namespace,String resultAction){
+		
+		this.resultAction=resultAction;
+	}
 	
 	
 

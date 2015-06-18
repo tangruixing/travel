@@ -1,10 +1,14 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/back.jspf" %>
-<!DOCTYPE html>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head lang="en">
-    <meta charset="UTF-8">
     <title>Route管理</title>
+    <style type="text/css">
+    	#edui149{
+    		z-index:10000
+    	}
+    </style>
 </head>
 <body>
 	<div class="easyui-layout" fit="true" id="gridLayout">
@@ -38,141 +42,7 @@
 
 </div>
 
-<!--form-->
-<div id="route_dlg" class="easyui-dialog"
-     closed="true" buttons="#route_dlg-buttons" modal="true" style="width:500px;height:280px;padding:10px 20px">
-    <div class="ftitle">用户信息</div>
-    <form id="route_fm" method="post">
-	<input type="hidden"  name="id" />
 
-        <table>
-			
-		
-			<tr>	
-				<td>
-					用户编号id
-				</td>	
-				<td>
-					<input name="useid" >
-				</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>名字
-			</td>	
-			<td>
-			<input name="realName" class="easyui-validatebox textbox" required="true"  missingMessage="名字不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>logo
-			</td>	
-			<td>
-			<input name="logo" class="easyui-validatebox textbox" required="true"  missingMessage="logo不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>出发时间
-			</td>	
-			<td>
-			<input name="startDate" class="easyui-validatebox textbox" required="true"  missingMessage="出发时间不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>结束时间
-			</td>	
-			<td>
-			<input name="endDate" class="easyui-validatebox textbox" required="true"  missingMessage="结束时间不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>类型
-			</td>	
-			<td>
-			<input name="routeType" class="easyui-validatebox textbox" required="true"  missingMessage="类型不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>价钱
-			</td>	
-			<td>
-			<input name="money" class="easyui-validatebox textbox" required="true"  missingMessage="价钱不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>描述
-			</td>	
-			<td>
-			<input name="description" class="easyui-validatebox textbox" required="true"  missingMessage="描述不能为空">
-			</td>
-		</tr>
-	
-		
-			<tr>	
-				<td>
-					报名人数
-				</td>	
-				<td>
-					<input name="numPeople" >
-				</td>
-		</tr>
-	
-		
-			<tr>	
-				<td>
-					推荐
-				</td>	
-				<td>
-					<input name="suggest" >
-				</td>
-		</tr>
-	
-		
-			<tr>	
-				<td>
-					行程建议
-				</td>	
-				<td>
-					<input name="content" >
-				</td>
-		</tr>
-	
-		
-        </table>
-
-    </form>
-</div>
-<div id="route_dlg-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="route_save" style="width:90px">保存</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" id="route_close" style="width:90px">取消</a>
-</div>
 </body>
 
 <script type="text/javascript">
@@ -254,7 +124,15 @@ sortable : true
                     }]];
                     
             var route=new Curd("<%=contextPath%>","route",columns);
+           <%--  route.addJs("<%=contextPath%>/jslib/webuploader-0.1.5/js/uploadImages.js"); --%>
+            route.useCommon();
             route.init();
+            
+            new uploadImage('router_logo_img','router_logo_input','router_logo_picker');
+        	new uploadImage('logo','sceniclogo','logoPicker');
+        	
+        	var up=new uploadImages("router","logoId",5);
+            var ue = UE.getEditor('router_content');
         });
     </script>
 </html>

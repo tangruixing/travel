@@ -8,7 +8,7 @@
 
 var uploaderSwf = './Uploader.swf';
 var expressInstallSwf = './expressInstall.swf';
-var server = sy.contextPath + "/travel/UploadImageServlet";
+var server = sy.contextPath + "/UploadImageServlet";
 
 function uploadImage(icon, iconName, picker) {
 	this.init(icon, iconName, picker)
@@ -98,7 +98,7 @@ var uploadImages = function(uploader, imageId, fileNumLimit) {
 
 	this.uploaderSwf = uploaderSwf;
 	this.expressInstallSwf = expressInstallSwf;
-	this.server = sy.contextPath + server;
+	this.server = server;
 	this.imageList = [];
 	this.init();
 }

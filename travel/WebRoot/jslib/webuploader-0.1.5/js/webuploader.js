@@ -1187,7 +1187,7 @@
     
             init: function() {
                 var me = this;
-    
+                console.info(me);
                 me.connectRuntime( me.options, function() {
                     me.exec('init');
                     me.trigger('ready');
