@@ -23,6 +23,18 @@ public class LoginAction extends BaseAction<User>{
 	@Resource(name="userService")
 	private UserService userService;
 	
+	/**
+	 * 到达后台登录页面
+	 * @return
+	 */
+	public String toLogin(){
+		
+		return goUI("login.jsp");
+	}
+	
+	/**
+	 * 登录操作
+	 */
 	public void doLogin(){
 		j=new Json();
 		try {
@@ -37,10 +49,9 @@ public class LoginAction extends BaseAction<User>{
 		}
 	}
 	
-	public String toIndex(){
-		return goUI("main.jsp");
-	}
-	
+	/**
+	 * 注销操作
+	 */
 	public void doLogout(){
 		j=new Json();
 		try {

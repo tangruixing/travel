@@ -29,7 +29,7 @@ import com.opensymphony.xwork2.Preparable;
  */
 
 @SuppressWarnings("unchecked")
-public abstract class BaseAction<T> extends ActionSupport implements ModelDriven<T>,Preparable,ServletResponseAware,SessionAware{
+public abstract class BaseAction<T> extends ActionSupport implements ModelDriven<T>,Preparable,ServletResponseAware,SessionAware,UserAware{
 	/**
 	 * Logger for this class
 	 */
@@ -75,6 +75,11 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 
 
 	protected Map<String, Object> session;
+
+	/**
+	 * 通过登录拦截器注入
+	 */
+	protected User loginUser;
 	
 	public BaseAction(){
 		try {
@@ -227,29 +232,21 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	}
 	
 	
-	public User getSessionUser(){
-		 Object obj = session.get(ConfigUtil.loginUserKey);
-		 if(obj!=null){
-			 return (User)obj;
-		 }
-		 return null;
-	}
+
 	
 	public void removeSessionUser(){
 
-		 if(this.getSessionUser()==null){
+		 if(this.loginUser==null){
 			 return;			 
 		 }
 		 session.remove(ConfigUtil.loginUserKey);
 	}
-	
-	public int getSessionUserId(){
-		return this.getSessionUser().getId();
+
+	public void setUser(User user) {
+		this.loginUser=user;
 	}
 	
-	public int getSessionUserRole(){
-		return this.getSessionUser().getRole();
-	}
+	
 	
 	
 

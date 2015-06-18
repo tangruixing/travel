@@ -13,6 +13,6 @@ public interface UserService extends BaseService<User>{
 
 	User login(String mobile, String pwd) throws Exception;
 
-	void editPassword(String newPwd);
+	void editPassword(String newPwd,Integer uid);
 	
 }

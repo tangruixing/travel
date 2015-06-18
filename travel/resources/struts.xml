@@ -5,32 +5,43 @@
 <struts>
 	<!-- 简单主题 -->
 	<constant name="struts.ui.theme" value="simple" />
-	<constant name="struts.action.extension" value="do"/> 
+	<constant name="struts.action.extension" value="do" />
 	<!-- 开发模式 -->
 	<constant name="struts.devMode" value="true" />
 	<!-- <constant name="struts.multipart.maxSize" value="67108864" /> --><!-- 1024*1024*64 -->
-	
+
+
+
 	<package name="travelPkg" namespace="/" extends="struts-default">
-		
+
 		<interceptors>
-			<!-- <interceptor name="loginInterceptor" class=""></interceptor> -->
+			<interceptor name="loginInterceptor"
+				class="cn.travel.interceptor.LoginInterceptor"></interceptor>
 			<interceptor-stack name="travelStack">
-			<!-- 	<interceptor-ref name="loginInterceptor"></interceptor-ref>
-				<interceptor-ref name=""></interceptor-ref> -->
+				<interceptor-ref name="loginInterceptor"></interceptor-ref>
 				<interceptor-ref name="defaultStack">
 					<param name="modelDriven.refreshModelBeforeResult">true</param>
 				</interceptor-ref>
 			</interceptor-stack>
 		</interceptors>
-		
+
 		<default-interceptor-ref name="travelStack"></default-interceptor-ref>
+
+		<global-results>
+			<result name="toLogin">/WEB-INF/back/login/login.jsp</result>
+			<result name="error">/500.html</result>
+		</global-results>
 		
-		 <action name="*_*" class="{1}Action" method="{2}" >
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+
+		<action name="*_*" class="{1}Action" method="{2}">
 			<result name="goUI">/WEB-INF/back/{1}/${resultUI}</result>
 		</action>
-	</package >
+	</package>
 
-
+	<!-- 其余包继承 travelPkg 有登录拦截器 -->
 	<!-- <include file="front.xml"></include> -->
 
 </struts>

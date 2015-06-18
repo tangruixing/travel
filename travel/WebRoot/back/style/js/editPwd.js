@@ -17,7 +17,7 @@ var editpassword={
 		
 		editpassword.fm=$("#userEditPwdFm");
 		editpassword.dlg=$("#userEditPwdDlg");
-	
+		
 	
 		
 		
@@ -25,10 +25,11 @@ var editpassword={
         $("#user_editpwd_show").on("click", function () {
         	editpassword._function.editPasswordUI();
         });
+
         
         $("#oldpassword").off("blur");
         $("#oldpassword").on("blur", function () {
-        	console.info("blursdf");
+        	console.info(this);
             editpassword._function.checkOldPassword($(this).val());
         });
         
@@ -47,9 +48,6 @@ var editpassword={
 		
 	},
 	_function:{
-		logout:function(){
-			window.location.href=sy.bp()+'/userController/logout'
-		},
 		checkOldPassword:function(oldpassword){
 			var valid=$('#oldpassword').validatebox('isValid');
 			console.info(valid);
@@ -81,7 +79,7 @@ var editpassword={
 		},
 		editPassword:function(){
 	
-            if(editpassword.fm.form('validate')&&editpassword.oldpasswordIsVaild){
+            if(editpassword.fm.form('validate')){
                 console.info(editpassword.fm.serialize());
                 $.post(editpassword.url,editpassword.fm.serialize(),function(data){
                     console.info(data);

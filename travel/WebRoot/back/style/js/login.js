@@ -2,7 +2,7 @@
 		fm:null,
 		dlg:null,
 		loginUrl:sy.contextPath+"/login_doLogin.do",
-		indexUrl:sy.contextPath+"/login_toIndex.do",
+		indexUrl:sy.contextPath+"/index_toMain.do",
 		init:function(){
 			
 			login.dlg=$("#loginDlg").show().dialog('open');

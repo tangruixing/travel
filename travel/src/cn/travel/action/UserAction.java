@@ -102,7 +102,7 @@ public class UserAction extends BaseAction<User>{
 		
 		j=new Json();
 		try {
-			User user = userService.getEntity(this.getSessionUserId());
+			User user = userService.getEntity(this.loginUser.getId());
 			oldPwd = DigestUtils.md5Hex(oldPwd);
 			if(user.getPwd().equals(oldPwd)){
 				j.setSuccess(true);
@@ -125,20 +125,12 @@ public class UserAction extends BaseAction<User>{
 		
 		j=new Json();
 		try {
-			
-			if(StringUtils.isNotEmpty(oldPwd)){
-				User user = userService.getEntity(this.getSessionUserId());
-				oldPwd = DigestUtils.md5Hex(oldPwd);
-				if(user.getPwd().equals(oldPwd)){
-				
-					j.setSuccess(true);
-				}else{
-					j.setMsg("原密码不正确");
-				}
-			}	
-			
-			userService.editPassword(this.newPwd);
-			j.setSuccess(true);
+			if(!this.newPwd.equals(this.confirmPwd)){
+				j.setMsg("两次密码不一致");
+			}else{
+				userService.editPassword(this.newPwd,this.loginUser.getId());
+				j.setSuccess(true);				
+			}
 		} catch (Exception e) {
 			j.setMsg("出错了："+e.getMessage());
 		}finally{
