@@ -9,7 +9,7 @@ public class Scenery implements Serializable{
 	private java.lang.Integer id;		/*风景ID*/
 	private java.lang.Integer sceId;		/*风景ID*/
 	private java.lang.String realName;		/*名字*/
-	private java.lang.String address;		/*名字*/
+	private java.lang.String address;		/*地址*/
 	private Long longitude;		/*经度*/
 	private Long latitude;		/*纬度*/
 	private java.lang.String logo;		/*logo*/

@@ -19,11 +19,11 @@ public class Constant {
 	/**
 	 * 线路：针对普通用户
 	 */
-	public static int ROUTER_PAY=1;
+	public static int ROUTER_PAY=0;
 	/**
 	 * 线路：针对自由行用户
 	 */
-	public static int ROUTER_NOPAY=2;
+	public static int ROUTER_NOPAY=1;
 	
 	/**
 	 * 景区

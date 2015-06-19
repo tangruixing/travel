@@ -38,7 +38,7 @@
 
 </div>
 
-<!--form-->
+<!--form
 <div id="scenery_dlg" class="easyui-dialog"
      closed="true" buttons="#scenery_dlg-buttons" modal="true" style="width:500px;height:280px;padding:10px 20px">
     <div class="ftitle">用户信息</div>
@@ -72,10 +72,10 @@
 		
 		<tr>	
 			<td>
-				<span class="required">*</span>名字
+				<span class="required">*</span>地址
 			</td>	
 			<td>
-			<input name="address" class="easyui-validatebox textbox" required="true"  missingMessage="名字不能为空">
+			<input name="address" class="easyui-validatebox textbox" required="true"  missingMessage="地址">
 			</td>
 		</tr>
 	
@@ -192,7 +192,7 @@
 <div id="scenery_dlg-buttons">
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="scenery_save" style="width:90px">保存</a>
     <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" id="scenery_close" style="width:90px">取消</a>
-</div>
+</div>-->
 </body>
 
 <script type="text/javascript">
@@ -284,6 +284,7 @@ sortable : true
                     }]];
                     
             var scenery=new Curd("<%=contextPath%>","scenery",columns);
+            scenery.useCommon();
             scenery.init();
         });
     </script>

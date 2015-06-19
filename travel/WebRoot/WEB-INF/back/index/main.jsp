@@ -121,9 +121,11 @@
 						},{"menuid":"39","icon":"icon-sys","menuname":"其他 ",
 							"menus":[
 							         {"menuid":"51","menuname":"友情连接列表","icon":"icon-nav","url":"<%=contextPath%>/friendlink_toIndex.do"},
-							         {"menuid":"51","menuname":"单张图片演示","icon":"icon-nav","url":"<%=contextPath%>/jslib/webuploader-0.1.5/demo/uploadImage.jsp"},
-							         {"menuid":"51","menuname":"多张图片演示","icon":"icon-nav","url":"<%=contextPath%>/jslib/webuploader-0.1.5/demo/uploadImages.jsp"},
-							         {"menuid":"51","menuname":"ueditor演示","icon":"icon-nav","url":"<%=contextPath%>/jslib/ueditor1_4_3-utf8-jsp/demo/index.jsp"}
+							         {"menuid":"51","menuname":"单张图片演示","icon":"icon-nav","url":"<%=contextPath%>/demo/uploadImage.jsp"},
+							         {"menuid":"51","menuname":"单张图片演示2","icon":"icon-nav","url":"<%=contextPath%>/demo/simpleImage.jsp"},
+							         {"menuid":"51","menuname":"多张图片演示","icon":"icon-nav","url":"<%=contextPath%>/demo/uploadImages.jsp"},
+							         {"menuid":"51","menuname":"bootstrap 验证","icon":"icon-nav","url":"<%=contextPath%>/demo/bootstrap.jsp"},
+							         {"menuid":"51","menuname":"ueditor演示","icon":"icon-nav","url":"<%=contextPath%>/demo/ueditor.jsp"}
 								]
 						}
 				]};
