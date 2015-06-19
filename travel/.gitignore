@@ -1,0 +1,11 @@
+*.class
+# Package Files #
+*.war
+*.ear
+#控制某个文件不上传#
+/WebRoot/WEB-INF/classes
+#控制某个文件夹下面的所有文件不上传#
+/WebRoot/WEB-INF/classes/*
+/resources/jdbc.properties
+/*.log
+/.gitignore
