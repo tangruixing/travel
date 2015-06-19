@@ -113,9 +113,8 @@
 
 
                                 <button type="submit" class="btn btn-primary" id="checkSubmit">提交</button>
-
-                               <!--  <button type="button" class="btn btn-info" id="validateBtn">错误提示</button> -->
                                 <button type="button" class="btn btn-info" id="resetBtn">重置</button>
+
                             </div>
                         </div>
                     </form>
@@ -211,6 +210,7 @@ $(document).ready(function() {
     
 
 	new uploadSimpleImage('router_logo_img','router_logo_input','router_logo_picker');
+<<<<<<< Upstream, based on develop
 	var content=UE.getEditor('router_content');
 	var suggest=UE.getEditor('router_suggest');
 	
@@ -237,6 +237,9 @@ $(document).ready(function() {
 			}
 		}
 	});
+=======
+	UE.getEditor('router_content');
+>>>>>>> 27c5cae 
 });
 </script>
 </body>

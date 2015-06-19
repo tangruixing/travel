@@ -77,9 +77,6 @@ uploadSimpleImage.prototype = {
 }
 
 
-
-
-
 //上传多图片
 function uploadManyImages(target,$queue,count) {
 	this.init(target,$queue,count);

@@ -161,6 +161,7 @@ var Location={
         console.info(startPoint);
         //标记起始点
         map.centerAndZoom(startPoint, 11);//必须
+
         map.enableScrollWheelZoom(true);//可以缩放
         map.disableDoubleClickZoom();
 

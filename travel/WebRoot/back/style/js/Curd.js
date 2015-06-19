@@ -199,8 +199,11 @@ Curd.prototype={
     			 console.info("toSave携带参数:"+this.urlParamsStr);
 
     			 this.url.save+="?"+this.urlParamsStr;
+    		 }else{
+    			 
+    			 location.href=this.url.save;
     		 }
-    		 location.href=this.url.save;
+
     	 }
         	
         	
@@ -233,8 +236,10 @@ Curd.prototype={
 
 
 	        			 this.url.update+="?id="+row.id+"&"+this.urlParamsStr;
+	        		 }else{
+	        			 
+	        			 location.href=this.url.update;
 	        		 }
-	           		 location.href=this.url.update;
 	           	 }
                
             }

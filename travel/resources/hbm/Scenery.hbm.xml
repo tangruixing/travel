@@ -34,10 +34,17 @@
         <property name="url" type="java.lang.String">
             <column name="URL" />
         </property>
+<<<<<<< Upstream, based on develop
         <property name="startTime" type="string">
             <column name="startTime" />
         </property>
         <property name="endTime" type="string">
+=======
+        <property name="startTime" type="java.util.Date">
+            <column name="startTime" />
+        </property>
+        <property name="endTime" type="java.util.Date">
+>>>>>>> 27c5cae 
             <column name="endTime" />
         </property>
         <property name="grade" type="java.lang.Integer">

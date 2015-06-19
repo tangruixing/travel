@@ -117,13 +117,9 @@
                        		 var str="";
                             /*  str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
                              str+="&nbsp" */
-                             str+=sy.fs('<a href="{0}?rouId={1}&rname={2}">添加</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id,row.realName);
+                             str+=sy.fs('<a href="{0}?rouId={1}&rname={2}">地点</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id,row.realName);
                              str+="&nbsp"
                              str+=sy.fs('<input  type="button" onclick="showMap(\'{0}\')" class="easyui-linkbutton" value="地图" />',row.id);
-                         
-                             
-                             
-                             
                              return str;
                         }
                     }]];
@@ -132,9 +128,12 @@
             route.useCommon();
             route.setUrlParam("routeType","${routeType}");
             route.init();
+<<<<<<< Upstream, based on develop
             
         	
           
+=======
+>>>>>>> 27c5cae 
         });
        
         var url=sy.contextPath + '/routeplan_loadRouteplanWithRid.do';

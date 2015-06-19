@@ -12,9 +12,10 @@ public class Route implements Serializable{
 	private java.lang.Integer useid;		/*用户编号id*/
 	private java.lang.String realName;		/*名字*/
 	private java.lang.String logo;		/*logo*/
-	
-	
+
+
 	private java.lang.String description;		/*描述*/
+	
 	private float money;		/*人均消费 */
 	private int routeType=Constant.ROUTER_PAY;		/*类型 {0:普通游客,1:自由行用户}*/
 	
@@ -27,6 +28,7 @@ public class Route implements Serializable{
 	private int numPeople;		/*报名人数 0*/
 	
 	private java.lang.String suggest;		/*行程建议 1 */
+ 
 	//columns END
 
 	private User user;
@@ -129,6 +131,7 @@ public class Route implements Serializable{
 
 	public void setSuggest(java.lang.String suggest) {
 		this.suggest = suggest;
+
 	}
 
 	public User getUser() {

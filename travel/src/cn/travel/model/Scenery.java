@@ -2,9 +2,7 @@
 package cn.travel.model;
 
 import java.io.Serializable;
-import java.util.Date;
 
-import com.alibaba.fastjson.annotation.JSONField;
 
 public class Scenery implements Serializable{
 	
@@ -14,13 +12,17 @@ public class Scenery implements Serializable{
 	
 	private java.lang.String realName;		/*名字*/
 	private java.lang.String address;		/*地址*/
+
 	private double longitude;		/*经度*/
 	private double latitude;		/*纬度*/
+
 	private java.lang.String logo;		/*logo*/
 	private java.lang.String introduction;		/*介绍*/
 	private java.lang.String url;		/*网址*/
+
 	private String startTime;
 	private String endTime;/*开放时间*/
+
 	private int grade;		/*景区级别*/
 	private java.lang.String telphone;		/*景区联系电话*/
 	private boolean viwepager;		/*轮播*/
