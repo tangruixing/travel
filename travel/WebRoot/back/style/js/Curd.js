@@ -158,7 +158,8 @@ Curd.prototype={
 			_this.fm.form('clear');
 			_this.dlg.show().dialog('open').dialog('setTitle',"添加");
     	 }else{
-    		 location.href=_this.save;
+    		 console.info(this.url.save);
+    		 location.href=this.url.save;
     	 }
         	
         	
@@ -183,7 +184,7 @@ Curd.prototype={
                 if(this.easyui){
                 	 this.fm.form('load',row);
 	           	 }else{
-	           		 location.href=this.update+"?id="+row.id;
+	           		 location.href=this.url.update+"?id="+row.id;
 	           	 }
                
             }

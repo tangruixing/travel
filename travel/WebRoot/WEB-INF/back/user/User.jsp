@@ -113,7 +113,9 @@
 				出生日期
 			</td>	
 			<td>
-				<input name="birth"  required="true"  class="Wdate easyui-validatebox textbox" onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" >
+				<input name="birth"  required="true"  
+				class="Wdate easyui-validatebox textbox" 
+				onclick="WdatePicker({readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss'})" readonly="readonly" >
 			</td>
 		</tr>
 	

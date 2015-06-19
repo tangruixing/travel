@@ -39,7 +39,7 @@
 		<action name="*_*" class="{1}Action" method="{2}">
 			<result name="goUI">/WEB-INF/back/{1}/${resultUI}</result>
 			
-			<result name="goAction">
+			<result name="goAction" type="redirectAction">
 				<param name="namespace">${namespaceAction}</param>
 				<param name="actionName">${resultAction}</param>
 			</result>

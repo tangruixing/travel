@@ -91,11 +91,6 @@ field : 'money',
 width : 100,
 sortable : true
 },								{
-title : '描述',
-field : 'description',
-width : 100,
-sortable : true
-},								{
 title : '报名人数',
 field : 'numPeople',
 width : 100,
@@ -115,24 +110,21 @@ sortable : true
                         field : 'action',
                         width : 100,
                         formatter: function (value, row, index) {
-                           /*  var str="";
+                        	
+                       		 var str="";
                              str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
                              str+="&nbsp"
-                             str+=sy.fs('<img   src="{0}"  onclick="demo2(\'{1}\')" title="1" />',"../style/images/myIcons/route_delete.png",row.id);
-                             return str;*/
+                             str+=sy.fs('<a href="{0}?rid={1}" >添加途经地点</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id);
+                             
+                             
+                             
+                             return str;
                         }
                     }]];
                     
             var route=new Curd("<%=contextPath%>","route",columns);
-           <%--  route.addJs("<%=contextPath%>/jslib/webuploader-0.1.5/js/uploadImages.js"); --%>
             route.useCommon();
             route.init();
-            
-            new uploadImage('router_logo_img','router_logo_input','router_logo_picker');
-        	new uploadImage('logo','sceniclogo','logoPicker');
-        	
-        	var up=new uploadImages("router","logoId",5);
-            var ue = UE.getEditor('router_content');
         });
     </script>
 </html>

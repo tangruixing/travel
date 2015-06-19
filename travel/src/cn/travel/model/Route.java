@@ -3,6 +3,8 @@ package cn.travel.model;
 
 import java.io.Serializable;
 
+import cn.model.Constant;
+
 public class Route implements Serializable{
 	
 	//columns START
@@ -12,10 +14,10 @@ public class Route implements Serializable{
 	private java.lang.String logo;		/*logo*/
 	private java.util.Date startDate;		/*出发时间*/
 	private java.util.Date endDate;		/*结束时间*/
-	private java.lang.Integer routeType;		/*类型*/
-	private java.lang.Float money;		/*价钱*/
+	private int routeType=Constant.ROUTER_PAY;		/*类型*/
+	private float money;		/*价钱*/
 	private java.lang.String description;		/*描述*/
-	private java.lang.Integer numPeople;		/*报名人数*/
+	private int numPeople;		/*报名人数*/
 	private java.lang.Boolean suggest;		/*推荐*/
 	private java.lang.String content;		/*行程建议*/
 	//columns END
@@ -31,111 +33,114 @@ public class Route implements Serializable{
 		this.id = id;
 	}
 
-	
-		public void setId(java.lang.Integer value) {
-			this.id = value;
-		}
-		
-		public java.lang.Integer getId() {
-			return this.id;
-		}
-	
-		public void setUseid(java.lang.Integer value) {
-			this.useid = value;
-		}
-		
-		public java.lang.Integer getUseid() {
-			return this.useid;
-		}
-	
-		public void setRealName(java.lang.String value) {
-			this.realName = value;
-		}
-		
-		public java.lang.String getRealName() {
-			return this.realName;
-		}
-	
-		public void setLogo(java.lang.String value) {
-			this.logo = value;
-		}
-		
-		public java.lang.String getLogo() {
-			return this.logo;
-		}
-	
-		public void setStartDate(java.util.Date value) {
-			this.startDate = value;
-		}
-		
-		public java.util.Date getStartDate() {
-			return this.startDate;
-		}
-	
-		public void setEndDate(java.util.Date value) {
-			this.endDate = value;
-		}
-		
-		public java.util.Date getEndDate() {
-			return this.endDate;
-		}
-	
-		public void setRouteType(java.lang.Integer value) {
-			this.routeType = value;
-		}
-		
-		public java.lang.Integer getRouteType() {
-			return this.routeType;
-		}
-	
-		public void setMoney(java.lang.Float value) {
-			this.money = value;
-		}
-		
-		public java.lang.Float getMoney() {
-			return this.money;
-		}
-	
-		public void setDescription(java.lang.String value) {
-			this.description = value;
-		}
-		
-		public java.lang.String getDescription() {
-			return this.description;
-		}
-	
-		public void setNumPeople(java.lang.Integer value) {
-			this.numPeople = value;
-		}
-		
-		public java.lang.Integer getNumPeople() {
-			return this.numPeople;
-		}
-	
-		public void setSuggest(java.lang.Boolean value) {
-			this.suggest = value;
-		}
-		
-		public java.lang.Boolean getSuggest() {
-			return this.suggest;
-		}
-	
-		public void setContent(java.lang.String value) {
-			this.content = value;
-		}
-		
-		public java.lang.String getContent() {
-			return this.content;
-		}
+	public java.lang.Integer getId() {
+		return id;
+	}
 
-		public User getUser() {
-			return user;
-		}
+	public void setId(java.lang.Integer id) {
+		this.id = id;
+	}
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+	public java.lang.Integer getUseid() {
+		return useid;
+	}
 
+	public void setUseid(java.lang.Integer useid) {
+		this.useid = useid;
+	}
+
+	public java.lang.String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(java.lang.String realName) {
+		this.realName = realName;
+	}
+
+	public java.lang.String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(java.lang.String logo) {
+		this.logo = logo;
+	}
+
+	public java.util.Date getStartDate() {
+		return startDate;
+	}
+
+	public void setStartDate(java.util.Date startDate) {
+		this.startDate = startDate;
+	}
+
+	public java.util.Date getEndDate() {
+		return endDate;
+	}
+
+	public void setEndDate(java.util.Date endDate) {
+		this.endDate = endDate;
+	}
+
+	public int getRouteType() {
+		return routeType;
+	}
+
+	public void setRouteType(int routeType) {
+		this.routeType = routeType;
+	}
+
+	public float getMoney() {
+		return money;
+	}
+
+	public void setMoney(float money) {
+		this.money = money;
+	}
+
+	public java.lang.String getDescription() {
+		return description;
+	}
+
+	public void setDescription(java.lang.String description) {
+		this.description = description;
+	}
+
+	public int getNumPeople() {
+		return numPeople;
+	}
+
+	public void setNumPeople(int numPeople) {
+		this.numPeople = numPeople;
+	}
+
+	public java.lang.Boolean getSuggest() {
+		return suggest;
+	}
+
+	public void setSuggest(java.lang.Boolean suggest) {
+		this.suggest = suggest;
+	}
+
+	public java.lang.String getContent() {
+		return content;
+	}
+
+	public void setContent(java.lang.String content) {
+		this.content = content;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
+	
+
+	
+		
 	
 }
 

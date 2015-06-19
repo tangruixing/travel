@@ -34,8 +34,11 @@
         <property name="url" type="java.lang.String">
             <column name="URL" />
         </property>
-        <property name="openDime" type="java.lang.String">
-            <column name="OPENDIME" />
+        <property name="startTime" type="java.util.Date">
+            <column name="startTime" />
+        </property>
+        <property name="endTime" type="java.util.Date">
+            <column name="endTime" />
         </property>
         <property name="grade" type="java.lang.Integer">
             <column name="GRADE" />
