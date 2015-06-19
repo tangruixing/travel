@@ -7,17 +7,12 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/fmt" prefix="fmt" %> 
 <%@ taglib prefix="fn" uri="http://java.sun.com/jsp/jstl/functions" %>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-<%
-	String basePath = request.getScheme() + "://"+ request.getServerName() + ":" + request.getServerPort()
-			+ request.getContextPath();
-			
+<%		
 	String contextPath=request.getContextPath();
-	
-	String pixel_0=contextPath+"/back/style/images/pixel_0.gif";//0像素的背景，一般用于占位
 %> 
 
 
-<%
+<%-- <%
 Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
 Cookie[] cookies = request.getCookies();
 if (null != cookies) {
@@ -30,11 +25,10 @@ if (cookieMap.containsKey("easyuiTheme")) {
 	Cookie cookie = (Cookie) cookieMap.get("easyuiTheme");
 	easyuiTheme = cookie.getValue();
 }
-%>
+%> --%>
 <script type="text/javascript" charset="utf-8"> 
     var sy = sy || {};
     sy.contextPath = '<%=contextPath%>';
-    sy.pixel_0 = '<%=pixel_0%>';//0像素的背景，一般用于占位
     window.UEDITOR_HOME_URL = sy.contextPath+"/jslib/ueditor1_4_3-utf8-jsp/";
 </script>
 

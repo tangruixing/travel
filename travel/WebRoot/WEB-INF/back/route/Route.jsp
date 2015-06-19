@@ -5,12 +5,22 @@
 <head lang="en">
     <title>Route管理</title>
     <style type="text/css">
-    	#edui149{
-    		z-index:10000
-    	}
+        body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
+        #show-map{height:450px;width:750px;}
+        #r-result{width:100%; font-size:14px;line-height:20px;}
+        .mapLable{height:100px;}
     </style>
+<script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=CA3NlRi4BRVc5elDe4l0tXnu"></script>
+<script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
+<script type="text/javascript"	src="<%=contextPath%>/back/style/js/line.js"	charset="utf-8"></script>
 </head>
 <body>
+<!-- 地图连线-->
+<div id="mapDlg" class="easyui-dialog dis" style="width:80%;height:60%;"
+     closed="true" buttons="#dlg-map-buttons"  modal="true">
+    <div id="show-map" style="width:100%;height:100%"></div>
+</div>	
+
 	<div class="easyui-layout" fit="true" id="gridLayout">
 		<!--搜索 -->
 		<div region="north" border="false" title="过滤" style="height: 130px; overflow: hidden;">
@@ -43,6 +53,7 @@
 </div>
 
 
+
 </body>
 
 <script type="text/javascript">
@@ -53,68 +64,69 @@
                         width : 100,// 必须要给，大于50
                         sortable : true,// 鼠标点击可以升序/降序切换
                         checkbox : true
-
-                    },
-								{
-title : '用户编号id',
-field : 'useid',
-width : 100,
-sortable : true
-},								{
-title : '名字',
-field : 'realName',
-width : 100,
-sortable : true
-},								{
-title : 'logo',
-field : 'logo',
-width : 100,
-sortable : true
-},								{
-title : '出发时间',
-field : 'startDate',
-width : 100,
-sortable : true
-},								{
-title : '结束时间',
-field : 'endDate',
-width : 100,
-sortable : true
-},								{
-title : '类型',
-field : 'routeType',
-width : 100,
-sortable : true
-},								{
-title : '价钱',
-field : 'money',
-width : 100,
-sortable : true
-},								{
-title : '报名人数',
-field : 'numPeople',
-width : 100,
-sortable : true
-},								{
-title : '推荐',
-field : 'suggest',
-width : 100,
-sortable : true
-},								{
-title : '行程建议',
-field : 'content',
-width : 100,
-sortable : true
-},								{
+                    	},{
+						title : '用户编号id',
+						field : 'useid',
+						width : 100,
+						sortable : true
+						},{
+						title : '名字',
+						field : 'realName',
+						width : 100,
+						sortable : true
+						},{
+						title : 'logo',
+						field : 'logo',
+						width : 100,
+						sortable : true
+						},{
+						title : '出发时间',
+						field : 'startDate',
+						width : 100,
+						sortable : true
+						},{
+						title : '结束时间',
+						field : 'endDate',
+						width : 100,
+						sortable : true
+						},{
+						title : '类型',
+						field : 'routeType',
+						width : 100,
+						sortable : true
+						},{
+						title : '价钱',
+						field : 'money',
+						width : 100,
+						sortable : true
+						},{
+						title : '报名人数',
+						field : 'numPeople',
+						width : 100,
+						sortable : true
+						},{
+						title : '推荐',
+						field : 'suggest',
+						width : 100,
+						sortable : true
+						},{
+						title : '行程建议',
+						field : 'content',
+						width : 100,
+						sortable : true
+						},{
                         title : '操作',
                         field : 'action',
-                        width : 100,
+                        width : 200,
                         formatter: function (value, row, index) {
                         	
                        		 var str="";
                             /*  str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
                              str+="&nbsp" */
-                             str+=sy.fs('<a href="{0}?rid={1}" class="easyui-linkbutton">添加途经地点</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id);
+                             str+=sy.fs('<a href="{0}?rouId={1}&rname={2}">添加</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id,row.realName);
+                             str+="&nbsp"
+                             str+=sy.fs('<input  type="button" onclick="showMap(\'{0}\')" class="easyui-linkbutton" value="地图" />',row.id);
+                         
                              
                              
                              
@@ -125,6 +137,23 @@ sortable : true
             var route=new Curd("<%=contextPath%>","route",columns);
             route.useCommon();
             route.init();
+            
+        	
+          
         });
+       
+        var url=sy.contextPath + '/routeplan_loadRouteplanWithRid.do';
+     	
+        var line=new myLine();
+      	function showMap(id){
+      		
+			var value={
+				rid:id	
+			}
+			line.lineDlgMap(url,value);
+      	}
+      	
+      	line.closeDlg();
+      
     </script>
 </html>

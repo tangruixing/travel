@@ -1,0 +1,9 @@
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+	pageEncoding="UTF-8"%>
+	
+
+ <%-- 引入 ueditor 编辑器 --%>
+<script type="text/javascript" src="<%=contextPath%>/jslib/ueditor1_4_3-utf8-jsp/ueditor.config.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/jslib/ueditor1_4_3-utf8-jsp/ueditor.all.js"> </script>
+<script type="text/javascript" src="<%=contextPath%>/jslib/ueditor1_4_3-utf8-jsp/lang/zh-cn/zh-cn.js""></script>
+	

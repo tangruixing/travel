@@ -6,8 +6,10 @@
     <meta charset="UTF-8">
     <title>Routeplan管理</title>
 </head>
+
+<%-- <script type="text/javascript" src="<%=contextPath %>/jslib/easyui-1.4.2/datagrid-dnd.js"></script> --%>
 <body>
-	<div class="easyui-layout" fit="true" id="gridLayout">
+	<div class="easyui-layout" fit="true" id="gridLayout" data-options="title:'${rname}线路'">
 		<!--搜索 -->
 		<div region="north" border="false" title="过滤" style="height: 130px; overflow: hidden;">
 			<form id="routeplan_search_fm">
@@ -40,10 +42,12 @@
 
 <!--form-->
 <div id="routeplan_dlg" class="easyui-dialog"
-     closed="true" buttons="#routeplan_dlg-buttons" modal="true" style="width:500px;height:280px;padding:10px 20px">
-    <div class="ftitle">用户信息</div>
+     closed="true" buttons="#routeplan_dlg-buttons" modal="true" style="width:50%;height:80%;padding:10px 20px">
+    <div class="ftitle"><${rname}>线路信息</div>
     <form id="routeplan_fm" method="post">
-	<input type="hidden"  name="id" />
+   
+	<s:hidden name="rouId" />
+	<s:hidden name="id" />
 
         <table>
 			
@@ -51,29 +55,19 @@
 		
 		<tr>	
 			<td>
-				<span class="required">*</span>风景ID
+				景点
 			</td>	
-			<td>
-			<input name="sceId" class="easyui-validatebox textbox" required="true"  missingMessage="风景ID不能为空">
+			<td><!-- class="easyui-validatebox" required="true"  missingMessage="景点不能为空" -->
+				<input id="sceId" name="sceId"  >
 			</td>
 		</tr>
+	
 	
 		
 		
 		<tr>	
 			<td>
-				<span class="required">*</span>线路ID
-			</td>	
-			<td>
-			<input name="rouId" class="easyui-validatebox textbox" required="true"  missingMessage="线路ID不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>步骤
+				步骤
 			</td>	
 			<td>
 			<input name="step" class="easyui-validatebox textbox" required="true"  missingMessage="步骤不能为空">
@@ -84,7 +78,7 @@
 		
 		<tr>	
 			<td>
-				<span class="required">*</span>停留天数
+				停留天数
 			</td>	
 			<td>
 			<input name="day" class="easyui-validatebox textbox" required="true"  missingMessage="停留天数不能为空">
@@ -92,13 +86,13 @@
 		</tr>
 	
 		
-			<tr>	
-				<td>
-					描述
-				</td>	
-				<td>
-					<input name="description" >
-				</td>
+		<tr>	
+			<td>
+				描述
+			</td>	
+			<td>
+				<input class="easyui-textbox easyui-validatebox" name="description" data-options="multiline:true" style="height:60px"></input>
+			</td>
 		</tr>
 	
 		
@@ -114,40 +108,37 @@
 
 <script type="text/javascript">
         $(function () {
+        	
             var columns=[[{
-                        title : '用户编号',
-                        field : '"id"',// 绑定属性名字,后台返回的json数据
+                        title : '途径地点编号',
+                        field : 'id',// 绑定属性名字,后台返回的json数据
                         width : 100,// 必须要给，大于50
                         sortable : true,// 鼠标点击可以升序/降序切换
                         checkbox : true
-
-                    },
-								{
-title : '风景ID',
-field : 'sceId',
-width : 100,
-sortable : true
-},								{
-title : '线路ID',
-field : 'rouId',
-width : 100,
-sortable : true
-},								{
-title : '步骤',
-field : 'step',
-width : 100,
-sortable : true
-},								{
-title : '停留天数',
-field : 'day',
-width : 100,
-sortable : true
-},								{
-title : '描述',
-field : 'description',
-width : 100,
-sortable : true
-},								{
+                    	},{
+						title : '风景',
+						field : 'sceId',
+						width : 100,
+						sortable : true,
+						 formatter: function (value, row, index) {
+	                          return row.sceneryName;
+	                        }
+						},{
+						title : '步骤',
+						field : 'step',
+						width : 100,
+						sortable : true
+						},{
+						title : '停留天数',
+						field : 'day',
+						width : 100,
+						sortable : true
+						},{
+						title : '描述',
+						field : 'description',
+						width : 100,
+						sortable : true
+						},{
                         title : '操作',
                         field : 'action',
                         width : 100,
@@ -161,7 +152,76 @@ sortable : true
                     }]];
                     
             var routeplan=new Curd("<%=contextPath%>","routeplan",columns);
+            routeplan.setUrlParam("rouId","${rouId}");
+            //routeplan.openDnd();
             routeplan.init();
+        	//routeplan.dg.datagrid({
+        		//onDrop:function(){
+        			
+        		//}
+        	//});
+            
+            $('#sceId').combogrid({ 
+            	panelWidth:450,
+                idField:'id', //ID字段  
+                textField:'realName', //显示的字段  
+                url:"<%=contextPath%>/scenery_doList.do",  
+                fitColumns: true,  
+                striped: true,  
+                editable:true,  
+                pagination : true,//是否分页  
+                rownumbers:true,//序号  
+                collapsible:false,//是否可折叠的  
+                fit: true,//自动大小  
+                pageSize: 10,//每页显示的记录条数，默认为10  
+                pageList: [10],//可以设置每页记录条数的列表  
+                method:'post',  
+                columns:[[{
+                    title : '景区编号',
+                    field : 'id',// 绑定属性名字,后台返回的json数据
+                    width : 100,// 必须要给，大于50
+                    sortable : true,// 鼠标点击可以升序/降序切换
+                    checkbox : true
+                	},{
+    				title : '景区名称',
+    				field : 'realName',
+    				width : 100,
+    				sortable : true
+    				},{
+    				title : '地址',
+    				field : 'address',
+    				width : 100,
+    				sortable : true
+    				},{
+    				title : '开放时间',
+    				field : 'openDime',
+    				width : 100,
+    				sortable : true
+    				},{
+    				title : '景区级别',
+    				field : 'grade',
+    				width : 100,
+    				sortable : true
+    				},{
+    				title : '景区联系电话',
+    				field : 'telphone',
+    				width : 100,
+    				sortable : true
+    				},{
+    				title : '轮播',
+    				field : 'viwepager',
+    				width : 100,
+    				sortable : true
+    				},{
+    				title : '推荐',
+    				field : 'suggest',
+    				width : 100,
+    				sortable : true
+    				}]]
+            });  
         });
+        
+        
+       
     </script>
 </html>

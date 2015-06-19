@@ -1,5 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/pub/baidu-bootstrap.jspf"%>  
+<%@ include file="/WEB-INF/pub/inc.jspf"%>  
+<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>  
+<%@ include file="/WEB-INF/pub/ueditor.jspf"%>  
+<%@ include file="/WEB-INF/pub/webuploader.jspf"%>  
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head lang="en">
@@ -28,7 +32,7 @@
                             <label class="col-lg-3 control-label">LOGO</label>
                             <div class="col-lg-5">
                             	<!-- 单张图片上传 (注意：id) -->
-                            	<img id="router_logo_img" style="width: 200px; height: 100px;float:left;" src='<%=pixel_0%>'/>
+                            	<img id="router_logo_img" style="width: 200px; height: 100px;float:left;" src=''/>
 								<div style="float:left;margin:56px 0 0 20px;" id="router_logo_picker">选择图片</div> 
                                 <input type="hidden" class="form-control" name="logo" id="router_logo_input"/><!-- 单张图片上传结束 -->
                             </div>

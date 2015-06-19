@@ -1,7 +1,10 @@
 package cn.travel.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -23,6 +26,14 @@ public class RouteplanAction extends BaseAction<Routeplan>{
 	@Resource(name="routeplanService")
 	private RouteplanService routeplanService;
 	
+	/**
+	 * 路线id
+	 */
+	private Integer rid;
+	/**
+	 * 线路名字
+	 */
+	private String rname;
 	/**
 	 * 
 	 */
@@ -70,7 +81,11 @@ public class RouteplanAction extends BaseAction<Routeplan>{
 	public void doSaveOrUpdate() {
 		
 		j=new Json();
-		try{			
+		try{		
+			/*if(this.model.getSceId()==null){
+				String name = this.model.getSceneryName();
+				this.model.setSceId((Integer.parseInt(name)));
+			}*/
 			routeplanService.saveOrUpdateEntity(this.model);
 			j.setSuccess(true);
 			j.setMsg("操作成功");
@@ -80,6 +95,41 @@ public class RouteplanAction extends BaseAction<Routeplan>{
 			write2Response(j);
 		}
 	}
+	
+	
+	public void loadRouteplanWithRid(){
+		
+		j=new Json();
+		try{			
+			List<Routeplan> list=routeplanService.loadRouteplanWithRid(rid);
+			j.setObj(list);
+			j.setSuccess(true);
+			j.setMsg("操作成功");
+		}catch(Exception e){
+			j.setMsg("操作失败："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+	}
+
+	public Integer getRid() {
+		return rid;
+	}
+
+	public void setRid(Integer rid) {
+		this.rid = rid;
+	}
+
+	public String getRname() {
+		return rname;
+	}
+
+	public void setRname(String rname) {
+		this.rname = rname;
+	}
+
+	
+	
 	
 	
 	

@@ -71,6 +71,7 @@ public class RouteAction extends BaseAction<Route>{
 	public void doSaveOrUpdate() {
 		
 		j=new Json();
+		
 		try{			
 			routeService.saveOrUpdateEntity(this.model);
 			j.setSuccess(true);

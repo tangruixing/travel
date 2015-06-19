@@ -15,23 +15,35 @@ function Curd(baseUrl,clz,columns){
     this.fmCloseBtn=$("#"+this.clz+"_close");
     this.baseUrl=baseUrl+"/"+this.clz;
     console.info(this.baseUrl);
-    this.jsUrl=null;
-    this.easyui=true;
+    this.easyui=true;//是否是 easyui 的添加/修改
+    this.urlParams=[];
+    this.enableDnd=false;
 }
 
 Curd.prototype={
+	
+	openDnd:function(){
+		this.enableDnd=true;
+	},	
 	useCommon:function(){
 		this.easyui=false;
 	},
-	addJs:function(jsUrl){
-		this.jsUrl=jsUrl;
+	setUrlParam:function(key,value){
+		var str=key+"="+value;
+		this.urlParams.push(str);
 	},
     init:function(url,columns,sortName){
         var _this=this;
+        var listUrl=_this.baseUrl+"_doList.do";
+        if(_this.urlParams.length>0){
+        	
+        	listUrl+="?"+_this.urlParams.join('&');
+        	console.info(listUrl);
+        }
         var defaultUrl={
             save:_this.baseUrl+"_toSave.do",
             update:_this.baseUrl+"_toUpdate.do",
-            list:_this.baseUrl+"_doList.do",
+            list:listUrl,
             saveOrUpdate:_this.baseUrl+"_doSaveOrUpdate.do",
             remove:_this.baseUrl+"_doDeletes.do"
         };
@@ -115,14 +127,18 @@ Curd.prototype={
             pageSize : 10,// 默认分页显示数据大小
             pageList : [5, 10, 20, 30],// 选择分页大小
             fit : true,// 自适应
-            fitColumns : true,// 每列自适应:false(多)
+            //fitColumns : true,// 每列自适应:false(多)
             nowarp : false,// 不还行（默认true）：false,换行;true,不还行
             onDblClickRow:function(index,row){
                 _this.dlg.show().dialog('open').dialog('setTitle','修改');
                 _this.fm.form('load',row);
             },
             onLoadSuccess : function() {
-                parent.$.messager.progress('close');
+            	if(_this.enableDnd){
+            		console.info("开启了移动功能");
+                	$(this).datagrid('enableDnd');
+            	}
+            	parent.$.messager.progress('close');
             }
         };
         _this.gridLayout=$("#gridLayout");
@@ -148,14 +164,14 @@ Curd.prototype={
 
     },
     _function:{
-
+    	
         toSave:function(){
         	
         	var _this=this;
         	
        	 if(this.easyui){
        		console.info(_this.fm);
-			_this.fm.form('clear');
+			_this.fm.form('reset');
 			_this.dlg.show().dialog('open').dialog('setTitle',"添加");
     	 }else{
     		 console.info(this.url.save);
@@ -182,6 +198,7 @@ Curd.prototype={
                 console.info(row);
                 this.dlg.show().dialog('open').dialog('setTitle','修改');
                 if(this.easyui){
+                	 console.info(row);
                 	 this.fm.form('load',row);
 	           	 }else{
 	           		 location.href=this.url.update+"?id="+row.id;
@@ -191,6 +208,10 @@ Curd.prototype={
         },
         doSaveOrUpdate:function(){
         	var _this=this;
+        
+        	console.info(this.fm.form('options'));
+        	/*console.info(this.fm.('validate'));*/
+        	console.info(this.fm.serialize());
             if(_this.fm.form('validate')){
                 $.post(this.url.saveOrUpdate,this.fm.serialize(),function(data){
                     console.info(data);
@@ -257,6 +278,7 @@ Curd.prototype={
             this.dg.datagrid('load',{});
         },
         close:function(){
+        	this.fm.form('reset');
             this.dlg.dialog('close');
         }
     }
