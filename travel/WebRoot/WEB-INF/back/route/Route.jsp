@@ -112,9 +112,9 @@ sortable : true
                         formatter: function (value, row, index) {
                         	
                        		 var str="";
-                             str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
-                             str+="&nbsp"
-                             str+=sy.fs('<a href="{0}?rid={1}" >添加途经地点</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id);
+                            /*  str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
+                             str+="&nbsp" */
+                             str+=sy.fs('<a href="{0}?rid={1}" class="easyui-linkbutton">添加途经地点</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id);
                              
                              
                              

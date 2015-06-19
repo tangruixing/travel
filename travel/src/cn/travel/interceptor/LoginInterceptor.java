@@ -52,7 +52,7 @@ public class LoginInterceptor implements Interceptor{
 				if(action instanceof UserAware){
 					((UserAware)action).setUser(user);
 				}
-				log.info(JSON.toJSONStringWithDateFormat(user, "yy-MM-dd HH:mm:ss"));
+				//log.info(JSON.toJSONStringWithDateFormat(user, "yy-MM-dd HH:mm:ss"));
 				return invocation.invoke();
 			}
 			log.info("没有登录,跳转到登录页面....");
