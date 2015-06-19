@@ -86,18 +86,19 @@ public class RouteAction extends BaseAction<Route>{
 	/*普通方式*/
 	
 	public String toSave(){
-		
 		return goUI("save.jsp");
 	}
 	
 	public String toUpdate(){
 		
+		this.model=routeService.getEntity(model.getId());
 		return goUI("save.jsp");
 	}
 	
 	public String doSaveOrUpdateAction(){
 		
-		return goAction();
+		routeService.saveOrUpdateEntity(this.model);
+		return goAction("route_toIndex.do");
 	}
 	
 	

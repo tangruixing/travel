@@ -1,0 +1,10 @@
+*.class
+# Package Files #
+*.war
+*.ear
+#控制某个文件不上传#
+/classes
+#控制某个文件夹下面的所有文件不上传#
+/classes/*
+/resources/jdbc.properties
+/.gitignore

@@ -82,6 +82,8 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	protected User loginUser;
 
 	private String resultAction;
+
+	private String namespaceAction;
 	
 	public BaseAction(){
 		try {
@@ -248,10 +250,34 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 		this.loginUser=user;
 	}
 	
-	public String goAction(String namespace,String resultAction){
-		
-		this.resultAction=resultAction;
+	public String goAction(String resultAction){
+		return this.goAction("/", resultAction);
 	}
+	
+	public String goAction(String namespaceAction,String resultAction){
+		
+		this.namespaceAction=namespaceAction;
+		this.resultAction=resultAction;
+		return "goAction";
+	}
+
+	public String getResultAction() {
+		return resultAction;
+	}
+
+	public void setResultAction(String resultAction) {
+		this.resultAction = resultAction;
+	}
+
+	public String getNamespaceAction() {
+		return namespaceAction;
+	}
+
+	public void setNamespaceAction(String namespaceAction) {
+		this.namespaceAction = namespaceAction;
+	}
+	
+	
 	
 	
 

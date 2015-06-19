@@ -40,7 +40,7 @@
 			<result name="goUI">/WEB-INF/back/{1}/${resultUI}</result>
 			
 			<result name="goAction">
-				<param name="namespace">${namespaces}</param>
+				<param name="namespace">${namespaceAction}</param>
 				<param name="actionName">${resultAction}</param>
 			</result>
 		</action>
