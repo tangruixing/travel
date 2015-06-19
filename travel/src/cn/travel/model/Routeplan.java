@@ -3,6 +3,8 @@ package cn.travel.model;
 
 import java.io.Serializable;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Routeplan implements Serializable{
 	
 	//columns START
@@ -14,7 +16,9 @@ public class Routeplan implements Serializable{
 	private java.lang.String description;		/*描述*/
 	//columns END
 
+	@JSONField(serialize=false)
 	private Scenery scenery;
+	@JSONField(serialize=false)
 	private Route route;
 	
 	public Routeplan(){
@@ -36,6 +40,10 @@ public class Routeplan implements Serializable{
 		}
 	
 		public void setSceId(java.lang.Integer value) {
+			if(value!=null){
+				this.scenery=new Scenery();
+				this.getScenery().setId(value);				
+			}
 			this.sceId = value;
 		}
 		
@@ -44,10 +52,15 @@ public class Routeplan implements Serializable{
 		}
 	
 		public void setRouId(java.lang.Integer value) {
+			if(value!=null){
+				this.route=new Route();
+				this.getRoute().setId(value);				
+			}
 			this.rouId = value;
 		}
 		
 		public java.lang.Integer getRouId() {
+			
 			return this.rouId;
 		}
 	

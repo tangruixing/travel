@@ -19,11 +19,11 @@
         <property name="address" type="java.lang.String">
             <column name="ADDRESS" />
         </property>
-        <property name="longitude" type="java.lang.Long">
-            <column name="LONGITUDE" />
+        <property name="longitude" >
+            <column name="LONGITUDE"  sql-type="decimal(10,7)"/>
         </property>
-        <property name="latitude" type="java.lang.Long">
-            <column name="LATITUDE" />
+        <property name="latitude" >
+            <column name="LATITUDE"  sql-type="decimal(10,7)"/>
         </property>
         <property name="logo" type="java.lang.String">
             <column name="LOGO" />
@@ -34,10 +34,10 @@
         <property name="url" type="java.lang.String">
             <column name="URL" />
         </property>
-        <property name="startTime" type="java.util.Date">
+        <property name="startTime" type="string">
             <column name="startTime" />
         </property>
-        <property name="endTime" type="java.util.Date">
+        <property name="endTime" type="string">
             <column name="endTime" />
         </property>
         <property name="grade" type="java.lang.Integer">

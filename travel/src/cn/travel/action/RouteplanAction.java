@@ -1,5 +1,7 @@
 package cn.travel.action;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -23,6 +25,10 @@ public class RouteplanAction extends BaseAction<Routeplan>{
 	@Resource(name="routeplanService")
 	private RouteplanService routeplanService;
 	
+	/**
+	 * 路线id
+	 */
+	private Integer rid;
 	/**
 	 * 
 	 */
@@ -80,6 +86,32 @@ public class RouteplanAction extends BaseAction<Routeplan>{
 			write2Response(j);
 		}
 	}
+	
+	
+	public void loadRouteplanWithRid(){
+		
+		j=new Json();
+		try{			
+			List<Routeplan> list=routeplanService.loadRouteplanWithRid(rid);
+			j.setObj(list);
+			j.setSuccess(true);
+			j.setMsg("操作成功");
+		}catch(Exception e){
+			j.setMsg("操作失败："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+	}
+
+	public Integer getRid() {
+		return rid;
+	}
+
+	public void setRid(Integer rid) {
+		this.rid = rid;
+	}
+	
+	
 	
 	
 	

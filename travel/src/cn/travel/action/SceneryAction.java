@@ -1,7 +1,10 @@
 package cn.travel.action;
 
+import java.io.File;
+
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -22,6 +25,7 @@ public class SceneryAction extends BaseAction<Scenery>{
 	
 	@Resource(name="sceneryService")
 	private SceneryService sceneryService;
+
 	
 	/**
 	 * 
@@ -33,6 +37,51 @@ public class SceneryAction extends BaseAction<Scenery>{
 		logger.info("Scenery_toIndex");
 		return goUI("Scenery.jsp");//后台路径 /WEB-INF/back/scenery/Scenery.jsp
 	}
+	
+	
+	/*普通方式*/
+	/**
+	 * 添加操作跳转
+	 * @return
+	 */
+	public String toSave(){
+		logger.info("toSaves");
+		return goUI("save.jsp");
+	}
+	
+	/**
+	 * 修改操作跳转
+	 * @return
+	 */
+	public String toUpdate(){
+		
+		this.model=sceneryService.getEntity(model.getId());
+		return goUI("save.jsp");
+	}
+	
+	
+	public String getImageUrl(){
+		String virtualPath = this.model.getLogo();
+		if(StringUtils.isNotEmpty(virtualPath)){
+			String realPath = sc.getRealPath(virtualPath);
+			if(new File(realPath).exists()){
+				return sc.getContextPath()+"/"+virtualPath;
+			}
+		}
+		
+		return sc.getContextPath()+"/back/style/images/pixel_0.gif";
+	}
+	
+	
+	/**
+	 * 保存和更新
+	 * @return
+	 */
+	public String doSaveOrUpdateAction(){
+		sceneryService.saveOrUpdateEntity(this.model);
+		return goAction("scenery_toIndex.do");
+	}
+	
 
 	/**
 	 * 列表显示
@@ -82,34 +131,7 @@ public class SceneryAction extends BaseAction<Scenery>{
 	}
 	
 	
-	/*普通方式*/
-	/**
-	 * 添加操作跳转
-	 * @return
-	 */
-	public String toSave(){
-		return goUI("save.jsp");
-	}
-	
-	/**
-	 * 修改操作跳转
-	 * @return
-	 */
-	public String toUpdate(){
-		
-		this.model=sceneryService.getEntity(model.getId());
-		return goUI("save.jsp");
-	}
-	/**
-	 * 保存和更新
-	 * @return
-	 */
-	public String doSaveOrUpdateAction(){
-		
-		sceneryService.saveOrUpdateEntity(this.model);
-		return goAction("scenery_toIndex.do");
-	}
-	
+
 	
 	
 	

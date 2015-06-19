@@ -4,6 +4,8 @@ package cn.travel.model;
 import java.io.Serializable;
 import java.util.Date;
 
+import com.alibaba.fastjson.annotation.JSONField;
+
 public class Scenery implements Serializable{
 	
 	//columns START
@@ -12,13 +14,13 @@ public class Scenery implements Serializable{
 	
 	private java.lang.String realName;		/*名字*/
 	private java.lang.String address;		/*地址*/
-	private Long longitude;		/*经度*/
-	private Long latitude;		/*纬度*/
+	private double longitude;		/*经度*/
+	private double latitude;		/*纬度*/
 	private java.lang.String logo;		/*logo*/
 	private java.lang.String introduction;		/*介绍*/
 	private java.lang.String url;		/*网址*/
-	private Date startTime;
-	private Date endTime;/*开放时间*/
+	private String startTime;
+	private String endTime;/*开放时间*/
 	private int grade;		/*景区级别*/
 	private java.lang.String telphone;		/*景区联系电话*/
 	private boolean viwepager;		/*轮播*/
@@ -69,19 +71,24 @@ public class Scenery implements Serializable{
 		this.address = address;
 	}
 
-	public Long getLongitude() {
+	
+
+
+	
+
+	public double getLongitude() {
 		return longitude;
 	}
 
-	public void setLongitude(Long longitude) {
+	public void setLongitude(double longitude) {
 		this.longitude = longitude;
 	}
 
-	public Long getLatitude() {
+	public double getLatitude() {
 		return latitude;
 	}
 
-	public void setLatitude(Long latitude) {
+	public void setLatitude(double latitude) {
 		this.latitude = latitude;
 	}
 
@@ -109,19 +116,23 @@ public class Scenery implements Serializable{
 		this.url = url;
 	}
 
-	public Date getStartTime() {
+	
+	
+	
+	
+	public String getStartTime() {
 		return startTime;
 	}
 
-	public void setStartTime(Date startTime) {
+	public void setStartTime(String startTime) {
 		this.startTime = startTime;
 	}
 
-	public Date getEndTime() {
+	public String getEndTime() {
 		return endTime;
 	}
 
-	public void setEndTime(Date endTime) {
+	public void setEndTime(String endTime) {
 		this.endTime = endTime;
 	}
 

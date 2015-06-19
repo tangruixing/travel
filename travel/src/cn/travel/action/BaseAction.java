@@ -2,21 +2,28 @@ package cn.travel.action;
 
 import java.io.IOException;
 import java.lang.reflect.ParameterizedType;
+import java.util.Arrays;
 import java.util.Map;
 
+import javax.servlet.ServletContext;
+import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
+import org.apache.struts2.interceptor.ServletRequestAware;
 import org.apache.struts2.interceptor.ServletResponseAware;
 import org.apache.struts2.interceptor.SessionAware;
+import org.apache.struts2.util.ServletContextAware;
 
 import cn.model.Json;
 import cn.model.Page;
 import cn.travel.model.User;
 import cn.util.ConfigUtil;
+import cn.util.FastjsonFilter;
 
 import com.alibaba.fastjson.JSON;
+import com.alibaba.fastjson.serializer.SerializerFeature;
 import com.opensymphony.xwork2.ActionSupport;
 import com.opensymphony.xwork2.ModelDriven;
 import com.opensymphony.xwork2.Preparable;
@@ -29,7 +36,10 @@ import com.opensymphony.xwork2.Preparable;
  */
 
 @SuppressWarnings("unchecked")
-public abstract class BaseAction<T> extends ActionSupport implements ModelDriven<T>,Preparable,ServletResponseAware,SessionAware,UserAware{
+public abstract class BaseAction<T> extends ActionSupport 
+		implements	ModelDriven<T>,Preparable,
+					ServletResponseAware,SessionAware,ServletContextAware,ServletRequestAware,
+					UserAware{
 	/**
 	 * Logger for this class
 	 */
@@ -72,6 +82,7 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	protected String deleteIds;
 	
 	protected HttpServletResponse response;
+	protected ServletContext sc;
 
 
 	protected Map<String, Object> session;
@@ -84,6 +95,9 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 	private String resultAction;
 
 	private String namespaceAction;
+
+	private HttpServletRequest request;
+
 	
 	public BaseAction(){
 		try {
@@ -112,24 +126,72 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 		return "goUI";
 	}
 	
-	protected void write2Response(Object obj){
-		try{
-			String str=JSON.toJSONStringWithDateFormat(obj, "yyyy-MM-dd HH:mm:ss");
-			response.setContentType("text/html;charset=utf-8");
-			response.getWriter().write(str);
-			response.getWriter().flush(); 
-		}catch(IOException e){
-			logger.info("json 返回异常:"+e.getMessage());
-		}finally{
-			try {
-				response.getWriter().close();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+	
+	/**
+	 * 将对象转换成JSON字符串，并响应回前台
+	 * 
+	 * @param object
+	 * @param includesProperties
+	 *            需要转换的属性
+	 * @param excludesProperties
+	 *            不需要转换的属性
+	 */
+	public void writeJsonByFilter(Object object, String[] includesProperties, String[] excludesProperties) {
+		try {
+			FastjsonFilter filter = new FastjsonFilter();// excludes优先于includes
+			if (excludesProperties != null && excludesProperties.length > 0) {
+				filter.getExcludes().addAll(Arrays.<String> asList(excludesProperties));
 			}
+			if (includesProperties != null && includesProperties.length > 0) {
+				filter.getIncludes().addAll(Arrays.<String> asList(includesProperties));
+			}
+			logger.info("对象转JSON：要排除的属性[" + excludesProperties + "]要包含的属性[" + includesProperties + "]");
+			String json;
+			String User_Agent = request.getHeader("User-Agent");
+			if (StringUtils.indexOfIgnoreCase(User_Agent, "MSIE 6") > -1) {
+				// 使用SerializerFeature.BrowserCompatible特性会把所有的中文都会序列化为\\uXXXX这种格式，字节数会多一些，但是能兼容IE6
+				json = JSON.toJSONString(object, filter, SerializerFeature.WriteDateUseDateFormat, SerializerFeature.DisableCircularReferenceDetect, SerializerFeature.BrowserCompatible);
+			} else {
+				// 使用SerializerFeature.WriteDateUseDateFormat特性来序列化日期格式的类型为yyyy-MM-dd hh24:mi:ss
+				// 使用SerializerFeature.DisableCircularReferenceDetect特性关闭引用检测和生成
+				json = JSON.toJSONString(object, filter, SerializerFeature.WriteDateUseDateFormat, SerializerFeature.DisableCircularReferenceDetect);
+			}
+			logger.info("转换后的JSON字符串：" + json);
+			getResponse().setContentType("text/html;charset=utf-8");
+			getResponse().getWriter().write(json);
+			getResponse().getWriter().flush();
+			getResponse().getWriter().close();
+		} catch (IOException e) {
+			e.printStackTrace();
 		}
-		
-		
+	}
+
+	
+	public void writeJson(Object object) {
+		writeJsonByFilter(object, null, null);
+	}
+
+	/**
+	 * 将对象转换成JSON字符串，并响应回前台
+	 * 
+	 * @param object
+	 * @param includesProperties
+	 *            需要转换的属性
+	 */
+	public void writeJsonByIncludesProperties(Object object, String[] includesProperties) {
+		writeJsonByFilter(object, includesProperties, null);
+	}
+	
+	
+	
+	/**
+	 * 将对象转换成JSON字符串，并响应回前台
+	 * 
+	 * @param object
+	 * @throws IOException
+	 */
+	protected void write2Response(Object object){
+		writeJsonByFilter(object, null, null);
 	}
 
 	public  T getModel(){
@@ -275,6 +337,16 @@ public abstract class BaseAction<T> extends ActionSupport implements ModelDriven
 
 	public void setNamespaceAction(String namespaceAction) {
 		this.namespaceAction = namespaceAction;
+	}
+
+	public void setServletContext(ServletContext sc) {
+		// TODO Auto-generated method stub
+		this.sc=sc;
+	}
+
+	public void setServletRequest(HttpServletRequest request) {
+		// TODO Auto-generated method stub
+		this.request=request;
 	}
 	
 	

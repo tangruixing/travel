@@ -109,13 +109,14 @@ var Location={
     },
     init:function(){
     	
+    	   Location.initMap();
     	   Location.modal=$("#myModal");
-    	   
     	   var i=0;
        	 
-    	   
+    	   console.info($("#markBtn"));
            $("#markBtn").off('click');
            $("#markBtn").on('click', function () {
+        	   console.info("click");
         	   if(i==0){//第一次点击
         		   /*用户是否输入值*/
             	   var userInput=$("#userInput").val();
@@ -127,7 +128,7 @@ var Location={
         	   }
         
         	   Location.modal.modal('show');
-           	   Location.initMap();
+           	 
                
            });
            
@@ -145,17 +146,21 @@ var Location={
         Location.map=map;
 
         //起始点
-        var startPoint=new BMap.Point(116.331398,39.897445);
+        var startPoint=new BMap.Point(119.30304,26.1060510);
+        
         var lng=$("#lng").val();
         var lat=$("#lat").val();
      
-        if(lng!=null&&lng!=""&&lat!=null&&lat!=""){
+        console.info(lng!=0.0);
+        console.info(lat);
+        if(lng!=0.0&&lng!=""&&lat!=0.0&&lat!=""){
     
             startPoint=new BMap.Point(lng,lat);
         }
 
+        console.info(startPoint);
         //标记起始点
-        map.centerAndZoom(startPoint, 18);//必须
+        map.centerAndZoom(startPoint, 11);//必须
         map.enableScrollWheelZoom(true);//可以缩放
         map.disableDoubleClickZoom();
 

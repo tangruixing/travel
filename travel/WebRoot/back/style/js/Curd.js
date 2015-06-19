@@ -15,23 +15,32 @@ function Curd(baseUrl,clz,columns){
     this.fmCloseBtn=$("#"+this.clz+"_close");
     this.baseUrl=baseUrl+"/"+this.clz;
     console.info(this.baseUrl);
-    this.jsUrl=null;
-    this.easyui=true;
+    this.easyui=true;//是否是 easyui 的添加/修改
+    this.urlParams=[];
+    
 }
 
 Curd.prototype={
+	
 	useCommon:function(){
 		this.easyui=false;
 	},
-	addJs:function(jsUrl){
-		this.jsUrl=jsUrl;
+	setUrlParam:function(key,value){
+		var str=key+"="+value;
+		this.urlParams.push(str);
 	},
     init:function(url,columns,sortName){
         var _this=this;
+        var listUrl=_this.baseUrl+"_doList.do";
+        if(_this.urlParams.length>0){
+        	
+        	listUrl+="?"+_this.urlParams.join('&');
+        	console.info(listUrl);
+        }
         var defaultUrl={
             save:_this.baseUrl+"_toSave.do",
             update:_this.baseUrl+"_toUpdate.do",
-            list:_this.baseUrl+"_doList.do",
+            list:listUrl,
             saveOrUpdate:_this.baseUrl+"_doSaveOrUpdate.do",
             remove:_this.baseUrl+"_doDeletes.do"
         };
@@ -148,14 +157,14 @@ Curd.prototype={
 
     },
     _function:{
-
+    	
         toSave:function(){
         	
         	var _this=this;
         	
        	 if(this.easyui){
        		console.info(_this.fm);
-			_this.fm.form('clear');
+			_this.fm.form('reset');
 			_this.dlg.show().dialog('open').dialog('setTitle',"添加");
     	 }else{
     		 console.info(this.url.save);
@@ -191,6 +200,10 @@ Curd.prototype={
         },
         doSaveOrUpdate:function(){
         	var _this=this;
+        
+        	console.info(this.fm.form('options'));
+        	/*console.info(this.fm.('validate'));*/
+        	console.info(this.fm.serialize());
             if(_this.fm.form('validate')){
                 $.post(this.url.saveOrUpdate,this.fm.serialize(),function(data){
                     console.info(data);

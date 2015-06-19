@@ -10,7 +10,7 @@
         </id>
         
         
-        <many-to-one name="scenery" class="cn.travel.model.Scenery">
+        <many-to-one name="scenery" class="cn.travel.model.Scenery" >
         	 <column name="SCEID" />
         </many-to-one>
         <many-to-one name="route" class="cn.travel.model.Route">
