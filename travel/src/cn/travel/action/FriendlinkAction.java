@@ -81,6 +81,35 @@ public class FriendlinkAction extends BaseAction<Friendlink>{
 			write2Response(j);
 		}
 	}
+	
+	/*普通方式*/
+	/**
+	 * 添加操作跳转
+	 * @return
+	 */
+	public String toSave(){
+		return goUI("save.jsp");
+	}
+	
+	/**
+	 * 修改操作跳转
+	 * @return
+	 */
+	public String toUpdate(){
+		
+		this.model=friendlinkService.getEntity(model.getId());
+		return goUI("save.jsp");
+	}
+	/**
+	 * 保存和更新
+	 * @return
+	 */
+	public String doSaveOrUpdateAction(){
+		
+		friendlinkService.saveOrUpdateEntity(this.model);
+		return goAction("friendlink_toIndex.do");
+	}
+	
 
 
 	

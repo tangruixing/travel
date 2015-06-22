@@ -1,122 +1,122 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-<meta http-equiv="Content-Type" content="text/html; charset=gb2312">
-<title>jnotify — jquery弹出层提示插件下载和使用方法_我爱模板 www.5imoban.net</title>
-<!--引入开始-->
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>jnotify �� jquery寮瑰�哄���绀烘��浠朵�杞藉��浣跨�ㄦ�规�_���辨ā�� www.5imoban.net</title>
+<!--寮��ュ�濮�-->
 <link rel="stylesheet" href="css/jNotify.jquery.css" type="text/css" />
 <script type="text/javascript" src="http://www.5imoban.net/download/jquery/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/jNotify.jquery.js"></script>
-<!--引入结束-->
+<!--寮��ョ���-->
 <style>
 body{margin:0; padding:0;}
 ul#wimoban_nav{padding-left:50px; margin-bottom:10px; border-bottom:2px solid #ccc; overflow:hidden; _zoom:1;}
 ul#wimoban_nav li{float:left; display:inline; margin:10px;}
 ul#wimoban_nav li a{display:block; font-size:16px;}
-ul#wimoban_nav li a,#wimoban_p,#wimoban_p a{color:#000; font-family:"微软雅黑";}
+ul#wimoban_nav li a,#wimoban_p,#wimoban_p a{color:#000; font-family:"寰�杞���榛�";}
 ul#wimoban_nav li a:hover,#wimoban_p a:hover{color:red;}
 #wimoban_p{text-align:center; font-size:14px; clear:both;}
-.jnotify_demo{display:block; width:100px; height:30px; line-height:30px; background:#333; color:#fff; text-align:center; font-size:12px; font-weight:bold; text-decoration:none; font-family:"微软雅黑"; margin:20px auto; border-radius:3px;}
+.jnotify_demo{display:block; width:100px; height:30px; line-height:30px; background:#333; color:#fff; text-align:center; font-size:12px; font-weight:bold; text-decoration:none; font-family:"寰�杞���榛�"; margin:20px auto; border-radius:3px;}
 </style>
 </head>	
 <body>
 <ul id="wimoban_nav">
-    <li><a title="返回网站首页" href="http://www.5imoban.net/">首页</a></li>
-    <li><a title="网页PSD模板下载" href="http://www.5imoban.net/psdmoban/">PSD模板</a></li>
-    <li><a title="网页CSS模板下载" href="http://www.5imoban.net/cssmoban/">CSS模板</a></li>
-    <li><a title="网页特效、网页插件" href="http://www.5imoban.net/texiao/">特效插件</a></li>
-    <li><a title="整站源码下载" href="http://www.5imoban.net/yuanma/">源码下载</a></li>
-    <li><a title="酷站欣赏" href="http://www.5imoban.net/kuzhan/">酷站欣赏</a></li>
-    <li><a title="建站资源" href="http://www.5imoban.net/ziyuan/">建站资源</a></li>
-    <li><a title="建站视频教程、建站教程" href="http://www.5imoban.net/jiaocheng/">建站教程</a></li>
-    <li><a title="建站心得、互联网事、心境之旅" href="http://www.5imoban.net/article/">心境之旅</a></li>
+    <li><a title="杩���缃�绔�棣�椤�" href="http://www.5imoban.net/">棣�椤�</a></li>
+    <li><a title="缃�椤�PSD妯℃�夸�杞�" href="http://www.5imoban.net/psdmoban/">PSD妯℃��</a></li>
+    <li><a title="缃�椤�CSS妯℃�夸�杞�" href="http://www.5imoban.net/cssmoban/">CSS妯℃��</a></li>
+    <li><a title="缃�椤电�规����缃�椤垫��浠�" href="http://www.5imoban.net/texiao/">�规����浠�</a></li>
+    <li><a title="�寸��婧���涓�杞�" href="http://www.5imoban.net/yuanma/">婧���涓�杞�</a></li>
+    <li><a title="�风��娆ｈ�" href="http://www.5imoban.net/kuzhan/">�风��娆ｈ�</a></li>
+    <li><a title="寤虹��璧�婧�" href="http://www.5imoban.net/ziyuan/">寤虹��璧�婧�</a></li>
+    <li><a title="寤虹��瑙�棰���绋���寤虹����绋�" href="http://www.5imoban.net/jiaocheng/">寤虹����绋�</a></li>
+    <li><a title="寤虹��蹇�寰���浜���缃�浜���蹇�澧�涔���" href="http://www.5imoban.net/article/">蹇�澧�涔���</a></li>
 </ul>
 </head>	
 <body>
-<!-- 代码开始 -->
-<a href="javascript:void(0)" class="jnotify_demo jnotify_success">显示正确提示</a>
-<a href="javascript:void(0)" class="jnotify_demo jnotify_error">显示错误提示</a>
-<a href="javascript:void(0)" class="jnotify_demo jnotify_other">显示其他提示</a>
+<!-- 浠ｇ��寮�濮� -->
+<a href="javascript:void(0)" class="jnotify_demo jnotify_success">�剧ず姝ｇ‘��绀�</a>
+<a href="javascript:void(0)" class="jnotify_demo jnotify_error">�剧ず��璇���绀�</a>
+<a href="javascript:void(0)" class="jnotify_demo jnotify_other">�剧ず�朵���绀�</a>
 <script type="text/javascript">
 	$(document).ready(function(){
-		//正确提示
+		//姝ｇ‘��绀�
 		$("a.jnotify_success").click(function(e){
 			e.preventDefault();
 			jSuccess(
-				//显示内容。
-				'输入正确，欢迎登陆 !!点击对话框关闭本提示框。<br />您也可以应用下面的样式 <strong>加粗</strong>, <i>斜体</i>, <u>下划线</u>',
+				//�剧ず��瀹广��
+				'杈��ユ�ｇ‘锛�娆㈣��婚�� !!�瑰�诲�硅��妗��抽������绀烘���<br />�ㄤ���浠ュ��ㄤ��㈢���峰� <strong>��绮�</strong>, <i>��浣�</i>, <u>涓���绾�</u>',
 				{
-					autoHide : false,   //jnotify自动隐藏 true false
-					clickOverlay : false,  //jnotify弹出层单击遮罩层才关闭提示条（遮罩层即半透明黑色背景）
-					MinWidth : 250,   //jnotify弹出层宽度
-					TimeShown : 3000,   //显示时长。只有当autoHide（自动隐藏）参数为true时起作用。
-					ShowTimeEffect : 200,   //jnotify完全显示出来花费时间。
-					HideTimeEffect : 200,   //与上面参数相反，jnotify从页面上消失所需时间
-					LongTrip : 20,          //当jnotify弹出层提示条显示和隐藏时的位移
-					HorizontalPosition : 'center',  //jnotify弹出层提示条位于水平方向上的位置，参数有left,center,right
-					VerticalPosition : 'center',    //jnotify弹出层提示条位于垂直方向上的位置，参数有top,center,bottom
-					ShowOverlay : false,   //是否显示遮罩层（遮罩层即半透明黑色背景）
-					ColorOverlay : '#000',   //遮罩层颜色
-					OpacityOverlay : 0.3,   //遮罩层透明度，最大是1，最小是0.1
-					onClosed : function(){},   //关闭jnotify弹出层提示条调用的函数
-					onCompleted : function(){}   //打开jnotify弹出层提示条调用的函数
+					autoHide : false,   //jnotify���ㄩ���� true false
+					clickOverlay : false,  //jnotify寮瑰�哄����婚��缃╁����抽����绀烘�★���缃╁��冲������榛��茶����锛�
+					MinWidth : 250,   //jnotify寮瑰�哄�瀹藉害
+					TimeShown : 3000,   //�剧ず�堕�裤������褰�autoHide锛����ㄩ����锛����颁负true�惰捣浣��ㄣ��
+					ShowTimeEffect : 200,   //jnotify瀹��ㄦ�剧ず�烘�ヨ�辫垂�堕�淬��
+					HideTimeEffect : 200,   //涓�涓��㈠���扮�稿��锛�jnotify浠�椤甸��涓�娑�澶辨�����堕��
+					LongTrip : 20,          //褰�jnotify寮瑰�哄���绀烘�℃�剧ず�������剁��浣�绉�
+					HorizontalPosition : 'center',  //jnotify寮瑰�哄���绀烘�′�浜�姘村钩�瑰��涓���浣�缃�锛����版��left,center,right
+					VerticalPosition : 'center',    //jnotify寮瑰�哄���绀烘�′�浜����存�瑰��涓���浣�缃�锛����版��top,center,bottom
+					ShowOverlay : false,   //�����剧ず��缃╁�锛���缃╁��冲������榛��茶����锛�
+					ColorOverlay : '#000',   //��缃╁�棰���
+					OpacityOverlay : 0.3,   //��缃╁�����搴�锛���澶ф��1锛���灏���0.1
+					onClosed : function(){},   //�抽��jnotify寮瑰�哄���绀烘�¤��ㄧ���芥��
+					onCompleted : function(){}   //��寮�jnotify寮瑰�哄���绀烘�¤��ㄧ���芥��
 				}
 			);
 		});
-		//错误提示
+		//��璇���绀�
 		$("a.jnotify_error").click(function(e){
 			e.preventDefault();
 			jError(
-				//显示内容。
-				'您输入有误 !!<br />您也可以应用下面的样式 <strong>加粗</strong>, <i>斜体</i>, <u>下划线</u>',
+				//�剧ず��瀹广��
+				'�ㄨ��ユ��璇� !!<br />�ㄤ���浠ュ��ㄤ��㈢���峰� <strong>��绮�</strong>, <i>��浣�</i>, <u>涓���绾�</u>',
 				{
-					autoHide : false,   //jnotify自动隐藏 true false
-					clickOverlay : false,  //jnotify弹出层单击遮罩层才关闭提示条（遮罩层即半透明黑色背景）
-					MinWidth : 250,   //jnotify弹出层宽度
-					TimeShown : 3000,   //显示时长。只有当autoHide（自动隐藏）参数为true时起作用。
-					ShowTimeEffect : 200,   //jnotify完全显示出来花费时间。
-					HideTimeEffect : 200,   //与上面参数相反，jnotify从页面上消失所需时间
-					LongTrip : 20,          //当jnotify弹出层提示条显示和隐藏时的位移
-					HorizontalPosition : 'center',  //jnotify弹出层提示条位于水平方向上的位置，参数有left,center,right
-					VerticalPosition : 'center',    //jnotify弹出层提示条位于垂直方向上的位置，参数有top,center,bottom
-					ShowOverlay : false,   //是否显示遮罩层（遮罩层即半透明黑色背景）
-					ColorOverlay : '#000',   //遮罩层颜色
-					OpacityOverlay : 0.3,   //遮罩层透明度，最大是1，最小是0.1
-					onClosed : function(){alert('jNofity 提示框关闭 !')},   //关闭jnotify弹出层提示条调用的函数
-					onCompleted : function(){alert("jNofity 提示框显示 !")}   //打开jnotify弹出层提示条调用的函数
+					autoHide : false,   //jnotify���ㄩ���� true false
+					clickOverlay : false,  //jnotify寮瑰�哄����婚��缃╁����抽����绀烘�★���缃╁��冲������榛��茶����锛�
+					MinWidth : 250,   //jnotify寮瑰�哄�瀹藉害
+					TimeShown : 3000,   //�剧ず�堕�裤������褰�autoHide锛����ㄩ����锛����颁负true�惰捣浣��ㄣ��
+					ShowTimeEffect : 200,   //jnotify瀹��ㄦ�剧ず�烘�ヨ�辫垂�堕�淬��
+					HideTimeEffect : 200,   //涓�涓��㈠���扮�稿��锛�jnotify浠�椤甸��涓�娑�澶辨�����堕��
+					LongTrip : 20,          //褰�jnotify寮瑰�哄���绀烘�℃�剧ず�������剁��浣�绉�
+					HorizontalPosition : 'center',  //jnotify寮瑰�哄���绀烘�′�浜�姘村钩�瑰��涓���浣�缃�锛����版��left,center,right
+					VerticalPosition : 'center',    //jnotify寮瑰�哄���绀烘�′�浜����存�瑰��涓���浣�缃�锛����版��top,center,bottom
+					ShowOverlay : false,   //�����剧ず��缃╁�锛���缃╁��冲������榛��茶����锛�
+					ColorOverlay : '#000',   //��缃╁�棰���
+					OpacityOverlay : 0.3,   //��缃╁�����搴�锛���澶ф��1锛���灏���0.1
+					onClosed : function(){alert('jNofity ��绀烘��抽�� !')},   //�抽��jnotify寮瑰�哄���绀烘�¤��ㄧ���芥��
+					onCompleted : function(){alert("jNofity ��绀烘��剧ず !")}   //��寮�jnotify寮瑰�哄���绀烘�¤��ㄧ���芥��
 				}
 			);
 		});
-		//其他提示
+		//�朵���绀�
 		$("a.jnotify_other").click(function(e){
 			e.preventDefault();
 			jNotify(
-				//显示内容。
-				'欢迎登陆 !本对话框将在三秒后消失<br />您也可以应用下面的样式 <strong>加粗</strong>, <i>斜体</i>, <u>下划线</u>',
+				//�剧ず��瀹广��
+				'娆㈣��婚�� !��瀵硅��妗�灏��ㄤ�绉���娑�澶�<br />�ㄤ���浠ュ��ㄤ��㈢���峰� <strong>��绮�</strong>, <i>��浣�</i>, <u>涓���绾�</u>',
 				{
-					autoHide : true,   //jnotify自动隐藏 true false
-					clickOverlay : false,  //jnotify弹出层单击遮罩层才关闭提示条（遮罩层即半透明黑色背景）
-					MinWidth : 250,   //jnotify弹出层宽度
-					TimeShown : 3000,   //显示时长。只有当autoHide（自动隐藏）参数为true时起作用。
-					ShowTimeEffect : 200,   //jnotify完全显示出来花费时间。
-					HideTimeEffect : 200,   //与上面参数相反，jnotify从页面上消失所需时间
-					LongTrip : 20,          //当jnotify弹出层提示条显示和隐藏时的位移
-					HorizontalPosition : 'center',  //jnotify弹出层提示条位于水平方向上的位置，参数有left,center,right
-					VerticalPosition : 'center',    //jnotify弹出层提示条位于垂直方向上的位置，参数有top,center,bottom
-					ShowOverlay : false,   //是否显示遮罩层（遮罩层即半透明黑色背景）
-					ColorOverlay : '#000',   //遮罩层颜色
-					OpacityOverlay : 0.3,   //遮罩层透明度，最大是1，最小是0.1
-					onClosed : function(){},   //关闭jnotify弹出层提示条调用的函数
-					onCompleted :  function(){}  //打开jnotify弹出层提示条调用的函数
+					autoHide : true,   //jnotify���ㄩ���� true false
+					clickOverlay : false,  //jnotify寮瑰�哄����婚��缃╁����抽����绀烘�★���缃╁��冲������榛��茶����锛�
+					MinWidth : 250,   //jnotify寮瑰�哄�瀹藉害
+					TimeShown : 3000,   //�剧ず�堕�裤������褰�autoHide锛����ㄩ����锛����颁负true�惰捣浣��ㄣ��
+					ShowTimeEffect : 200,   //jnotify瀹��ㄦ�剧ず�烘�ヨ�辫垂�堕�淬��
+					HideTimeEffect : 200,   //涓�涓��㈠���扮�稿��锛�jnotify浠�椤甸��涓�娑�澶辨�����堕��
+					LongTrip : 20,          //褰�jnotify寮瑰�哄���绀烘�℃�剧ず�������剁��浣�绉�
+					HorizontalPosition : 'center',  //jnotify寮瑰�哄���绀烘�′�浜�姘村钩�瑰��涓���浣�缃�锛����版��left,center,right
+					VerticalPosition : 'center',    //jnotify寮瑰�哄���绀烘�′�浜����存�瑰��涓���浣�缃�锛����版��top,center,bottom
+					ShowOverlay : false,   //�����剧ず��缃╁�锛���缃╁��冲������榛��茶����锛�
+					ColorOverlay : '#000',   //��缃╁�棰���
+					OpacityOverlay : 0.3,   //��缃╁�����搴�锛���澶ф��1锛���灏���0.1
+					onClosed : function(){},   //�抽��jnotify寮瑰�哄���绀烘�¤��ㄧ���芥��
+					onCompleted :  function(){}  //��寮�jnotify寮瑰�哄���绀烘�¤��ㄧ���芥��
 				}
 			);
 		});
 	});
 </script>
-<!-- 代码结束 -->
+<!-- 浠ｇ��缁��� -->
 <div id="wimoban_p">
-    <p>代码整理：<a href="http://www.5imoban.net/" title="模板网" alt="模板网">我爱模板网</a></p>
-    <p>＊尊重他人劳动成果，转载请自觉注明出处！注：此代码仅供学习交流，请勿用于商业用途。</p>
+    <p>浠ｇ���寸��锛�<a href="http://www.5imoban.net/" title="妯℃�跨�" alt="妯℃�跨�">���辨ā�跨�</a></p>
+    <p>锛�灏���浠�浜哄�冲�ㄦ����锛�杞�杞借�疯��瑙�娉ㄦ���哄�锛�娉�锛�姝や唬��浠�渚�瀛�涔�浜ゆ�锛�璇峰�跨�ㄤ���涓��ㄩ����</p>
     <p></p>
 </div>
 </body>

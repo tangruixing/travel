@@ -8,6 +8,7 @@ public class Friendlink implements Serializable{
 	//columns START
 	private java.lang.Integer id;		/*友情链接编号*/
 	private java.lang.Integer useid;		/*用户编号id*/
+	private java.lang.String realName;		/*名称*/
 	private java.lang.String url;		/*友情链接URL*/
 	private java.lang.String logo;		/*logo*/
 	private java.lang.String summary;		/*简介*/
@@ -82,7 +83,17 @@ public class Friendlink implements Serializable{
 		public void setUser(User user) {
 			this.user = user;
 		}
+
+		public java.lang.String getRealName() {
+			return realName;
+		}
+
+		public void setRealName(java.lang.String realName) {
+			this.realName = realName;
+		}
 	
+		
+		
 		
 		
 

@@ -27,6 +27,9 @@
         <property name="broadband" type="java.lang.Integer">
             <column name="BROADBAND" />
         </property>
+        <property name="area" type="java.lang.Float">
+            <column name="AREA" />
+        </property>
         <property name="cancel" type="java.lang.Integer">
             <column name="CANCEL" />
         </property>

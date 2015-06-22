@@ -48,63 +48,65 @@
                         width : 100,// 必须要给，大于50
                         sortable : true,// 鼠标点击可以升序/降序切换
                         checkbox : true
-
-                    },								{
-title : '景区名称',
-field : 'realName',
-width : 100,
-sortable : true
-},								{
-title : '地址',
-field : 'address',
-width : 100,
-sortable : true
-},								{
-title : '经度',
-field : 'longitude',
-width : 100,
-sortable : true
-},								{
-title : '纬度',
-field : 'latitude',
-width : 100,
-sortable : true
-},								{
-title : 'logo',
-field : 'logo',
-width : 100,
-sortable : true
-},{
-title : '网址',
-field : 'url',
-width : 100,
-sortable : true
-},								{
-title : '开放时间',
-field : 'openDime',
-width : 100,
-sortable : true
-},								{
-title : '景区级别',
-field : 'grade',
-width : 100,
-sortable : true
-},								{
-title : '景区联系电话',
-field : 'telphone',
-width : 100,
-sortable : true
-},								{
-title : '轮播',
-field : 'viwepager',
-width : 100,
-sortable : true
-},								{
-title : '推荐',
-field : 'suggest',
-width : 100,
-sortable : true
-},{
+                    },{
+					title : '景区名称',
+					field : 'realName',
+					width : 100,
+					sortable : true
+					},{
+					title : '地址',
+					field : 'address',
+					width : 100,
+					sortable : true
+					},{
+					title : '经度',
+					field : 'longitude',
+					width : 100,
+					sortable : true
+					},{
+					title : '纬度',
+					field : 'latitude',
+					width : 100,
+					sortable : true
+					},{
+					title : 'logo',
+					field : 'logo',
+					width : 100,
+					sortable : true
+					},{
+					title : '网址',
+					field : 'url',
+					width : 100,
+					sortable : true
+					},{
+					title : '开放时间',
+					field : 'openDime',
+					width : 100,
+					sortable : true,
+					 formatter: function (value, row, index) {
+                       	return row.startTime+"-"+row.endTime;
+                      }
+					},{
+					title : '景区级别',
+					field : 'grade',
+					width : 100,
+					sortable : true
+					},{
+					title : '景区联系电话',
+					field : 'telphone',
+					width : 100,
+					sortable : true
+					},{
+					title : '轮播',
+					field : 'viwepager',
+					width : 100,
+					sortable : true
+					},{
+					title : '推荐',
+					field : 'suggest',
+					width : 100,
+					sortable : true
+					},{
                         title : '操作',
                         field : 'action',
                         width : 100,

@@ -11,11 +11,12 @@ public class Hotel implements Serializable{
 	private java.lang.String logo;		/*logo*/
 	private java.lang.String realName;		/*名字*/
 	private java.lang.String address;		/*地址*/
-	private Long longitude;		/*经度*/
-	private Long latitude;		/*纬度*/
+	private double longitude;		/*经度*/
+	private double latitude;		/*纬度*/
 	private java.lang.Integer grade;		/*酒店级别*/
 	private java.lang.String picture;		/*图片*/
 	private java.lang.String telphone;		/*酒店电话*/
+	private String introduction;
 	//columns END
 
 	private User user;
@@ -29,96 +30,106 @@ public class Hotel implements Serializable{
 		this.id = id;
 	}
 
-	
-		public void setId(java.lang.Integer value) {
-			this.id = value;
-		}
-		
-		public java.lang.Integer getId() {
-			return this.id;
-		}
-	
-		public void setUseid(java.lang.Integer value) {
-			this.useid = value;
-		}
-		
-		public java.lang.Integer getUseid() {
-			return this.useid;
-		}
-	
-		public void setLogo(java.lang.String value) {
-			this.logo = value;
-		}
-		
-		public java.lang.String getLogo() {
-			return this.logo;
-		}
-	
-		public void setRealName(java.lang.String value) {
-			this.realName = value;
-		}
-		
-		public java.lang.String getRealName() {
-			return this.realName;
-		}
-	
-		public void setAddress(java.lang.String value) {
-			this.address = value;
-		}
-		
-		public java.lang.String getAddress() {
-			return this.address;
-		}
-	
-		public void setLongitude(Long value) {
-			this.longitude = value;
-		}
-		
-		public Long getLongitude() {
-			return this.longitude;
-		}
-	
-		public void setLatitude(Long value) {
-			this.latitude = value;
-		}
-		
-		public Long getLatitude() {
-			return this.latitude;
-		}
-	
-		public void setGrade(java.lang.Integer value) {
-			this.grade = value;
-		}
-		
-		public java.lang.Integer getGrade() {
-			return this.grade;
-		}
-	
-		public void setPicture(java.lang.String value) {
-			this.picture = value;
-		}
-		
-		public java.lang.String getPicture() {
-			return this.picture;
-		}
-	
-		public void setTelphone(java.lang.String value) {
-			this.telphone = value;
-		}
-		
-		public java.lang.String getTelphone() {
-			return this.telphone;
-		}
+	public java.lang.Integer getId() {
+		return id;
+	}
 
-		public User getUser() {
-			return user;
-		}
+	public void setId(java.lang.Integer id) {
+		this.id = id;
+	}
 
-		public void setUser(User user) {
-			this.user = user;
-		}
+	public java.lang.Integer getUseid() {
+		return useid;
+	}
+
+	public void setUseid(java.lang.Integer useid) {
+		this.useid = useid;
+	}
+
+	public java.lang.String getLogo() {
+		return logo;
+	}
+
+	public void setLogo(java.lang.String logo) {
+		this.logo = logo;
+	}
+
+	public java.lang.String getRealName() {
+		return realName;
+	}
+
+	public void setRealName(java.lang.String realName) {
+		this.realName = realName;
+	}
+
+	public java.lang.String getAddress() {
+		return address;
+	}
+
+	public void setAddress(java.lang.String address) {
+		this.address = address;
+	}
+
+	public double getLongitude() {
+		return longitude;
+	}
+
+	public void setLongitude(double longitude) {
+		this.longitude = longitude;
+	}
+
+	public double getLatitude() {
+		return latitude;
+	}
+
+	public void setLatitude(double latitude) {
+		this.latitude = latitude;
+	}
+
+	public java.lang.Integer getGrade() {
+		return grade;
+	}
+
+	public void setGrade(java.lang.Integer grade) {
+		this.grade = grade;
+	}
+
+	public java.lang.String getPicture() {
+		return picture;
+	}
+
+	public void setPicture(java.lang.String picture) {
+		this.picture = picture;
+	}
+
+	public java.lang.String getTelphone() {
+		return telphone;
+	}
+
+	public void setTelphone(java.lang.String telphone) {
+		this.telphone = telphone;
+	}
+
+	public String getIntroduction() {
+		return introduction;
+	}
+
+	public void setIntroduction(String introduction) {
+		this.introduction = introduction;
+	}
+
+	public User getUser() {
+		return user;
+	}
+
+	public void setUser(User user) {
+		this.user = user;
+	}
 
 	
+
+	
+		
 		
 }
 

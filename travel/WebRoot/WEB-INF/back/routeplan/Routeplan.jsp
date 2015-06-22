@@ -9,31 +9,12 @@
 
 <%-- <script type="text/javascript" src="<%=contextPath %>/jslib/easyui-1.4.2/datagrid-dnd.js"></script> --%>
 <body>
-	<div class="easyui-layout" fit="true" id="gridLayout" data-options="title:'${rname}线路'">
+	<div class="easyui-layout" fit="true" id="gridLayout">
 		<!--搜索 -->
-		<div region="north" border="false" title="过滤" style="height: 130px; overflow: hidden;">
-			<form id="routeplan_search_fm">
-				<table id="routeplan_search_table" class="dis" style="width: 100%; height: 100%">
-					<tr>
-						<td >
-							例子:<input name="name" type="text" class="textbox"  /> 
-						</td>
-					
-					</tr>
-					<tr>
-						
-						<td>
-							<a id="routeplan_search" class="easyui-linkbutton">查询</a> 
-							<a id="routeplan_clean" class="easyui-linkbutton">清空数据</a> 
-							<a id="routeplan_refresh" class="easyui-linkbutton">重置</a>
-						</td>
-					</tr>
-				</table>
-			</form>
+		<div region="north" border="false" title="过滤" style="height: 0px; overflow: hidden;">
+			
 		</div>
-
-
-		<div region="center" border="false">
+		<div region="center" border="false"  title='${rname}线路'>
 			<!-- 这里不要写fit属性，会看不到分页 -->
 			<table id="routeplan_dg"></table>
 		</div>

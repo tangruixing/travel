@@ -34,6 +34,7 @@ public class RouteServiceImpl extends BaseServiceImpl<Route> implements RouteSer
 	public Grid getRouteGrid(Page p, Route model) {
 		
 		HqlHelper hql=new HqlHelper(Route.class, "u")//
+					  .addWhereCondition("u.routeType=?", model.getRouteType())//c
 					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
 		
 		return this.getPageGrid(p.getPage(), p.getRows(), hql);

@@ -20,11 +20,11 @@
         <property name="address" type="java.lang.String">
             <column name="ADDRESS" />
         </property>
-        <property name="longitude" type="java.lang.Long">
-            <column name="LONGITUDE" />
+        <property name="longitude" >
+            <column name="LONGITUDE"  sql-type="decimal(10,7)"/>
         </property>
-        <property name="latitude" type="java.lang.Long">
-            <column name="LATITUDE" />
+        <property name="latitude" >
+            <column name="LATITUDE"  sql-type="decimal(10,7)"/>
         </property>
         <property name="grade" type="java.lang.Integer">
             <column name="GRADE" />

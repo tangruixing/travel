@@ -23,6 +23,7 @@ public class RoomstyleAction extends BaseAction<Roomstyle>{
 	@Resource(name="roomstyleService")
 	private RoomstyleService roomstyleService;
 	
+
 	/**
 	 * 
 	 */
@@ -80,6 +81,36 @@ public class RoomstyleAction extends BaseAction<Roomstyle>{
 			write2Response(j);
 		}
 	}
+	
+	/*普通方式*/
+	/**
+	 * 添加操作跳转
+	 * @return
+	 */
+	public String toSave(){
+		return goUI("save.jsp");
+	}
+	
+	/**
+	 * 修改操作跳转
+	 * @return
+	 */
+	public String toUpdate(){
+		
+		this.model=roomstyleService.getEntity(model.getId());
+		return goUI("save.jsp");
+	}
+	/**
+	 * 保存和更新
+	 * @return
+	 */
+	public String doSaveOrUpdateAction(){
+		
+		roomstyleService.saveOrUpdateEntity(this.model);
+		return goAction("roomstyle_toIndex.do");
+	}
+
+	
 	
 	
 	

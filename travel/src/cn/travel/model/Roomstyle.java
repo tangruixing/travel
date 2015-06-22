@@ -7,13 +7,13 @@ public class Roomstyle implements Serializable{
 	
 	//columns START
 	private java.lang.Integer id;		/*房型ID*/
-	private java.lang.Integer hotId;		/*酒店ID*/
-	private java.lang.String realName;		/*名字*/
-	private java.lang.Integer bedStyle;		/*名称*/
-	private java.lang.Integer limitPerson;		/*床型*/
-	private java.lang.Integer breakfast;		/*最多可入住人数*/
-	private java.lang.Integer broadband;		/*早餐*/
-	private java.lang.Integer cancel;		/*宽带*/
+	private java.lang.String realName;		/*名称*/
+	private java.lang.Integer bedStyle;		/*床型  {1:'大床',2:'双人床',3:'单床',4:'多人床'}*/
+	private java.lang.Integer limitPerson;		/*最多可入住人数 */
+	private java.lang.Integer breakfast;		/*早餐 {1:'双份',2:'多份',3:'不含',4:'单份'}*/
+	private java.lang.Integer broadband;		/*宽带*/
+	private float area;							/*面积*/
+	private java.lang.Integer cancel;		/*取消政策*/
 	private java.lang.Float price;		/*价格*/
 	private java.lang.Integer number;		/*数量*/
 	private java.lang.String picture;		/*图片*/
@@ -21,7 +21,8 @@ public class Roomstyle implements Serializable{
 	//columns END
 
 	private Hotel hotel;
-	
+	private java.lang.Integer hotId;		/*酒店ID*/
+	private String hotname;
 	
 	public Roomstyle(){
 	}
@@ -138,7 +139,22 @@ public class Roomstyle implements Serializable{
 	public void setHotel(Hotel hotel) {
 		this.hotel = hotel;
 	}
-	
-	
+
+	public String getHotname() {
+		return hotname;
+	}
+
+	public void setHotname(String hotname) {
+		this.hotname = hotname;
+	}
+
+	public float getArea() {
+		return area;
+	}
+
+	public void setArea(float area) {
+		this.area = area;
+	}
+
 }
 

@@ -147,3 +147,10 @@ function dateComp(d1,d2)
 	 } 
 	  return flag;
 } 
+sy.str2json=function(s){
+     if (window.JSON) {
+         return JSON.parse(s);
+     } else {
+         return (new Function("return " + utils.trim(s || '')))();
+     }
+}

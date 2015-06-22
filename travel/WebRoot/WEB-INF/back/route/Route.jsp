@@ -60,16 +60,11 @@
         $(function () {
             var columns=[[{
                         title : '用户编号',
-                        field : '"id"',// 绑定属性名字,后台返回的json数据
+                        field : 'id',// 绑定属性名字,后台返回的json数据
                         width : 100,// 必须要给，大于50
                         sortable : true,// 鼠标点击可以升序/降序切换
                         checkbox : true
                     	},{
-						title : '用户编号id',
-						field : 'useid',
-						width : 100,
-						sortable : true
-						},{
 						title : '名字',
 						field : 'realName',
 						width : 100,
@@ -78,7 +73,16 @@
 						title : 'logo',
 						field : 'logo',
 						width : 100,
-						sortable : true
+						sortable : true,
+						formatter: function (value, row, index) {
+                        	
+                      		 var str="";
+                            str+=sy.fs('<img   src="{0}"  style="width:50px;height:50px"/>','<%=contextPath%>/'+row.logo);
+                          
+   
+                            
+                            return str;
+                       }
 						},{
 						title : '出发时间',
 						field : 'startDate',

@@ -56,8 +56,9 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">开放时间</label>
                             <div class="col-md-5">
-                                <s:textfield cssClass="form-control Wdate" name="startTime" id="startTime"
+                                <input type="text" class="form-control Wdate" name="startTime" id="startTime"
                                  onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'HH:mm',maxDate:'#F{$dp.$D(\'endTime\')}'})"
+                                 value="${startTime}"
                                 />
                             </div>
                         </div>
@@ -65,9 +66,9 @@
                         <div class="form-group">
                             <label class="col-md-3 control-label">结束时间</label>
                             <div class="col-md-5">
-                                <s:textfield cssClass="form-control Wdate" name="endTime" id="endTime"
+                                <input type="text" class="form-control Wdate" name="endTime" id="endTime"
                                  onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'HH:mm',minDate:'#F{$dp.$D(\'startTime\')}'})"
-                                 
+                                 value="${endTime}"
                                 />
                             </div>
                         </div>
@@ -190,13 +191,6 @@ $(document).ready(function() {
                 validators: {
                     notEmpty: {
                        /*  message: 'default' */
-                    }
-                }
-            },
-            url: {
-                validators: {
-                    notEmpty: {
-                  /*       message: 'default' */
                     }
                 }
             },

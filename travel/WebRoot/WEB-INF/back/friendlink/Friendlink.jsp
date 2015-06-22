@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/back.jspf" %>
+<%@ include file="/WEB-INF/pub/webuploader.jspf" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -38,129 +39,50 @@
 
 </div>
 
-<!--form-->
-<div id="friendlink_dlg" class="easyui-dialog"
-     closed="true" buttons="#friendlink_dlg-buttons" modal="true" style="width:500px;height:280px;padding:10px 20px">
-    <div class="ftitle">用户信息</div>
-    <form id="friendlink_fm" method="post">
-	<input type="hidden"  name="id" />
-
-        <table>
-			
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>用户编号id
-			</td>	
-			<td>
-			<input name="useid" class="easyui-validatebox textbox" required="true"  missingMessage="用户编号id不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>友情链接URL
-			</td>	
-			<td>
-			<input name="url" class="easyui-validatebox textbox" required="true"  missingMessage="友情链接URL不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>logo
-			</td>	
-			<td>
-			<input name="logo" class="easyui-validatebox textbox" required="true"  missingMessage="logo不能为空">
-			</td>
-		</tr>
-	
-		
-			<tr>	
-				<td>
-					简介
-				</td>	
-				<td>
-					<input name="summary" >
-				</td>
-		</tr>
-	
-		
-			<tr>	
-				<td>
-					友好程度
-				</td>	
-				<td>
-					<input name="grade" >
-				</td>
-		</tr>
-	
-		
-        </table>
-
-    </form>
-</div>
-<div id="friendlink_dlg-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="friendlink_save" style="width:90px">保存</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" id="friendlink_close" style="width:90px">取消</a>
-</div>
 </body>
 
 <script type="text/javascript">
         $(function () {
             var columns=[[{
                         title : '用户编号',
-                        field : '"id"',// 绑定属性名字,后台返回的json数据
+                        field : 'id',// 绑定属性名字,后台返回的json数据
                         width : 100,// 必须要给，大于50
                         sortable : true,// 鼠标点击可以升序/降序切换
                         checkbox : true
-
-                    },
-								{
-title : '用户编号id',
-field : 'useid',
-width : 100,
-sortable : true
-},								{
-title : '友情链接URL',
-field : 'url',
-width : 100,
-sortable : true
-},								{
-title : 'logo',
-field : 'logo',
-width : 100,
-sortable : true
-},								{
-title : '简介',
-field : 'summary',
-width : 100,
-sortable : true
-},								{
-title : '友好程度',
-field : 'grade',
-width : 100,
-sortable : true
-},								{
-                        title : '操作',
-                        field : 'action',
-                        width : 100,
-                        formatter: function (value, row, index) {
-                           /*  var str="";
-                             str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
-                             str+="&nbsp"
-                             str+=sy.fs('<img   src="{0}"  onclick="demo2(\'{1}\')" title="1" />',"../style/images/myIcons/friendlink_delete.png",row.id);
-                             return str;*/
-                        }
-                    }]];
+                    },{
+					title : '合作伙伴',
+					field : 'realName',
+					width : 100,
+					sortable : true
+					},{
+					title : '合作伙伴链接',
+					field : 'url',
+					width : 100,
+					sortable : true
+					},{
+					title : 'logo',
+					field : 'logo',
+					width : 100,
+					sortable : true,
+					formatter: function (value, row, index) {
+                 	   var str="";
+                       str+=sy.fs('<img   src="{0}"  style="width:50px;height:50px"/>','<%=contextPath%>/'+row.logo);
+                       return str;
+                 		 }
+					},{
+					title : '友好程度',
+					field : 'grade',
+					width : 100,
+					sortable : true
+					}]];
                     
             var friendlink=new Curd("<%=contextPath%>","friendlink",columns);
+            friendlink.useCommon();
             friendlink.init();
+            
+            new uploadSimpleImage('frinedlink_logo_img','frinedlink_logo_input','frinedlink_logo_picker');
         });
+        
+    	
     </script>
 </html>

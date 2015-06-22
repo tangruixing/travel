@@ -38,49 +38,7 @@ public class SceneryAction extends BaseAction<Scenery>{
 		return goUI("Scenery.jsp");//后台路径 /WEB-INF/back/scenery/Scenery.jsp
 	}
 	
-	
-	/*普通方式*/
-	/**
-	 * 添加操作跳转
-	 * @return
-	 */
-	public String toSave(){
-		logger.info("toSaves");
-		return goUI("save.jsp");
-	}
-	
-	/**
-	 * 修改操作跳转
-	 * @return
-	 */
-	public String toUpdate(){
-		
-		this.model=sceneryService.getEntity(model.getId());
-		return goUI("save.jsp");
-	}
-	
-	
-	public String getImageUrl(){
-		String virtualPath = this.model.getLogo();
-		if(StringUtils.isNotEmpty(virtualPath)){
-			String realPath = sc.getRealPath(virtualPath);
-			if(new File(realPath).exists()){
-				return sc.getContextPath()+"/"+virtualPath;
-			}
-		}
-		
-		return sc.getContextPath()+"/back/style/images/pixel_0.gif";
-	}
-	
-	
-	/**
-	 * 保存和更新
-	 * @return
-	 */
-	public String doSaveOrUpdateAction(){
-		sceneryService.saveOrUpdateEntity(this.model);
-		return goAction("scenery_toIndex.do");
-	}
+
 	
 
 	/**
@@ -130,6 +88,50 @@ public class SceneryAction extends BaseAction<Scenery>{
 		}
 	}
 	
+	
+	
+	/*普通方式*/
+	/**
+	 * 添加操作跳转
+	 * @return
+	 */
+	public String toSave(){
+		logger.info("toSaves");
+		return goUI("save.jsp");
+	}
+	
+	/**
+	 * 修改操作跳转
+	 * @return
+	 */
+	public String toUpdate(){
+		
+		this.model=sceneryService.getEntity(model.getId());
+		return goUI("save.jsp");
+	}
+	
+	
+	public String getImageUrl(){
+		String virtualPath = this.model.getLogo();
+		if(StringUtils.isNotEmpty(virtualPath)){
+			String realPath = sc.getRealPath(virtualPath);
+			if(new File(realPath).exists()){
+				return sc.getContextPath()+"/"+virtualPath;
+			}
+		}
+		
+		return sc.getContextPath()+"/back/style/images/pixel_0.gif";
+	}
+	
+	
+	/**
+	 * 保存和更新
+	 * @return
+	 */
+	public String doSaveOrUpdateAction(){
+		sceneryService.saveOrUpdateEntity(this.model);
+		return goAction("scenery_toIndex.do");
+	}
 	
 
 	

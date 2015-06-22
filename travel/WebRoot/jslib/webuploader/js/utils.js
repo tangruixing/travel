@@ -11,7 +11,7 @@
  * @unfile
  */
 
-var utils = UE.utils = {
+var utils = {
 
     /**
      * 用给定的迭代器遍历对象
@@ -1087,8 +1087,8 @@ var utils = UE.utils = {
  * @param { * } object 需要判断的对象
  * @return { Boolean } 给定的对象是否是普通对象
  */
-utils.each(['String', 'Function', 'Array', 'Number', 'RegExp', 'Object', 'Date'], function (v) {
+/*utils.each(['String', 'Function', 'Array', 'Number', 'RegExp', 'Object', 'Date'], function (v) {
     UE.utils['is' + v] = function (obj) {
         return Object.prototype.toString.apply(obj) == '[object ' + v + ']';
     }
-});
+});*/

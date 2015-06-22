@@ -11,7 +11,9 @@
 	String contextPath=request.getContextPath();
 %> 
 
-
+<link rel="stylesheet"
+	href="<%=contextPath%>/jslib/jNotify/css/jNotify.jquery.css"
+	type="text/css" />
 <%-- <%
 Map<String, Cookie> cookieMap = new HashMap<String, Cookie>();
 Cookie[] cookies = request.getCookies();

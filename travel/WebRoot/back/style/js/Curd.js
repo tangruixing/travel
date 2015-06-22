@@ -18,6 +18,7 @@ function Curd(baseUrl,clz,columns){
     this.easyui=true;//是否是 easyui 的添加/修改
     this.urlParams=[];
     this.enableDnd=false;
+    this.urlParamsStr=null;
 }
 
 Curd.prototype={
@@ -34,16 +35,16 @@ Curd.prototype={
 	},
     init:function(url,columns,sortName){
         var _this=this;
-        var listUrl=_this.baseUrl+"_doList.do";
+        var extParams=null;
         if(_this.urlParams.length>0){
-        	
-        	listUrl+="?"+_this.urlParams.join('&');
-        	console.info(listUrl);
+        	_this.urlParamsStr=_this.urlParams.join('&');
         }
         var defaultUrl={
+        		
             save:_this.baseUrl+"_toSave.do",
             update:_this.baseUrl+"_toUpdate.do",
-            list:listUrl,
+            list:_this.baseUrl+"_doList.do",
+            
             saveOrUpdate:_this.baseUrl+"_doSaveOrUpdate.do",
             remove:_this.baseUrl+"_doDeletes.do"
         };
@@ -175,6 +176,9 @@ Curd.prototype={
 			_this.dlg.show().dialog('open').dialog('setTitle',"添加");
     	 }else{
     		 console.info(this.url.save);
+    		 if(this.urlParamsStr){
+    			 this.url.save+="?"+this.urlParamsStr;
+    		 }
     		 location.href=this.url.save;
     	 }
         	
@@ -201,7 +205,10 @@ Curd.prototype={
                 	 console.info(row);
                 	 this.fm.form('load',row);
 	           	 }else{
-	           		 location.href=this.url.update+"?id="+row.id;
+	           		 if(this.urlParamsStr){
+	        			 this.url.update+="?id="+row.id+"&"+this.urlParamsStr;
+	        		 }
+	           		 location.href=this.url.update;
 	           	 }
                
             }
