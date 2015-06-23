@@ -1,0 +1,44 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+"http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<!-- Generated 2015-6-14 14:39:45 by Hibernate Tools 3.4.0.CR1 -->
+<hibernate-mapping>
+    <class name="cn.travel.model.Route" table="ROUTE">
+        <id name="id" type="java.lang.Integer">
+            <column name="ID" />
+            <generator class="identity" />
+        </id>
+        
+        <many-to-one name="user" class="cn.travel.model.User">
+        	<column name="USEID"></column>
+        </many-to-one>
+       
+        <property name="realName" type="java.lang.String">
+            <column name="REALNAME" />
+        </property>
+        <property name="logo" type="java.lang.String">
+            <column name="LOGO" />
+        </property>
+        <property name="startDate" type="java.util.Date">
+            <column name="STARTDATE" />
+        </property>
+        <property name="endDate" type="java.util.Date">
+            <column name="ENDDATE" />
+        </property>
+        <property name="routeType" type="java.lang.Integer">
+            <column name="ROUTETYPE" />
+        </property>
+        <property name="money" type="java.lang.Float">
+            <column name="MONEY" />
+        </property>
+        <property name="description" type="java.lang.String">
+            <column name="DESCRIPTION" />
+        </property>
+        <property name="numPeople" type="java.lang.Integer">
+            <column name="NUMPEOPLE" />
+        </property>
+        <property name="suggest" type="string">
+            <column name="SUGGEST" />
+        </property>
+    </class>
+</hibernate-mapping>
