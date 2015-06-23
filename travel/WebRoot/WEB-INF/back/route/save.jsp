@@ -22,6 +22,7 @@
                     <form id="routeForm" method="post" class="form-horizontal" action="<%=contextPath%>/route_doSaveOrUpdateAction.do">
                     	<s:hidden name="id" />
 
+
                     	<s:hidden name="routeType" />
 
                         <div class="form-group">
@@ -81,7 +82,6 @@
                             <label class="col-lg-3 control-label">人均消费</label>
                             <div class="col-lg-5">
                                 <s:textfield cssClass="form-control" name="money" />
-
                         
 						</s:if>
 						
@@ -90,6 +90,7 @@
                             <label class="col-lg-3 control-label">行程建议</label>
                             <div class="col-lg-9">
                                	<s:textarea id="router_suggest" name="suggest" />
+
                             </div>
                         </div>
 						</s:else>
@@ -109,7 +110,7 @@
                         <div class="form-group">
                             <div class="col-lg-9 col-lg-offset-3">
 
-                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">提交</button>
+
 
                                 <button type="submit" class="btn btn-primary" id="checkSubmit">提交</button>
 

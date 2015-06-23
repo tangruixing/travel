@@ -22,10 +22,12 @@
                     	<s:hidden name="id"/><!-- 房型/景点 id -->
                     	<s:hidden name="hotId" />
                     	<s:hidden name="hotname" />
+
                     	
                         <div class="form-group">
                             <label class="col-lg-3 control-label">名称</label>
                             <div class="col-lg-5">
+
                                 <s:textfield cssClass="form-control" name="realName" placeholder="请输入名称" />
                             </div>
                         </div> 

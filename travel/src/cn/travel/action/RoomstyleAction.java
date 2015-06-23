@@ -26,7 +26,9 @@ public class RoomstyleAction extends BaseAction<Roomstyle>{
 	private RoomstyleService roomstyleService;
 	
 
+
 	private String msg;
+
 
 	/**
 	 * 
@@ -86,6 +88,7 @@ public class RoomstyleAction extends BaseAction<Roomstyle>{
 		}
 	}
 	
+
 	
 	
 	

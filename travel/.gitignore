@@ -9,3 +9,4 @@
 /resources/jdbc.properties
 /*.log
 /.gitignore
+*.tmp

@@ -1,43 +1,43 @@
-jnotify ¡ª jqueryµ¯³ö²ãÌáÊ¾²å¼þÏÂÔØºÍÊ¹ÓÃ·½·¨ ÎÒ°®Ä£°åÍÆ¼ö
+jnotify ï¿½ï¿½ jqueryï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Øºï¿½Ê¹ï¿½Ã·ï¿½ï¿½ï¿½ ï¿½Ò°ï¿½Ä£ï¿½ï¿½ï¿½Æ¼ï¿½
 
-Ê¹ÓÃ·½·¨£º
-1¡¢ÔÚÍ·²¿ÒýÈëÏÂÃæµÄ´úÂë£º
+Ê¹ï¿½Ã·ï¿½ï¿½ï¿½ï¿½ï¿½
+1ï¿½ï¿½ï¿½ï¿½Í·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä´ï¿½ï¿½ë£º
 <link rel="stylesheet" href="css/jNotify.jquery.css" type="text/css" />
 <script type="text/javascript" src="http://www.5imoban.net/download/jquery/jquery-1.8.3.min.js"></script>
 <script type="text/javascript" src="js/jNotify.jquery.js"></script>
 
-×¢ÊÍ£ºjNotify.jquery.cssÎªjNotifyÌáÊ¾¿òµÄÑùÊ½£¬¿ÉÒÔÔÚÕâÀïÃæÐÞ¸Ä³ÉÄãÏ²»¶µÄÑùÊ½¡£
-      jNotify.jquery.jsÎªjNotifyÌáÊ¾¿ò´úÂë¡£
+×¢ï¿½Í£ï¿½jNotify.jquery.cssÎªjNotifyï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Þ¸Ä³ï¿½ï¿½ï¿½Ï²ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ï¿½ï¿½
+      jNotify.jquery.jsÎªjNotifyï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ë¡£
 
-2¡¢µ÷ÓÃº¯Êý¡£ÔÚbodyÖÐ¼ÓÈë´¥·¢µÄÌõ¼þ£¬±ÈÈçÒ»¸öIDÎªjnotify_successµÄa±»µã»÷ºó´¥·¢jNotifyÌáÊ¾¿ò£¬µ÷ÓÃ´úÂëÐ§¹û¾ÍÈçÏÂ£º
+2ï¿½ï¿½ï¿½ï¿½ï¿½Ãºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½bodyï¿½Ð¼ï¿½ï¿½ë´¥ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½ï¿½IDÎªjnotify_successï¿½ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó´¥·ï¿½jNotifyï¿½ï¿½Ê¾ï¿½ò£¬µï¿½ï¿½Ã´ï¿½ï¿½ï¿½Ð§ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â£ï¿½
 <script type="text/javascript">
 	$(document).ready(function(){
-		//ÕýÈ·ÌáÊ¾
-		$("a#jnotify_success").click(function(e){  //¶¨ÒåÁËIDÎªjnotify_successµÄa±»µã»÷ºó´¥·¢ÏÂÃæµÄº¯Êý
+		//ï¿½ï¿½È·ï¿½ï¿½Ê¾
+		$("a#jnotify_success").click(function(e){  //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½IDÎªjnotify_successï¿½ï¿½aï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ó´¥·ï¿½ï¿½ï¿½ï¿½ï¿½Äºï¿½ï¿½ï¿½
 			e.preventDefault();
-			jSuccess(      //jSuccessÎªÕýÈ·ÌáÊ¾¿ò£¬jErrorÎª´íÎóÌáÊ¾£¬jNotifyÎªÒ»°ãÌáÊ¾¡£
-				//ÏÂÃæµÄÄÚÈÝÎªÌáÊ¾µÄÄÚÈÝ¡£
-				'ÊäÈëÕýÈ·£¬»¶Ó­µÇÂ½ !!µã»÷¶Ô»°¿ò¹Ø±Õ±¾ÌáÊ¾¿ò¡£<br />ÄúÒ²¿ÉÒÔÓ¦ÓÃÏÂÃæµÄÑùÊ½ <strong>¼Ó´Ö</strong>, <i>Ð±Ìå</i>, <u>ÏÂ»®Ïß</u>',
+			jSuccess(      //jSuccessÎªï¿½ï¿½È·ï¿½ï¿½Ê¾ï¿½ï¿½jErrorÎªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½jNotifyÎªÒ»ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½
+				//ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½Ý¡ï¿½
+				'ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½È·ï¿½ï¿½ï¿½ï¿½Ó­ï¿½ï¿½Â½ !!ï¿½ï¿½ï¿½ï¿½Ô»ï¿½ï¿½ï¿½Ø±Õ±ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½<br />ï¿½ï¿½Ò²ï¿½ï¿½ï¿½ï¿½Ó¦ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê½ <strong>ï¿½Ó´ï¿½</strong>, <i>Ð±ï¿½ï¿½</i>, <u>ï¿½Â»ï¿½ï¿½ï¿½</u>',
 				{
-					//ÏÂÃæÎªÌáÊ¾¿òµÄ¾ßÌå²ÎÊýÉèÖÃ¡£
-					autoHide : false,   //jnotify×Ô¶¯Òþ²Ø true false
-					clickOverlay : false,  //jnotifyµ¯³ö²ãµ¥»÷ÕÚÕÖ²ã²Å¹Ø±ÕÌáÊ¾Ìõ£¨ÕÚÕÖ²ã¼´°ëÍ¸Ã÷ºÚÉ«±³¾°£©
-					MinWidth : 250,   //jnotifyµ¯³ö²ã¿í¶È
-					TimeShown : 3000,   //ÏÔÊ¾Ê±³¤¡£Ö»ÓÐµ±autoHide£¨×Ô¶¯Òþ²Ø£©²ÎÊýÎªtrueÊ±Æð×÷ÓÃ¡£
-					ShowTimeEffect : 200,   //jnotifyÍêÈ«ÏÔÊ¾³öÀ´»¨·ÑÊ±¼ä¡£
-					HideTimeEffect : 200,   //ÓëÉÏÃæ²ÎÊýÏà·´£¬jnotify´ÓÒ³ÃæÉÏÏûÊ§ËùÐèÊ±¼ä
-					LongTrip : 20,          //µ±jnotifyµ¯³ö²ãÌáÊ¾ÌõÏÔÊ¾ºÍÒþ²ØÊ±µÄÎ»ÒÆ
-					HorizontalPosition : 'center',  //jnotifyµ¯³ö²ãÌáÊ¾ÌõÎ»ÓÚË®Æ½·½ÏòÉÏµÄÎ»ÖÃ£¬²ÎÊýÓÐleft,center,right
-					VerticalPosition : 'center',    //jnotifyµ¯³ö²ãÌáÊ¾ÌõÎ»ÓÚ´¹Ö±·½ÏòÉÏµÄÎ»ÖÃ£¬²ÎÊýÓÐtop,center,bottom
-					ShowOverlay : false,   //ÊÇ·ñÏÔÊ¾ÕÚÕÖ²ã£¨ÕÚÕÖ²ã¼´°ëÍ¸Ã÷ºÚÉ«±³¾°£©
-					ColorOverlay : '#000',   //ÕÚÕÖ²ãÑÕÉ«
-					OpacityOverlay : 0.3,   //ÕÚÕÖ²ãÍ¸Ã÷¶È£¬×î´óÊÇ1£¬×îÐ¡ÊÇ0.1
-					onClosed : function(){},   //¹Ø±Õjnotifyµ¯³ö²ãÌáÊ¾Ìõµ÷ÓÃµÄº¯Êý
-					onCompleted : function(){}   //´ò¿ªjnotifyµ¯³ö²ãÌáÊ¾Ìõµ÷ÓÃµÄº¯Êý
+					//ï¿½ï¿½ï¿½ï¿½Îªï¿½ï¿½Ê¾ï¿½ï¿½Ä¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
+					autoHide : false,   //jnotifyï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ï¿½ true false
+					clickOverlay : false,  //jnotifyï¿½ï¿½ï¿½ï¿½ï¿½ãµ¥ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ï¿½Å¹Ø±ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ö²ã¼´ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					MinWidth : 250,   //jnotifyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					TimeShown : 3000,   //ï¿½ï¿½Ê¾Ê±ï¿½ï¿½ï¿½ï¿½Ö»ï¿½Ðµï¿½autoHideï¿½ï¿½ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½Ø£ï¿½ï¿½ï¿½ï¿½ï¿½ÎªtrueÊ±ï¿½ï¿½ï¿½ï¿½ï¿½Ã¡ï¿½
+					ShowTimeEffect : 200,   //jnotifyï¿½ï¿½È«ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ä¡£
+					HideTimeEffect : 200,   //ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½à·´ï¿½ï¿½jnotifyï¿½ï¿½Ò³ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê§ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½
+					LongTrip : 20,          //ï¿½ï¿½jnotifyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê±ï¿½ï¿½Î»ï¿½ï¿½
+					HorizontalPosition : 'center',  //jnotifyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Î»ï¿½ï¿½Ë®Æ½ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½left,center,right
+					VerticalPosition : 'center',    //jnotifyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½Î»ï¿½Ú´ï¿½Ö±ï¿½ï¿½ï¿½ï¿½ï¿½Ïµï¿½Î»ï¿½Ã£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½top,center,bottom
+					ShowOverlay : false,   //ï¿½Ç·ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½Ö²ã£¨ï¿½ï¿½ï¿½Ö²ã¼´ï¿½ï¿½Í¸ï¿½ï¿½ï¿½ï¿½É«ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
+					ColorOverlay : '#000',   //ï¿½ï¿½ï¿½Ö²ï¿½ï¿½ï¿½É«
+					OpacityOverlay : 0.3,   //ï¿½ï¿½ï¿½Ö²ï¿½Í¸ï¿½ï¿½ï¿½È£ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½1ï¿½ï¿½ï¿½ï¿½Ð¡ï¿½ï¿½0.1
+					onClosed : function(){},   //ï¿½Ø±ï¿½jnotifyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄºï¿½ï¿½ï¿½
+					onCompleted : function(){}   //ï¿½ï¿½jnotifyï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ê¾ï¿½ï¿½ï¿½ï¿½ï¿½ÃµÄºï¿½ï¿½ï¿½
 				}
 			);
 		});
 	});
 </script>
 
-¸ü¶àÌØÐ§»¶Ó­·ÃÎÊ£ºhttp://www.5imoban.net/texiao/
+ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ð§ï¿½ï¿½Ó­ï¿½ï¿½ï¿½Ê£ï¿½http://www.5imoban.net/texiao/
