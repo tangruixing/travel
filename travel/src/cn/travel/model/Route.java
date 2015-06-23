@@ -12,14 +12,21 @@ public class Route implements Serializable{
 	private java.lang.Integer useid;		/*用户编号id*/
 	private java.lang.String realName;		/*名字*/
 	private java.lang.String logo;		/*logo*/
-	private java.util.Date startDate;		/*出发时间*/
-	private java.util.Date endDate;		/*结束时间*/
-	private int routeType=Constant.ROUTER_PAY;		/*类型*/
-	private float money;		/*价钱*/
+	
+	
 	private java.lang.String description;		/*描述*/
-	private int numPeople;		/*报名人数*/
-	private java.lang.Boolean suggest;		/*推荐*/
-	private java.lang.String content;		/*行程建议*/
+	private float money;		/*人均消费 */
+	private int routeType=Constant.ROUTER_PAY;		/*类型 {0:普通游客,1:自由行用户}*/
+	
+	
+	private java.util.Date startDate;		/*出发时间 0*/
+	private java.util.Date endDate;		/*结束时间 0*/
+	
+	
+	
+	private int numPeople;		/*报名人数 0*/
+	
+	private java.lang.String suggest;		/*行程建议 1 */
 	//columns END
 
 	private User user;
@@ -113,20 +120,15 @@ public class Route implements Serializable{
 		this.numPeople = numPeople;
 	}
 
-	public java.lang.Boolean getSuggest() {
+
+
+
+	public java.lang.String getSuggest() {
 		return suggest;
 	}
 
-	public void setSuggest(java.lang.Boolean suggest) {
+	public void setSuggest(java.lang.String suggest) {
 		this.suggest = suggest;
-	}
-
-	public java.lang.String getContent() {
-		return content;
-	}
-
-	public void setContent(java.lang.String content) {
-		this.content = content;
 	}
 
 	public User getUser() {

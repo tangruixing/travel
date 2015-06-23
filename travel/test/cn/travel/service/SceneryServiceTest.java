@@ -8,6 +8,7 @@ import org.junit.Test;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.travel.model.Roomstyle;
 import cn.travel.model.Routeplan;
 import cn.travel.model.Scenery;
 
@@ -19,6 +20,9 @@ public class SceneryServiceTest extends BaseSpringTest{
 	private SceneryService sceneryService;
 	@Resource(name="routeplanService")
 	private RouteplanService routeplanService;
+	
+	@Resource(name="roomstyleService")
+	private RoomstyleService roomstyleService;
 	
 	@Test
 	public void  getScenery(){
@@ -39,5 +43,12 @@ public class SceneryServiceTest extends BaseSpringTest{
 		r.setRouId(1);
 		Grid grid = this.routeplanService.getRouteplanGrid(p, r);
 		logger.info(writeJsonByFilter(grid, null, null));
+	}
+	
+	@Test
+	public void getRoomStyleById(){
+		Roomstyle rs = roomstyleService.getEntity(1);
+		logger.info(rs.getHotel().getId());
+		logger.info(writeJsonByFilter(rs, null, null));
 	}
 }

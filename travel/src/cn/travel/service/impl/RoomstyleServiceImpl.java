@@ -34,6 +34,7 @@ public class RoomstyleServiceImpl extends BaseServiceImpl<Roomstyle> implements 
 	public Grid getRoomstyleGrid(Page p, Roomstyle model) {
 		
 		HqlHelper hql=new HqlHelper(Roomstyle.class, "u")//
+					  .addWhereCondition("u.hotel.id=?", model.getHotId())//
 					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
 		
 		return this.getPageGrid(p.getPage(), p.getRows(), hql);

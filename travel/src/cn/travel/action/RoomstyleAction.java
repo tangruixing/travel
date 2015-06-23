@@ -1,5 +1,7 @@
 package cn.travel.action;
 
+import java.io.UnsupportedEncodingException;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -23,6 +25,8 @@ public class RoomstyleAction extends BaseAction<Roomstyle>{
 	@Resource(name="roomstyleService")
 	private RoomstyleService roomstyleService;
 	
+
+	private String msg;
 
 	/**
 	 * 
@@ -82,6 +86,9 @@ public class RoomstyleAction extends BaseAction<Roomstyle>{
 		}
 	}
 	
+	
+	
+	
 	/*普通方式*/
 	/**
 	 * 添加操作跳转
@@ -96,18 +103,30 @@ public class RoomstyleAction extends BaseAction<Roomstyle>{
 	 * @return
 	 */
 	public String toUpdate(){
+		Roomstyle r = roomstyleService.getEntity(model.getId());
+		r.setHotId(model.getHotId());
+		r.setHotname(model.getHotname());
 		
-		this.model=roomstyleService.getEntity(model.getId());
+		this.model=r;//更新 model
 		return goUI("save.jsp");
 	}
 	/**
 	 * 保存和更新
 	 * @return
+	 * @throws UnsupportedEncodingException 
 	 */
-	public String doSaveOrUpdateAction(){
+	public String doSaveOrUpdateAction() throws UnsupportedEncodingException{
 		
 		roomstyleService.saveOrUpdateEntity(this.model);
-		return goAction("roomstyle_toIndex.do");
+		return goAction("roomstyle_toIndex.do?hotId=${hotId}&hotname=${hotname}");
+	}
+
+	public String getMsg() {
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
 	}
 
 	

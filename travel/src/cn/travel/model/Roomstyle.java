@@ -43,6 +43,10 @@ public class Roomstyle implements Serializable{
 		}
 	
 		public void setHotId(java.lang.Integer value) {
+			if(value!=null){
+				this.hotel=new Hotel();
+				this.getHotel().setId(value);			
+			}
 			this.hotId = value;
 		}
 		

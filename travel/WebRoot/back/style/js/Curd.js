@@ -36,14 +36,24 @@ Curd.prototype={
     init:function(url,columns,sortName){
         var _this=this;
         var extParams=null;
+
+        var listUrl=_this.baseUrl+"_doList.do";
+
         if(_this.urlParams.length>0){
         	_this.urlParamsStr=_this.urlParams.join('&');
+
+        	listUrl+="?"+_this.urlParamsStr;
+
         }
         var defaultUrl={
         		
             save:_this.baseUrl+"_toSave.do",
             update:_this.baseUrl+"_toUpdate.do",
+
             list:_this.baseUrl+"_doList.do",
+
+            list:listUrl,
+
             
             saveOrUpdate:_this.baseUrl+"_doSaveOrUpdate.do",
             remove:_this.baseUrl+"_doDeletes.do"
@@ -177,6 +187,9 @@ Curd.prototype={
     	 }else{
     		 console.info(this.url.save);
     		 if(this.urlParamsStr){
+
+    			 console.info("toSave携带参数:"+this.urlParamsStr);
+
     			 this.url.save+="?"+this.urlParamsStr;
     		 }
     		 location.href=this.url.save;
@@ -206,6 +219,9 @@ Curd.prototype={
                 	 this.fm.form('load',row);
 	           	 }else{
 	           		 if(this.urlParamsStr){
+
+	           			 console.info("toUpdate携带参数:"+this.urlParamsStr);
+
 	        			 this.url.update+="?id="+row.id+"&"+this.urlParamsStr;
 	        		 }
 	           		 location.href=this.url.update;

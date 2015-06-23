@@ -96,7 +96,11 @@
                         	 var str="";
                              /*  str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
                               str+="&nbsp" */
+
                               str+=sy.fs('<a href="{0}?hotId={1}&hotname={2}">添加房型</a>',"<%=contextPath%>/roomstyle_toIndex.do",row.id,row.realName);
+
+                              str+=sy.fs('<a class="easyui-linkbutton" href="{0}?hotId={1}&hotname={2}">房型</a>',"<%=contextPath%>/roomstyle_toIndex.do",row.id,row.realName);
+
                               str+="&nbsp"
                               str+=sy.fs('<input  type="button" onclick="showMap(\'{0}\')" class="easyui-linkbutton" value="地图" />',row.id);
                           

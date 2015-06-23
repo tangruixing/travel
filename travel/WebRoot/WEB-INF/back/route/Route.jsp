@@ -94,7 +94,7 @@
 						width : 100,
 						sortable : true
 						},{
-						title : '类型',
+						title : '类型(测试看)',
 						field : 'routeType',
 						width : 100,
 						sortable : true
@@ -104,18 +104,8 @@
 						width : 100,
 						sortable : true
 						},{
-						title : '报名人数',
+						title : '总人数',
 						field : 'numPeople',
-						width : 100,
-						sortable : true
-						},{
-						title : '推荐',
-						field : 'suggest',
-						width : 100,
-						sortable : true
-						},{
-						title : '行程建议',
-						field : 'content',
 						width : 100,
 						sortable : true
 						},{
@@ -140,6 +130,7 @@
                     
             var route=new Curd("<%=contextPath%>","route",columns);
             route.useCommon();
+            route.setUrlParam("routeType","${routeType}");
             route.init();
             
         	

@@ -21,6 +21,9 @@
 
                     <form id="routeForm" method="post" class="form-horizontal" action="<%=contextPath%>/route_doSaveOrUpdateAction.do">
                     	<s:hidden name="id" />
+
+                    	<s:hidden name="routeType" />
+
                         <div class="form-group">
                             <label class="col-lg-3 control-label">名称</label>
                             <div class="col-lg-5">
@@ -33,13 +36,20 @@
                             <label class="col-lg-3 control-label">LOGO</label>
                             <div class="col-lg-5">
                             	<!-- 单张图片上传 (注意：id) -->
-                            	<img id="router_logo_img" style="width: 200px; height: 100px;float:left;" src=''/>
+                            	<img id="router_logo_img" style="width: 200px; height: 100px;float:left;" src='<s:property value="getImageUrl()"/>'/>
 								<div style="float:left;margin:56px 0 0 20px;" id="router_logo_picker">选择图片</div> 
-                                <input type="hidden" class="form-control" name="logo" id="router_logo_input"/><!-- 单张图片上传结束 -->
+                                <s:hidden class="form-control" name="logo" id="router_logo_input"/><!-- 单张图片上传结束 -->
                             </div>
                         </div>
-
-                        <div class="form-group">
+					
+						<div class="form-group">
+                            <label class="col-lg-3 control-label">人均消费</label>
+                            <div class="col-lg-5">
+                                <s:textfield cssClass="form-control" name="money" />
+                            </div>
+                        </div>
+						<s:if test="routeType==0"><!-- 针对普通用户 -->
+							<div class="form-group">
                             <label class="col-lg-3 control-label">出发时间</label>
                             <div class="col-lg-5">
                                 <input type="text" class="form-control Wdate" name="startDate" id="startDate"
@@ -58,20 +68,35 @@
                                 />
                             </div>
                         </div>
-
-                        <div class="form-group">
+                        
+                       <div class="form-group">
                             <label class="col-lg-3 control-label">报名人数</label>
                             <div class="col-lg-5">
                                 <s:textfield cssClass="form-control" name="numPeople" />
                             </div>
                         </div>
 
+
                         <div class="form-group">
                             <label class="col-lg-3 control-label">人均消费</label>
                             <div class="col-lg-5">
                                 <s:textfield cssClass="form-control" name="money" />
+
+                        
+						</s:if>
+						
+						<s:else><!-- 针对自由行用户 -->
+							<div class="form-group">
+                            <label class="col-lg-3 control-label">行程建议</label>
+                            <div class="col-lg-9">
+                               	<s:textarea id="router_suggest" name="suggest" />
                             </div>
                         </div>
+						</s:else>
+                        
+  						
+                     
+                      
 
                         <div class="form-group">
                             <label class="col-lg-3 control-label">路线详情</label>
@@ -79,10 +104,15 @@
                                	<s:textarea id="router_content" name="description" />
                             </div>
                         </div>
+                        
 
                         <div class="form-group">
                             <div class="col-lg-9 col-lg-offset-3">
+
                                 <button type="submit" class="btn btn-primary" name="signup" value="Sign up">提交</button>
+
+                                <button type="submit" class="btn btn-primary" id="checkSubmit">提交</button>
+
                                <!--  <button type="button" class="btn btn-info" id="validateBtn">错误提示</button> -->
                                 <button type="button" class="btn btn-info" id="resetBtn">重置</button>
                             </div>
@@ -180,7 +210,32 @@ $(document).ready(function() {
     
 
 	new uploadSimpleImage('router_logo_img','router_logo_input','router_logo_picker');
-	UE.getEditor('router_content');
+	var content=UE.getEditor('router_content');
+	var suggest=UE.getEditor('router_suggest');
+	
+	$("#checkSubmit").on('click',function(){
+		
+		var logoUrl=$("#router_logo_input").val();
+		if(logoUrl.length<=0){
+			jNotify("请上传 LOGO !!");
+			return false;
+		}
+		
+		
+		
+		var routeType=${routeType};
+		console.info(routeType);
+		
+	
+		if(routeType=='1'){
+			var str=suggest.getContent();
+			console.info(str);
+			if(str.length<=0){
+				jNotify("行程建议不能为空");
+				return false;
+			}
+		}
+	});
 });
 </script>
 </body>

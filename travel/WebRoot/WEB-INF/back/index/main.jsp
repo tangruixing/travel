@@ -104,8 +104,8 @@
 								]
 						},{"menuid":"8","icon":"icon-sys","menuname":"旅游管理",
 							"menus":[
-									{"menuid":"21","menuname":"旅游线路","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do"},
-									{"menuid":"22","menuname":"线路规划","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do"},
+									{"menuid":"21","menuname":"旅游线路","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do?routeType=0"},
+									{"menuid":"22","menuname":"自由行","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do?routeType=1"},
 									{"menuid":"23","menuname":"旅游新闻","icon":"icon-nav","url":"<%=contextPath%>/news_toIndex.do"},
 									{"menuid":"24","menuname":"旅游游记","icon":"icon-nav","url":"<%=contextPath%>/travels_toIndex.do"}
 								]

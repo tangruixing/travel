@@ -1,7 +1,10 @@
 package cn.travel.action;
 
+import java.io.File;
+
 import javax.annotation.Resource;
 
+import org.apache.commons.lang3.StringUtils;
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
@@ -83,6 +86,18 @@ public class RouteAction extends BaseAction<Route>{
 		}
 	}
 	
+	public String getImageUrl(){
+		String virtualPath = this.model.getLogo();
+		if(StringUtils.isNotEmpty(virtualPath)){
+			String realPath = sc.getRealPath(virtualPath);
+			if(new File(realPath).exists()){
+				return sc.getContextPath()+"/"+virtualPath;
+			}
+		}
+		
+		return sc.getContextPath()+"/back/style/images/pixel_0.gif";
+	}
+	
 	
 	/*普通方式*/
 	/**
@@ -109,7 +124,7 @@ public class RouteAction extends BaseAction<Route>{
 	public String doSaveOrUpdateAction(){
 		
 		routeService.saveOrUpdateEntity(this.model);
-		return goAction("route_toIndex.do");
+		return goAction("route_toIndex.do?routeType=${routeType}");
 	}
 	
 	

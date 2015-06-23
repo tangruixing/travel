@@ -37,11 +37,8 @@
         <property name="numPeople" type="java.lang.Integer">
             <column name="NUMPEOPLE" />
         </property>
-        <property name="suggest" type="java.lang.Boolean">
+        <property name="suggest" type="string">
             <column name="SUGGEST" />
-        </property>
-        <property name="content" type="java.lang.String">
-            <column name="CONTENT" />
         </property>
     </class>
 </hibernate-mapping>
