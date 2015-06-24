@@ -124,7 +124,6 @@ public class Route implements Serializable{
 
 
 
-
 	public java.lang.String getSuggest() {
 		return suggest;
 	}
