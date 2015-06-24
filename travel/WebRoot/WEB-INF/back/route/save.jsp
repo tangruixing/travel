@@ -210,7 +210,6 @@ $(document).ready(function() {
     
 
 	new uploadSimpleImage('router_logo_img','router_logo_input','router_logo_picker');
-<<<<<<< Upstream, based on develop
 	var content=UE.getEditor('router_content');
 	var suggest=UE.getEditor('router_suggest');
 	
@@ -237,9 +236,7 @@ $(document).ready(function() {
 			}
 		}
 	});
-=======
-	UE.getEditor('router_content');
->>>>>>> 27c5cae 
+
 });
 </script>
 </body>

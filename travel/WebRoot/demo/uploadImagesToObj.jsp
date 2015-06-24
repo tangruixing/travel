@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/inc.jspf" %>
+<%@ include file="/WEB-INF/pub/bootstrap.jspf" %>
 <%@ include file="/WEB-INF/pub/webuploader.jspf" %>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html lang="en">
@@ -10,6 +11,8 @@
 </head>
 <body>
 
+
+  指定id:<input type="text" id="toObj"><br/>
 
    <div id="wrapper">
 							<div id="container">
@@ -44,7 +47,8 @@
 
         $(function(){
 
-        	var oldData = new uploadManyImages('wrapper',$('#filelist2'),5);//后台可编辑回显示
+        	var oldData = new uploadManyImages('wrapper',$('#filelist2'),100);//后台可编辑回显示
+        	oldData.isToObject("toObj");
         	oldData.initEcho('filelist2','${scenic.images}');//把图片回显
         	//$('#wrapper2').hide();
         	

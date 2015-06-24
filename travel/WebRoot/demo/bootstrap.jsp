@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8"%>
-         
-<%@ include file="/WEB-INF/pub/baidu-bootstrap.jspf"%>        
+<%@ include file="/WEB-INF/pub/back.jspf" %>        
+<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>        
 <!DOCTYPE html>
 <html>
 <head>

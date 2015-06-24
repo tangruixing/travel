@@ -1,0 +1,33 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+
+
+ <c:if test="${pageBean.currentPage!=1 && pageBean.currentPage > 1}">
+		<ul class="pagination">
+			<li><a onclick="gotoPageByType(${pageBean.currentPage-1})">上一页</a></li>
+		</ul>
+</c:if>
+<c:if test="${pageBean.currentPage!=pageBean.pageCount&&pageBean.pageCount!=0}">
+		<ul class="pagination">
+			<li><a onclick="gotoPageByType(${pageBean.currentPage+1})">下一页</a></li>
+		</ul>
+</c:if> 
+
+<div class="clear"></div>
+<script type="text/javascript">
+
+function gotoPageByType(pageNum){
+	 
+	$("#list").empty(); 	
+	 $.ajax( {  			 	
+	        url : sy.contextPath + encodeURI("${pageBean.urlPrix}") + "pageNum="+pageNum, 
+	        type: "POST",
+	        cache : false,    
+	        success : function(html) {  
+	        //把结果页面追加到id为lbox的DIV   
+	        $("#list").append(html); 
+	    	}  
+	});		 
+}
+
+
+</script>

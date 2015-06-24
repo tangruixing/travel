@@ -116,7 +116,8 @@
 								]
 						},{"menuid":"28","icon":"icon-sys","menuname":"旅游景点",
 							"menus":[{"menuid":"41","menuname":"景区列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do"},
-									{"menuid":"42","menuname":"景点列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do"}
+									{"menuid":"42","menuname":"景点列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do"},
+									{"menuid":"42","menuname":"景点图片","icon":"icon-nav","url":"<%=contextPath%>/images_toIndex.do"}
 								]
 						},{"menuid":"39","icon":"icon-sys","menuname":"其他 ",
 							"menus":[
@@ -124,6 +125,7 @@
 							         {"menuid":"51","menuname":"单张图片演示","icon":"icon-nav","url":"<%=contextPath%>/demo/uploadImage.jsp"},
 							         {"menuid":"51","menuname":"单张图片演示2","icon":"icon-nav","url":"<%=contextPath%>/demo/simpleImage.jsp"},
 							         {"menuid":"51","menuname":"多张图片演示","icon":"icon-nav","url":"<%=contextPath%>/demo/uploadImages.jsp"},
+							         {"menuid":"51","menuname":"多张图片带参数","icon":"icon-nav","url":"<%=contextPath%>/demo/uploadImagesToObj.jsp"},
 							         {"menuid":"51","menuname":"bootstrap 验证","icon":"icon-nav","url":"<%=contextPath%>/demo/bootstrap.jsp"},
 							         {"menuid":"51","menuname":"bootstrap 验证2","icon":"icon-nav","url":"<%=contextPath%>/demo/bootstrap2.jsp"},
 							         {"menuid":"51","menuname":"ueditor演示","icon":"icon-nav","url":"<%=contextPath%>/demo/ueditor.jsp"}

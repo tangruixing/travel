@@ -18,6 +18,7 @@ import org.apache.struts2.util.ServletContextAware;
 
 import cn.model.Json;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.model.User;
 import cn.util.ConfigUtil;
 import cn.util.FastjsonFilter;
@@ -69,6 +70,7 @@ public abstract class BaseAction<T> extends ActionSupport
 	 */
 	protected String searchKey;
 	
+	protected PageBean pageBean;
 
 	/**
 	 * easyui 列表相关查询参数
@@ -78,6 +80,7 @@ public abstract class BaseAction<T> extends ActionSupport
 	protected String sort;// 排序字段
 	protected String order = "asc";// asc/desc
 	protected Page p=new Page();
+
 	
 	protected String deleteIds;
 	
@@ -347,6 +350,14 @@ public abstract class BaseAction<T> extends ActionSupport
 	public void setServletRequest(HttpServletRequest request) {
 		// TODO Auto-generated method stub
 		this.request=request;
+	}
+
+	public PageBean getPageBean() {
+		return pageBean;
+	}
+
+	public void setPageBean(PageBean pageBean) {
+		this.pageBean = pageBean;
 	}
 	
 	

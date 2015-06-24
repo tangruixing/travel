@@ -6,8 +6,8 @@ import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
-import cn.model.Grid;
 import cn.model.Json;
+import cn.model.PageBean;
 import cn.travel.model.Images;
 import cn.travel.service.ImagesService;
 
@@ -23,6 +23,9 @@ public class ImagesAction extends BaseAction<Images>{
 	@Resource(name="imagesService")
 	private ImagesService imagesService;
 	
+	private String pointName;
+	private String areaName;
+	
 	/**
 	 * 
 	 */
@@ -37,12 +40,11 @@ public class ImagesAction extends BaseAction<Images>{
 	/**
 	 * 列表显示
 	 */
-	public void doList() {
-		Grid grid=imagesService.getImagesGrid(p,model);
-		write2Response(grid);
-		
+	public String doSeceryList() {
+		pageBean=imagesService.getSceneryPageList(this.page,pointName,areaName);
+		return goUI("SceneryLogo.jsp");
 	}
-
+	
 	/**
 	 * 删除操作
 	 */
@@ -80,6 +82,26 @@ public class ImagesAction extends BaseAction<Images>{
 			write2Response(j);
 		}
 	}
+
+	public String getPointName() {
+		return pointName;
+	}
+
+	public void setPointName(String pointName) {
+		this.pointName = pointName;
+	}
+
+	public String getAreaName() {
+		return areaName;
+	}
+
+	public void setAreaName(String areaName) {
+		this.areaName = areaName;
+	}
+	
+	
+	
+	
 	
 	
 	

@@ -80,9 +80,16 @@ uploadSimpleImage.prototype = {
 //上传多图片
 function uploadManyImages(target,$queue,count) {
 	this.init(target,$queue,count);
+	this.isHaveObj=false;
+	this.$toObj=null;
 }
 
 uploadManyImages.prototype = {
+		isToObject:function(domId){
+			this.isHaveObj=true;
+			this.$toObj=$("#"+domId);
+			console.info(this.$toObj);
+		},
 		init : function(target,$queue,count) {
 			var _this=this;
 			this.imageList = [];
@@ -508,6 +515,21 @@ uploadManyImages.prototype = {
 				}
 
 				if (state === 'ready') {
+					console.info("开始上传");
+					if(_this.isHaveObj){
+						//val param=_this.$toObj.val();
+						/*options.server=server+"?type="+param;
+						_this.$toObj.focus();*/
+						var p=_this.$toObj.val();
+						console.info(p);
+						if(p.length<=0){
+							jNotify("请先选择一个要上传的景点");
+							return ;
+						}else{
+							options.server=server+"?typeId="+p;							
+						}
+					}
+					console.info(options.server);
 					uploader.upload();
 				} else if (state === 'paused') {
 					uploader.upload();
