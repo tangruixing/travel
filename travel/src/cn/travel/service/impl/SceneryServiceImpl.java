@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.model.Scenery;
 import cn.travel.service.SceneryService;
@@ -47,6 +48,15 @@ public class SceneryServiceImpl extends BaseServiceImpl<Scenery> implements Scen
 		this.dao.batchEntityByHQL(hql);
 	}
 	
+	
+	public PageBean getSceneryPageList(int page, String pointName,
+			String areaName) {
+		HqlHelper hql=new HqlHelper(Scenery.class, "s")//
+					 .addWhereCondition(StringUtils.isNotBlank(pointName),"s.realName=?", pointName);
+/*					 .addWhereCondition(StringUtils.isNotBlank(areaName),"s.realName", params)*/
+		
+		return this.getPageBean(page, hql);
+	}
 	
 	
 }

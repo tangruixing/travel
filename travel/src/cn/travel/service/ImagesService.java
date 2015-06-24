@@ -12,6 +12,6 @@ public interface ImagesService extends BaseService<Images>{
 
 	void batchImagesDelete(String deleteIds);
 
-	PageBean getSceneryPageList(int page, String pointName, String areaName);
+	PageBean getImagesListBySid(int page,Integer sid);
 	
 }

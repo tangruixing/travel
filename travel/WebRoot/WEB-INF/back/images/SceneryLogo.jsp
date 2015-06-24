@@ -7,24 +7,32 @@
     <meta charset="UTF-8">
     <title></title>
     <script type="text/javascript" src="<%=contextPath %>/back/style/js/page.js"></script>
+    
+    <style type="text/css">
+    	.scenery_logo{
+    		height: 150px !important;
+    		width: 280px !important;
+    	}
+    </style>
 </head>
 <body>
-
+	<%-- <s:debug></s:debug> --%>
+	
+	
    <div class="row">
-	sdf${pageBean.pageCount}sdf
-	<s:if test="pageBean.pageCount==0">
+	<s:if test="pageBean.pageCount<=0">
 		<div class="alert alert-danger" role="alert">暂时没有任何景点</div>
 	</s:if>
 	<s:else>
-		<s:iterator value="recordList" var="scenery">
+		<s:iterator value="pageBean.recordList">
 			<div class="col-sm-6 col-md-4">
-		        <div class="thumbnail">
-		            <img src="<%=contextPath %>/${scenery.logo}" alt="${scenery.realName}">
+		        <div class="thumbnail" >
+		            <img src="<%=contextPath%>/${logo}" alt="${realName}" class="scenery_logo">
 		            <div class="caption">
-		                <h3>${scenery.realName}</h3>
+		                <h3>${realName}</h3>
 		                <p>
-		                    <a href="javascript:void(0);" class="btn btn-primary" role="button">浏览</a>
-		                    <a href="javascript:void(0);" class="btn btn-default" role="button">上传</a>
+		                     <a class="btn btn-primary" data-toggle="modal" href="<%=contextPath %>/images_toListBySid.do?sid=${id}" data-target="#imageListModal">浏览</a>
+		                     <a class="btn btn-primary" data-toggle="modal" href="<%=contextPath %>/iamges_toAddImage.do" data-target="#addImageModal">上传</a>
 		                </p>
 		            </div>
 		        </div>
@@ -32,10 +40,6 @@
 		</s:iterator>
 	</s:else>
 	
-	
-    
-      
-
    </div>
   <!--分页-->
   <nav>
@@ -48,7 +52,7 @@
 
     <!--景点图片浏览-->
     <div class="row">
-        <a class="btn btn-primary" data-toggle="modal" href="imageList.html" data-target="#imageListModal">浏览</a>
+       <!--  <a class="btn btn-primary" data-toggle="modal" href="imageList.html" data-target="#imageListModal">浏览</a> -->
 
         <!-- Modal -->
         <div class="modal fade" id="imageListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
@@ -67,7 +71,7 @@
 
     <!--景点图片添加-->
     <div class="row">
-        <a class="btn btn-primary" data-toggle="modal" href="addImage.html" data-target="#addImageModal">上传</a>
+       <!--  <a class="btn btn-primary" data-toggle="modal" href="addImage.html" data-target="#addImageModal">上传</a> -->
 
         <!-- Modal -->
         <div class="modal fade" id="addImageModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">

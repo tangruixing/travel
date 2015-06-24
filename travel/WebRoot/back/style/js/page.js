@@ -25,11 +25,12 @@ Page.prototype={
 			$.post(_this.url,value,function(data){
 				if(data){
 					_this.$listArea.empty();
+					console.info(_this.$listArea);
 					_this.$listArea.append(data);
 				}else{
 					jNotify("加载数据出错了");
 				}
-			},"json");
+			});
 		}
 	
 }

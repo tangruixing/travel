@@ -116,7 +116,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T>{
 	
 	public PageBean getPageBean(int currentPage, HqlHelper hqlHelper) {
 		int pageSize = Integer.parseInt(ConfigUtil.get("pageSize"));
-		return this.getPageBean(pageSize, currentPage, hqlHelper);
+		return this.getPageBean(currentPage,pageSize , hqlHelper);
 	}
 
 	public PageBean getPageBean(int currentPage, int pageSize, HqlHelper hqlHelper) {

@@ -54,14 +54,17 @@ public class ImagesServiceImpl extends BaseServiceImpl<Images> implements Images
 		this.dao.batchEntityByHQL(hql);
 	}
 
-	public PageBean getSceneryPageList(int page, String pointName,
-			String areaName) {
-		HqlHelper hql=new HqlHelper(Scenery.class, "s")//
-					 .addWhereCondition(StringUtils.isNotBlank(pointName),"s.realName=?", pointName);
-/*					 .addWhereCondition(StringUtils.isNotBlank(areaName),"s.realName", params)*/
+
+	public PageBean getImagesListBySid(int page,Integer sid) {
 		
-		return sceneryDao.getPageBean(page, hql);
+		HqlHelper hql=new HqlHelper(Images.class, "u")//
+		  .addWhereCondition("u.scenery.id=?", sid);
+		// TODO Auto-generated method stub
+		this.getp
+		return null;
 	}
+
+
 	
 	
 	

@@ -10,6 +10,7 @@ import cn.model.Json;
 import cn.model.PageBean;
 import cn.travel.model.Images;
 import cn.travel.service.ImagesService;
+import cn.travel.service.SceneryService;
 
 @Controller("imagesAction")
 @Scope("prototype")
@@ -23,8 +24,14 @@ public class ImagesAction extends BaseAction<Images>{
 	@Resource(name="imagesService")
 	private ImagesService imagesService;
 	
+	@Resource(name="sceneryService")
+	private SceneryService sceneryService;
+	
 	private String pointName;
 	private String areaName;
+
+
+	private Integer sid;
 	
 	/**
 	 * 
@@ -41,9 +48,17 @@ public class ImagesAction extends BaseAction<Images>{
 	 * 列表显示
 	 */
 	public String doSeceryList() {
-		pageBean=imagesService.getSceneryPageList(this.page,pointName,areaName);
+		pageBean=sceneryService.getSceneryPageList(this.page,pointName,areaName);
 		return goUI("SceneryLogo.jsp");
 	}
+	
+	public String toListBySid(){
+		
+		PageBean pageBean=imagesService.getImagesListBySid(page,sid);
+		
+		return goAction("");
+	}
+	
 	
 	/**
 	 * 删除操作
@@ -97,6 +112,14 @@ public class ImagesAction extends BaseAction<Images>{
 
 	public void setAreaName(String areaName) {
 		this.areaName = areaName;
+	}
+
+	public Integer getSid() {
+		return sid;
+	}
+
+	public void setSid(Integer sid) {
+		this.sid = sid;
 	}
 	
 	
