@@ -8,6 +8,7 @@ public class Images implements Serializable{
 	//columns START
 	private java.lang.Integer id;		/*图片编号*/
 	private java.lang.Integer sceId;		/*风景ID*/
+	private String name;
 	private java.lang.String description;		/*图片描述*/
 	private java.lang.String url;		/*图片路径*/
 	//columns END
@@ -34,6 +35,11 @@ public class Images implements Serializable{
 		}
 	
 		public void setSceId(java.lang.Integer value) {
+			
+			if(value!=null){
+				scenery=new Scenery();
+				scenery.setId(value);
+			}
 			this.sceId = value;
 		}
 		
@@ -73,6 +79,16 @@ public class Images implements Serializable{
 			this.user = user;
 		}
 
+		public String getName() {
+			return name;
+		}
+
+		public void setName(String name) {
+			this.name = name;
+		}
+
+		
+		
 		
 		
 		

@@ -119,7 +119,7 @@ public abstract class BaseDaoImpl<T> implements BaseDao<T>{
 		return this.getPageBean(currentPage,pageSize , hqlHelper);
 	}
 
-	public PageBean getPageBean(int currentPage, int pageSize, HqlHelper hqlHelper) {
+	public PageBean getPageBean(int currentPage,int pageSize, HqlHelper hqlHelper) {
 		System.out.println("----->新的分页方法");
 		List<Object> parameters = hqlHelper.getParameters();
 		// 查询数据总记录数

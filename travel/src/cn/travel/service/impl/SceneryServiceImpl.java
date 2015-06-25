@@ -55,7 +55,7 @@ public class SceneryServiceImpl extends BaseServiceImpl<Scenery> implements Scen
 					 .addWhereCondition(StringUtils.isNotBlank(pointName),"s.realName=?", pointName);
 /*					 .addWhereCondition(StringUtils.isNotBlank(areaName),"s.realName", params)*/
 		
-		return this.getPageBean(page, hql);
+		return this.getPageBean(page, 4,hql);
 	}
 	
 	

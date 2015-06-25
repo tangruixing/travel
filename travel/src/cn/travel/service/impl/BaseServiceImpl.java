@@ -77,12 +77,12 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 		return dao.uniqueResult(hql, objects);
 	}
 
-	public PageBean getPageBean(int start, HqlHelper hqlHelper) {
-		return dao.getPageBean(start, hqlHelper);
+	public PageBean getPageBean(int currentPage, HqlHelper hqlHelper) {
+		return dao.getPageBean(currentPage, hqlHelper);
 	}
 
-	public PageBean getPageBean(int pageSize, int start, HqlHelper hqlHelper) {
-		return dao.getPageBean(pageSize, start, hqlHelper);
+	public PageBean getPageBean(int currentPage, int pageSize, HqlHelper hqlHelper) {
+		return dao.getPageBean(currentPage, pageSize, hqlHelper);
 	}
 
 	public Grid getPageGrid(int page, int rows, HqlHelper hqlHelper) {

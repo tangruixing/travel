@@ -10,10 +10,8 @@ import cn.model.Grid;
 import cn.model.Page;
 import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
-import cn.travel.dao.ImagesDao;
 import cn.travel.dao.SceneryDao;
 import cn.travel.model.Images;
-import cn.travel.model.Scenery;
 import cn.travel.service.ImagesService;
 import cn.util.HqlHelper;
 
@@ -59,9 +57,8 @@ public class ImagesServiceImpl extends BaseServiceImpl<Images> implements Images
 		
 		HqlHelper hql=new HqlHelper(Images.class, "u")//
 		  .addWhereCondition("u.scenery.id=?", sid);
-		// TODO Auto-generated method stub
-		this.getp
-		return null;
+		
+		return this.getPageBean(page,4,hql);
 	}
 
 
