@@ -76,12 +76,6 @@
                                 <s:textfield cssClass="form-control" name="numPeople" />
                             </div>
                         </div>
-
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">人均消费</label>
-                            <div class="col-lg-5">
-                                <s:textfield cssClass="form-control" name="money" />
                         
 						</s:if>
 						

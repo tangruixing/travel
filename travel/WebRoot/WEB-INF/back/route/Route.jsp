@@ -15,11 +15,6 @@
 <script type="text/javascript"	src="<%=contextPath%>/back/style/js/line.js"	charset="utf-8"></script>
 </head>
 <body>
-<!-- 地图连线-->
-<div id="mapDlg" class="easyui-dialog dis" style="width:80%;height:60%;"
-     closed="true" buttons="#dlg-map-buttons"  modal="true">
-    <div id="show-map" style="width:100%;height:100%"></div>
-</div>	
 
 	<div class="easyui-layout" fit="true" id="gridLayout">
 		<!--搜索 -->
@@ -49,6 +44,12 @@
 			<!-- 这里不要写fit属性，会看不到分页 -->
 			<table id="route_dg"></table>
 		</div>
+
+<!-- 地图连线-->
+<div id="mapDlg" class="easyui-dialog dis" style="width:80%;height:60%;"
+     closed="true" buttons="#dlg-map-buttons"  modal="true">
+    <div id="show-map" style="width:100%;height:100%"></div>
+</div>	
 
 </div>
 
