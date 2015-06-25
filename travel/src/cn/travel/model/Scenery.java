@@ -17,6 +17,7 @@ public class Scenery implements Serializable{
 	private double latitude;		/*纬度*/
 
 	private java.lang.String logo;		/*logo*/
+	private String summary;
 	private java.lang.String introduction;		/*介绍*/
 	private java.lang.String url;		/*网址*/
 
@@ -178,6 +179,15 @@ public class Scenery implements Serializable{
 		this.scenery = scenery;
 	}
 
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	
 	
 		
 

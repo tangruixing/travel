@@ -18,6 +18,9 @@
         </many-to-one>
         
         
+        <property name="name" type="java.lang.String">
+            <column name="NAME" />
+        </property>
         <property name="description" type="java.lang.String">
             <column name="DESCRIPTION" />
         </property>

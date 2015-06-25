@@ -79,9 +79,7 @@
 
                         <div class="form-group">
                             <div class="col-lg-9 col-lg-offset-3">
-                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">提交</button>
-                                <button type="submit" class="btn btn-primary" name="signup2" value="Sign up 2">提交2</button>
-                                <button type="button" class="btn btn-info" id="validateBtn">错误提示</button>
+                                <button type="submit" class="btn btn-primary" id="checkSubmit">提交</button>
                                 <button type="button" class="btn btn-info" id="resetBtn">重置</button>
                             </div>
                         </div>
@@ -186,12 +184,18 @@ $(document).ready(function() {
             }
         }
     });
-
-    // Validate the form manually
-    $('#validateBtn').click(function() {
-        $('#hotelForm').bootstrapValidator('validate');
-    });
-
+    
+    
+  $("#checkSubmit").on('click',function(){
+		
+		var logoUrl=$("#hotel_logo_input").val();
+		if(logoUrl.length<=0){
+			jNotify("请上传 LOGO !!");
+			return false;
+		}
+	});
+    
+    
     $('#resetBtn').click(function() {
         $('#hotelForm').data('bootstrapValidator').resetForm(true);
     });

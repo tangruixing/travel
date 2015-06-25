@@ -30,8 +30,6 @@ public class ImagesAction extends BaseAction<Images>{
 	private String pointName;
 	private String areaName;
 
-
-	private Integer sid;
 	
 	/**
 	 * 
@@ -44,22 +42,72 @@ public class ImagesAction extends BaseAction<Images>{
 		return goUI("Images.jsp");//后台路径 /WEB-INF/back/images/Images.jsp
 	}
 
+	public String toPicIndex(){
+		return goUI("Pics.jsp");
+	}
+	
 	/**
-	 * 列表显示
+	 * 景区/景点 LOGO 显示
 	 */
 	public String doSeceryList() {
 		pageBean=sceneryService.getSceneryPageList(this.page,pointName,areaName);
-		return goUI("SceneryLogo.jsp");
-	}
-	
-	public String toListBySid(){
-		
-		PageBean pageBean=imagesService.getImagesListBySid(page,sid);
-		
-		return goAction("");
+		return goUI("listLogo.jsp");
 	}
 	
 	
+	
+	/**
+	 * 浏览指定 风景 图片 
+	 * @return
+	 */
+	public String toListPicBySid(){
+		
+		pageBean=imagesService.getImagesListBySid(page,model.getSceId());
+		
+		return goUI("listPic.jsp");
+	}
+	
+	
+	/**
+	 * 跳转到 风景 添加图片 的页面
+	 * @return
+	 */
+	public String toAddPic(){
+		
+		return goUI("addPic.jsp");
+	}
+	
+
+	/**
+	 * 给指定 风景 添加图片
+	 * @return
+	 */
+	public void doAddPic(){
+		j=new Json();
+		try {
+			imagesService.saveEntity(this.model);
+			j.setSuccess(true);
+			j.setMsg("操作成功");
+		} catch (Exception e) {
+			// TODO: handle exception
+			j.setMsg("操作失败");
+		}finally {
+			write2Response(j);
+		}
+		
+	}
+	
+/*	*//**
+	 * 给指定 风景 添加图片
+	 * @return
+	 *//*
+	public String doAddPic(){
+		
+		imagesService.saveEntity(this.model);
+		return goAction("images_toIndex.do");
+	}
+	
+*/	
 	/**
 	 * 删除操作
 	 */
@@ -114,15 +162,6 @@ public class ImagesAction extends BaseAction<Images>{
 		this.areaName = areaName;
 	}
 
-	public Integer getSid() {
-		return sid;
-	}
-
-	public void setSid(Integer sid) {
-		this.sid = sid;
-	}
-	
-	
 	
 	
 	

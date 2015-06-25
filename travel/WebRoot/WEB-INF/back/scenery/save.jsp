@@ -117,6 +117,13 @@
                         
 
                         <div class="form-group">
+                            <label class="col-md-3 control-label">景区简介</label>
+                            <div class="col-md-9">
+                               <s:textarea cssClass="form-control" rows="3" name="summary"></s:textarea>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
                             <label class="col-md-3 control-label">景区详情</label>
                             <div class="col-md-9">
                                	<s:textarea id="scenery_content" name="introduction"/>
@@ -125,9 +132,7 @@
 
                         <div class="form-group">
                             <div class="col-md-9 col-md-offset-3">
-                                <button type="submit" class="btn btn-primary" name="signup" value="Sign up">提交</button>
-                                <button type="submit" class="btn btn-primary" name="signup2" value="Sign up 2">提交2</button>
-                                <button type="button" class="btn btn-info" id="validateBtn">错误提示</button>
+                                <button type="submit" class="btn btn-primary" id="checkSubmit">提交</button>
                                 <button type="button" class="btn btn-info" id="resetBtn">重置</button>
                             </div>
                         </div>
@@ -246,10 +251,15 @@ $(document).ready(function() {
     });
 
     // Validate the form manually
-    $('#validateBtn').click(function() {
-        $('#sceneryForm').bootstrapValidator('validate');
-    });
-
+    $("#checkSubmit").on('click',function(){
+		
+		var logoUrl=$("#scenery_logo_input").val();
+		if(logoUrl.length<=0){
+			jNotify("请上传 LOGO !!");
+			return false;
+		}
+	});
+    
     $('#resetBtn').click(function() {
         $('#sceneryForm').data('bootstrapValidator').resetForm(true);
     });

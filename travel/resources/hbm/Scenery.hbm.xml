@@ -28,7 +28,7 @@
         <property name="logo" type="java.lang.String">
             <column name="LOGO" />
         </property>
-        <property name="introduction" type="java.lang.String">
+        <property name="introduction" type="text">
             <column name="INTRODUCTION" />
         </property>
         <property name="url" type="java.lang.String">
@@ -52,6 +52,10 @@
         </property>
         <property name="suggest" type="java.lang.Boolean">
             <column name="SUGGEST" />
+        </property>
+        
+        <property name="summary" type="string" length="1024">
+        	<column name="summary"></column>
         </property>
     </class>
 </hibernate-mapping>

@@ -96,7 +96,7 @@ public interface BaseDao<T> {
 	 * @param hqlHelper
 	 * @return
 	 */
-	public PageBean getPageBean(int pageSize,int currentPage, HqlHelper hqlHelper);
+	public PageBean getPageBean(int currentPage,int pageSize, HqlHelper hqlHelper);
 	
 	/**
 	 * 

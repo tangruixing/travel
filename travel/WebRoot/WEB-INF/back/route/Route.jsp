@@ -128,12 +128,6 @@
             route.useCommon();
             route.setUrlParam("routeType","${routeType}");
             route.init();
-<<<<<<< Upstream, based on develop
-            
-        	
-          
-=======
->>>>>>> 27c5cae 
         });
        
         var url=sy.contextPath + '/routeplan_loadRouteplanWithRid.do';
