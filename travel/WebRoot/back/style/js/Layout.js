@@ -43,7 +43,7 @@ function InitLeftMenu() {
 		var menulist ='';
 		menulist +='<ul>';
         $.each(n.menus, function(j, o) {
-			menulist += '<li><div><a ref="'+o.menuid+'" href="#" rel="' + o.url + '" ><span class="icon '+o.icon+'" >&nbsp;</span><span class="nav">' + o.menuname + '</span></a></div></li> ';
+			menulist += '<li><div><a ref="'+o.menuid+'" href="#" rel="' + o.url + '" ><span class="icon '+o.icon+'" >&nbsp;</span><span class="subNav">' + o.menuname + '</span></a></div></li> ';
         });
 		menulist += '</ul>';
 
@@ -56,7 +56,7 @@ function InitLeftMenu() {
     });
 
 	$('.easyui-accordion li a').click(function(){
-		var tabTitle = $(this).children('.nav').text();
+		var tabTitle = $(this).children('.subNav').text();
 
 		var url = $(this).attr("rel");
 		var menuid = $(this).attr("ref");

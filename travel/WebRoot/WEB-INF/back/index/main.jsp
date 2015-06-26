@@ -1,5 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/back.jspf" %>
+<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>  
+<%@ include file="/WEB-INF/pub/ueditor.jspf"%>  
+<%@ include file="/WEB-INF/pub/webuploader.jspf"%>  
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -8,6 +11,16 @@
     <link href="<%=contextPath%>/back/style/css/default.css" rel="stylesheet" type="text/css" />   
 	<script type="text/javascript" src="<%=contextPath%>/back/style/js/Layout.js"></script>
 	<script type="text/javascript" src="<%=contextPath%>/back/style/js/editPwd.js"></script>
+	
+	<style type="text/css">
+		.panel-body {
+    			padding: 0px ! important;
+		}
+		.panel {
+		  
+		    margin-bottom: 0px ! important;
+		}
+	</style>
 </head>
 
 
@@ -93,6 +106,9 @@
 		<div id="mm-exit">退出</div>
 	</div>
 
+
+
+<div id="parentDlg"></div>
 <script type="text/javascript">
 
 	 var _menus = {"menus":[

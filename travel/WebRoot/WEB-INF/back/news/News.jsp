@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/back.jspf" %>
+
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -7,6 +8,7 @@
     <title>News管理</title>
 </head>
 <body>
+	<a href="javascript:void(0)" class="easyui-linkbutton" onclick="openDlg();">Open</a>
 	<div class="easyui-layout" fit="true" id="gridLayout">
 		<!--搜索 -->
 		<div region="north" border="false" title="过滤" style="height: 130px; overflow: hidden;">
@@ -38,179 +40,82 @@
 
 </div>
 
-<!--form-->
-<div id="news_dlg" class="easyui-dialog"
-     closed="true" buttons="#news_dlg-buttons" modal="true" style="width:500px;height:280px;padding:10px 20px">
-    <div class="ftitle">用户信息</div>
-    <form id="news_fm" method="post">
-	<input type="hidden"  name="id" />
 
-        <table>
-			
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>用户编号id
-			</td>	
-			<td>
-			<input name="useid" class="easyui-validatebox textbox" required="true"  missingMessage="用户编号id不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>标题
-			</td>	
-			<td>
-			<input name="title" class="easyui-validatebox textbox" required="true"  missingMessage="标题不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>子标题
-			</td>	
-			<td>
-			<input name="subTitle" class="easyui-validatebox textbox" required="true"  missingMessage="子标题不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>作者
-			</td>	
-			<td>
-			<input name="author" class="easyui-validatebox textbox" required="true"  missingMessage="作者不能为空">
-			</td>
-		</tr>
-	
-		
-			<tr>	
-				<td>
-					摘要
-				</td>	
-				<td>
-					<input name="summary" >
-				</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>内容
-			</td>	
-			<td>
-			<input name="content" class="easyui-validatebox textbox" required="true"  missingMessage="内容不能为空">
-			</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>发布时间
-			</td>	
-			<td>
-			<input name="publicTime" class="easyui-validatebox textbox" required="true"  missingMessage="发布时间不能为空">
-			</td>
-		</tr>
-	
-		
-			<tr>	
-				<td>
-					浏览量
-				</td>	
-				<td>
-					<input name="click" >
-				</td>
-		</tr>
-	
-		
-		
-		<tr>	
-			<td>
-				<span class="required">*</span>热门
-			</td>	
-			<td>
-			<input name="hot" class="easyui-validatebox textbox" required="true"  missingMessage="热门不能为空">
-			</td>
-		</tr>
-	
-		
-        </table>
-
-    </form>
-</div>
-<div id="news_dlg-buttons">
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-ok" id="news_save" style="width:90px">保存</a>
-    <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-cancel" id="news_close" style="width:90px">取消</a>
-</div>
 </body>
 
 <script type="text/javascript">
+
+function openDlg(){
+	console.info('click');
+
+	gx.parentDialog({
+		    title: '添加新闻',
+		    width: '80%',
+		    height: '60%',
+		    closed: false,
+		    cache: false,
+		    href: '<%=contextPath%>/news_toSave.do',
+		    modal: true
+	},window);
+	console.info(window);
+<%-- 	parent.$('#parentDlg').dialog(
+	}); --%>
+};
+
         $(function () {
             var columns=[[{
                         title : '用户编号',
-                        field : '"id"',// 绑定属性名字,后台返回的json数据
+                        field : 'id',// 绑定属性名字,后台返回的json数据
                         width : 100,// 必须要给，大于50
                         sortable : true,// 鼠标点击可以升序/降序切换
                         checkbox : true
 
-                    },
-								{
-title : '用户编号id',
-field : 'useid',
-width : 100,
-sortable : true
-},								{
-title : '标题',
-field : 'title',
-width : 100,
-sortable : true
-},								{
-title : '子标题',
-field : 'subTitle',
-width : 100,
-sortable : true
-},								{
-title : '作者',
-field : 'author',
-width : 100,
-sortable : true
-},								{
-title : '摘要',
-field : 'summary',
-width : 100,
-sortable : true
-},								{
-title : '内容',
-field : 'content',
-width : 100,
-sortable : true
-},								{
-title : '发布时间',
-field : 'publicTime',
-width : 100,
-sortable : true
-},								{
-title : '浏览量',
-field : 'click',
-width : 100,
-sortable : true
-},								{
-title : '热门',
-field : 'hot',
-width : 100,
-sortable : true
-},								{
+                    },{
+					title : '用户编号id',
+					field : 'useid',
+					width : 100,
+					sortable : true
+					},{
+					title : '标题',
+					field : 'title',
+					width : 100,
+					sortable : true
+					},{
+					title : '子标题',
+					field : 'subTitle',
+					width : 100,
+					sortable : true
+					},{
+					title : '作者',
+					field : 'author',
+					width : 100,
+					sortable : true
+					},{
+					title : '摘要',
+					field : 'summary',
+					width : 100,
+					sortable : true
+					},{
+					title : '内容',
+					field : 'content',
+					width : 100,
+					sortable : true
+					},{
+					title : '发布时间',
+					field : 'publicTime',
+					width : 100,
+					sortable : true
+					},{
+					title : '浏览量',
+					field : 'click',
+					width : 100,
+					sortable : true
+					},{
+					title : '热门',
+					field : 'hot',
+					width : 100,
+					sortable : true
+					},{
                         title : '操作',
                         field : 'action',
                         width : 100,
@@ -224,6 +129,7 @@ sortable : true
                     }]];
                     
             var news=new Curd("<%=contextPath%>","news",columns);
+            news.useCommon();
             news.init();
         });
     </script>
