@@ -52,16 +52,7 @@ Curd.prototype={
         		
             save:_this.baseUrl+"_toSave.do",
             update:_this.baseUrl+"_toUpdate.do",
-
-
-            list:_this.baseUrl+"_doList.do",
-
-            list:listUrl,
-
-
-            list:_this.baseUrl+"_doList.do",
-
-            
+            list:listUrl,      
             saveOrUpdate:_this.baseUrl+"_doSaveOrUpdate.do",
             remove:_this.baseUrl+"_doDeletes.do"
         };
