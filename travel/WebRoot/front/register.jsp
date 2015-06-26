@@ -12,6 +12,8 @@
 <link rel="stylesheet" href="lib/jquery-ui-1.10.3.custom.min.css">
 <script type="text/javascript">
 var check=true; 
+var unsubmit=true;
+var mobile=true;
    $(document).ready(function(e) {
 	 
 	   
@@ -84,14 +86,19 @@ var check=true;
 		
 	     
 	    $('#mobile').focusout(function(e) {
+	    	if(this.value.length!=11)
+	    		return false;
 	    	$.ajax({
 	    		url: '<%=contextPath%>/front_User_registCheck.do', 
-	    		data:{"mobile": this.val().toString()},
+	    		data:{"mobile": this.value},//
 		        type:     'post',        
 		        dataType: 'json',     //(依据服务器返回类型进行设置) 
 		        success:function(json){
-		        	alert("");
-		        	$(this).next().text(json.msg);
+		        	$('#mobile').next().text(json.msg);
+		        	if(json.msg=="该号码已被使用")
+		        		mobile=false;
+		        	else
+		        		mobile=true;
 		        },
 		        error:function(){
 		        	alert("发生错误");
@@ -102,17 +109,26 @@ var check=true;
 });
  //表单提交之前触发的事件
    function showRequest(formData, jqForm, options) { 
+	   if(!mobile){
+		   $('#mobile').focus();
+		   return false;
+	   }
 	   if(check){
-			$('#psw2').focus();
+			$('#psw2').focus();	//确认密码校验
 			return false;
-		}		
+		}	
+	   if(!unsubmit)		//防止重复提交
+		   return false;
+	   unsubmit=false;
    } 
     //表单提交之后触发的事件
    function showResponse(responseText, statusText, xhr, $form)  {    
        //查看表单返回的数据
-       console.info(responseText);
-       //alert($.param(responseText['msg']));
-       //location.href ="../index.html";
+       if(responseText.success){
+    	   alert(responseText.msg);
+    	   location.href ="<%=contextPath%>/index.jsp";
+       }
+       
    } 
 </script>
 <style type="text/css">
@@ -197,6 +213,9 @@ section span{
 .pw-strong .pw-bar-on {width: 179px;}
 .pw-txt {padding-top: 2px;width: 180px;overflow: hidden;}
 .pw-txt span {color: #707070;float: left;font-size: 12px;text-align: center;width: 58px;}
+a:hover{
+	text-decoration:underline;
+}
 </style>
 </head>
 
@@ -206,14 +225,14 @@ section span{
 </header>
 <div class="content">
 <header>
-	<h1><a href="index.html">首页</a></h1><img src="images/right.png"><h2>用户注册</h2>
+	<h1><a href="<%=contextPath%>/index.jsp">首页</a></h1><img src="images/right.png"><h2>用户注册</h2>
 </header>
 <section>
 	<form action="<%=contextPath%>/front_User_regist.do" method="post" id="myform">
 	<table>
     	<tr>
         	<td><span>*</span>手机：</td>
-            <td colspan="2"><input type="text" name="mobile" required pattern="\w{11}" autocomplete="off" id="mobile"></td>
+            <td colspan="2"><input type="text" name="mobile" required pattern="\w{11}" autocomplete="off" id="mobile">&nbsp;<span style="font-size:16px"></span></td>
         </tr>
         <tr>
         	<td><span>*</span>密码：</td>

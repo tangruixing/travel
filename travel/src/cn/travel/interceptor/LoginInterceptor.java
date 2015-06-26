@@ -5,16 +5,16 @@ import javax.servlet.http.HttpSession;
 import org.apache.log4j.Logger;
 import org.apache.struts2.ServletActionContext;
 
+import com.opensymphony.xwork2.ActionInvocation;
+import com.opensymphony.xwork2.ActionProxy;
+import com.opensymphony.xwork2.interceptor.Interceptor;
+
 import cn.travel.action.BaseAction;
 import cn.travel.action.LoginAction;
 import cn.travel.action.UserAware;
 import cn.travel.model.User;
 import cn.util.ConfigUtil;
-
-import com.alibaba.fastjson.JSON;
-import com.opensymphony.xwork2.ActionInvocation;
-import com.opensymphony.xwork2.ActionProxy;
-import com.opensymphony.xwork2.interceptor.Interceptor;
+import front.action.FrontUserAction;
 
 public class LoginInterceptor implements Interceptor{
 
@@ -41,7 +41,7 @@ public class LoginInterceptor implements Interceptor{
 		ActionProxy proxy = invocation.getProxy();
 		
 		log.info("拦截器拦截的ActionName:"+proxy.getActionName()+",Method:"+proxy.getMethod());
-		if(action instanceof LoginAction){
+		if(action instanceof LoginAction|| action instanceof FrontUserAction){
 			log.info("直接放行..");
 			return invocation.invoke();
 		}else{

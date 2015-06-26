@@ -13,6 +13,7 @@ import cn.model.Json;
 import cn.travel.action.BaseAction;
 import cn.travel.model.User;
 import cn.travel.service.UserService;
+import cn.util.ConfigUtil;
 
 @Controller("frontUserAction")
 @Scope("prototype")
@@ -20,6 +21,7 @@ public class FrontUserAction extends BaseAction<User>{
 	
 	@Resource(name="userService")
 	private UserService userService;
+	private Map session = (Map)ActionContext.getContext().getSession();
 	
 	public void regist(){
 		model.setRole(2);
@@ -27,8 +29,7 @@ public class FrontUserAction extends BaseAction<User>{
 		try{	
 			userService.saveEntity(this.model);
 			j.setSuccess(true);
-			j.setMsg("success,注册成功");
-			Map session = (Map)ActionContext.getContext().getSession();
+			j.setMsg("注册成功");
 			session.put("user", model);
 		}catch(Exception e){
 			j.setMsg("注册失败："+e.getMessage());
@@ -39,9 +40,42 @@ public class FrontUserAction extends BaseAction<User>{
 	
 	public void registCheck(){
 		j=new Json();
-		try{	
+		try{
+			User user=(User)userService.uniqueResult("from User where mobile = ?", model.getMobile()); 
+			if(user!=null)
+				j.setMsg("该号码已被使用");
+			else
+				j.setMsg("该号码可用");
 			j.setSuccess(true);
-			j.setMsg("该号码可用");
+		}catch(Exception e){
+			j.setMsg("注册失败："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+	}
+	
+	public void logout(){
+		j=new Json();
+		try{
+			session.clear();
+			j.setSuccess(true);
+		}catch(Exception e){
+			j.setMsg("操作失败："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+	}
+	
+	public void login(){
+		j=new Json();
+		try{
+			User user = userService.login(model.getMobile(), model.getPwd());
+			if(user!=null){
+				session.put(ConfigUtil.loginUserKey, user);
+				j.setMsg(user.getId().toString()+","+user.getRole());
+				j.setSuccess(true);
+			}else
+				j.setSuccess(false);			
 		}catch(Exception e){
 			j.setMsg("注册失败："+e.getMessage());
 		}finally{
