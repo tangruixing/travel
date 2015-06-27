@@ -1,38 +1,42 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/inc.jspf" %>
 <%@ include file="/WEB-INF/pub/bootstrap.jspf" %>
-<%-- <%@ include file="/WEB-INF/pub/webuploader.jspf" %> --%>
-<%@ include file="/WEB-INF/pub/ueditor.jspf" %>
+<%@ include file="/WEB-INF/pub/bootstrap.jspf" %>
+<%-- <jsp:include page="/WEB-INF/pub/easyui.jspf"></jsp:include>
+<jsp:include page="/WEB-INF/pub/bootstrap.jspf"></jsp:include> --%>
+<%-- <%@ include file="/WEB-INF/pub/inc.jspf" %>
+<%@ include file="/WEB-INF/pub/bootstrap.jspf" %> --%>
  <div class="container">
         <div class="row">
             <!-- form: -->
             <section>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="page-header">
-                        <h2>新闻信息</h2>
+                        <h2>用户信息</h2>
                     </div>
 
-                    <form id="newsForm" class="form-horizontal" method="post" action="<%=contextPath %>/news_doSaveOrUpdate.do">
+                    <form id="userForm" class="form-horizontal" method="post" action="<%=contextPath %>/user_doSaveOrUpdate.do">
                     	<s:hidden name="id" />
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">标题</label>
+                            <label class="col-lg-3 control-label">手机号</label>
                             <div class="col-lg-5">
-                                <s:textfield cssClass="form-control" name="title" placeholder="输入新闻标题" />
+                                <s:textfield cssClass="form-control" name="mobile" placeholder="输入手机号" />
                             </div>
                           
                         </div>
-						
-						 <div class="form-group">
-                            <label class="col-lg-3 control-label">子标题</label>
-                            <div class="col-lg-5">
-                                <s:textfield cssClass="form-control" name="subTitle" placeholder="输入新闻子标题" />
+                        
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">昵称</label>
+                            <div class="col-lg-9">
+                               	  <s:textfield cssClass="form-control" name="realName" placeholder="请输入昵称" />
                             </div>
-                          
                         </div>
+                        
 						 <div class="form-group">
-                            <label class="col-lg-3 control-label">作者</label>
+                            <label class="col-lg-3 control-label">角色</label>
                             <div class="col-lg-5">
-                                <s:textfield cssClass="form-control" name="author" placeholder="输入作者" />
+                                <s:set value="#{0:'超级管理员',1:'管理员',2:'普通用户'}" var="roleMap"></s:set>
+                                <s:select cssClass="form-control" list="#roleMap" listKey="key" listValue="value" name="role" headerKey="2"></s:select>
                             </div>
                           
                         </div>
@@ -40,29 +44,32 @@
                         
                            
 						<div class="form-group">
-                            <label class="col-lg-3 control-label">热门</label>
+                            <label class="col-lg-3 control-label">邮箱</label>
                             <div class="col-lg-9">
-                               		<s:set value="#{0:'否',1:'是'}" var="hotMap"></s:set>
-                               	
-                               	<s:select cssClass="form-control" list="#hotMap" listKey="key" listValue="value" name="hot" ></s:select>
-                            </div>
-                        </div>
-						 <div class="form-group">
-                            <label class="col-lg-3 control-label">新闻摘要</label>
-                            <div class="col-lg-5">
-                                <s:textarea cssClass="form-control" name="summary" rows="3" />
-                            </div>
-                          
-                        </div>
-                     
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">内容</label>
-                            <div class="col-lg-9">
-                               	<s:textarea id="news_content" name="content" />
+                               	  <s:textfield cssClass="form-control" name="eamil" placeholder="shaonian@qq.com" />
                             </div>
                         </div>
                         
+						<div class="form-group">
+                            <label class="col-lg-3 control-label">性别</label>
+                            <div class="col-lg-9">
+                               	  <s:set value="#{1:'男',2:'女',3:'保密'}" var="sexMap"></s:set>
+                                <s:select cssClass="form-control" list="#sexMap" listKey="key" listValue="value" name="sex" headerKey="2"></s:select>
+                            </div>
+                        </div>
+                        
+                        
+						 <div class="form-group">
+                            <label class="col-lg-3 control-label">出生日期</label>
+                            <div class="col-lg-5">
+                                  <input type="text" class="form-control Wdate" name="birth" 
+                                 onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',maxDate:'%y-%M-{%d}'})"
+                                 value="${birth}"
+                                />
+                            </div>
+                          
+                        </div>
+
                       
 
                         <div class="form-group">
@@ -82,25 +89,28 @@
 $(document).ready(function() {
  
 
-    $('#newsForm')
+    $('#userForm')
     .bootstrapValidator({
 //        live: 'disabled',\
-       /*  message: default, */
+
         feedbackIcons: {
             valid: 'glyphicon glyphicon-ok',
             invalid: 'glyphicon glyphicon-remove',
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        	title: {
+        	mobile: {
                 group: '.col-lg-4',
                 validators: {
-                    notEmpty: {
-                       /*  message: 'The first name is required and cannot be empty' */
-                    }
+                	  notEmpty: {
+                          /*   message: 'default' */
+                        },
+                        phone: {
+                        	country: 'CN'
+                        }
                 }
             },
-            subTitle: {
+            role: {
                 group: '.col-lg-4',
                 validators: {
                     notEmpty: {
@@ -108,15 +118,17 @@ $(document).ready(function() {
                     }
                 }
             },
-            author: {
+            eamil:{
             	group: '.col-lg-4',
                 validators: {
-                    notEmpty: {
+                    notEmpty:{
                   /*       message: 'default' */
+                    },
+                    emailAddress:{
                     }
                 }
             },
-            summary: {
+            realName: {
             	group: '.col-lg-4',
                 validators: {
                 	notEmpty: {
@@ -124,19 +136,10 @@ $(document).ready(function() {
                     }
                 }
             },
-            content: {
-            	 group: '.col-lg-4',
+            birth: {
+            	group: '.col-lg-4',
                 validators: {
                     notEmpty: {
-                      /*   message: 'default' */
-                    }
-                }
-            },
-            hot: {
-            	 group: '.col-lg-4',
-                validators: {
-                    notEmpty: {
-
                     }
                 }
             }
@@ -155,7 +158,7 @@ $(document).ready(function() {
             // Use Ajax to submit form data
             $.post($form.attr('action'), $form.serialize(), function(data) {
             	if(data&&data.success){
-        			parent.mainDlg.close("#news_grid");
+        			parent.mainDlg.close("#user_grid");
         			jSuccess(data.msg);
         		}else{
         			jError(data.msg);
@@ -164,31 +167,7 @@ $(document).ready(function() {
      });
 
     $('#resetBtn').click(function() {
-        $('#newsForm').data('bootstrapValidator').resetForm(true);
+        $('#userForm').data('bootstrapValidator').resetForm(true);
     });
-    
-    $("#ajaxSubmit").click(function(){
-    	
-    	var valid=$('#newsForm').bootstrapValidator('validate');
-    	
-    	console.info(valid);
-    	
-    	console.info("sdfsdf");
-    	<%-- var url="<%=contextPath%>/news_doSaveOrUpdate.do";
-    	var params=$('#newsForm').serialize();
-    	console.info(params);
-    	$.post(url,params,function(data){
-    		if(data&&data.success){
-    			parent.mainDlg.close("#news_dg");
-    			jSuccess(data.msg);
-    		}else{
-    			jError(data.msg);
-    		}
-    	},'json');
-    	 --%>
-    });
-
-	UE.getEditor('news_content');
 });
 </script>
-</body>
