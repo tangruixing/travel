@@ -55,4 +55,3 @@ if (StringUtils.indexOfIgnoreCase(User_Agent, "MSIE") > -1 && (StringUtils.index
 <script type="text/javascript"	src="<%=contextPath%>/jslib/util/common.js"	charset="utf-8"></script> 
 <script type="text/javascript"	src="<%=contextPath%>/jslib/jNotify/js/jNotify.jquery.js"	charset="utf-8"></script>
 
-

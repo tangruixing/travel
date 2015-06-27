@@ -34,7 +34,7 @@
         <property name="url" type="java.lang.String">
             <column name="URL" />
         </property>
-        
+         <property name="parentName" formula="(select s.realName from scenery s where sceId is not null and s.id=sceId)"></property>
         <property name="startTime" type="string">
             <column name="startTime" />
         </property>

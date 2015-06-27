@@ -3,6 +3,7 @@
  * 在 添加/修改活动时 标记地图
  */
 var Location={
+	dlg:null,
 	modal:null,
     map:null,
     lng:null,
@@ -107,9 +108,56 @@ var Location={
         }
         
     },
-    init:function(){
+    initDlg:function(){
+    	Location.dlg=$("#markDlg");
+    /*	Location.dlg.dialog({
+    		onClose:function(){
+    			console.info("markDlg 关闭了");
+    			$(this).empty();
+    		}
+    	})   */
+      	   var i=0;
+         	 
+      	   
+             $("#markBtn").off('click');
+             $("#markBtn").on('click', function () {
+          	   if(i==0){//第一次点击
+          		   /*用户是否输入值*/
+              	   var userInput=$("#userInput").val();
+
+                     if(userInput==undefined||userInput==null||userInput==""||userInput.length==0){//没有输入
+                     		Location.userInput=false;
+                     }
+              	   ++i;
+          	   }
+          	   	
+          	   $("#dlg-markDlg-buttons").show();
+          	   $("#l-map").show();
+          	   
+        	   //创建一个 dialog
+      	   	   Location.dlg.dialog({
+      	   		   width:'60%',
+      	   		   height:'40%',
+      	   		   closed:true,
+      	   		   modal:true,
+      	   		   buttons:'#dlg-markDlg-buttons'
+      	   	   });
+          	   
+             	   Location.dlg.dialog('open').dialog('setTitle','标记地图');
+             	   Location.initMap();
+                 
+             });
+             
+             $("#mark_close").off('click');
+             $("#mark_close").on('click', function () {
+                // _role_curdCommon._function.close();
+          	   Location.dlg.dialog('close');
+             });
+    },
+    initBs:function(){
     	
-    	   Location.initMap();
+    	   console.info("init");
+    	  
     	   Location.modal=$("#myModal");
     	   var i=0;
        	 
@@ -126,9 +174,8 @@ var Location={
                    }
             	   ++i;
         	   }
-        
+        	   Location.initMap();
         	   Location.modal.modal('show');
-           	 
                
            });
            
@@ -138,9 +185,10 @@ var Location={
         	   console.info('close');
         	   Location.modal.modal('close');
            });
+          
     },
     initMap:function(){
-    	
+    	console.info($("#l-map"));
     	   //初始化地图
         var map = new BMap.Map("l-map");
         Location.map=map;
@@ -150,18 +198,20 @@ var Location={
         
         var lng=$("#lng").val();
         var lat=$("#lat").val();
-     
+        var zoom=11;
         console.info(lng!=0.0);
         console.info(lat);
         if(lng!=0.0&&lng!=""&&lat!=0.0&&lat!=""){
     
             startPoint=new BMap.Point(lng,lat);
+            zoom=18;
+            
         }
 
         console.info(startPoint);
         //标记起始点
-        map.centerAndZoom(startPoint, 11);//必须
-
+        map.centerAndZoom(startPoint, zoom);//必须
+        console.info("地图缩放等级："+zoom);
         map.enableScrollWheelZoom(true);//可以缩放
         map.disableDoubleClickZoom();
 

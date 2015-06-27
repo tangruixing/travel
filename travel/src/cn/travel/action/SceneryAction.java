@@ -26,6 +26,8 @@ public class SceneryAction extends BaseAction<Scenery>{
 	@Resource(name="sceneryService")
 	private SceneryService sceneryService;
 
+	private int type;//{'0':全部,'1':景区,'2':景点}
+
 	
 	/**
 	 * 
@@ -45,7 +47,7 @@ public class SceneryAction extends BaseAction<Scenery>{
 	 * 列表显示
 	 */
 	public void doList() {
-		Grid grid=sceneryService.getSceneryGrid(p,model);
+		Grid grid=sceneryService.getSceneryGrid(p,model,type);
 		write2Response(grid);
 		
 	}
@@ -93,7 +95,7 @@ public class SceneryAction extends BaseAction<Scenery>{
 	 * @return
 	 */
 	public String toSave(){
-		logger.info("toSaves");
+		logger.info("toSave");
 		return goUI("save.jsp");
 	}
 	
@@ -104,6 +106,7 @@ public class SceneryAction extends BaseAction<Scenery>{
 	public String toUpdate(){
 		
 		this.model=sceneryService.getEntity(model.getId());
+		this.model.setSceId(this.model.getScenery().getId());
 		return goUI("save.jsp");
 	}
 	
@@ -129,8 +132,27 @@ public class SceneryAction extends BaseAction<Scenery>{
 		sceneryService.saveOrUpdateEntity(this.model);
 		return goAction("scenery_toIndex.do");
 	}
+
+
+
+
+	public int getType() {
+		return type;
+	}
+
+
+
+
+	public void setType(int type) {
+		this.type = type;
+	}
+
 	
 
+	
+
+
+	
 	
 	
 	

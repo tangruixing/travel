@@ -1,8 +1,8 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/pub/inc.jspf"%>  
-<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>  
-<%@ include file="/WEB-INF/pub/ueditor.jspf"%>  
-<%@ include file="/WEB-INF/pub/webuploader.jspf"%>  
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%		
+	String contextPath=request.getContextPath();
+%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -19,7 +19,7 @@
                         <h2>旅游线路信息</h2>
                     </div>
 
-                    <form id="routeForm" method="post" class="form-horizontal" action="<%=contextPath%>/route_doSaveOrUpdateAction.do">
+                    <form id="routeForm" method="post" class="form-horizontal" action="<%=contextPath%>/route_doSaveOrUpdate.do">
                     	<s:hidden name="id" />
 
 
@@ -83,7 +83,8 @@
 							<div class="form-group">
                             <label class="col-lg-3 control-label">行程建议</label>
                             <div class="col-lg-9">
-                               	<s:textarea id="router_suggest" name="suggest" />
+<%--                                	<s:textarea  row="5" id="router_suggest" name="suggest" /> --%>
+                               	<s:textarea cssClass="form-control"   row="5" id="router_suggest" name="suggest" />
 
                             </div>
                         </div>
@@ -96,7 +97,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">路线详情</label>
                             <div class="col-lg-9">
-                               	<s:textarea id="router_content" name="description" />
+                               	<s:textarea  id="router_content" name="description" />
                             </div>
                         </div>
                         
@@ -132,7 +133,7 @@ $(document).ready(function() {
         },
         fields: {
         	realName: {
-                group: '.col-lg-4',
+                
                 validators: {
                     notEmpty: {
                        /*  message: 'The first name is required and cannot be empty' */
@@ -140,7 +141,7 @@ $(document).ready(function() {
                 }
             },
             logo: {
-                group: '.col-lg-4',
+                
                 validators: {
                     notEmpty: {
                        /*  message: 'default' */
@@ -191,7 +192,27 @@ $(document).ready(function() {
                 }
             }
         }
-    });
+    })
+     .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(data) {
+            	if(data&&data.success){
+        			parent.mainDlg.close("#news_grid");
+        			jSuccess(data.msg);
+        		}else{
+        			jError(data.msg);
+        		}
+            }, 'json');
+     });
 
     // Validate the form manually
     $('#validateBtn').click(function() {
@@ -205,7 +226,7 @@ $(document).ready(function() {
 
 	new uploadSimpleImage('router_logo_img','router_logo_input','router_logo_picker');
 	var content=UE.getEditor('router_content');
-	var suggest=UE.getEditor('router_suggest');
+	/* var suggest=UE.getEditor('router_suggest'); */
 	
 	$("#checkSubmit").on('click',function(){
 		

@@ -1,18 +1,27 @@
 /**
  * 思路：在子 iframe 中打开父 iframe 中的 dialog ,加载远程页面,远程页面
  */
-function dlg(){
+function pdlg(){
 	this.opts=null;
 	this.$grid=null;// 当前 iframe 中的 grid
 	this.parentDlg=$('<div/>');//父 dialog
 	this.childWindow=null;//当前 iframe
 }
 
-dlg.prototype={
+pdlg.prototype={
 		open:function(opts,childWindow,$grid){
-		
-			opts.modal = true;// 强制此dialog为模式化，无视传递过来的modal参数
-			this.opts=opts;
+			
+			
+			this.opts=$.extend({
+				onClose : function() {
+					$(this).dialog('destroy');
+					console.info("原来的");
+				}
+			},opts);
+			this.opts.modal = true;// 强制此dialog为模式化，无视传递过来的modal参数
+			if (this.opts.url) {
+				opts.content = '<iframe id="" src="' + options.url + '" allowTransparency="true" scrolling="auto" width="100%" height="98%" frameBorder="0" name=""></iframe>';
+			}
 			this.parentDlg.dialog(this.opts);//
 			
 			this.childWindow=childWindow;
@@ -35,6 +44,7 @@ dlg.prototype={
 				height : 480,
 				modal : true,
 				onClose : function() {
+					console.info("原来的close");
 					$(this).dialog('destroy');
 				}
 			}, options);
@@ -59,6 +69,8 @@ dlg.prototype={
 				return ;
 			}
 			this.parentDlg.dialog('close');
+			console.info(this.parentDlg);
+			
 			this.$grid.datagrid('reload');	// reload the role data
 			this.$grid.datagrid('unselectAll');// 取消掉选择行
 		}

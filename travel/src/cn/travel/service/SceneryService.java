@@ -8,7 +8,7 @@ import cn.travel.model.Scenery;
 public interface SceneryService extends BaseService<Scenery>{
 
 
-	Grid getSceneryGrid(Page p, Scenery model);
+	Grid getSceneryGrid(Page p, Scenery model,int type);
 
 	void batchSceneryDelete(String deleteIds);
 

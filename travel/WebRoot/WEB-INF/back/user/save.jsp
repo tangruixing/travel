@@ -1,11 +1,12 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/inc.jspf" %>
 <%@ include file="/WEB-INF/pub/bootstrap.jspf" %>
-<%@ include file="/WEB-INF/pub/bootstrap.jspf" %>
-<%-- <jsp:include page="/WEB-INF/pub/easyui.jspf"></jsp:include>
-<jsp:include page="/WEB-INF/pub/bootstrap.jspf"></jsp:include> --%>
-<%-- <%@ include file="/WEB-INF/pub/inc.jspf" %>
-<%@ include file="/WEB-INF/pub/bootstrap.jspf" %> --%>
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
+<html>
+<head lang="en">
+    <title>新闻管理</title>
+</head>
+<body>
  <div class="container">
         <div class="row">
             <!-- form: -->
@@ -100,7 +101,7 @@ $(document).ready(function() {
         },
         fields: {
         	mobile: {
-                group: '.col-lg-4',
+              
                 validators: {
                 	  notEmpty: {
                           /*   message: 'default' */
@@ -111,7 +112,7 @@ $(document).ready(function() {
                 }
             },
             role: {
-                group: '.col-lg-4',
+              
                 validators: {
                     notEmpty: {
                        /*  message: 'default' */
@@ -119,7 +120,7 @@ $(document).ready(function() {
                 }
             },
             eamil:{
-            	group: '.col-lg-4',
+            	
                 validators: {
                     notEmpty:{
                   /*       message: 'default' */
@@ -129,7 +130,7 @@ $(document).ready(function() {
                 }
             },
             realName: {
-            	group: '.col-lg-4',
+            	
                 validators: {
                 	notEmpty: {
                        /*  message: 'default' */
@@ -137,7 +138,7 @@ $(document).ready(function() {
                 }
             },
             birth: {
-            	group: '.col-lg-4',
+            	
                 validators: {
                     notEmpty: {
                     }
@@ -171,3 +172,5 @@ $(document).ready(function() {
     });
 });
 </script>
+</body>
+</html>

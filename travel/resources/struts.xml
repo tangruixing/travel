@@ -29,7 +29,7 @@
 
 		<global-results>
 			<result name="toLogin">/WEB-INF/back/login/login.jsp</result>
-			<result name="error">/500.html</result>
+			<result name="error">/505.html</result>
 		</global-results>
 		
 		<global-exception-mappings>

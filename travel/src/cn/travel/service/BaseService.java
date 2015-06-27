@@ -54,6 +54,17 @@ public interface BaseService<T> {
 	 * @return
 	 */
 	public List<T> findEntityByHQL(String hql,Object ...objects);
+	
+	
+	
+	/**
+	 * 
+	 * @param sql
+	 * @param objects
+	 * @return
+	 */
+	public List<T> findEntityBySQL(String sql, Object ...objects);
+	
 	/**
 	 * 
 	 * @param hql

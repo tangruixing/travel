@@ -82,7 +82,6 @@ public class NewsAction extends BaseAction<News>{
 	}
 	
 	
-	/*普通方式*/
 	/**
 	 * 添加操作跳转
 	 * @return

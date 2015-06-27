@@ -6,7 +6,6 @@
 <head lang="en">
     <meta charset="UTF-8">
     <title>News管理</title>
-    <script type="text/javascript" src="<%=contextPath %>/back/style/js/Base.js"></script>
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
 	 <div id="toolbar">
@@ -22,8 +21,6 @@
 </body>
 
 <script type="text/javascript">
-
-		var grid=null;
         $(function () {
         
             var gdOptions={

@@ -51,7 +51,7 @@ Base.prototype={
 			 */
 			this.url=$.extend({
 				toSave:sy.contextPath+"/"+clz+"_toSave.do",
-				toUpdate:sy.contextPath+"/"+clz+"_toSave.do",
+				toUpdate:sy.contextPath+"/"+clz+"_toUpdate.do",
 				doList:sy.contextPath+"/"+clz+"_doList.do",
 				doSaveOrUpdate:sy.contextPath+"/"+clz+"_toSave.do",
 				doDeletes:sy.contextPath+"/"+clz+"_doDeletes.do",
@@ -102,7 +102,7 @@ Base.prototype={
 			if(this.urlParams.length>0){
 				url=pre+this.urlParams.join("&");
 			}
-			return url;
+			return encodeURI(url);
 		},
 		loadGrid:function(){
 

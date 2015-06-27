@@ -2,5 +2,6 @@
          pageEncoding="UTF-8"%>
 <%
 	response.sendRedirect("login_toLogin.do");
+	/* request.getRequestDispatcher("login_toLogin.do").forward(request, response); */
 %>
 
