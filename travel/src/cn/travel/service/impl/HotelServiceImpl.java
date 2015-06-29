@@ -35,7 +35,7 @@ public class HotelServiceImpl extends BaseServiceImpl<Hotel> implements HotelSer
 
 	public Grid getHotelGrid(Page p, Hotel model) {
 		
-		HqlHelper hql=new HqlHelper(Hotel.class, "u")//
+		HqlHelper hql=new HqlHelper(Hotel.class, "u")
 					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
 		
 		return this.getPageGrid(p.getPage(), p.getRows(), hql);

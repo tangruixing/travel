@@ -14,6 +14,9 @@ public class Route implements Serializable{
 	private java.lang.String logo;		/*logo*/
 
 
+	private String summary;/*简介*/
+	
+	private boolean hot=false;
 	private java.lang.String description;		/*描述*/
 	
 	private float money;		/*人均消费 */
@@ -140,6 +143,23 @@ public class Route implements Serializable{
 	public void setUser(User user) {
 		this.user = user;
 	}
+
+	public String getSummary() {
+		return summary;
+	}
+
+	public void setSummary(String summary) {
+		this.summary = summary;
+	}
+
+	public boolean isHot() {
+		return hot;
+	}
+
+	public void setHot(boolean hot) {
+		this.hot = hot;
+	}
+	
 	
 	
 

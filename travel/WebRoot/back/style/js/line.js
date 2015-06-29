@@ -49,6 +49,23 @@ myLine.prototype = {
 	         },'json');
 
 		},
+		
+		lineDivMap : function(url, value,id) {
+			var _this = this;
+			$.post(url, value, function(data) {
+
+				if (data != null && data != undefined) {
+					if (!data.obj) {
+						$("#"+id).hide();
+					} else {
+						_this.data=data.obj;
+						_this.showMap();
+					}
+
+				}
+			}, 'json');
+
+		},	
 	showMap : function() {
 		var _this = this;
 		var i;

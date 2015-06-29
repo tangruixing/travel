@@ -31,8 +31,14 @@
         <property name="money" type="java.lang.Float">
             <column name="MONEY" />
         </property>
-        <property name="description" type="java.lang.String">
+        <property name="description" type="text">
             <column name="DESCRIPTION" />
+        </property>
+        <property name="hot" type="boolean">
+        	<column name="HOT"></column>
+        </property>
+        <property name="summary" type="text">
+        	<column name="SUMMARY"></column>
         </property>
         <property name="numPeople" type="java.lang.Integer">
             <column name="NUMPEOPLE" />

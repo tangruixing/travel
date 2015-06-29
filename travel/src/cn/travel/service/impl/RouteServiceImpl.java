@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.model.Route;
 import cn.travel.service.RouteService;
@@ -46,6 +47,19 @@ public class RouteServiceImpl extends BaseServiceImpl<Route> implements RouteSer
 		String hql="delete from Route u where u.id in ("+deleteIds+") ";
 		
 		this.dao.batchEntityByHQL(hql);
+	}
+
+	public PageBean getRoutePageList(int page, int rows, Route model) {
+		HqlHelper hql=new HqlHelper(Route.class, "u")//
+					.addWhereCondition("u.routeType=?", model.getRouteType());
+		return this.getPageBean(page, rows, hql);
+	}
+
+	public PageBean getRoutePageHot(int page, int rows,Route model) {
+		HqlHelper hql=new HqlHelper(Route.class, "u")//
+					.addWhereCondition("u.routeType=?", model.getRouteType())//
+					.addWhereCondition("u.hot=true");
+		return this.getPageBean(page, rows, hql);
 	}
 	
 	

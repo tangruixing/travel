@@ -5,6 +5,21 @@
 <struts>
 
 	<package name="back" extends="struts-default" namespace="/front">
+	
+		<interceptors>
+			<interceptor name="frontLoginInterceptor"
+				class="cn.travel.interceptor.FrontLoginInteceptor"></interceptor>
+				
+			<interceptor-stack name="frontTravelStack">
+				<interceptor-ref name="frontLoginInterceptor"></interceptor-ref>
+				<interceptor-ref name="defaultStack">
+					<param name="modelDriven.refreshModelBeforeResult">true</param>
+				</interceptor-ref>
+			</interceptor-stack>
+		</interceptors>
+		
+		<default-interceptor-ref name="frontTravelStack"></default-interceptor-ref>
+		
 		<action name="front_*_*" class="front{1}Action" method="{2}" >
 			<result name="goUI">/front/page/{1}/${resultUI}</result>
 		</action> 

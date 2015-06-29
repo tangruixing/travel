@@ -1,4 +1,4 @@
-<%@ page language="java" import="java.util.*" pageEncoding="UTF-8" import="cn.travel.model.User"%>
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/front/lib/inc.jspf" %>
 <!doctype html>
 <html>
@@ -37,7 +37,7 @@ $(document).ready(function(e){
     
     var options = { 	        
 	        success:       showResponse,  //提交之后的回调函数
-   	        url: '<%=contextPath%>/front_User_login.do',       //覆盖了form的action属性
+   	        url: '<%=contextPath%>/front/front_User_login.do',       //覆盖了form的action属性
 	        type:     'post',        
 	        dataType: 'json',     //(依据服务器返回类型进行设置) 
 	        clearForm: true ,      //在成功提交后清除所有的表单域内容
@@ -47,28 +47,9 @@ $(document).ready(function(e){
 	     //为表单关联Ajax提交方法
 	    $('#myform').ajaxForm(options); 
 	     
-	    $("#addMsg").leanModal();
-<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8"%>
-<%
-	response.sendRedirect("login_toLogin.do");
-	/* request.getRequestDispatcher("login_toLogin.do").forward(request, response); */
-%> --%>
+	   /*  $("#addMsg").leanModal(); */
 
 });
-function logout(){
-	$.ajax({
-		url: '<%=contextPath%>/front_User_logout.do', 
-        type:     'post',        
-        dataType: 'json',     //(依据服务器返回类型进行设置) 
-        success:function(json){
-        	location.href ="<%=contextPath%>/index.jsp";
-        },
-        error:function(){
-        	alert("发生错误");
-        }
-	});
-}
 
 function showResponse(responseText, statusText, xhr, $form) {
 	if(responseText.success){
@@ -76,10 +57,10 @@ function showResponse(responseText, statusText, xhr, $form) {
 		var arr=new Array();
 		arr=responseText.msg.split(',');
 		$("#second nav div").empty();
-		$("#second nav div").append("<a href=\"<%=contextPath%>/front_User_person.do?id="+arr[0]+"\">尊敬的会员</a>&nbsp;<a href=\"javascript:logout()\">注销</a>");
-		if(arr[1]=="1"){
-			console.info("被调用");
-			$("#second nav ul").append("<li><a href=\"login_doLogin.do\">后台管理</a></li>");
+		if(arr[1]=="2"){
+			$("#second nav div").append("<a href=\"<%=contextPath%>/front_User_person.do?id="+arr[0]+"\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front_User_logout.do\">注销</a>");
+		}else{
+			$("#second nav div").append("<a href=\"<%=contextPath%>/login_toLogin.do\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front_User_logout.do\">注销</a>");
 		}
 	}else{
 		if(unsubmit){
@@ -392,13 +373,10 @@ a:hover{
             <li><a href="#">酒店</a></li>
             <li><a href="#">旅游路线</a></li>
             <li><a href="#">自由行</a></li>
-            <li><a href="<%=contextPath%>/front_Message_index.do">留言</a></li>
-            <s:if test="#session.loginUser.role==1">
-            	<li><a href="login_doLogin.do">后台管理</a></li>
-            </s:if>
+            <li><a href="<%=contextPath%>/front_Message_index.do">留言</a></li>            
         </ul>
         <div>
-        <s:if test="#session.user==null">
+        <s:if test="#session.loginUser==null">
         	<span>登录</span>│<a href="front/register.jsp">注册</a>
             <section id="sign">
             	<form action="<%=contextPath%>/front_User_login.do" id="myform">
@@ -407,16 +385,18 @@ a:hover{
                     <tr><td>密码：</td><td><input type="password" name="pwd"></td></tr>
                     <tr><td colspan="2" height="40px"><center><input type="submit" value="登录" class="button"></center></td>
                  </table>
+                 </form>
             </section>
         </s:if><s:else>
-            <a href="<%=contextPath%>/front_User_person.do?id=<s:property value="#session.user.getId()"/>">尊敬的会员</a>&nbsp;<a href="javascript:logout()">注销</a>
+            <s:if test="#session.loginUser.role==2"><a href="<%=contextPath%>/front/person.jsp"></s:if>
+            <s:else><a href="<%=contextPath%>/login_toLogin.do"></s:else>尊敬的会员</a>&nbsp;<a href="<%=contextPath%>/front_User_logout.do">注销</a>
         </s:else>
         </div>
     </nav>
     <div id="slider01"></div>
 </div>
 
-
+<!-- second 酒店 -->
 <s:action name="front_Hotel_toIndexList" executeResult="true" namespace="/front">
 	<s:param name="page">1</s:param>
 	<s:param name="rows">6</s:param>

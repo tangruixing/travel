@@ -57,9 +57,9 @@
                             </div>
                         </div>
                         <div class="form-group">
-                            <label class="col-lg-3 control-label">summary</label>
+                            <label class="col-lg-3 control-label">简介</label>
                             <div class="col-lg-5">
-                            	<s:textarea name="summary" cssClass="form-control"/>
+                            	<s:textarea name="summary" cssClass="form-control" rows="5"/>
                             </div>
                         </div>
 

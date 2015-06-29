@@ -95,12 +95,27 @@
                       
 
                         <div class="form-group">
+                            <label class="col-lg-3 control-label">简介</label>
+                            <div class="col-lg-5">
+                            	<s:textarea name="summary" cssClass="form-control" rows="5"/>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">热门</label>
+                            <div class="col-lg-5">
+                            		<s:set value="#{0:'否',1:'是'}" var="hotMap"></s:set>
+                               	<s:select cssClass="form-control" list="#hotMap" listKey="key" listValue="value" name="hot" ></s:select>
+                            </div>
+                        </div>
+                        
+                        
+                        <div class="form-group">
                             <label class="col-lg-3 control-label">路线详情</label>
                             <div class="col-lg-9">
                                	<s:textarea  id="router_content" name="description" />
                             </div>
                         </div>
-                        
 
                         <div class="form-group">
                             <div class="col-lg-9 col-lg-offset-3">

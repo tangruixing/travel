@@ -1,0 +1,89 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+
+ 
+<div class="panel-foot text-center">
+	<table style="margin-left:auto;margin-right:auto;cursor: pointer;">
+      <tbody>
+          <tr>
+            <td>
+    <c:if test="${pageBean.currentPage!=1 && pageBean.currentPage > 1}">
+		<ul class="pagination">
+			<li><a onclick="gotoPageByType(${pageBean.currentPage-1})">上一页</a></li>
+		</ul>
+	</c:if>
+</td>
+            <td>
+	<c:choose>
+		<c:when test="${pageBean.pageCount!=0}">
+			<ul class="pagination pagination-group">
+				<c:forEach begin="${pageBean.beginPageIndex}"
+					end="${pageBean.endPageIndex}" var="num">
+					<c:choose>
+						<c:when test="${num==pageBean.currentPage}">
+							<!-- 如果是当前页 -->
+							<li class="active"><a href="javascript:void(0);">${num}</a></li>
+						</c:when>
+						<c:otherwise>
+							<!-- 如果不是当前页 -->
+							<li><a onclick="gotoPageByType(${num})">${num}</a></li>
+
+						</c:otherwise>
+					</c:choose>
+				</c:forEach>
+			</ul>
+		</c:when> 
+
+		<c:when test="${pageBean.pageCount==0}">
+			<div style="text-align: center">没有符合条件的查询</div>
+		</c:when>
+	</c:choose>
+</td>
+            <td>
+	<c:if
+		test="${pageBean.currentPage!=pageBean.pageCount&&pageBean.pageCount!=0}">
+		<ul class="pagination">
+			<li><a onclick="gotoPageByType(${pageBean.currentPage+1})">下一页</a></li>
+		</ul>
+	</c:if> 
+	</ul></td>
+          </tr>
+      </tbody>
+  </table>
+</div>
+
+<div class="clear"></div>
+<script type="text/javascript">
+
+function gotoPageByType(pageNum){
+	 
+	
+	var $list=$("#list");
+	var $form=$("#pageForm");
+	
+	var url=$form.attr('action')+"?page="+pageNum+"&rows=${rows}";
+	var value=$form.serialize();
+	
+	console.info(url);
+		
+	
+	$.post(url,value,function(html){
+		console.info(html);
+		if(html){
+			$list.empty(); 
+			console.info($list)
+			$list.append(html);
+		}
+	});
+/* 	 $.ajax( {  			 	
+	        url : $form.attr('action') + "?page="+pageNum, 
+	        type: "POST",
+	        cache : false,    
+	        success : function(html) {  
+	        //把结果页面追加到id为lbox的DIV   
+	       
+	    	}  
+	    });		  */
+}
+
+
+</script>
