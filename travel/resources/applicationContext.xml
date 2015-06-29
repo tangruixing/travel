@@ -16,7 +16,7 @@
             		 http://www.springframework.org/schema/util/spring-util-3.0.xsd">
             		 
     <!-- 组件扫描-->
-    <context:component-scan base-package="cn.travel.dao.impl,cn.travel.service.impl,cn.travel.action,front.action,cn.travel.install" />  
+    <context:component-scan base-package="cn.travel.dao.impl,cn.travel.service.impl,cn.travel.action,front.action" />  
 	<!-- 分散配置 -->
 	<context:property-placeholder location="classpath:jdbc.properties"/>
 	<!-- 数据源 -->

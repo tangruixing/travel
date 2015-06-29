@@ -41,6 +41,10 @@ public class LoginInterceptor implements Interceptor{
 		ActionProxy proxy = invocation.getProxy();
 		
 		log.info("拦截器拦截的ActionName:"+proxy.getActionName()+",Method:"+proxy.getMethod());
+	/*	if(proxy.getActionName().startsWith("front")){//前台页面
+			log.info("前台首页放行...");
+			return invocation.invoke();
+		}*/
 		if(action instanceof LoginAction|| action instanceof FrontUserAction){
 			log.info("直接放行..");
 			return invocation.invoke();

@@ -25,32 +25,36 @@
 			</interceptor-stack>
 		</interceptors>
 
-		<default-interceptor-ref name="travelStack"></default-interceptor-ref>
+
 
 		<global-results>
-			<result name="toLogin">/WEB-INF/back/login/login.jsp</result>
-			<result name="error">/505.html</result>
+			<result name="toLogin">/index.jsp</result>
+			<result name="error">/500.html</result>
 		</global-results>
 		
 		<global-exception-mappings>
 			<exception-mapping result="error" exception="java.lang.Exception" />
 		</global-exception-mappings>
 		
-		<action name="front_*_*" class="front{1}Action" method="{2}" >
-			<result name="goUI">${resultUI}</result>
-		</action> 
 
+		
+	</package>
+	
+	<package name="back" extends="travelPkg" namespace="/">
+		<default-interceptor-ref name="travelStack"></default-interceptor-ref>
 		<action name="*_*" class="{1}Action" method="{2}">
 			<result name="goUI">/WEB-INF/back/{1}/${resultUI}</result>
-			
+				
 			<result name="goAction" type="redirectAction">
 				<param name="namespace">${namespaceAction}</param>
 				<param name="actionName">${resultAction}</param>
 			</result>
 		</action>
+
 	</package>
+	
 
 	<!-- 其余包继承 travelPkg 有登录拦截器 -->
 	<!-- <include file="front.xml"></include> -->
-
+	<include file="front.xml"></include>
 </struts>

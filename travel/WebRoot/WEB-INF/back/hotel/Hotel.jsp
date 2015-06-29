@@ -25,7 +25,7 @@
         	
         	
         	var gdOptions={
-        		columns: columns=[[{
+        		columns:[[{
                     title : '编号',
                     field : 'id',// 绑定属性名字,后台返回的json数据
                     width : 100,// 必须要给，大于50
@@ -92,7 +92,7 @@
           		    onClose:function(){
           		  		parent.UE.getEditor('hotel_content').destroy();
           		  		parent.mainDlg.parentDlg.dialog('destroy');
-          		    },
+          		    }
         	}  
             var hotel=new Base("hotel",gdOptions,dlgOptions,parent.mainDlg);
             hotel.loadGrid();
