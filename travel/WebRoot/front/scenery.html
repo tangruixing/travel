@@ -23,6 +23,13 @@ $(document).ready(
 				];
 		$(".pikachoose").PikaChoose({data:a});	 
 	});
+	
+function showbyID(id){
+	$("#"+id).css("display","block");
+}
+function closebyID(id){
+	$("#"+id).css("display","none");
+}
 </script>
 <style type="text/css">
 a{
@@ -53,6 +60,24 @@ a{
 #third section{
 	margin-top:10px;
 }
+#map{
+	width:500px;
+	height:300px;
+	display:none;
+	position:fixed;
+	top:100px;
+	left:260px;
+	-webkit-box-shadow: 0px 0px 8px 3px #000000;
+	box-shadow: 0px 0px 8px 3px #000000;
+	background-color: #FFF;
+}
+#map section{
+	float:right;
+	position:relative;
+	left:15px;
+	top:-15px;
+	z-index:1000;
+}
 </style>
 </head>
 
@@ -78,7 +103,7 @@ a{
 <div id="third">
 	<h1><a href="#"><img src="images/jingdianbiao.png">于山</a></h1>
     <aside>级别：<span>AAAA</span></aside>                  
-    <section><img src="images/didianbiao.png">福州市鼓楼区于山路</section>
+    <section><img src="images/didianbiao.png"><a href="javascript:showbyID('map')">福州市鼓楼区于山路</a></section>
     <section>开放时间：06:00-22:00&nbsp;联系电话：5566-666688</section>
     <div class="pikachoose"></div>
     <section>
@@ -90,6 +115,9 @@ a{
 	<section>
     	
     </section>
+</div>
+<div id="map">
+	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
 </div>
 </body>
 </html>
