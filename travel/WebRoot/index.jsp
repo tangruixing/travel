@@ -48,6 +48,12 @@ $(document).ready(function(e){
 	    $('#myform').ajaxForm(options); 
 	     
 	    $("#addMsg").leanModal();
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%
+	response.sendRedirect("login_toLogin.do");
+	/* request.getRequestDispatcher("login_toLogin.do").forward(request, response); */
+%> --%>
 
 });
 function logout(){

@@ -82,5 +82,34 @@ public class NewsAction extends BaseAction<News>{
 	}
 	
 	
+	/**
+	 * 添加操作跳转
+	 * @return
+	 */
+	public String toSave(){
+		return goUI("save.jsp");
+	}
+	
+	/**
+	 * 修改操作跳转
+	 * @return
+	 */
+	public String toUpdate(){
+		
+		this.model=newsService.getEntity(model.getId());
+		return goUI("save.jsp");
+	}
+	/**
+	 * 保存和更新
+	 * @return
+	 */
+	public String doSaveOrUpdateAction(){
+		
+		newsService.saveOrUpdateEntity(this.model);
+		return goAction("route_toIndex.do?routeType=${routeType}");
+	}
+	
+	
+	
 	
 }

@@ -4,10 +4,10 @@
 <%-- easyui--%>
 
 <link rel="stylesheet" type="text/css" href="<%=contextPath%>/back/style/css/form.css">
-<link rel="stylesheet" type="text/css" href="<%=contextPath%>/jslib/easyui-1.4.2/themes/default/easyui.css">
+<link rel="stylesheet" type="text/css" href="<%=contextPath%>/jslib/easyui-1.4.2/themes/bootstrap/easyui.css">
 <link rel="stylesheet" type="text/css" href="<%=contextPath%>/jslib/easyui-1.4.2/themes/icon.css">
-<script type="text/javascript" src="<%=contextPath%>/jslib/easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
 <script type="text/javascript" src="<%=contextPath%>/jslib/easyui-1.4.2/jquery.easyui.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/jslib/easyui-1.4.2/locale/easyui-lang-zh_CN.js"></script>
 
 
 <%-- easyui 扩展--%>
@@ -18,3 +18,6 @@
 <script type="text/javascript" src="<%=contextPath%>/jslib/syExtJquery.js"></script>
 
 <script type="text/javascript" src="<%=contextPath%>/back/style/js/Curd.js"></script>
+
+<script type="text/javascript" src="<%=contextPath %>/back/style/js/easyui-pdlg.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/back/style/js/Base.js"></script>

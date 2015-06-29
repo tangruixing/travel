@@ -6,13 +6,13 @@ import javax.annotation.Resource;
 
 import org.junit.Test;
 
+import com.alibaba.fastjson.JSON;
+
 import cn.model.Grid;
 import cn.model.Page;
 import cn.travel.model.Roomstyle;
 import cn.travel.model.Routeplan;
 import cn.travel.model.Scenery;
-
-import com.alibaba.fastjson.JSON;
 
 public class SceneryServiceTest extends BaseSpringTest{
 
@@ -50,5 +50,25 @@ public class SceneryServiceTest extends BaseSpringTest{
 		Roomstyle rs = roomstyleService.getEntity(1);
 		logger.info(rs.getHotel().getId());
 		logger.info(writeJsonByFilter(rs, null, null));
+	}
+	
+	
+	@Test
+	public void getParentSceHql(){
+		/*int parent=1;
+		HqlHelper hql=new HqlHelper(Scenery.class, "u")//
+				  .addWhereCondition(parent==1?"u.scenery.sceId is null":"u.scenery.sceId is not null");*/
+		String hql="from Scenery s where s.scenery.id is null";
+		List<Scenery> list = sceneryService.findEntityByHQL(hql);
+		logger.info(writeJsonByFilter(list, null, null));
+	}
+	@Test
+	public void getParentSceSql(){
+		/*int parent=1;
+		HqlHelper hql=new HqlHelper(Scenery.class, "u")//
+				  .addWhereCondition(parent==1?"u.scenery.id is null":"u.scenery.id is not null");*/
+		String sql="select * from scenery s where s.sceId is null";
+		List<Scenery> list = sceneryService.findEntityBySQL(sql);
+		logger.info(writeJsonByFilter(list, null, null));
 	}
 }

@@ -8,7 +8,7 @@ public class Scenery implements Serializable{
 	
 	//columns START
 	private java.lang.Integer id;		/*风景ID*/
-	private java.lang.Integer sceId;		/*风景ID*/
+	
 	
 	private java.lang.String realName;		/*名字*/
 	private java.lang.String address;		/*地址*/
@@ -32,6 +32,10 @@ public class Scenery implements Serializable{
 
 	private Scenery scenery;
 	
+	/*数据库中没有的字段*/
+
+	private java.lang.Integer sceId;		/*景点的景区ID*/
+	private String parentName;	/*景点的景区名字*/
 	
 	public Scenery(){
 	}
@@ -55,6 +59,10 @@ public class Scenery implements Serializable{
 	}
 
 	public void setSceId(java.lang.Integer sceId) {
+		if(sceId!=null){
+			scenery=new Scenery();
+			scenery.setId(sceId);
+		}
 		this.sceId = sceId;
 	}
 
@@ -187,6 +195,19 @@ public class Scenery implements Serializable{
 		this.summary = summary;
 	}
 
+	public String getParentName() {
+		return parentName;
+	}
+
+	public void setParentName(String parentName) {
+		this.parentName = parentName;
+	}
+
+	
+
+	
+	
+	
 	
 	
 		

@@ -6834,9 +6834,11 @@ var fillCharReg = new RegExp(domUtils.fillChar, 'g');
             } else {
                 textarea.style.display = ''
             }
-
-            textarea.style.width = me.iframe.offsetWidth + 'px';
-            textarea.style.height = me.iframe.offsetHeight + 'px';
+            if( me.iframe){
+            	  textarea.style.width = me.iframe.offsetWidth + 'px';
+                  textarea.style.height = me.iframe.offsetHeight + 'px';
+            }
+          
             textarea.value = me.getContent();
             textarea.id = me.key;
             container.innerHTML = '';
@@ -29262,23 +29264,27 @@ UE.ui = baidu.editor.ui = {};
                         opt.minFrameWidth = opt.initialFrameWidth;
                     } else {
                     	console.info(holder);
-                        opt.minFrameWidth = opt.initialFrameWidth = holder.offsetWidth;
-                        var styleWidth = holder.style.width;
-                        if(/%$/.test(styleWidth)) {
-                            opt.initialFrameWidth = styleWidth;
-                        }
+                    	if(holder){
+                    		opt.minFrameWidth = opt.initialFrameWidth = holder.offsetWidth;
+                    		 var styleWidth = holder.style.width;
+                             if(/%$/.test(styleWidth)) {
+                                 opt.initialFrameWidth = styleWidth;
+                             }
+                    	}
+                       
                     }
                     if (opt.initialFrameHeight) {
                         opt.minFrameHeight = opt.initialFrameHeight;
                     } else {
-                        opt.initialFrameHeight = opt.minFrameHeight = holder.offsetHeight;
+                    	if(holder)
+                    		opt.initialFrameHeight = opt.minFrameHeight = holder.offsetHeight;
                     }
                     for(var i = 0 ,ci;ci=parents[i];i++){
                         ci.style.display =  displays[i]
                     }
                     //编辑器最外容器设置了高度，会导致，编辑器不占位
                     //todo 先去掉，没有找到原因
-                    if(holder.style.height){
+                    if(holder&&holder.style.height){
                         holder.style.height = ''
                     }
                     editor.container.style.width = opt.initialFrameWidth + (/%$/.test(opt.initialFrameWidth) ? '' : 'px');
