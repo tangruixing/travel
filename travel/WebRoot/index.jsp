@@ -37,7 +37,7 @@ $(document).ready(function(e){
     
     var options = { 	        
 	        success:       showResponse,  //提交之后的回调函数
-   	        url: '<%=contextPath%>/front_User_login.do',       //覆盖了form的action属性
+   	        url: '<%=contextPath%>/front/front_User_login.do',       //覆盖了form的action属性
 	        type:     'post',        
 	        dataType: 'json',     //(依据服务器返回类型进行设置) 
 	        clearForm: true ,      //在成功提交后清除所有的表单域内容
@@ -196,7 +196,7 @@ nav section input{
 }
 #fourth section{
 	width: 242px;
-	height: 260px;
+	height: 265px;
 	float: left;
 	margin-top: 10px;
 	margin-right:8px;
@@ -363,201 +363,27 @@ a:hover{
 </head>
 
 <body>
-<header>
-	<img src="front/images/index_01.jpg">
-</header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li>首页</li>
-            <li><a href="#">酒店</a></li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="<%=contextPath%>/front_Message_index.do">留言</a></li>            
-        </ul>
-        <div>
-        <s:if test="#session.loginUser==null">
-        	<span>登录</span>│<a href="front/register.jsp">注册</a>
-            <section id="sign">
-            	<form action="<%=contextPath%>/front_User_login.do" id="myform">
-                <table>
-                	<tr><td>手机号：</td><td><input type="text" name="mobile" autocomplete="off"></td></tr>
-                    <tr><td>密码：</td><td><input type="password" name="pwd"></td></tr>
-                    <tr><td colspan="2" height="40px"><center><input type="submit" value="登录" class="button"></center></td>
-                 </table>
-            </section>
-        </s:if><s:else>
-            <s:if test="#session.loginUser.role==2"><a href="<%=contextPath%>/front/person.jsp"></s:if>
-            <s:else><a href="<%=contextPath%>/login_toLogin.do"></s:else>尊敬的会员</a>&nbsp;<a href="<%=contextPath%>/front_User_logout.do">注销</a>
-        </s:else>
-        </div>
-    </nav>
-    <div id="slider01"></div>
-</div>
-
+<jsp:include page="${contextPath}/nav.jsp"></jsp:include>
 
 <s:action name="front_Hotel_toIndexList" executeResult="true" namespace="/front">
 	<s:param name="page">1</s:param>
 	<s:param name="rows">6</s:param>
 </s:action>
 
+<s:action name="front_Scenery_toIndexList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">8</s:param>
+</s:action>
 
-<div id="fourth">
-	<header>
-    	必玩景区
-    </header>
-    <section><a href="#">
-    	<img src="front/images/jing1.jpg" width="242" height="162">
-        <table>
-        	<tr><td><img src="front/images/jingdianbiao.png">&nbsp;三坊七巷</td></tr>
-            <tr><td><span>三坊七巷”地处福州市中心，是南后街两旁从北到南依</span></td></tr>
-         </table></a>
-    </section>
-    <section>
-    	<img src="front/images/jing2.jpg" width="242" height="162">
-        <table>
-        	<tr><td><img src="front/images/jingdianbiao.png">&nbsp;云顶</td></tr>
-            <tr><td><span>三坊七巷”地处福州市中心，是南后街两旁从北到南依</span></td></tr>
-         </table>
-    </section>
-    <section>
-    	<img src="front/images/jing1.jpg" width="242" height="162">
-        <table>
-        	<tr><td><img src="front/images/jingdianbiao.png">&nbsp;三坊七巷</td></tr>
-            <tr><td><span>三坊七巷”地处福州市中心，是南后街两旁从北到南依</span></td></tr>
-         </table>
-    </section>
-    <section><a href="#">
-    	<img src="front/images/jing1.jpg" width="242" height="162">
-        <table>
-        	<tr><td><img src="front/images/jingdianbiao.png">&nbsp;三坊七巷</td></tr>
-            <tr><td><span>三坊七巷”地处福州市中心，是南后街两旁从北到南依</span></td></tr>
-         </table></a>
-    </section>
-    <section><a href="#">
-    	<img src="front/images/jing1.jpg" width="242" height="162">
-        <table>
-        	<tr><td><img src="front/images/jingdianbiao.png">&nbsp;三坊七巷</td></tr>
-            <tr><td><span>三坊七巷”地处福州市中心，是南后街两旁从北到南依</span></td></tr>
-         </table></a>
-    </section>
-    <section>
-    	<img src="front/images/jing1.jpg" width="242" height="162">
-        <table>
-        	<tr><td><img src="front/images/jingdianbiao.png">&nbsp;三坊七巷</td></tr>
-            <tr><td><span>三坊七巷”地处福州市中心，是南后街两旁从北到南依</span></td></tr>
-         </table>
-    </section>
-    <section>
-    	<img src="front/images/jing1.jpg" width="242" height="162">
-        <table>
-        	<tr><td><img src="front/images/jingdianbiao.png">&nbsp;三坊七巷</td></tr>
-            <tr><td><span>三坊七巷”地处福州市中心，是南后街两旁从北到南依</span></td></tr>
-         </table>
-    </section>
-    <section><a href="#">
-    	<img src="front/images/jing1.jpg" width="242" height="162">
-        <table>
-        	<tr><td><img src="front/images/jingdianbiao.png">&nbsp;三坊七巷</td></tr>
-            <tr><td><span>三坊七巷”地处福州市中心，是南后街两旁从北到南依</span></td></tr>
-         </table></a>
-    </section>
-    <footer>
-    	<a href="#">更多景点<img src="front/images/you-2.png"></a>
-    </footer>
-</div>
-<div id="fifth">
-	<header>
-    	旅游新闻
-    </header>
-    <section class="example2">    	      
-        <ul>
-            <li><img src="front/images/jing3.jpg" width="400" height="230"></li>
-            <li><img src="front/images/jing2.jpg" width="400" height="230"></li>
-            <li><img src="front/images/jing1.jpg" width="400" height="230"></li>
-        </ul>
-        <ol>
-            <li></li>
-            <li></li>
-            <li></li>
-        </ol>
-    </section>
-    <aside>
-    <table>
-    	<tr><td><a href="#">福州突降暴雨引发山洪 31名游客被困龙潭景</a></td></tr>
-        <tr><td><a href="#">奥体片区将建大型山地公园</a></td></tr>
-        <tr><td><a href="#">福州突降暴雨引发山洪 31名游客被困龙潭景</a></td></tr>
-        <tr><td><a href="#">奥体片区将建大型山地公园</a></td></tr>
-        <tr><td><a href="#">福州突降暴雨引发山洪 31名游客被困龙潭景</a></td></tr>
-        <tr><td><a href="#">奥体片区将建大型山地公园</a></td></tr>
-        <tr><td><a href="#">福州突降暴雨引发山洪 31名游客被困龙潭景</a></td></tr>
-        <tr><td><a href="#">奥体片区将建大型山地公园</a></td></tr>
-    </table>
-    </aside>
-    <footer>
-    	<a href="#">更多新闻</a><img src="front/images/you-3.png">
-    </footer>
-</div>
-<div id="sixth">
-	<header>
-    	合作旅游局
-    </header>
-    <div>
-    	<section>
-        	<a href="#"><img src="front/images/wai-1.jpg"><br>澳大利亚旅游局</a>
-        </section>
-        <section>
-        	<img src="front/images/wai-2.jpg"><br>柏林旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-3.jpg"><br>香港旅游发展局
-        </section>
-        <section>
-        	<img src="front/images/wai-1.jpg"><br>澳大利亚旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-2.jpg"><br>柏林旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-3.jpg"><br>香港旅游发展局
-        </section>
-        <section>
-        	<img src="front/images/wai-1.jpg"><br>澳大利亚旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-2.jpg"><br>柏林旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-3.jpg"><br>香港旅游发展局
-        </section>
-        <section>
-        	<img src="front/images/wai-1.jpg"><br>澳大利亚旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-2.jpg"><br>柏林旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-3.jpg"><br>香港旅游发展局
-        </section>
-        <section>
-        	<img src="front/images/wai-1.jpg"><br>澳大利亚旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-2.jpg"><br>柏林旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-3.jpg"><br>香港旅游发展局
-        </section>
-        <section>
-        	<img src="front/images/wai-1.jpg"><br>澳大利亚旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-2.jpg"><br>柏林旅游局
-        </section>
-        <section>
-        	<img src="front/images/wai-3.jpg"><br>香港旅游发展局
-        </section>
-    </div>
+<s:action name="front_News_toIndexList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">8</s:param>
+</s:action>
+
+<s:action name="front_Friendlink_toIndexList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">18</s:param>
+</s:action>
     <footer>
     	Copyright© 1999-2015, ctrip.com. All rights reserved. | ICP证：沪B2-20050130
     </footer>

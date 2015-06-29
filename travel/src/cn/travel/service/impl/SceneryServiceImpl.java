@@ -11,6 +11,7 @@ import cn.model.Grid;
 import cn.model.Page;
 import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
+import cn.travel.model.Hotel;
 import cn.travel.model.Scenery;
 import cn.travel.service.SceneryService;
 import cn.util.HqlHelper;
@@ -61,5 +62,9 @@ public class SceneryServiceImpl extends BaseServiceImpl<Scenery> implements Scen
 		return this.getPageBean(page, 4,hql);
 	}
 	
-	
+	public PageBean getSceneryPageList(int page, int rows) {
+		HqlHelper hql=new HqlHelper(Scenery.class, "s");
+		
+		return this.getPageBean(page,rows,hql);
+	}
 }
