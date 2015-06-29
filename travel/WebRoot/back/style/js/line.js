@@ -35,7 +35,7 @@ myLine.prototype = {
 			var _this = this;
 			 $.post(url,value,function(data){
 	             if(data!=null&&data.success){
-	             	 if(data.size<=0){
+	             	 if(!data.obj){
 	             		 parent.$.messager.alert('提示','暂时没有活动地点,请先设计活动路线','warning');
 	                  }else{
 	                 	   _this.data=data.obj;

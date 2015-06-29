@@ -14,52 +14,31 @@
 <script type="text/javascript" src="http://api.map.baidu.com/library/CurveLine/1.5/src/CurveLine.min.js"></script>
 <script type="text/javascript"	src="<%=contextPath%>/back/style/js/line.js"	charset="utf-8"></script>
 </head>
-<body>
-
-	<div class="easyui-layout" fit="true" id="gridLayout">
-		<!--搜索 -->
-		<div region="north" border="false" title="过滤" style="height: 130px; overflow: hidden;">
-			<form id="route_search_fm">
-				<table id="route_search_table" class="dis" style="width: 100%; height: 100%">
-					<tr>
-						<td >
-							例子:<input name="name" type="text" class="textbox"  /> 
-						</td>
-					
-					</tr>
-					<tr>
-						
-						<td>
-							<a id="route_search" class="easyui-linkbutton">查询</a> 
-							<a id="route_clean" class="easyui-linkbutton">清空数据</a> 
-							<a id="route_refresh" class="easyui-linkbutton">重置</a>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-
-
-		<div region="center" border="false">
-			<!-- 这里不要写fit属性，会看不到分页 -->
-			<table id="route_dg"></table>
-		</div>
-
-<!-- 地图连线-->
+<body class="easyui-layout" data-options="fit:true,border:false">
+	 <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="route_saveBtn">添加</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="route_updateBtn">修改</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="route_deleteBtn">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" id="route_reloadBtn">刷新</a>
+    </div>
+	
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="route_grid" data-options="fit:true,border:false"></table>
+	</div>
+	
+	<!-- 地图连线-->
 <div id="mapDlg" class="easyui-dialog dis" style="width:80%;height:60%;"
      closed="true" buttons="#dlg-map-buttons"  modal="true">
     <div id="show-map" style="width:100%;height:100%"></div>
 </div>	
 
-</div>
-
-
-
 </body>
+
 
 <script type="text/javascript">
         $(function () {
-            var columns=[[{
+        	var gdOptions={
+        			columns:[[{
                         title : '用户编号',
                         field : 'id',// 绑定属性名字,后台返回的json数据
                         width : 100,// 必须要给，大于50
@@ -76,12 +55,10 @@
 						width : 100,
 						sortable : true,
 						formatter: function (value, row, index) {
-                        	
-                      		 var str="";
-                            str+=sy.fs('<img   src="{0}"  style="width:50px;height:50px"/>','<%=contextPath%>/'+row.logo);
-                          
-   
-                            
+							console.info(sy.contextPath+"/"+row.logo);
+							var path=sy.contextPath+"/"+row.logo;
+                      		var str="";
+                            str+=sy.fs('<img   src="{0}"  style="width:50px;height:50px"/>',path);
                             return str;
                        }
 						},{
@@ -116,19 +93,46 @@
                         formatter: function (value, row, index) {
                         	
                        		 var str="";
-                            /*  str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
-                             str+="&nbsp" */
                              str+=sy.fs('<a href="{0}?rouId={1}&rname={2}">地点</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id,row.realName);
                              str+="&nbsp"
                              str+=sy.fs('<input  type="button" onclick="showMap(\'{0}\')" class="easyui-linkbutton" value="地图" />',row.id);
                              return str;
                         }
-                    }]];
+                    }]]
+        	};
+        	
+        	
                     
-            var route=new Curd("<%=contextPath%>","route",columns);
-            route.useCommon();
-            route.setUrlParam("routeType","${routeType}");
-            route.init();
+        	var pay_dlgOptions={
+            		title: '旅游线路',
+          		    width: '80%',
+          		    height: '60%',
+          		  	onClose:function(){
+          		  		parent.UE.getEditor('router_content').destroy();
+        		  		 parent.mainDlg.parentDlg.dialog('destroy');
+        		    },
+        	};
+        	var free_dlgOptions={
+            		title: '自由行',
+          		    width: '80%',
+          		    height: '60%',
+          		  	onClose:function(){
+        		  		parent.UE.getEditor('router_content').destroy();
+        		  	/* 	parent.UE.getEditor('router_suggest').destroy(); */
+        		  		parent.mainDlg.parentDlg.dialog('destroy');
+        		    },
+        	};
+        	var dlgOptions=null;
+        	if(${routeType}==0){//旅游线路
+        		dlgOptions=pay_dlgOptions;
+        	}
+        	if(${routeType}==1){//自由行
+        		dlgOptions=free_dlgOptions;
+        	}
+        	
+            var route=new Base("route",gdOptions,dlgOptions,parent.mainDlg);
+        	route.setUrlParam("routeType","${routeType}");
+            route.loadGrid();
         });
        
         var url=sy.contextPath + '/routeplan_loadRouteplanWithRid.do';

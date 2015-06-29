@@ -6,44 +6,23 @@
     <meta charset="UTF-8">
     <title>Scenery管理</title>
 </head>
-<body>
+<body class="easyui-layout" data-options="fit:true,border:false">
+	 <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="scenery_saveBtn">添加</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="scenery_updateBtn">修改</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="scenery_deleteBtn">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" id="scenery_reloadBtn">刷新</a>
+    </div>
 	
-	<div class="easyui-layout" fit="true" id="gridLayout">
-		<!--搜索 -->
-		<div region="north" border="false" title="过滤" style="height: 130px; overflow: hidden;">
-			<form id="scenery_search_fm">
-				<table id="scenery_search_table" class="dis" style="width: 100%; height: 100%">
-					<tr>
-						<td >
-							例子:<input name="name" type="text" class="textbox"  /> 
-						</td>
-					
-					</tr>
-					<tr>
-						
-						<td>
-							<a id="scenery_search" class="easyui-linkbutton">查询</a> 
-							<a id="scenery_clean" class="easyui-linkbutton">清空数据</a> 
-							<a id="scenery_refresh" class="easyui-linkbutton">重置</a>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-
-
-		<div region="center" border="false">
-			<table id="scenery_dg"></table>
-		</div>
-
-</div>
-
-
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="scenery_grid" data-options="fit:true,border:false"></table>
+	</div>
 </body>
 
 <script type="text/javascript">
         $(function () {
-            var columns=[[{
+        	var parent_gdOptions={
+        			columns:[[{
                         title : '景区编号',
                         field : 'id',// 绑定属性名字,后台返回的json数据
                         width : 100,// 必须要给，大于50
@@ -85,6 +64,7 @@
 					width : 100,
 					sortable : true,
 					 formatter: function (value, row, index) {
+						   
                        	return row.startTime+"-"+row.endTime;
                       }
 					},{
@@ -112,17 +92,80 @@
                         field : 'action',
                         width : 100,
                         formatter: function (value, row, index) {
-                           /*  var str="";
-                             str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
-                             str+="&nbsp"
-                             str+=sy.fs('<img   src="{0}"  onclick="demo2(\'{1}\')" title="1" />',"../style/images/myIcons/scenery_delete.png",row.id);
-                             return str;*/
                         }
-                    }]];
-                    
-            var scenery=new Curd("<%=contextPath%>","scenery",columns);
-            scenery.useCommon();
-            scenery.init();
+                    }]]	
+        	};
+        	var child_gdOptions={
+        			columns:[[{
+                        title : '景点编号',
+                        field : 'id',// 绑定属性名字,后台返回的json数据
+                        width : 100,// 必须要给，大于50
+                        sortable : true,// 鼠标点击可以升序/降序切换
+                        checkbox : true
+                    },{
+					title : '景点名称',
+					field : 'realName',
+					width : 100,
+					sortable : true
+					},{
+						title : '景区名称',
+						field : 'parentName',
+						width : 100,
+						sortable : true
+					},{
+					title : '地址',
+					field : 'address',
+					width : 100,
+					sortable : true
+					},{
+					title : '经度',
+					field : 'longitude',
+					width : 100,
+					sortable : true
+					},{
+					title : '纬度',
+					field : 'latitude',
+					width : 100,
+					sortable : true
+					},{
+					title : 'logo',
+					field : 'logo',
+					width : 100,
+					sortable : true
+					},{
+					title : '联系电话',
+					field : 'telphone',
+					width : 100,
+					sortable : true
+					},{
+					title : '推荐',
+					field : 'suggest',
+					width : 100,
+					sortable : true
+					}]]	
+        	};
+        	var dlgOptions={
+            		title: '风景',
+          		    width: '80%',
+          		    height: '60%',
+          		    onClose:function(){
+          		  		parent.UE.getEditor('scenery_content').destroy();
+          		  		parent.mainDlg.parentDlg.dialog('destroy');
+          		    },
+        	};
+        	
+        	var gdOptions=null;
+        	if(${type}==1){//景区
+        		gdOptions=parent_gdOptions;
+        	}
+        	if(${type}==2){//景点
+        		gdOptions=child_gdOptions;
+        	}
+        	
+        	
+            var scenery=new Base("scenery",gdOptions,dlgOptions,parent.mainDlg);
+        	scenery.setUrlParam("type","${type}");
+            scenery.loadGrid();
         });
     </script>
 </html>

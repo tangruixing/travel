@@ -26,12 +26,18 @@ public class Constant {
 	public static int ROUTER_NOPAY=1;
 	
 	/**
+	 * 景区+景点
+	 */
+	public static int SCENERY_ALL=0;
+	
+	/**
 	 * 景区
 	 */
-	public static int scenery_parent=1;
+	public static int SCENERY_PARENT=1;
 	/**
 	 * 景点
 	 */
-	public static int scenery_child=2;
+	public static int SCENERY_CHILD=2;
+	
 	
 }

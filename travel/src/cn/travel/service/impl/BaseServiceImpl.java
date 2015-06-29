@@ -56,6 +56,13 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
 		
 		dao.batchEntityByHQL(hql, objects);
 	}
+	
+	
+
+	public List<T> findEntityBySQL(String sql, Object... objects) {
+		// TODO Auto-generated method stub
+		return dao.findEntityBySQL(sql, objects);
+	}
 
 	public T getEntity(Integer id) {
 		

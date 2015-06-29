@@ -1,5 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/back.jspf" %>
+<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>  
+<%@ include file="/WEB-INF/pub/ueditor.jspf"%>  
+<%@ include file="/WEB-INF/pub/webuploader.jspf"%>  
+<%@ include file="/WEB-INF/pub/markMap.jspf"%>  
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -8,6 +12,19 @@
     <link href="<%=contextPath%>/back/style/css/default.css" rel="stylesheet" type="text/css" />   
 	<script type="text/javascript" src="<%=contextPath%>/back/style/js/Layout.js"></script>
 	<script type="text/javascript" src="<%=contextPath%>/back/style/js/editPwd.js"></script>
+	
+	<style type="text/css">
+		.panel-body {
+    			padding: 0px ! important;
+		}
+		.panel {
+		  
+		    margin-bottom: 0px ! important;
+		}
+		.dis{
+			display: none;
+		}
+	</style>
 </head>
 
 
@@ -93,6 +110,9 @@
 		<div id="mm-exit">退出</div>
 	</div>
 
+
+
+<div id="parentDlg"></div>
 <script type="text/javascript">
 
 	 var _menus = {"menus":[
@@ -115,8 +135,8 @@
 									{"menuid":"32","menuname":"房型列表","icon":"icon-nav","url":"<%=contextPath%>/roomstyle_toIndex.do"}
 								]
 						},{"menuid":"28","icon":"icon-sys","menuname":"旅游景点",
-							"menus":[{"menuid":"41","menuname":"景区列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do"},
-									{"menuid":"42","menuname":"景点列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do"},
+							"menus":[{"menuid":"41","menuname":"景区列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do?type=1"},
+									{"menuid":"42","menuname":"景点列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do?type=2"},
 									{"menuid":"42","menuname":"景点图片","icon":"icon-nav","url":"<%=contextPath%>/images_toIndex.do"}
 								]
 						},{"menuid":"39","icon":"icon-sys","menuname":"其他 ",
@@ -158,6 +178,8 @@
             
         });
 		
+        //创建一个 dlg 子 iframe 来访问
+        var mainDlg=new pdlg();
     </script>
 </body>
 </html>

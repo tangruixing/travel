@@ -95,6 +95,27 @@ public class UserAction extends BaseAction<User>{
 		}
 	}
 	
+	
+
+	/**
+	 * 添加操作跳转
+	 * @return
+	 */
+	public String toSave(){
+		return goUI("save.jsp");
+	}
+	
+	/**
+	 * 修改操作跳转
+	 * @return
+	 */
+	public String toUpdate(){
+		
+		this.model=userService.getEntity(model.getId());
+		return goUI("save.jsp");
+	}
+	
+	
 	/**
 	 * 失去焦点触发
 	 */

@@ -49,9 +49,9 @@ if (StringUtils.indexOfIgnoreCase(User_Agent, "MSIE") > -1 && (StringUtils.index
 	out.println("<script src='" + contextPath + "/jslib/jquery-2.0.3.js' type='text/javascript' charset='utf-8'></script>");
 }
 %>
+<script type="text/javascript"	src="<%=contextPath%>/back/style/js/gx.js"	charset="utf-8"></script> 
 <%-- 工具类的引入 --%>
 <script type="text/javascript"	src="<%=contextPath%>/jslib/util/function.js"	charset="utf-8"></script> 
 <script type="text/javascript"	src="<%=contextPath%>/jslib/util/common.js"	charset="utf-8"></script> 
 <script type="text/javascript"	src="<%=contextPath%>/jslib/jNotify/js/jNotify.jquery.js"	charset="utf-8"></script>
-
 

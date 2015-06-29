@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8" import="cn.travel.model.User"%>
 <%@ include file="/front/lib/inc.jspf" %>
 <!doctype html>
@@ -48,6 +49,12 @@ $(document).ready(function(e){
 	    $('#myform').ajaxForm(options); 
 	     
 	    $("#addMsg").leanModal();
+<%-- <%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8"%>
+<%
+	response.sendRedirect("login_toLogin.do");
+	/* request.getRequestDispatcher("login_toLogin.do").forward(request, response); */
+%> --%>
 
 });
 function logout(){

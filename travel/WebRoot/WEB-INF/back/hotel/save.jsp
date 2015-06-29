@@ -1,8 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/pub/inc.jspf"%>  
-<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>  
-<%@ include file="/WEB-INF/pub/ueditor.jspf"%>  
-<%@ include file="/WEB-INF/pub/webuploader.jspf"%>  
+<%@ taglib prefix="s" uri="/struts-tags"%>
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head lang="en">
@@ -18,7 +15,7 @@
                         <h2>酒店管理</h2>
                     </div>
 
-                    <s:form id="hotelForm" method="post" cssClass="form-horizontal" action="hotel_doSaveOrUpdateAction.do">
+                    <s:form id="hotelForm" method="post" cssClass="form-horizontal" action="hotel_doSaveOrUpdate.do">
                     	<s:hidden id="lng" name="longitude" /><!-- 经度 -->
                     	<s:hidden id="lat" name="latitude" /><!-- 纬度 -->
                     	<s:hidden name="id"/><!-- 酒店/景点 id -->
@@ -91,11 +88,23 @@
     </div>
 
 
-<!-- 地图标记  -->
-<%@ include file="/WEB-INF/pub/markMap.jspf" %>
+<!-- 地图标记 -->
+<div id="markDlg">
+					
+	<div id="l-map" style="height:100%" class="dis"></div>					
+</div>
+<div id="dlg-markDlg-buttons" class="dis">
+<div id="r-result">
+	<font style="float:left">请输入搜索地址:&nbsp;&nbsp;&nbsp;&nbsp;</font><input type="text" style="float:left; width: 320px;"  id="suggestId"   maxlength="255" size="20" /></div>
+	<div id="searchResultPanel" style="border:1px solid #C0C0C0;width:150px;height:auto; display:none;"></div>
+    <a href="javascript:void(0)" class="easyui-linkbutton" id="mark_close" style="width:90px">确定</a>
+</div> <!-- 地图标记结束 -->
 <script type="text/javascript">
+
 $(document).ready(function() {
- 
+ 	
+	
+	
 
     $('#hotelForm').bootstrapValidator({
 //        live: 'disabled',\
@@ -107,7 +116,7 @@ $(document).ready(function() {
         },
         fields: {
         	realName: {
-                group: '.col-lg-4',
+              
                 validators: {
                     notEmpty: {
                        /*  message: 'The first name is required and cannot be empty' */
@@ -115,7 +124,7 @@ $(document).ready(function() {
                 }
             },
             address: {
-                group: '.col-lg-4',
+              
                 validators: {
                     notEmpty: {
                        /*  message: 'The first name is required and cannot be empty' */
@@ -123,7 +132,7 @@ $(document).ready(function() {
                 }
             },
             longitude: {
-                group: '.col-lg-4',
+              
                 validators: {
                     notEmpty: {
                        /*  message: 'The first name is required and cannot be empty' */
@@ -131,7 +140,7 @@ $(document).ready(function() {
                 }
             },
             latitude: {
-                group: '.col-lg-4',
+              
                 validators: {
                     notEmpty: {
                        /*  message: 'default' */
@@ -139,7 +148,7 @@ $(document).ready(function() {
                 }
             },
             logo: {
-                group: '.col-lg-4',
+              
                 validators: {
                     notEmpty: {
                        /*  message: 'default' */
@@ -183,7 +192,28 @@ $(document).ready(function() {
                 }
             }
         }
-    });
+    })
+    .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(data) {
+            	if(data&&data.success){
+        			parent.mainDlg.close();
+        		/* 	UE.getEditor('hotel_content').destroy(); */
+        			jSuccess(data.msg);
+        		}else{
+        			jError(data.msg);
+        		}
+            }, 'json');
+     });
     
     
   $("#checkSubmit").on('click',function(){
@@ -199,17 +229,17 @@ $(document).ready(function() {
     $('#resetBtn').click(function() {
         $('#hotelForm').data('bootstrapValidator').resetForm(true);
     });
-    
-
+	
 	new uploadSimpleImage('hotel_logo_img','hotel_logo_input','hotel_logo_picker');
-	UE.getEditor('hotel_content');
+    
+    UE.getEditor('hotel_content');
+    
+	
 	
 	
 });
 
-window.onload=function(){
-	Location.init();
-}
+Location.initDlg();
 </script>
 </body>
 </html>

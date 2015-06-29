@@ -1,13 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/inc.jspf" %>
 <%@ include file="/WEB-INF/pub/bootstrap.jspf" %>
-<%-- <%@ include file="/WEB-INF/pub/webuploader.jspf" %> --%>
-<%@ include file="/WEB-INF/pub/ueditor.jspf" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head lang="en">
-    <title>新闻管理</title>
+    <title>线路管理</title>
 </head>
 <body>
  <div class="container">
@@ -16,60 +14,43 @@
             <section>
                 <div class="col-lg-8 col-lg-offset-2">
                     <div class="page-header">
-                        <h2>新闻信息</h2>
+                        <h2>线路信息</h2>
                     </div>
 
-                    <form id="newsForm" class="form-horizontal" method="post" action="<%=contextPath %>/news_doSaveOrUpdate.do">
+                    <form id="routeplanForm" class="form-horizontal" method="post" action="<%=contextPath %>/routeplan_doSaveOrUpdate.do">
                     	<s:hidden name="id" />
+                    	<s:hidden name="rouId" />
                         <div class="form-group">
                             <label class="col-lg-3 control-label">标题</label>
                             <div class="col-lg-5">
-                                <s:textfield cssClass="form-control" name="title" placeholder="输入新闻标题" />
+                                <s:textfield id="sceId" name="sceId" ></s:textfield>
                             </div>
                           
                         </div>
 						
 						 <div class="form-group">
-                            <label class="col-lg-3 control-label">子标题</label>
+                            <label class="col-lg-3 control-label">顺序</label>
                             <div class="col-lg-5">
-                                <s:textfield cssClass="form-control" name="subTitle" placeholder="输入新闻子标题" />
+                                <s:textfield cssClass="form-control" name="step" placeholder="输入途径地点顺序" />
                             </div>
                           
                         </div>
 						 <div class="form-group">
-                            <label class="col-lg-3 control-label">作者</label>
+                            <label class="col-lg-3 control-label">停留天数</label>
                             <div class="col-lg-5">
-                                <s:textfield cssClass="form-control" name="author" placeholder="输入作者" />
-                            </div>
-                          
-                        </div>
-                        
-                        
-                           
-						<div class="form-group">
-                            <label class="col-lg-3 control-label">热门</label>
-                            <div class="col-lg-9">
-                               		<s:set value="#{0:'否',1:'是'}" var="hotMap"></s:set>
-                               	
-                               	<s:select cssClass="form-control" list="#hotMap" listKey="key" listValue="value" name="hot" ></s:select>
-                            </div>
-                        </div>
-						 <div class="form-group">
-                            <label class="col-lg-3 control-label">新闻摘要</label>
-                            <div class="col-lg-5">
-                                <s:textarea cssClass="form-control" name="summary" rows="3" />
+                                <s:textfield cssClass="form-control" name="day" placeholder="输入停留天数" />
                             </div>
                           
                         </div>
                      
-
-                        <div class="form-group">
-                            <label class="col-lg-3 control-label">内容</label>
-                            <div class="col-lg-9">
-                               	<s:textarea id="news_content" name="content" />
+						 <div class="form-group">
+                            <label class="col-lg-3 control-label">简介</label>
+                            <div class="col-lg-5">
+                                <s:textarea cssClass="form-control" name="description" rows="3" />
                             </div>
+                          
                         </div>
-                        
+                     
                       
 
                         <div class="form-group">
@@ -86,10 +67,73 @@
     </div>
 
 <script type="text/javascript">
-$(document).ready(function() {
- 
 
-    $('#newsForm')
+
+
+$(function() {
+	
+	  
+    $('#sceId').combogrid({ 
+    	panelWidth:450,
+        idField:'id', //ID字段  
+        textField:'realName', //显示的字段  
+        url:"<%=contextPath%>/scenery_doList.do",  
+        fitColumns: true,  
+        striped: true,  
+        editable:true,  
+        pagination : true,//是否分页  
+        rownumbers:true,//序号  
+        collapsible:false,//是否可折叠的  
+        fit: true,//自动大小  
+        pageSize: 10,//每页显示的记录条数，默认为10  
+        pageList: [10],//可以设置每页记录条数的列表  
+        method:'post',  
+        columns:[[{
+            title : '景区编号',
+            field : 'id',// 绑定属性名字,后台返回的json数据
+            width : 100,// 必须要给，大于50
+            sortable : true,// 鼠标点击可以升序/降序切换
+            checkbox : true
+        	},{
+			title : '景区名称',
+			field : 'realName',
+			width : 100,
+			sortable : true
+			},{
+			title : '地址',
+			field : 'address',
+			width : 100,
+			sortable : true
+			},{
+			title : '开放时间',
+			field : 'openDime',
+			width : 100,
+			sortable : true
+			},{
+			title : '景区级别',
+			field : 'grade',
+			width : 100,
+			sortable : true
+			},{
+			title : '景区联系电话',
+			field : 'telphone',
+			width : 100,
+			sortable : true
+			},{
+			title : '轮播',
+			field : 'viwepager',
+			width : 100,
+			sortable : true
+			},{
+			title : '推荐',
+			field : 'suggest',
+			width : 100,
+			sortable : true
+			}]]
+    });  
+ 
+    //$('#sceId').combogrid();
+    $('#routeplanForm')
     .bootstrapValidator({
 //        live: 'disabled',\
        /*  message: default, */
@@ -99,51 +143,29 @@ $(document).ready(function() {
             validating: 'glyphicon glyphicon-refresh'
         },
         fields: {
-        	title: {
-                group: '.col-lg-4',
+        	step: {
+                
                 validators: {
                     notEmpty: {
                        /*  message: 'The first name is required and cannot be empty' */
-                    }
+                    },
+                    integer:{}
                 }
             },
-            subTitle: {
-                group: '.col-lg-4',
+            day: {
+                
                 validators: {
                     notEmpty: {
                        /*  message: 'default' */
-                    }
+                    },
+                    integer:{}
                 }
             },
-            author: {
-            	group: '.col-lg-4',
+            sceId: {
+            	
                 validators: {
                     notEmpty: {
                   /*       message: 'default' */
-                    }
-                }
-            },
-            summary: {
-            	group: '.col-lg-4',
-                validators: {
-                	notEmpty: {
-                       /*  message: 'default' */
-                    }
-                }
-            },
-            content: {
-            	 group: '.col-lg-4',
-                validators: {
-                    notEmpty: {
-                      /*   message: 'default' */
-                    }
-                }
-            },
-            hot: {
-            	 group: '.col-lg-4',
-                validators: {
-                    notEmpty: {
-
                     }
                 }
             }
@@ -162,7 +184,7 @@ $(document).ready(function() {
             // Use Ajax to submit form data
             $.post($form.attr('action'), $form.serialize(), function(data) {
             	if(data&&data.success){
-        			parent.mainDlg.close("#news_grid");
+        			parent.mainDlg.close("#routeplan_grid");
         			jSuccess(data.msg);
         		}else{
         			jError(data.msg);
@@ -171,10 +193,8 @@ $(document).ready(function() {
      });
 
     $('#resetBtn').click(function() {
-        $('#newsForm').data('bootstrapValidator').resetForm(true);
+        $('#routeplanForm').data('bootstrapValidator').resetForm(true);
     });
-
-	UE.getEditor('news_content');
 });
 </script>
 </body>

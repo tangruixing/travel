@@ -6,6 +6,7 @@ import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import cn.model.Constant;
 import cn.model.Grid;
 import cn.model.Page;
 import cn.model.PageBean;
@@ -32,9 +33,11 @@ public class SceneryServiceImpl extends BaseServiceImpl<Scenery> implements Scen
 	private NewsDao newsDao;
 	*/
 
-	public Grid getSceneryGrid(Page p, Scenery model) {
+	public Grid getSceneryGrid(Page p, Scenery model,int type) {
 		
 		HqlHelper hql=new HqlHelper(Scenery.class, "u")//
+					  .addWhereCondition(type==Constant.SCENERY_PARENT,"u.scenery.id is null")//景区
+					  .addWhereCondition(type==Constant.SCENERY_CHILD,"u.scenery.id is not null")//景点
 					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
 		
 		return this.getPageGrid(p.getPage(), p.getRows(), hql);

@@ -12,6 +12,7 @@ import org.springframework.stereotype.Controller;
 import cn.model.Grid;
 import cn.model.Json;
 import cn.travel.model.Routeplan;
+import cn.travel.service.RouteService;
 import cn.travel.service.RouteplanService;
 
 @Controller("routeplanAction")
@@ -74,6 +75,27 @@ public class RouteplanAction extends BaseAction<Routeplan>{
 		
 	}
 
+	
+	/**
+	 * 添加操作跳转
+	 * @return
+	 */
+	public String toSave(){
+		logger.info("toSaves");
+		return goUI("save.jsp");
+	}
+	
+	/**
+	 * 修改操作跳转
+	 * @return
+	 */
+	public String toUpdate(){
+		
+		this.model=routeplanService.getEntity(model.getId());
+		this.model.setSceId(this.model.getScenery().getId());
+		this.model.setRouId(this.model.getRoute().getId());
+		return goUI("save.jsp");
+	}
 	
 	/**
 	 * 保存/更新操作
