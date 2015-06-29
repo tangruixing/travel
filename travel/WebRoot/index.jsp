@@ -37,7 +37,7 @@ $(document).ready(function(e){
     
     var options = { 	        
 	        success:       showResponse,  //提交之后的回调函数
-   	        url: '<%=contextPath%>/front_User_login.do',       //覆盖了form的action属性
+   	        url: '<%=contextPath%>/front/front_User_login.do',       //覆盖了form的action属性
 	        type:     'post',        
 	        dataType: 'json',     //(依据服务器返回类型进行设置) 
 	        clearForm: true ,      //在成功提交后清除所有的表单域内容
@@ -385,6 +385,7 @@ a:hover{
                     <tr><td>密码：</td><td><input type="password" name="pwd"></td></tr>
                     <tr><td colspan="2" height="40px"><center><input type="submit" value="登录" class="button"></center></td>
                  </table>
+                 </form>
             </section>
         </s:if><s:else>
             <s:if test="#session.loginUser.role==2"><a href="<%=contextPath%>/front/person.jsp"></s:if>
