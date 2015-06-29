@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="lib/inc.jspf" %>
 <!doctype html>
 <html>
 <head>
@@ -13,7 +15,7 @@ a{
 	color:#000;
 }
 #second{
-	margin-top:-5px;
+	margin-top:0px;
 }
 #third{
 	width:1000px;
