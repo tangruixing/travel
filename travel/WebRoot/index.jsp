@@ -415,58 +415,14 @@ a:hover{
     </nav>
     <div id="slider01"></div>
 </div>
-<div id="third">
-	<header>
-    	福州酒店
-    </header>
-    
-    <section class="jiudian">
-    	<img src="front/images/jiudian-1.jpg">
-        <section>
-        	<a href="#">福州舒馨时代酒店<br>
-            ¥<span>360</span>起</a>
-        </section>
-    </section>
-    <section  class="jiudian">
-    	<img src="front/images/jiudian-2.jpg">
-        <section>
-        	<a href="#">福州香格里拉大酒店<br>
-            ¥<span>360</span>起</a>
-        </section>
-    </section>
-    <section class="jiudian">
-    	<img src="front/images/jiudian-1.jpg">
-        <section>
-        	<a href="#">福州舒馨时代酒店<br>
-            ¥<span>360</span>起</a>
-        </section>
-    </section>
-    <section class="jiudian">
-    	<img src="front/images/jiudian-2.jpg">
-        <section>
-        	<a href="#">福州舒馨时代酒店<br>
-            ¥<span>360</span>起</a>
-        </section>
-    </section>
-    <section class="jiudian">
-    	<img src="front/images/jiudian-1.jpg">
-        <section>
-        	<a href="#">福州舒馨时代酒店<br>
-            ¥<span>360</span>起</a>
-        </section>
-    </section>
-    <section class="jiudian">
-    	<img src="front/images/jiudian-2.jpg">
-        <section>
-        	<a href="#">福州舒馨时代酒店<br>
-            ¥<span>360</span>起</a>
-        </section>
-    </section>
-    
-    <footer>
-    	<a href="#">更多酒店<img src="front/images/you-1.png"></a>
-    </footer>
-</div>
+
+
+<s:action name="front_Hotel_toIndexList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">6</s:param>
+</s:action>
+
+
 <div id="fourth">
 	<header>
     	必玩景区

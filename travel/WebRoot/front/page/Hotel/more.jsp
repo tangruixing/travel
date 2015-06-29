@@ -4,18 +4,18 @@
 <html><head>
 <meta charset="utf-8">
 <title>福州酒店</title>
-<script type="text/javascript" src="lib/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-1.9.1.js"></script>
 <!-- 图片展示框架 -->
-<script type="text/javascript" src="lib/jquery.jcarousel.min.js"></script>
-<script type="text/javascript" src="lib/jquery.pikachoose.min.js"></script>
-<script type="text/javascript" src="lib/jquery.touchwipe.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery.pikachoose.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery.touchwipe.min.js"></script>
 <!-- 日期输入框架 -->
-<script type="text/javascript" src="lib/jquery-ui-1.10.3.custom.min.js"></script>
-<script type="text/javascript" src="lib/jquery.ui.datepicker-zh-CN.js"></script>
-<link type="text/css" href="lib/bottom.css" rel="stylesheet" />
-<link rel="stylesheet" href="lib/style.css">
-<link href="lib/table.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="lib/jquery-ui-1.10.3.custom.min.css">
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery.ui.datepicker-zh-CN.js"></script>
+<link type="text/css" href="<%=contextPath%>/front/lib/bottom.css" rel="stylesheet" />
+<link rel="stylesheet" href="<%=contextPath%>/front/lib/style.css">
+<link href="<%=contextPath%>/front/lib/table.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/front/lib/jquery-ui-1.10.3.custom.min.css">
 <style type="text/css">
 nav ul li:nth-child(2){
 	background-color:#006666;
@@ -180,12 +180,12 @@ input{
 $(document).ready(
 	function (){
 		var a = [
-				{"image":"images/jiudian-1.jpg","caption":"","link":"http://pikachoose.com","title":"Image 1"},
-				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 2"},
-				{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
-				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"},
-				{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
-				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"}
+				{"image":"<%=contextPath%>/front/images/jiudian-1.jpg","caption":"","link":"http://pikachoose.com","title":"Image 1"},
+				{"image":"<%=contextPath%>/front/images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 2"},
+				{"image":"<%=contextPath%>/front/images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
+				{"image":"<%=contextPath%>/front/images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"},
+				{"image":"<%=contextPath%>/front/images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
+				{"image":"<%=contextPath%>/front/images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"}
 				];
 		$(".pikachoose").PikaChoose({data:a});
 		 
@@ -212,7 +212,7 @@ function closebyID(id){
 
 <body>
 <header>
-	<img src="images/index_01.jpg">
+	<img src="<%=contextPath%>/front/images/index_01.jpg">
 </header>
 <div id="second">
 	<nav>
@@ -238,11 +238,11 @@ function closebyID(id){
 </div>
 <div id="third">
 	<div>
-    	<section><a href="javascript:showbyID('showhotel')"><img src="images/hotel-1.jpg" width="100"></a></section>
+    	<section><a href="javascript:showbyID('showhotel')"><img src="<%=contextPath%>/front/images/hotel-1.jpg" width="100"></a></section>
         <section>福州名城豪生大酒店<span>电话：3854-66620</span></section>
         <section>￥<span>130</span>起</section>
         <section>马尾区马尾区江滨东大道86号，马尾海关大楼。 【 城东地区】</section>
-        <section><a href="#"><img src="images/didianbiao.png">去这里</a></section>
+        <section><a href="#"><img src="<%=contextPath%>/front/images/didianbiao.png">去这里</a></section>
 		<table class="bordered" border="0" width="100%">
   			<tbody><tr>
     			<td>房型</td>
@@ -283,11 +283,11 @@ function closebyID(id){
 		</tbody></table>
     </div>
     <div>
-    	<section><img src="images/hotel-1.jpg" width="100"></section>
+    	<section><img src="<%=contextPath%>/front/images/hotel-1.jpg" width="100"></section>
         <section>福州名城豪生大酒店<span>电话：3854-66620</span></section>
         <section>￥<span>130</span>起</section>
         <section>马尾区马尾区江滨东大道86号，马尾海关大楼。 【 城东地区】</section>
-        <section><a href="#"><img src="images/didianbiao.png">去这里</a></section>
+        <section><a href="#"><img src="<%=contextPath%>/front/images/didianbiao.png">去这里</a></section>
 		<table class="bordered" border="0" width="100%">
   			<tbody><tr>
     			<td>房型</td>
@@ -332,11 +332,11 @@ function closebyID(id){
 	<a href="#">首页</a>&nbsp;<a href="#">上一页</a>&nbsp;<a href="#">下一页</a>&nbsp;<a href="#">尾页</a>
 </footer>
 <div id="showhotel">
-	<section><a href="javascript:closebyID('showhotel')"><img src="images/close.png"></a></section>
+	<section><a href="javascript:closebyID('showhotel')"><img src="<%=contextPath%>/front/images/close.png"></a></section>
 	<div class="pikachoose"></div>
 </div>
 <div id="bookroom">
-	<section><a href="javascript:closebyID('bookroom')"><img src="images/close.png"></a></section>
+	<section><a href="javascript:closebyID('bookroom')"><img src="<%=contextPath%>/front/images/close.png"></a></section>
     <form>
     	<table border="0">
           <tr>

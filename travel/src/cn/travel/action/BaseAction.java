@@ -80,7 +80,7 @@ public abstract class BaseAction<T> extends ActionSupport
 	protected String sort;// 排序字段
 	protected String order = "asc";// asc/desc
 	protected Page p=new Page();
-
+	
 	
 	protected String deleteIds;
 	

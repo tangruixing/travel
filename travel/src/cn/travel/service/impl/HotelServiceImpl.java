@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.model.Hotel;
+import cn.travel.model.Scenery;
 import cn.travel.service.HotelService;
 import cn.util.HqlHelper;
 
@@ -45,6 +47,12 @@ public class HotelServiceImpl extends BaseServiceImpl<Hotel> implements HotelSer
 		String hql="delete from Hotel u where u.id in ("+deleteIds+") ";
 		
 		this.dao.batchEntityByHQL(hql);
+	}
+
+	public PageBean getHotelPageList(int page, int rows) {
+		HqlHelper hql=new HqlHelper(Hotel.class, "s");
+		
+		return this.getPageBean(page,rows,hql);
 	}
 	
 	

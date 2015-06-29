@@ -19,7 +19,7 @@
                         <h2>合作伙伴信息</h2>
                     </div>
 
-                    <form id="friendlinkForm" method="post" class="form-horizontal" action="<%=contextPath%>/friendlink_doSaveOrUpdateAction.do">
+                    <form id="friendlinkForm" method="post" class="form-horizontal" action="<%=contextPath%>/friendlink_doSaveOrUpdate.do">
                     	<s:hidden name="id" />
                         <div class="form-group">
                             <label class="col-lg-3 control-label">名称</label>
@@ -42,7 +42,7 @@
                             <label class="col-lg-3 control-label">LOGO</label>
                             <div class="col-lg-5">
                             	<!-- 单张图片上传 (注意：id) -->
-                            	<img id="friendlink_logo_img" style="width: 200px; height: 100px;float:left;" src=''/>
+                            	<img id="friendlink_logo_img" style="width: 200px; height: 100px;float:left;" src='<s:property value="getImageUrl()"/>'/>
 								<div style="float:left;margin:56px 0 0 20px;" id="friendlink_logo_picker">选择图片</div> 
                                 <input type="hidden" class="form-control" name="logo" id="friendlink_logo_input"/><!-- 单张图片上传结束 -->
                             </div>
@@ -128,7 +128,28 @@ $(document).ready(function() {
                 }
             }
         }
-    });
+    })
+    .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(data) {
+            	if(data&&data.success){
+        			parent.mainDlg.close();
+        		/* 	UE.getEditor('hotel_content').destroy(); */
+        			jSuccess(data.msg);
+        		}else{
+        			jError(data.msg);
+        		}
+            }, 'json');
+     });
 
     
     
