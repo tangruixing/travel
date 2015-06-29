@@ -4,6 +4,7 @@ import java.util.Map;
 
 import javax.annotation.Resource;
 
+import org.apache.commons.codec.digest.DigestUtils;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
@@ -27,6 +28,8 @@ public class FrontUserAction extends BaseAction<User>{
 		model.setRole(2);
 		j=new Json();
 		try{	
+			String newPwd=DigestUtils.md5Hex(model.getPwd());
+			model.setPwd(newPwd);
 			userService.saveEntity(this.model);
 			j.setSuccess(true);
 			j.setMsg("注册成功");
@@ -54,16 +57,10 @@ public class FrontUserAction extends BaseAction<User>{
 		}
 	}
 	
-	public void logout(){
-		j=new Json();
-		try{
-			session.clear();
-			j.setSuccess(true);
-		}catch(Exception e){
-			j.setMsg("操作失败："+e.getMessage());
-		}finally{
-			write2Response(j);
-		}
+	public String logout(){
+		session.clear();
+		return goUI("index.jsp");
+		
 	}
 	
 	public void login(){

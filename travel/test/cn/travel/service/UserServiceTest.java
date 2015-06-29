@@ -19,4 +19,10 @@ public class UserServiceTest extends BaseSpringTest {
 		  User admin=new User(ConfigUtil.getAdminName(),DigestUtils.md5Hex(ConfigUtil.getAdminPwd()),Constant.ROLE_SUPER);
 		  userService.saveEntity(admin);
 	}
+	
+	@Test
+	public void save(){
+		  User admin=new User("15659999940",DigestUtils.md5Hex("123456"),1);
+		  userService.saveEntity(admin);
+	}
 }
