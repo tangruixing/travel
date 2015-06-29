@@ -26,6 +26,8 @@
 		</interceptors>
 
 
+		
+		<default-interceptor-ref name="travelStack"></default-interceptor-ref>
 
 		<global-results>
 			<result name="toLogin">/index.jsp</result>
@@ -37,10 +39,19 @@
 		</global-exception-mappings>
 		
 
+		<action name="*_*" class="{1}Action" method="{2}">
+			<result name="goUI">/WEB-INF/back/{1}/${resultUI}</result>
+				
+			<result name="goAction" type="redirectAction">
+				<param name="namespace">${namespaceAction}</param>
+				<param name="actionName">${resultAction}</param>
+			</result>
+		</action>
+
 		
 	</package>
 	
-	<package name="back" extends="travelPkg" namespace="/">
+	<!-- <package name="back" extends="travelPkg" namespace="/">
 		<default-interceptor-ref name="travelStack"></default-interceptor-ref>
 		<action name="*_*" class="{1}Action" method="{2}">
 			<result name="goUI">/WEB-INF/back/{1}/${resultUI}</result>
@@ -51,7 +62,7 @@
 			</result>
 		</action>
 
-	</package>
+	</package> -->
 	
 
 	<!-- 其余包继承 travelPkg 有登录拦截器 -->
