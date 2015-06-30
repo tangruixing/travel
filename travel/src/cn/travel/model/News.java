@@ -15,7 +15,7 @@ public class News implements Serializable{
 	private java.lang.String content;		/*内容*/
 	private java.util.Date publicTime;		/*发布时间*/
 	private java.lang.String click;		/*浏览量*/
-	private java.lang.Boolean hot;		/*热门 {0:'否',1:'是'}*/
+	private boolean hot;		/*热门 {0:'否',1:'是'}*/
 	//columns END
 
 	private User user;
@@ -102,12 +102,14 @@ public class News implements Serializable{
 			return this.click;
 		}
 	
-		public void setHot(java.lang.Boolean value) {
-			this.hot = value;
+	
+
+		public boolean isHot() {
+			return hot;
 		}
-		
-		public java.lang.Boolean getHot() {
-			return this.hot;
+
+		public void setHot(boolean hot) {
+			this.hot = hot;
 		}
 
 		public User getUser() {

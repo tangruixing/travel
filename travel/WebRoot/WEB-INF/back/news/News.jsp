@@ -57,11 +57,6 @@
 					width : 100,
 					sortable : true
 					},{
-					title : '内容',
-					field : 'content',
-					width : 100,
-					sortable : true
-					},{
 					title : '发布时间',
 					field : 'publicTime',
 					width : 100,
@@ -93,6 +88,10 @@
             		title: '新闻',
           		    width: '80%',
           		    height: '60%',
+          			onClose:function(){
+        		  		parent.UE.getEditor('news_content').destroy();
+        		  		parent.mainDlg.parentDlg.dialog('destroy');
+        		    },
         	}  
             var news=new Base("news",gdOptions,dlgOptions,parent.mainDlg);
             news.loadGrid();
