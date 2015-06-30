@@ -7,8 +7,7 @@ public class Message implements Serializable{
 	
 	//columns START
 	private java.lang.Integer id;		/*留言ID*/
-	private java.lang.Integer userId;		/*用户编号id*/
-	private java.lang.Integer adminId;		/*用户编号id*/
+	
 	private java.lang.String content;		/*内容*/
 	private java.lang.Integer stats;		/*状态*/
 	private java.util.Date createDate;		/*停留天数*/
@@ -17,6 +16,9 @@ public class Message implements Serializable{
 	private User user;
 	private User admin;
 	
+	
+	private java.lang.Integer userId;		/*用户编号id*/
+	private java.lang.Integer adminId;		/*用户编号id*/
 	public Message(){
 	}
 

@@ -6,10 +6,14 @@
 <meta charset="utf-8">
 <title>旅游线路</title>
 <link rel="stylesheet" href="<%=contextPath %>/front/lib/style.css">
+<link rel="stylesheet" href="<%=contextPath %>/front/lib/pages.css">
 <style type="text/css">
 a{
 	text-decoration:none;
 	color:#000;
+}
+#second{
+	margin-top:0px;
 }
 #third{
 	margin-top:90px;
@@ -44,6 +48,9 @@ a{
 	color:#000;
 	margin-top:-5px;
 	margin-bottom:10px;
+	height:42px;
+	overflow:hidden;
+	width:550px;
 }
 .content article span{
 	float:right;
@@ -73,7 +80,8 @@ footer{
 </head>
 
 <body>
-<jsp:include page="${contextPath}/nav.jsp"></jsp:include>
+
+<jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
 
 
 <div id="third">
@@ -87,7 +95,7 @@ footer{
 	<s:action name="front_Route_toList" executeResult="true" namespace="/front">
 		<s:param name="routeType">${routeType}</s:param>
 		<s:param name="page">1</s:param>
-		<s:param name="rows">2</s:param>
+		<s:param name="rows">5</s:param>
 	</s:action>
 </div>
 </body>

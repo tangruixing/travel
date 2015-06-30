@@ -1,15 +1,26 @@
 package cn.travel.action;
 
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.Iterator;
+import java.util.List;
+import java.util.Map;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import com.opensymphony.xwork2.ActionContext;
+
+import cn.model.Constant;
 import cn.model.Grid;
 import cn.model.Json;
 import cn.travel.model.Message;
+import cn.travel.model.User;
 import cn.travel.service.MessageService;
+import cn.util.ConfigUtil;
 
 @Controller("messageAction")
 @Scope("prototype")
@@ -81,6 +92,33 @@ public class MessageAction extends BaseAction<Message>{
 		}
 	}
 	
+	public String browseMsg(){
+		User user=(User)this.session.get(ConfigUtil.loginUserKey);
+		pageBean=messageService.getMessagePageList(this.page,5, user);
+		List<Message> list=pageBean.getRecordList();
+		List newList=new ArrayList<Message>();
+		for (int i = 0; i < list.size(); i++) {
+			Message message=list.get(i);
+			if(message.getAdmin()!=null){
+				message.setAdminId(message.getAdmin().getId());				
+			}
+			newList.add(message);
+		}
+		pageBean.setRecordList(newList);
+		return goUI("frontList.jsp");
+	}
 	
+	public String addMsg(){
+		User user=(User)this.session.get(ConfigUtil.loginUserKey);
+		model.setUser(user);
+		Date now = new Date(); 
+		model.setCreateDate(now);
+		model.setStats(Constant.MESSAGE_UNSTATUS);
+		messageService.saveEntity(model);
+		return goAction("message_goMsg.do");
+	}
 	
+	public String goMsg(){
+		return goUI("frontMessage.jsp");
+	}
 }
