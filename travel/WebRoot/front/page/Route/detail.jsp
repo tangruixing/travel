@@ -79,21 +79,7 @@ a{
 <header>
 	<img src="<%=contextPath %>/front/images/index_01.jpg">
 </header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="/front_Index_index.do">首页</a></li>
-            <li>酒店</li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="/front_Message_index.do">留言</a></li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
-</div>
+<jsp:include page="${contextPath}/nav.jsp"></jsp:include>
 <div id="fourth">
 	<span><a href="<%=contextPath %>/front/front_Route_toIndex.do?routeType=${routeType}">${routeType==0?'旅游线路':'自由行' }</a></span><img src="images/right.png">${realName}
 </div>
