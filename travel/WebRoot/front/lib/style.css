@@ -54,3 +54,36 @@ nav div{
 nav div a:hover{
 	text-decoration:underline;
 }
+.friendlink{
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	clear:both;
+	margin-top:50px;
+}
+.friendlink header{
+	width: 100%;
+	height: 50px;
+	background-size: 100% 100%;
+	font-size:24px;
+	font-family:"黑体";
+}
+.friendlink section{
+	width:110px;
+	height:80px;
+	text-align:center;
+	font-size:12px;
+	float:left;
+	margin-left:1px;
+	margin-top:10px;
+}
+.friendlink section a{
+	color:#000;
+	text-decoration:none;
+}
+.friendlink footer{
+	text-align:center;
+	width:100%;
+	padding-top:50px;
+	clear:left;
+}

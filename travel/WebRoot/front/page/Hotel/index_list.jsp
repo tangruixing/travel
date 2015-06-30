@@ -16,6 +16,6 @@
     </s:iterator>
     
     <footer>
-    	<a href="<%=contextPath %>/front/front_Hotel_toMore.do">更多酒店<img src="front/images/you-1.png"></a>
+    	<a href="<%=contextPath %>/front/front_Hotel_toMore.do">更多酒店<img src="<%=contextPath %>/front/images/you-1.png"></a>
     </footer>
 </div>
