@@ -35,5 +35,10 @@
         <property name="telphone" type="java.lang.String">
             <column name="TELPHONE" />
         </property>
+        
+        <set name="roomstyles" lazy="true" inverse="true">
+        	<key column="HOTID"></key>
+        	<one-to-many class="cn.travel.model.Roomstyle"/>
+        </set>
     </class>
 </hibernate-mapping>

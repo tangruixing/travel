@@ -81,7 +81,10 @@ footer{
 
 <body>
 
+
 <jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
+
+
 
 
 
@@ -96,7 +99,10 @@ footer{
 	<s:action name="front_Route_toList" executeResult="true" namespace="/front">
 		<s:param name="routeType">${routeType}</s:param>
 		<s:param name="page">1</s:param>
+
 		<s:param name="rows">5</s:param>
+
+
 	</s:action>
 	
 	<!-- 友情链接 -->

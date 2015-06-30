@@ -10,6 +10,7 @@ import com.alibaba.fastjson.JSON;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.travel.model.Hotel;
 import cn.travel.model.Roomstyle;
 import cn.travel.model.Routeplan;
 import cn.travel.model.Scenery;
@@ -23,6 +24,9 @@ public class SceneryServiceTest extends BaseSpringTest{
 	
 	@Resource(name="roomstyleService")
 	private RoomstyleService roomstyleService;
+	
+	@Resource(name="hotelService")
+	private HotelService hotelService;
 	
 	@Test
 	public void  getScenery(){
@@ -70,5 +74,12 @@ public class SceneryServiceTest extends BaseSpringTest{
 		String sql="select * from scenery s where s.sceId is null";
 		List<Scenery> list = sceneryService.findEntityBySQL(sql);
 		logger.info(writeJsonByFilter(list, null, null));
+	}
+	
+	@Test
+	public void getHotelDetail(){
+		int id=1;
+		Hotel hotelDetail = this.hotelService.getHotelDetail(id);
+		logger.info(JSON.toJSONString(hotelDetail));
 	}
 }

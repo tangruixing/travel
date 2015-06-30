@@ -6,9 +6,10 @@
     </header>
     <s:iterator value="pageBean.recordList">
    	<section class="jiudian">
-    	<img src="<%=contextPath %>/${logo}">
+    	<img src="<%=contextPath%>/${logo}">
         <section>
-        	<a href="<%=contextPath%>/">${realName}<br>
+        	<a href="<%=contextPath %>/front/front_Hotel_toDetail.do?id=${id}">
+        	${realName}<br>
             ¥<span>360</span>起</a>
         </section>
     </section>

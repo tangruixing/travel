@@ -2,6 +2,8 @@
 package cn.travel.model;
 
 import java.io.Serializable;
+import java.util.HashSet;
+import java.util.Set;
 
 public class Hotel implements Serializable{
 	
@@ -20,6 +22,9 @@ public class Hotel implements Serializable{
 	//columns END
 
 	private User user;
+	
+	private Set<Roomstyle> roomstyles=new HashSet<Roomstyle>(0);
+	
 	
 	public Hotel(){
 	}
@@ -126,6 +131,16 @@ public class Hotel implements Serializable{
 		this.user = user;
 	}
 
+	public Set<Roomstyle> getRoomstyles() {
+		return roomstyles;
+	}
+
+	public void setRoomstyles(Set<Roomstyle> roomstyles) {
+		this.roomstyles = roomstyles;
+	}
+
+	
+	
 	
 
 	

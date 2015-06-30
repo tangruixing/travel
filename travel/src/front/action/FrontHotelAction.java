@@ -39,6 +39,7 @@ public class FrontHotelAction extends BaseAction<Hotel>{
 	 */
 	public String toDetail(){
 		
+		this.model=hotelService.getHotelDetail(this.model.getId());
 		return goUI("detail.jsp");
 	}
 }

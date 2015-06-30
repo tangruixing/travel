@@ -100,10 +100,10 @@ a{
 	<h1>${realName}</h1>
 	<s:if test="routeType==0">
 		  人均消费：<span>￥</span>${money}
-		  <a href="<%=contextPath%>/front_Order_PayRoute.do">报名</a>
+		  <a href="<%=contextPath%>/front_Order_doOrderRoute.do">报名</a>
 	</s:if>
   	<s:elseif test="routeType==1">
-  		<a href="<%=contextPath %>/front_Order_CollectRoute.do">收藏</a>
+  		<a href="<%=contextPath %>/front_Order_doCollectRoute.do">收藏</a>
   	</s:elseif>
     
     

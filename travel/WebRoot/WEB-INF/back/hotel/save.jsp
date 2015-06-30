@@ -48,7 +48,35 @@
                                 <s:hidden cssClass="form-control" name="logo" id="hotel_logo_input"/><!-- 单张图片上传结束 -->
                             </div>
                         </div>
-                       
+                        <div class="form-group">
+                            <label class="col-lg-3 control-label">图片</label>
+                            <div class="col-lg-9">
+                            	<!-- 多张图片 -->
+                            	<div id="wrapper">
+							<div id="container">
+								<div id="uploader">
+									<div class="queueList">
+										<ul class="filelist" id="filelist2"></ul>
+								    	<div class="statusBar" style="">
+											<div class="progress" style="display: none;">
+												<span class="text">0%</span> <span class="percentage" style="width: 0%;"></span>
+											</div>
+											<div class="info">  </div>
+											<div class="btns">
+												<div id="filePicker2" class="webuploader-container">
+												<div class="webuploader-pick" style="">继续添加</div>
+												<div id="rt_rt_19iuagm1e14ms14tj1qschtic766" style="position: absolute; top: 0px; left: 10px; width: 94px; height: 42px; overflow: hidden; bottom: auto; right: auto;"><input type="file" name="file" class="webuploader-element-invisible" multiple="multiple"><label style="opacity: 0; width: 100%; height: 100%; display: block; cursor: pointer; background-color: rgb(255, 255, 255); background-position: initial initial; background-repeat: initial initial;"></label></div></div>
+												<div class="uploadBtn state-ready">开始上传</div>
+											</div>
+										</div>
+									</div> 
+								</div>
+							</div>
+					   </div>  
+					    <s:hidden id="images" name="picture" maxlength="25000"/>
+					    <!-- 多张图片结束 -->
+                            </div>
+                        </div>
 
                         <div class="form-group">
                             <label class="col-lg-3 control-label">酒店级别</label>
@@ -215,7 +243,9 @@ $(document).ready(function() {
             }, 'json');
      });
     
-    
+    var oldData = new uploadManyImages('wrapper',$('#filelist2'),5);//后台可编辑回显示
+	oldData.initEcho('filelist2','${picture}');//把图片回显
+	
   $("#checkSubmit").on('click',function(){
 		
 		var logoUrl=$("#hotel_logo_input").val();
@@ -223,6 +253,22 @@ $(document).ready(function() {
 			jNotify("请上传 LOGO !!");
 			return false;
 		}
+		
+		var imgSrc = oldData.getInsertString();
+  	    var allSrc = oldData.getEchoInsertString();
+
+  	    if(imgSrc != "" && allSrc != "")
+  			allSrc = imgSrc + "#" + allSrc;
+  		else
+  			allSrc = imgSrc + allSrc;
+  	    
+  	    if(allSrc.length<=0){
+  	    	console.info("没有上传图片");
+  	    	jNotify("请上传图片");
+  	    	return false;
+  	    }
+  	    $('#images').val(allSrc);
+  	    console.info(allSrc);
 	});
     
     
