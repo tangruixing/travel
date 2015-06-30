@@ -230,24 +230,7 @@ function closebyID(id){
 </head>
 
 <body>
-<header>
-	<img src="images/index_01.jpg">
-</header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="<%=contextPath%>/front_Index_index.do">首页</a></li>
-            <li>酒店</li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="<%=contextPath%>/front_Message_index.do">留言</a></li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
-</div>
+<jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
 <div id="search">
 	<div>
     	<form>

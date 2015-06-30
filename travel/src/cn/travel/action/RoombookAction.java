@@ -1,5 +1,7 @@
 package cn.travel.action;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -22,7 +24,14 @@ public class RoombookAction extends BaseAction<Roombook>{
 	
 	@Resource(name="roombookService")
 	private RoombookService roombookService;
-	
+	private int type;  //用于标记查询是已入住还是未入住
+	public int getType() {
+		return type;
+	}
+
+	public void setType(int type) {
+		this.type = type;
+	}
 	/**
 	 * 
 	 */
@@ -81,6 +90,13 @@ public class RoombookAction extends BaseAction<Roombook>{
 		}
 	}
 	
-	
+	public String toList(){	
+		Date now=new Date();
+		if(type==1)
+			pageBean=roombookService.getRoombookPageListed(this.page,this.rows,now,this.loginUser.getId());
+		else
+			pageBean=roombookService.getUnRoombookPageList(this.page,this.rows,now,this.loginUser.getId());
+		return goUI("list.jsp");
+	}
 	
 }

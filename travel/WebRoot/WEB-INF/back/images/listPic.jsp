@@ -21,10 +21,10 @@
 <s:iterator value="pageBean.recordList">
 			<div class="col-sm-6 col-md-3 pic">
 		        <div class="thumbnail" >
-		            <img src="<%=contextPath%>/${url}" alt="${name}">
+		            <img src="<%=contextPath%>/${image}" alt="${name}">
 		            <div class="caption">
 		               <%--   <h3>${fn:substring(name,0,5)}</h3>
-		                 <small>${fn:substring(description,0,10)}...</small> --%>
+		                 <small>${fn:substring(caption,0,10)}...</small> --%>
 		                <p>
 		                   <button type="button"  class="btn btn-primary" role="button" onclick="deletePic(${id});">删除</button>
 		                </p>

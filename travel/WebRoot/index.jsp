@@ -58,7 +58,7 @@ function showResponse(responseText, statusText, xhr, $form) {
 		arr=responseText.msg.split(',');
 		$("#second nav div").empty();
 		if(arr[1]=="2"){
-			$("#second nav div").append("<a href=\"<%=contextPath%>/front_User_person.do?id="+arr[0]+"\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front_User_logout.do\">注销</a>");
+			$("#second nav div").append("<a href=\"<%=contextPath%>/user_goPerson.do\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front_User_logout.do\">注销</a>");
 		}else{
 			$("#second nav div").append("<a href=\"<%=contextPath%>/login_toLogin.do\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front_User_logout.do\">注销</a>");
 		}
@@ -228,6 +228,7 @@ nav section input{
 }
 #fourth section a{
 	text-decoration:none;
+	color:#33cc33;
 }
 #fourth footer{
 	text-align:right;

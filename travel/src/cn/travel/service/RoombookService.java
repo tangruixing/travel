@@ -1,7 +1,10 @@
 package cn.travel.service;
 
+import java.util.Date;
+
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.model.Roombook;
 
 public interface RoombookService extends BaseService<Roombook>{
@@ -11,4 +14,6 @@ public interface RoombookService extends BaseService<Roombook>{
 
 	void batchRoombookDelete(String deleteIds);
 	
+	PageBean getRoombookPageListed(int page, int rows, Date now,Integer id);
+	PageBean getUnRoombookPageList(int page, int rows, Date now,Integer id);
 }

@@ -34,10 +34,10 @@ A:hover {
 </style>
 </head>
 <body>
-<DIV id=container><IMG height=312 src="./front/images/404.gif" width=512></DIV>
+<DIV id=container><IMG height=312 src="/travel/front/images/404.gif" width=512></DIV>
 
 <p style="text-indent: 2em; margin-top: 30px;">
-系统将在 <span id="time">5</span> 秒钟后自动跳转至首页，如果未能跳转，<a href="./index.jsp" title="点击访问">请点击</a>。</p>
+系统将在 <span id="time">5</span> 秒钟后自动跳转至首页，如果未能跳转，<a href="/travel/index.jsp" title="点击访问">请点击</a>。</p>
 
 </body>
 <script type="text/javascript">  
@@ -50,7 +50,7 @@ A:hover {
             document.getElementById("time").innerHTML = delay;
         } else {
      clearTimeout(t); 
-            window.location.href = "./index.jsp";
+            window.location.href = "/travel/index.jsp";
         }       
     }
 </script>

@@ -3,6 +3,7 @@
 "-//Apache Software Foundation//DTD Struts Configuration 2.0//EN" 
 "http://struts.apache.org/dtds/struts-2.0.dtd">
 <struts>
+	
 	<!-- 简单主题 -->
 	<constant name="struts.ui.theme" value="simple" />
 	<constant name="struts.action.extension" value="do" />
@@ -30,9 +31,9 @@
 		<default-interceptor-ref name="travelStack"></default-interceptor-ref>
 
 		<global-results>
-			<result name="toLogin">/login_toLogin.do</result><!-- 后台登陆页面 -->
-			<result name="toFrontLogin">/index.jsp</result><!-- 前台登录页面 -->
-			<!-- <result name="error">/500.html</result> -->
+			<result name="toLogin">/login.jsp</result><!-- 后台登陆页面 -->
+			<result name="toFrontLogin">/index.jsp</result><!-- 前台页面 -->
+			<result name="error">/500.html</result>
 		</global-results>
 		
 		<global-exception-mappings>

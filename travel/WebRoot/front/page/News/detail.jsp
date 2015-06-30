@@ -14,9 +14,6 @@ a{
 	text-decoration:none;
 	color:#000;
 }
-#second{
-	margin-top:-5px;
-}
 #third{
 	width:1000px;
 	margin-left:auto;
@@ -38,33 +35,32 @@ a{
 	margin-left:5px;
 	margin-right:5px;
 }
+#publicTime{
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:20px;
+	text-align:right;
+	color:#666666;
+}
 </style>
 </head>
 
 <body>
-<header>
-	<img src="images/index_01.jpg">
-</header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="<%=contextPath%>/front_Index_index.do">首页</a></li>
-            <li>酒店</li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="<%=contextPath%>/front_Message_index.do">留言</a></li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
-</div>
+<jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
 <div id="third">
     <header>
-        <h1><a href="<%=contextPath%>/index.jsp">旅游新闻</a></h1><img src="images/right.png"><h2>正文</h2><hr>
+        <h1><a href="<%=contextPath %>/front/front_News_toMore.do">旅游新闻</a></h1><img src="<%=contextPath%>/front/images/right.png"><h2>${title }</h2><hr>
     </header>
-    <div></div>
+    <div>
+    ${content }
+    </div>
 </div>
+<div id="publicTime">发布时间：<fmt:formatDate value="${publicTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
+<!-- 友情链接 -->
+  	<s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">18</s:param>
+	</s:action>
 </body>
 </html>

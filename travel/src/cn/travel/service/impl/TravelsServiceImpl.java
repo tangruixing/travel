@@ -8,7 +8,9 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
+import cn.travel.model.News;
 import cn.travel.model.Travels;
 import cn.travel.service.TravelsService;
 import cn.util.HqlHelper;
@@ -47,6 +49,17 @@ public class TravelsServiceImpl extends BaseServiceImpl<Travels> implements Trav
 		this.dao.batchEntityByHQL(hql);
 	}
 	
+	public PageBean getTravelsPageList(int page, int rows) {
+		HqlHelper hql=new HqlHelper(Travels.class, "t")
+				.addOrderByProperty("t.publicTime",false);	
+		return this.getPageBean(page,rows,hql);
+	}
+	
+	public PageBean getTravelsPageHot(int page, int rows) {
+		HqlHelper hql=new HqlHelper(Travels.class, "t")
+				.addOrderByProperty("t.click",false);	
+		return this.getPageBean(page,rows,hql);
+	}
 	
 	
 }

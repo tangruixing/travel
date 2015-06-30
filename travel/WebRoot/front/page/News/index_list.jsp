@@ -19,11 +19,11 @@
     <aside>
     <table>
     <s:iterator value="pageBean.recordList">
-    	<tr><td><a href="#">${fn:substring(title,0,23)}...</a></td></tr>
+    	<tr><td><a href="<%=contextPath %>/front/front_News_toDetail.do?id=${id}">${fn:substring(title,0,23)}...</a></td></tr>
     </s:iterator>
     </table>
     </aside>
     <footer>
-    	<a href="#">更多新闻</a><img src="<%=contextPath %>/front/images/you-3.png">
+    	<a href="<%=contextPath %>/front/front_News_toMore.do">更多新闻</a><img src="<%=contextPath %>/front/images/you-3.png">
     </footer>
 </div>

@@ -55,6 +55,7 @@ public class PageBean {
 			}
 			//当前页后不足5个，显示10个页
 			else if(endPageIndex>pageCount){
+				
 				endPageIndex=pageCount;
 				beginPageIndex=pageCount-9;
 			}
