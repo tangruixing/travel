@@ -23,7 +23,7 @@ $(document).ready(function(e){
 	});
 function showResponse(responseText, statusText, xhr, $form) {
 	if(responseText.success){
-		 location.href ="<%=contextPath%>/index.jsp";
+		window.location.href=document.referrer;  //返回并更新
 	}else{
 		alert("用户名或密码错误！");
 	}

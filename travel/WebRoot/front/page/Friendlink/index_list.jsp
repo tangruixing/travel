@@ -7,7 +7,7 @@
     <div>
     <s:iterator value="pageBean.recordList">
     	<section>
-        	<a href="${url}"><img src="<%=contextPath %>/${logo}"><br>${realName}</a>
+        	<a href="${url}"><img src="<%=contextPath %>/${logo}" width="110" height="50"><br>${realName}</a>
         </section>
 	</s:iterator>
     </div>

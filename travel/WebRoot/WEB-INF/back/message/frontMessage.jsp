@@ -18,8 +18,9 @@
 </script>
 <link rel="stylesheet" href="<%=contextPath%>/front/lib/style.css">
 <link href="<%=contextPath%>/front/lib/jquery.fancybox-1.3.4.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<%=contextPath %>/front/lib/pages.css">
 <style type="text/css">
-nav ul li:nth-child(5){
+nav ul li:nth-child(6){
 	background-color:#006666;
 }
 #second{
@@ -107,27 +108,21 @@ a:hover{
 </head>
 
 <body>
+
 <jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
-<div id="third">
-	<section>
-    	我的留言
-    </section>
-    <section>
-    	<article><span>我&nbsp;2015/06/08&nbsp;16:46:37</span>大家都知道连续的英文或数字能是容器被撑大，不能根据容器的大小自动换行，下面是 CSS如何将他们换行的方法！</article>
-        <article  class="article2"><span>管理员&nbsp;2015/06/08&nbsp;16:46:37</span>Firefox浏览器）white-space:normal; word-break:break-all;overflow:hidden;同样的FF下也没有很好的实现方法，只能隐藏或者加滚动条，当然不加滚动条效果更好！ </article>
-        <article><span>我&nbsp;2015/06/08&nbsp;16:46:37</span>大家都知道连续的英文或数字能是容器被撑大，不能根据容器的大小自动换行，下面是 CSS如何将他们换行的方法！</article>
-        <article  class="article2"><span>管理员&nbsp;2015/06/08&nbsp;16:46:37</span>Firefox浏览器）white-space:normal; word-break:break-all;overflow:hidden;同样的FF下也没有很好的实现方法，只能隐藏或者加滚动条，当然不加滚动条效果更好！ </article>
-        <article><span>我&nbsp;2015/06/08&nbsp;16:46:37</span>大家都知道连续的英文或数字能是容器被撑大，不能根据容器的大小自动换行，下面是 CSS如何将他们换行的方法！</article>
-        <article  class="article2"><span>管理员&nbsp;2015/06/08&nbsp;16:46:37</span>Firefox浏览器）white-space:normal; word-break:break-all;overflow:hidden;同样的FF下也没有很好的实现方法，只能隐藏或者加滚动条，当然不加滚动条效果更好！ </article>
-    </section>
-</div>
+
+<s:action name="message_browseMsg" executeResult="true">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">5</s:param>
+</s:action>
+
 <footer>
-	<a href="#">首页</a>&nbsp;<a href="#">上一页</a>&nbsp;<a href="#">下一页</a>&nbsp;<a href="#">尾页</a>
-    <div class="button" style="	margin-left:100px;"><a href="#inline1" id="addMsg">留言</a></div>
+    <div class="button" style="	margin-top:10px;"><a href="#inline1" id="addMsg">留言</a></div>
 </footer>
+
 <div style="display:none">
 	<div id="inline1">
-    	<form id="msgForm">
+    	<form id="msgForm" action="<%=contextPath%>/message_addMsg.do">
         	留言内容：<textarea rows="8" cols="50" name="content"></textarea>
             <center><input type="submit" value="提交留言" class="button" style="margin-top:10px;"></center>
         </form>
@@ -136,6 +131,6 @@ a:hover{
 <s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
 	<s:param name="page">1</s:param>
 	<s:param name="rows">18</s:param>
-</s:action>
+</s:action> 
 </body>
 </html>
