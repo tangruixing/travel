@@ -5,7 +5,7 @@
 }
 .pagination li{
 	float:left;
-	margin-left:5px;
+	margin-left:10px;
 }
 .active a{
 	color:#0FF !important;
