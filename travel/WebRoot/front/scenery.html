@@ -32,12 +32,15 @@ function closebyID(id){
 }
 </script>
 <style type="text/css">
+a:hover{
+	text-decoration:underline;
+}
 a{
 	text-decoration:none;
 	color:#000;
 }
 #third{
-	margin-top:90px;
+	margin-top:20px;
 	clear:both;
 	width:1000px;
 	margin-left:auto;
@@ -45,20 +48,86 @@ a{
 }
 #third h1{
 	display:inline;	
-}
-#third h1 a{
 	color:#33cc33;
 	font-size:24px;
+	font-size:36px;
 }
 #third aside{
 	display:inline;
 	margin-left:30px;
+	font-size:20px;
 }
 #third aside span{
 	color:#F00;
 }
 #third section{
 	margin-top:10px;
+}
+#map{
+	width:500px;
+	height:300px;
+	display:none;
+	position:fixed;
+	top:100px;
+	left:260px;
+	-webkit-box-shadow: 0px 0px 8px 3px #000000;
+	box-shadow: 0px 0px 8px 3px #000000;
+	background-color: #FFF;
+}
+#map section{
+	float:right;
+	position:relative;
+	left:15px;
+	top:-15px;
+	z-index:1000;
+}
+#fourth{
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	margin-top:10px;
+}
+#fourth h2{
+	color:#33cccc;
+}
+#fourth div{
+	clear:both;
+}
+#fourth div section h3{
+	display:inline;
+	margin-left:10px;
+	position:relative;
+	top:-7px;
+}
+#fourth div section:nth-child(1){
+	margin-bottom:5px;
+	background-color:#ebeaea;
+	height:30px;
+}
+#fourth div section:nth-child(2){
+	width:250px;
+	float:left;
+	margin-left:30px;
+}
+#fourth div article{
+	width:710px;
+	float:right;
+}
+#back{
+	margin-top:70px;
+	clear:both;
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:18px;
+}
+#back span{
+	font-size:26px;
+}
+#back img{
+	position:relative;
+	top:5px;
+	margin:0 5px;
 }
 #map{
 	width:500px;
@@ -100,8 +169,12 @@ a{
         </div>
 	</nav>
 </div>
+<div id="back">
+	<span><a href="#">福州景区</a></span><img src="images/right.png">于山
+    <hr>
+</div>
 <div id="third">
-	<h1><a href="#"><img src="images/jingdianbiao.png">于山</a></h1>
+	<h1><img src="images/jingdianbiao.png" width="30">于山</h1>
     <aside>级别：<span>AAAA</span></aside>                  
     <section><img src="images/didianbiao.png"><a href="javascript:showbyID('map')">福州市鼓楼区于山路</a></section>
     <section>开放时间：06:00-22:00&nbsp;联系电话：5566-666688</section>
@@ -112,9 +185,25 @@ a{
     </section>
 </div>
 <div id="fourth">
-	<section>
-    	
-    </section>
+	<h2>所属景点</h2>
+	<div>
+    	<section><img src="images/scenery.png"><h3>于山小景点1</h3></section>
+         <section><img src="images/jing1.jpg" width="250"></section>
+        <article>
+        	于山位于福州城区中心鼓楼区东南隅，地处五一广场对面。相传古代有一支“于越氏”居此，由此得名。它是福州市区三山之一，值得一去。整座山形状如巨鳌，名胜古迹众多，景点错落有致。
+		</article>    
+    </div>
+    
+    <div>
+    	<section><img src="images/scenery.png"><h3>于山小景点2</h3></section>
+         <section><img src="images/jing1.jpg" width="250"></section>
+        <article>
+        	于山位于福州城区中心鼓楼区东南隅，地处五一广场对面。相传古代有一支“于越氏”居此，由此得名。它是福州市区三山之一，值得一去。整座山形状如巨鳌，名胜古迹众多，景点错落有致。
+		</article>    
+    </div>
+</div>
+<div id="map">
+	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
 </div>
 <div id="map">
 	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>

@@ -4,6 +4,7 @@
 <meta charset="utf-8">
 <title>旅游路线</title>
 <link rel="stylesheet" href="lib/style.css">
+<script type="text/javascript" src="lib/jquery-1.9.1.js"></script>
 <style type="text/css">
 a{
 	text-decoration:none;
@@ -55,7 +56,33 @@ a{
 	top:5px;
 	margin:0 5px;
 }
+#book{
+	width:500px;
+	height:300px;
+	display:none;
+	position:fixed;
+	top:100px;
+	left:260px;
+	-webkit-box-shadow: 0px 0px 8px 3px #000000;
+	box-shadow: 0px 0px 8px 3px #000000;
+	background-color: #FFF;
+}
+#book section{
+	float:right;
+	position:relative;
+	left:15px;
+	top:-15px;
+	z-index:1000;
+}
 </style>
+<script language="javascript">
+function showbyID(id){
+	$("#"+id).css("display","block");
+}
+function closebyID(id){
+	$("#"+id).css("display","none");
+}
+</script>
 </head>
 
 <body>
@@ -90,6 +117,11 @@ a{
         地图
     </div>
     <article>描述</article>
+</div>
+<a href="javascript:showbyID('book')">预定</a>
+<div id="book">
+  <section><a href="javascript:closebyID('book')"><img src="images/close.png"></a></section>
+	预定或收藏弹框
 </div>
 </body>
 </html>

@@ -388,5 +388,9 @@ function closebyID(id){
 <div id="map">
 	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
 </div>
+<s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">18</s:param>
+</s:action>
 </body>
 </html>

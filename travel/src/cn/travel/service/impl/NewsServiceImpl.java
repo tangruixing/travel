@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.model.News;
 import cn.travel.service.NewsService;
@@ -48,5 +49,8 @@ public class NewsServiceImpl extends BaseServiceImpl<News> implements NewsServic
 	}
 	
 	
-	
+	public PageBean getNewsPageList(int page, int rows) {
+		HqlHelper hql=new HqlHelper(News.class, "s");	
+		return this.getPageBean(page,rows,hql);
+	}
 }
