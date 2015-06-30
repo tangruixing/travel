@@ -1,21 +1,19 @@
 <%@ page language="java" pageEncoding="UTF-8"%>
 
  
-<div class="panel-foot text-center">
+<div class="panel-foot">
 	<table style="margin-left:auto;margin-right:auto;cursor: pointer;">
       <tbody>
           <tr>
             <td>
     <c:if test="${pageBean.currentPage!=1 && pageBean.currentPage > 1}">
-		<ul class="pagination">
-			<li><a onclick="gotoPageByType(${pageBean.currentPage-1})">上一页</a></li>
-		</ul>
+			<a onclick="gotoPageByType(${pageBean.currentPage-1})">上一页</a>
 	</c:if>
 </td>
             <td>
 	<c:choose>
 		<c:when test="${pageBean.pageCount!=0}">
-			<ul class="pagination pagination-group">
+			<ul class="pagination">
 				<c:forEach begin="${pageBean.beginPageIndex}"
 					end="${pageBean.endPageIndex}" var="num">
 					<c:choose>
@@ -41,11 +39,9 @@
             <td>
 	<c:if
 		test="${pageBean.currentPage!=pageBean.pageCount&&pageBean.pageCount!=0}">
-		<ul class="pagination">
-			<li><a onclick="gotoPageByType(${pageBean.currentPage+1})">下一页</a></li>
-		</ul>
+			<a onclick="gotoPageByType(${pageBean.currentPage+1})">下一页</a>
 	</c:if> 
-	</ul></td>
+	</td>
           </tr>
       </tbody>
   </table>
@@ -54,11 +50,29 @@
 <div class="clear"></div>
 <script type="text/javascript">
 
+var $list=null;
+var $form=null;
+var $subBtn=null;
+
+$(function(){
+	$list=$("#list");
+	$form=$("#pageForm");
+	$subBtn=$("#pageBtn");
+	
+	$subBtn.off("click");
+	$subBtn.on("click",function(){
+		gotoPageByType(1);
+	});
+	
+})
+
+
+
+
 function gotoPageByType(pageNum){
 	 
 	
-	var $list=$("#list");
-	var $form=$("#pageForm");
+	
 	
 	var url=$form.attr('action')+"?page="+pageNum+"&rows=${rows}";
 	var value=$form.serialize();

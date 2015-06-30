@@ -58,9 +58,9 @@ function showResponse(responseText, statusText, xhr, $form) {
 		arr=responseText.msg.split(',');
 		$("#second nav div").empty();
 		if(arr[1]=="2"){
-			$("#second nav div").append("<a href=\"<%=contextPath%>/front_User_person.do?id="+arr[0]+"\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front_User_logout.do\">注销</a>");
+			$("#second nav div").append("<a href=\"<%=contextPath%>/front_User_person.do?id="+arr[0]+"\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front/front_User_logout.do\">注销</a>");
 		}else{
-			$("#second nav div").append("<a href=\"<%=contextPath%>/login_toLogin.do\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front_User_logout.do\">注销</a>");
+			$("#second nav div").append("<a href=\"<%=contextPath%>/login_toLogin.do\">尊敬的会员</a>&nbsp;<a href=\"<%=contextPath%>/front/front_User_logout.do\">注销</a>");
 		}
 	}else{
 		if(unsubmit){
@@ -70,9 +70,9 @@ function showResponse(responseText, statusText, xhr, $form) {
 	}
 }
 </script>	
-<link rel="stylesheet" href="front/lib/style.css">
+<link rel="stylesheet" href="<%=contextPath%>/front/lib/style.css">
 <!--左滑样式-->
-<link rel="stylesheet" href="front/lib/luara.left.css"/>
+<link rel="stylesheet" href="<%=contextPath%>/front/lib/luara.left.css"/>
 <style type="text/css">
 nav ul li:nth-child(1){
 	background-color:#006666;
@@ -126,7 +126,7 @@ nav section input{
 	width:100%;
 }
 #third header{
-	background-image: url(front/images/index_08.jpg);
+	background-image: url(<%=contextPath%>/front/images/index_08.jpg);
 	width: 100%;
 	height: 50px;
 	background-size: 100% 100%;
@@ -147,7 +147,7 @@ nav section input{
 	left:-60px;
 }
 .jiudian section{
-	background-image:url(front/images/di.png);
+	background-image:url(<%=contextPath%>/front/images/di.png);
 	background-size: 100% 100%;
 	height:115px;
 	width:166px;
@@ -185,7 +185,7 @@ nav section input{
 	margin-right:auto;
 }
 #fourth header{
-	background-image: url(front/images/index_10.jpg);
+	background-image: url(<%=contextPath%>/front/images/index_10.jpg);
 	width: 100%;
 	height: 50px;
 	background-size: 100% 100%;
@@ -250,7 +250,7 @@ nav section input{
 	margin-top:400px;
 }
 #fifth header{
-	background-image: url(front/images/index_12.jpg);
+	background-image: url(<%=contextPath%>/front/images/index_12.jpg);
 	width: 100%;
 	height: 50px;
 	background-size: 100% 100%;
@@ -311,7 +311,7 @@ nav section input{
 	margin-top:50px;
 }
 #sixth header{
-	background-image: url(front/images/index_14.jpg);
+	background-image: url(<%=contextPath%>/front/images/index_14.jpg);
 	width: 100%;
 	height: 50px;
 	background-size: 100% 100%;
@@ -363,8 +363,6 @@ a:hover{
 </head>
 
 <body>
-
-
 <jsp:include page="${contextPath}/nav.jsp"></jsp:include>
 
 <s:action name="front_Hotel_toIndexList" executeResult="true" namespace="/front">
@@ -391,4 +389,26 @@ a:hover{
     </footer>
 </div>
 </body>
+<script type="text/javascript">
+$(function(){
+    //新建一个Slider对象实例，并且设置幻灯持续间隔为3000毫秒
+    var slider = new Slider("#slider01").setDuration(3000);
+	
+	var win = $(window).outerWidth();//首先获取浏览器的宽度
+	
+		//设置幻灯片的大小
+    slider.setSize('100%',500/1366*win);
+	
+	$(window).resize(function(){
+	//浏览器变化宽度的动作。
+	win = $(window).outerWidth();
+	slider.setSize('100%',500/1366*win);
+	})
+
+	//从photos.json这个本地的json文件中加载幻灯片图像
+    slider.setPhotos([{"src":"<%=contextPath%>/front/images/lunbo-1.jpg"},{"src":"<%=contextPath%>/front/images/lunbo-2.jpg"},{"src":"<%=contextPath%>/front/images/lunbo-3.jpg"}]);
+  });
+  
+
+</script>
 </html>

@@ -10,5 +10,7 @@ public interface RoombookService extends BaseService<Roombook>{
 	Grid getRoombookGrid(Page p, Roombook model);
 
 	void batchRoombookDelete(String deleteIds);
+
+	void saveRoombook(Roombook model) throws Exception;
 	
 }

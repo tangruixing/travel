@@ -3,8 +3,55 @@
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
 <title>Insert title here</title>
+
+<style type="text/css">
+
+	HTML {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 14px; BACKGROUND: #ffffff; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; FONT-FAMILY: Tahoma, Verdana, "??"; TEXT-ALIGN: center
+}
+BODY {
+	PADDING-RIGHT: 0px; PADDING-LEFT: 0px; FONT-SIZE: 14px; BACKGROUND: #ffffff; PADDING-BOTTOM: 0px; MARGIN: 0px; PADDING-TOP: 0px; FONT-FAMILY: Tahoma, Verdana, "??"; TEXT-ALIGN: center
+}
+A:link {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:visited {
+	COLOR: #000000; TEXT-DECORATION: none
+}
+A:hover {
+	COLOR: #ff6600; TEXT-DECORATION: underline
+}
+#container {
+	MARGIN-LEFT: auto; WIDTH: 100%; MARGIN-RIGHT: auto; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+#maincolumn {
+	MARGIN-LEFT: auto; WIDTH: 100%; MARGIN-RIGHT: auto; HEIGHT: 80px; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+#footer {
+	FONT-SIZE: 12px; MARGIN-LEFT: auto; WIDTH: 100%; MARGIN-RIGHT: auto; BACKGROUND-COLOR: #ffffff; TEXT-ALIGN: center
+}
+	
+</style>
 </head>
 <body>
-<h1>抱歉,系统正在维护...请等待500</h1>
+<DIV id=container><IMG height=312 src="/travel/front/images/404.gif" width=512></DIV>
+
+<p style="text-indent: 2em; margin-top: 30px;">
+正在维护中...系统将在 <span id="time">5</span> 秒钟后自动跳转至首页，如果未能跳转，<a href="/travel/index.jsp" title="点击访问">请点击</a>。</p>
+
 </body>
+<script type="text/javascript">  
+    delayURL();   
+    function delayURL() {
+        var delay = document.getElementById("time").innerHTML;
+ var t = setTimeout("delayURL()", 1000);
+        if (delay > 0) {
+            delay--;
+            document.getElementById("time").innerHTML = delay;
+        } else {
+     clearTimeout(t); 
+            window.location.href = "/travel/index.jsp";
+        }       
+    }
+</script>
 </html>

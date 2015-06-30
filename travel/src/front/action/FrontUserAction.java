@@ -33,7 +33,7 @@ public class FrontUserAction extends BaseAction<User>{
 			userService.saveEntity(this.model);
 			j.setSuccess(true);
 			j.setMsg("注册成功");
-			session.put("user", model);
+			session.put(ConfigUtil.loginUserKey, model);
 		}catch(Exception e){
 			j.setMsg("注册失败："+e.getMessage());
 		}finally{
@@ -58,8 +58,8 @@ public class FrontUserAction extends BaseAction<User>{
 	}
 	
 	public String logout(){
-		session.clear();
-		return goUI("index.jsp");
+		this.removeSessionUser();
+		return "toIndex";
 		
 	}
 	

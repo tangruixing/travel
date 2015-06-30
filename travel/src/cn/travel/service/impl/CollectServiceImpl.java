@@ -9,6 +9,7 @@ import org.springframework.stereotype.Service;
 import cn.model.Grid;
 import cn.model.Page;
 import cn.travel.dao.BaseDao;
+import cn.travel.dao.CollectDao;
 import cn.travel.model.Collect;
 import cn.travel.service.CollectService;
 import cn.util.HqlHelper;
@@ -45,6 +46,15 @@ public class CollectServiceImpl extends BaseServiceImpl<Collect> implements Coll
 		String hql="delete from Collect u where u.id in ("+deleteIds+") ";
 		
 		this.dao.batchEntityByHQL(hql);
+	}
+
+	public void saveCollect(Collect model) throws Exception {
+		// TODO Auto-generated method stub
+		Collect collect = ((CollectDao)this.dao).canCollect(model.getUser().getId(), model.getRouId());
+		if(collect!=null){
+			throw new Exception("已经收藏过了,请不要再次收藏");
+		}
+		this.dao.saveEntity(model);
 	}
 	
 	

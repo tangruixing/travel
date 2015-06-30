@@ -10,5 +10,7 @@ public interface CollectService extends BaseService<Collect>{
 	Grid getCollectGrid(Page p, Collect model);
 
 	void batchCollectDelete(String deleteIds);
+
+	void saveCollect(Collect model) throws Exception;
 	
 }

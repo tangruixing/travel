@@ -31,8 +31,8 @@
 		<default-interceptor-ref name="travelStack"></default-interceptor-ref>
 
 		<global-results>
-			<result name="toLogin">/login_toLogin.do</result><!-- 后台登陆页面 -->
-			<result name="toFrontLogin">/index.jsp</result><!-- 前台登录页面 -->
+			<result name="toLogin">/login.jsp</result><!-- 后台登陆页面 -->
+			<result name="toIndex" type="redirect">/index.jsp</result><!-- 前台页面 -->
 			<result name="error">/500.html</result>
 		</global-results>
 		

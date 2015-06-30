@@ -63,8 +63,13 @@ public class SceneryServiceImpl extends BaseServiceImpl<Scenery> implements Scen
 	}
 	
 	public PageBean getSceneryPageList(int page, int rows) {
-		HqlHelper hql=new HqlHelper(Scenery.class, "s");
-		
+		HqlHelper hql=new HqlHelper(Scenery.class, "s");		
+		return this.getPageBean(page,rows,hql);
+	}
+	
+	public PageBean getSceneryPageHot(int page, int rows){
+		HqlHelper hql=new HqlHelper(Scenery.class, "s")
+				.addWhereCondition("s.suggest=true");
 		return this.getPageBean(page,rows,hql);
 	}
 }
