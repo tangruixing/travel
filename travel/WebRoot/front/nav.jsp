@@ -7,9 +7,9 @@
 	<nav>
     	<ul>
         	<li><a href="<%=contextPath%>/index.jsp">首页</a></li>
-            <li><a href="#">酒店</a></li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
+            <li><a href="<%=contextPath%>/front/front_Hotel_toMore.do">酒店</a></li>
+            <li><a href="<%=contextPath%>/front/front_Route_toIndex.do?routeType=0">旅游路线</a></li>
+            <li><a href="<%=contextPath%>/front/front_Route_toIndex.do?routeType=1">自由行</a></li>
             <li><a href="<%=contextPath%>/front_Message_index.do">留言</a></li>            
         </ul>
         <div>

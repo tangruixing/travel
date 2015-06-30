@@ -187,6 +187,25 @@ var Location={
            });
           
     },
+    showLocation:function(lg,lt){
+    	  var map = new BMap.Map("l-map");
+    	  var lng=lg||119.30304;
+    	  var lat=lt||26.1060510;
+    	  var zoom=18;
+    	  
+    	  var startPoint=new BMap.Point(lng,lat);
+    	  
+    	   //标记起始点
+          map.centerAndZoom(startPoint, zoom);//必须
+          console.info("地图缩放等级："+zoom);
+          map.enableScrollWheelZoom(true);//可以缩放
+          map.disableDoubleClickZoom();
+
+          //标记
+          var marker = new BMap.Marker(startPoint);
+          map.addOverlay(marker);
+    	  
+    },
     initMap:function(){
     	console.info($("#l-map"));
     	   //初始化地图

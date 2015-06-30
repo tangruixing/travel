@@ -79,21 +79,7 @@ a{
 <header>
 	<img src="<%=contextPath %>/front/images/index_01.jpg">
 </header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="/front_Index_index.do">首页</a></li>
-            <li>酒店</li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="/front_Message_index.do">留言</a></li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
-</div>
+<jsp:include page="${contextPath}/nav.jsp"></jsp:include>
 <div id="fourth">
 	<span><a href="<%=contextPath %>/front/front_Route_toIndex.do?routeType=${routeType}">${routeType==0?'旅游线路':'自由行' }</a></span><img src="images/right.png">${realName}
 </div>
@@ -103,10 +89,10 @@ a{
 	<h1>${realName}</h1>
 	<s:if test="routeType==0">
 		  人均消费：<span>￥</span>${money}
-		  <a href="<%=contextPath%>/front_Order_PayRoute.do">报名</a>
+		  <a href="<%=contextPath%>/front_Order_doOrderRoute.do">报名</a>
 	</s:if>
   	<s:elseif test="routeType==1">
-  		<a href="<%=contextPath %>/front_Order_CollectRoute.do">收藏</a>
+  		<a href="<%=contextPath %>/front_Order_doCollectRoute.do">收藏</a>
   	</s:elseif>
     
     

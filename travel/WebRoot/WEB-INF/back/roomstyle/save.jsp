@@ -121,7 +121,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">房型设施</label>
                             <div class="col-lg-9">
-                               	<s:textarea id="hotel_content" name="introduce">
+                               	<s:textarea id="roomstyle_content" name="introduce">
                                		
                                	</s:textarea>
                             </div>
@@ -235,7 +235,7 @@ $(document).ready(function() {
 	
            var oldData = new uploadManyImages('wrapper',$('#filelist2'),5);//后台可编辑回显示
         	oldData.initEcho('filelist2','${picture}');//把图片回显
-			var ue=UE.getEditor('hotel_content');
+			var ue=UE.getEditor('roomstyle_content');
         /* 	var html="便利设施：雨伞、多种规格电源插座、110V电压插座、中央空调、书桌、熨衣设备、房内保险箱<br/>媒体/科技：国内长途电话、国际长途电话<br/>和饮品：电热水壶、咖啡壶/茶壶、免费瓶装水、小冰箱、迷你吧<br/>浴室：24小时热水、拖鞋、浴室化妆放大镜、浴衣、吹风机、免费洗漱用品(6样以上)<br/>";
         	ue.setContent(html); */
         	

@@ -1,6 +1,8 @@
 
 package cn.travel.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.lang3.StringUtils;
@@ -14,6 +16,7 @@ import cn.travel.model.Hotel;
 import cn.travel.model.Scenery;
 import cn.travel.service.HotelService;
 import cn.util.HqlHelper;
+import cn.util.ValidateUtil;
 
 @Service("hotelService")
 public class HotelServiceImpl extends BaseServiceImpl<Hotel> implements HotelService{
@@ -53,6 +56,13 @@ public class HotelServiceImpl extends BaseServiceImpl<Hotel> implements HotelSer
 		HqlHelper hql=new HqlHelper(Hotel.class, "s");
 		
 		return this.getPageBean(page,rows,hql);
+	}
+
+	public Hotel getHotelDetail(Integer id) {
+		
+		String hql="from Hotel h left outer join fetch h.roomstyles  where h.id=?";
+		List<Hotel> hotelList = this.findEntityByHQL(hql, id);
+		return ValidateUtil.isValid(hotelList)?hotelList.get(0):null;
 	}
 	
 	
