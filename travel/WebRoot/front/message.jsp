@@ -107,24 +107,7 @@ a:hover{
 </head>
 
 <body>
-<header>
-	<img src="<%=contextPath%>/front/images/index_01.jpg">
-</header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="<%=contextPath%>/front_Index_index.do">首页</a></li>
-            <li><a href="#">酒店</a></li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li>留言</li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
-</div>
+<jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
 <div id="third">
 	<section>
     	我的留言
@@ -150,5 +133,9 @@ a:hover{
         </form>
     </div>
 </div>
+<s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">18</s:param>
+</s:action>
 </body>
 </html>

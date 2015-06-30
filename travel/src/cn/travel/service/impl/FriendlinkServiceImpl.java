@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.model.Friendlink;
 import cn.travel.service.FriendlinkService;
@@ -38,7 +39,12 @@ public class FriendlinkServiceImpl extends BaseServiceImpl<Friendlink> implement
 		
 		return this.getPageGrid(p.getPage(), p.getRows(), hql);
 	}
-
+	
+	public PageBean getFriendlinkPageList(int page, int rows) {
+		HqlHelper hql=new HqlHelper(Friendlink.class, "f");
+		
+		return this.getPageBean(page,rows,hql);
+	}
 	
 	public void batchFriendlinkDelete(String deleteIds) {
 		

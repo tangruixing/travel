@@ -1,3 +1,5 @@
+<%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ include file="/front/lib/inc.jspf" %>
 <!doctype html>
 <html><head>
 <meta charset="utf-8">
@@ -31,7 +33,7 @@ a{
 	width:1000px;
 	margin-left:auto;
 	margin-right:auto;
-	margin-top:80px;
+	margin-top:20px;
 	clear:both;
 }
 #third div{
@@ -167,6 +169,25 @@ input{
 	top:-15px;
 	z-index:1000;
 }
+#back{
+	margin-top:70px;
+	clear:both;
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	font-size:18px;
+}
+#back span{
+	font-size:26px;
+}
+#back a:visited{
+	color:#000;
+}
+#back img{
+	position:relative;
+	top:5px;
+	margin:0 5px;
+}
 </style>
 <script language="javascript">
 $(document).ready(
@@ -215,23 +236,10 @@ function closebyID(id){
 </head>
 
 <body>
-<header>
-	<img src="images/index_01.jpg">
-</header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="<%=contextPath%>/front_Index_index.do">首页</a></li>
-            <li>酒店</li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="<%=contextPath%>/front_Message_index.do">留言</a></li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
+<jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
+<div id="back">
+	<span><a href="#">福州酒店</a></span><img src="images/right.png">福州名城豪生大酒店
+    <hr>
 </div>
 <div id="third">
 	<div>  	
@@ -319,5 +327,9 @@ function closebyID(id){
 <div id="map">
 	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
 </div>
+<s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">18</s:param>
+</s:action>
 </body>
 </html>
