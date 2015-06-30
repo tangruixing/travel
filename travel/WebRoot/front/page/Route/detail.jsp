@@ -90,6 +90,7 @@ a{
 
 <body>
 <jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
+
 <div id="fourth">
 	<span><a href="<%=contextPath %>/front/front_Route_toIndex.do?routeType=${routeType}">${routeType==0?'旅游线路':'自由行' }</a></span><img src="images/right.png">${realName}
 </div>

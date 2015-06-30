@@ -16,4 +16,6 @@ public interface SceneryService extends BaseService<Scenery>{
 	
 	PageBean getSceneryPageList(int page, int rows);
 	
+	PageBean getSceneryPageHot(int page, int rows);
+	
 }

@@ -4,16 +4,14 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>旅游线路</title>
+<title>福州景区</title>
 <link rel="stylesheet" href="<%=contextPath %>/front/lib/style.css">
 <link rel="stylesheet" href="<%=contextPath %>/front/lib/pages.css">
+<script type="text/javascript" src="<%=contextPath %>/front/lib/jquery-1.9.1.js"></script>
 <style type="text/css">
 a{
 	text-decoration:none;
 	color:#000;
-}
-#second{
-	margin-top:0px;
 }
 #third{
 	margin-top:90px;
@@ -25,48 +23,58 @@ a{
 .content{
 	width:740px;
 	overflow:hidden;
-	height:120px;
+	height:150px;
 	margin-top:30px;
 }
 .content header{
 	border-radius: 10px;
 	overflow:hidden;
-	width:160px;
+	width:200px;
 	float:left;
-	height:120px;
+	height:150px;
 }
 .content article{
-	width:550px;
+	width:510px;
 	float:right;
 	margin-top:-20px;
 	color:#666;
 }
 .content article h1 a{
-	color:#33cccc;
+	color:#33cc33;
 }
 .content article section{
 	color:#000;
 	margin-top:-5px;
 	margin-bottom:10px;
-	height:42px;
-	overflow:hidden;
-	width:550px;
+}
+.content article aside{
+	float:right;
+	margin-top:30px;
+	color:#000;
+	font-size:18px;
+}
+.content article aside span{
+	color:#F00;
+}
+.content article section:nth-child(3){
+	height:30px;
 }
 .content article span{
 	float:right;
 }
-#third aside{
+.asides{
 	float:right;
 	width:200px;	
+	height:50px;
 }
-#third aside h2{
-	color:#33cccc;
+.asides h2{
+	color:#33cc33;
 	margin-top:-10px;
 }
-#third aside ul{
+.asides ul{
 	margin-left:-25px;
 }
-#third aside li{
+.asides li{
 	margin-bottom:5px;
 }
 footer{
@@ -80,30 +88,24 @@ footer{
 </head>
 
 <body>
-
 <jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
-
-
-
 <div id="third">
-	<!-- 热门路线 -->
-	<s:action name="front_Route_toHot" executeResult="true" namespace="/front">
-		<s:param name="routeType">${routeType}</s:param>
+	<!-- 热门景区 -->
+	<s:action name="front_Scenery_toHot" executeResult="true" namespace="/front">
 		<s:param name="page">1</s:param>
 		<s:param name="rows">6</s:param>
 	</s:action>
-	<!-- 线路列表 -->
-	<s:action name="front_Route_toList" executeResult="true" namespace="/front">
-		<s:param name="routeType">${routeType}</s:param>
+	<!-- 景区列表 -->
+	<s:action name="front_Scenery_toList" executeResult="true" namespace="/front">
 		<s:param name="page">1</s:param>
 		<s:param name="rows">5</s:param>
 	</s:action>
-	
-	<!-- 友情链接 -->
+  	
+  	<!-- 友情链接 -->
   	<s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
 	<s:param name="page">1</s:param>
 	<s:param name="rows">18</s:param>
-	</s:action>
+</s:action> 
 </div>
 </body>
 </html>
