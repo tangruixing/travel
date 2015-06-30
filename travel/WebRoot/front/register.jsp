@@ -74,7 +74,7 @@ var mobile=true;
 	var options = { 	        
 	        beforeSubmit:  showRequest,  //提交之前的回调函数
 	        success:       showResponse,  //提交之后的回调函数
-   	        url: '<%=contextPath%>/front_User_regist.do',       //覆盖了form的action属性
+   	        url: '<%=contextPath%>/front/front_User_regist.do',       //覆盖了form的action属性
 	        type:     'post',        
 	        dataType: 'json',     //(依据服务器返回类型进行设置) 
 	        clearForm: true ,      //在成功提交后清除所有的表单域内容
@@ -89,7 +89,7 @@ var mobile=true;
 	    	if(this.value.length!=11)
 	    		return false;
 	    	$.ajax({
-	    		url: '<%=contextPath%>/front_User_registCheck.do', 
+	    		url: '<%=contextPath%>/front/front_User_registCheck.do', 
 	    		data:{"mobile": this.value},//
 		        type:     'post',        
 		        dataType: 'json',     //(依据服务器返回类型进行设置) 
