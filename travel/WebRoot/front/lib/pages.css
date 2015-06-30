@@ -1,0 +1,12 @@
+@CHARSET "UTF-8";
+.pagination{
+	list-style:none;
+	margin-left:-45px;
+}
+.pagination li{
+	float:left;
+	margin-left:5px;
+}
+.active a{
+	color:#0FF !important;
+}

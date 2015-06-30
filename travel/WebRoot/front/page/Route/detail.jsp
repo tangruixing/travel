@@ -39,10 +39,12 @@ a{
 	padding-top:5px;
 }
 #route_map{
-	width:100%;
+	width:1000px;
 	clear:both;
-	height:200px;
+	height:300px;
 	padding-top:5px;
+	margin:0 auto;
+	
 }
 #third span{
 	color:#F00;
@@ -65,9 +67,20 @@ a{
 }
 
  body, html{width: 100%;height: 100%;margin:0;font-family:"微软雅黑";}
-        #show-map{height:515px;width:1198px;}
+        #show-map{height:300px;width:800px;}
         #r-result{width:100%; font-size:14px;line-height:20px;}
         p{margin-left:5px; font-size:14px;}
+#fifth{
+	padding:20px 0;
+	clear:both;
+	width:1000px;
+	margin-left:auto;
+	margin-right:auto;
+	
+}
+#fifth article{
+	font-size: 38px !important;
+}
 </style>
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=CA3NlRi4BRVc5elDe4l0tXnu"></script>
@@ -76,24 +89,7 @@ a{
 </head>
 
 <body>
-<header>
-	<img src="<%=contextPath %>/front/images/index_01.jpg">
-</header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="/front_Index_index.do">首页</a></li>
-            <li>酒店</li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="/front_Message_index.do">留言</a></li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
-</div>
+<jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
 <div id="fourth">
 	<span><a href="<%=contextPath %>/front/front_Route_toIndex.do?routeType=${routeType}">${routeType==0?'旅游线路':'自由行' }</a></span><img src="images/right.png">${realName}
 </div>
@@ -113,24 +109,18 @@ a{
     
     <section>出发时间： <fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd HH:mm:ss"/>结束时间： <fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd HH:mm:ss"/></section>
  
-    
-   <%--  <article>${description}</article> --%>
+ 
 </div>
 
 <div id="route_map">
-    	<hr>
-        地图	
-        
-         <div id="myMap">
- 
-    
-	    	<div id="show-map"></div>
-		</div>
+    <hr>
+    <div id="myMap">
+	<div id="show-map"></div>
+	</div>
 </div>
 
+<div id="fifth"><article>${description}</article></div>
 
- 
-    <article>${description}</article>
 </body>
 
 <script type="text/javascript">

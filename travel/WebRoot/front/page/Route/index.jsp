@@ -6,10 +6,14 @@
 <meta charset="utf-8">
 <title>旅游线路</title>
 <link rel="stylesheet" href="<%=contextPath %>/front/lib/style.css">
+<link rel="stylesheet" href="<%=contextPath %>/front/lib/pages.css">
 <style type="text/css">
 a{
 	text-decoration:none;
 	color:#000;
+}
+#second{
+	margin-top:0px;
 }
 #third{
 	margin-top:90px;
@@ -44,6 +48,9 @@ a{
 	color:#000;
 	margin-top:-5px;
 	margin-bottom:10px;
+	height:42px;
+	overflow:hidden;
+	width:550px;
 }
 .content article span{
 	float:right;
@@ -73,24 +80,7 @@ footer{
 </head>
 
 <body>
-<header>
-	<img src="<%=contextPath %>/front/images/index_01.jpg">
-</header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="/front_Index_index.do">首页</a></li>
-            <li>酒店</li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="/front_Message_index.do">留言</a></li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
-</div>
+<jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
 
 
 <div id="third">
@@ -104,7 +94,7 @@ footer{
 	<s:action name="front_Route_toList" executeResult="true" namespace="/front">
 		<s:param name="routeType">${routeType}</s:param>
 		<s:param name="page">1</s:param>
-		<s:param name="rows">2</s:param>
+		<s:param name="rows">5</s:param>
 	</s:action>
 </div>
 </body>

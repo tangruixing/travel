@@ -8,8 +8,10 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.model.Message;
+import cn.travel.model.User;
 import cn.travel.service.MessageService;
 import cn.util.HqlHelper;
 
@@ -47,6 +49,12 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 		this.dao.batchEntityByHQL(hql);
 	}
 	
-	
+	public PageBean getMessagePageList(int page, int rows, User model) {
+		HqlHelper hql=new HqlHelper(Message.class,"m")//
+					.addWhereCondition("m.user.id=?", model.getId())
+					.addOrderByProperty("m.createDate",false);
+		
+		return this.getPageBean(page, rows, hql);
+	}
 	
 }
