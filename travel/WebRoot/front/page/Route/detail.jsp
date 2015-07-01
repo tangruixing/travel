@@ -215,10 +215,14 @@ function closebyID(id){
 	$("#bookRoute").css("display","none");
 	$("#orderRouteForm").find(":reset").trigger("click");
 }
+<<<<<<< HEAD
+</script>
+=======
 </script>
 >>>>>>> refs/heads/gx
 >>>>>>> refs/remotes/origin/develop
 >>>>>>> refs/heads/develop
+>>>>>>> refs/heads/jun
 </head>
 
 <body>
@@ -239,7 +243,7 @@ function closebyID(id){
 		   <section>出发时间： <fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd HH:mm:ss"/>结束时间： <fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd HH:mm:ss"/></section>
 	</s:if>
   	<s:elseif test="routeType==1">
-  		<s:if test="canCollectt">
+  		<s:if test="canCollect">
   			<a href="javascript:void(0);" id="collectRoute">
 	  		收藏
 	  		</a>

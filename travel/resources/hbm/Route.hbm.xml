@@ -16,6 +16,7 @@
         <property name="realName" type="java.lang.String">
             <column name="REALNAME" />
         </property>
+        
         <property name="logo" type="java.lang.String">
             <column name="LOGO" />
         </property>

@@ -21,6 +21,9 @@ public class User implements Serializable{
 	private java.util.Date birth;		/*出生日期*/
 	//columns END
 
+	public boolean newMessage=false;//用户是否最新留言
+	
+	
 	public User(){
 	}
 
@@ -32,7 +35,6 @@ public class User implements Serializable{
 	
 	
 	
-
 	
 		public User(String mobile, String pwd, Integer role) {
 		super();
@@ -41,96 +43,78 @@ public class User implements Serializable{
 		this.role = role;
 	}
 
-		public void setId(java.lang.Integer value) {
-			this.id = value;
-		}
-		
 		public java.lang.Integer getId() {
-			return this.id;
-		}
-	
-		public void setMobile(java.lang.String value) {
-			this.mobile = value;
-		}
-		
-		public java.lang.String getMobile() {
-			return this.mobile;
-		}
-	
-		public void setPwd(java.lang.String value) {
-			this.pwd = value;
-		}
-		
-		public java.lang.String getPwd() {
-			return this.pwd;
-		}
-	
-		public void setRole(java.lang.Integer value) {
-			this.role = value;
-		}
-		
-		public java.lang.Integer getRole() {
-			return this.role;
-		}
-	
-		public void setEmail(java.lang.String value) {
-			this.email = value;
-		}
-		
-		public java.lang.String getEmail() {
-			return this.email;
-		}
-	
-		public void setRealName(java.lang.String value) {
-			this.realName = value;
-		}
-		
-		public java.lang.String getRealName() {
-			return this.realName;
-		}
-	
-		public void setSex(java.lang.Integer value) {
-			this.sex = value;
-		}
-		
-		public java.lang.Integer getSex() {
-			return this.sex;
-		}
-	
-		public void setBirth(java.util.Date value) {
-			this.birth = value;
-		}
-		
-		public java.util.Date getBirth() {
-			return this.birth;
+			return id;
 		}
 
-	public String toString() {
-		return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-			.append("Id",getId())
-			.append("Mobile",getMobile())
-			.append("Pwd",getPwd())
-			.append("Role",getRole())
-			.append("Email",getEmail())
-			.append("RealName",getRealName())
-			.append("Sex",getSex())
-			.append("Birth",getBirth())
-			.toString();
-	}
+		public void setId(java.lang.Integer id) {
+			this.id = id;
+		}
+
+		public java.lang.String getMobile() {
+			return mobile;
+		}
+
+		public void setMobile(java.lang.String mobile) {
+			this.mobile = mobile;
+		}
+
+		public java.lang.String getPwd() {
+			return pwd;
+		}
+
+		public void setPwd(java.lang.String pwd) {
+			this.pwd = pwd;
+		}
+
+		public java.lang.Integer getRole() {
+			return role;
+		}
+
+		public void setRole(java.lang.Integer role) {
+			this.role = role;
+		}
+
+		public java.lang.String getEmail() {
+			return email;
+		}
+
+		public void setEmail(java.lang.String email) {
+			this.email = email;
+		}
+
+		public java.lang.String getRealName() {
+			return realName;
+		}
+
+		public void setRealName(java.lang.String realName) {
+			this.realName = realName;
+		}
+
+		public java.lang.Integer getSex() {
+			return sex;
+		}
+
+		public void setSex(java.lang.Integer sex) {
+			this.sex = sex;
+		}
+
+		public java.util.Date getBirth() {
+			return birth;
+		}
+
+		public void setBirth(java.util.Date birth) {
+			this.birth = birth;
+		}
+
+		public boolean isNewMessage() {
+			return newMessage;
+		}
+
+		public void setNewMessage(boolean newMessage) {
+			this.newMessage = newMessage;
+		}
+
 	
-	public int hashCode() {
-		return new HashCodeBuilder()
-			.append(getId())
-			.toHashCode();
-	}
-	
-	public boolean equals(Object obj) {
-		if(obj instanceof User == false) return false;
-		if(this == obj) return true;
-		User other = (User)obj;
-		return new EqualsBuilder()
-			.append(getId(),other.getId())
-			.isEquals();
-	}
 }
 

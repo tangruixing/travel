@@ -20,6 +20,7 @@
         </many-to-one>
         
 		<property name="rouName" formula="(select r.realName from route r where r.id=rouId)"></property>
+        <property name="userName" formula="(select u.realName from user u where u.id=useid)"></property>
         
         <property name="colType" type="java.lang.Integer">
             <column name="COLTYPE" />

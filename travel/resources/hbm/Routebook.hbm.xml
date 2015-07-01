@@ -16,7 +16,10 @@
       	<many-to-one name="user" class="cn.travel.model.User">
       		<column name="USEID"></column>
       	</many-to-one>
-       
+      	
+         <property name="username" formula="(select u.realName from user u where u.id=useid)"></property>
+         <property name="routeName" formula="(select r.realName from route r where r.id=rouid)"></property>
+         
         <property name="leaveTel" type="java.lang.String">
             <column name="LEAVETEL" />
         </property>

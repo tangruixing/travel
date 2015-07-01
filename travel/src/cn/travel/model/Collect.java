@@ -17,6 +17,7 @@ public class Collect implements Serializable{
 	private Route route;
 	private Scenery scenery;
 	
+	private String userName;	
 	private String rouName;//收藏线路名字
 	private java.lang.Integer rouId;		/*线路ID*/
 	private java.lang.Integer sceId;		/*风景ID*/
@@ -113,6 +114,14 @@ public class Collect implements Serializable{
 
 		public void setRouName(String rouName) {
 			this.rouName = rouName;
+		}
+
+		public String getUserName() {
+			return userName;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
 		}
 
 		

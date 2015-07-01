@@ -13,6 +13,7 @@ import cn.travel.dao.BaseDao;
 import cn.travel.model.Message;
 import cn.travel.model.User;
 import cn.travel.service.MessageService;
+import cn.travel.service.UserService;
 import cn.util.HqlHelper;
 
 @Service("messageService")
@@ -32,13 +33,20 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 	@Resource(name="newsDao")
 	private NewsDao newsDao;
 	*/
+	
+	@Resource(name="userService")
+	private UserService userService;
 
 	public Grid getMessageGrid(Page p, Message model) {
 		
-		HqlHelper hql=new HqlHelper(Message.class, "u")//
-					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
+	/*	HqlHelper hql=new HqlHelper(Message.class, "u")// 0：用户没有问题  1：留言未回复 2：已回复留言
+					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());*/
 		
-		return this.getPageGrid(p.getPage(), p.getRows(), hql);
+		HqlHelper hql=new HqlHelper(User.class,"u")//
+				   .addWhereCondition("u.id =(select m.user.id from Message m order by m.createDate asc)")//
+				  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
+		
+		return userService.getPageGrid(p.getPage(), p.getRows(), hql);
 	}
 
 	
@@ -50,6 +58,7 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 	}
 	
 	public PageBean getMessagePageList(int page, int rows, User model) {
+		
 		HqlHelper hql=new HqlHelper(Message.class,"m")//
 					.addWhereCondition("m.user.id=?", model.getId())
 					.addOrderByProperty("m.createDate",false);

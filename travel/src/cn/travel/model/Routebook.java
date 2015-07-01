@@ -18,6 +18,10 @@ public class Routebook implements Serializable{
 	
 	private Route route;
 	private User user;
+	
+	private String username;
+	private String routeName;
+	
 	public java.lang.Integer getId() {
 		return id;
 	}
@@ -71,6 +75,18 @@ public class Routebook implements Serializable{
 	}
 	public void setUser(User user) {
 		this.user = user;
+	}
+	public String getUsername() {
+		return username;
+	}
+	public void setUsername(String username) {
+		this.username = username;
+	}
+	public String getRouteName() {
+		return routeName;
+	}
+	public void setRouteName(String routeName) {
+		this.routeName = routeName;
 	}
 	
 	

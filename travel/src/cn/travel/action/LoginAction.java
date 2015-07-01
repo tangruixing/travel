@@ -5,6 +5,7 @@ import javax.annotation.Resource;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
+import cn.model.Constant;
 import cn.model.Json;
 import cn.travel.model.User;
 import cn.travel.service.UserService;
@@ -38,8 +39,11 @@ public class LoginAction extends BaseAction<User>{
 	public void doLogin(){
 		j=new Json();
 		try {
-			User u=userService.login(model.getMobile(),model.getPwd());
-			session.put(ConfigUtil.loginUserKey, u);
+			User user=userService.login(model.getMobile(),model.getPwd());
+			if(user.getRole()!=Constant.ROLE_SUPER&&user.getRole()!=Constant.ROLE_ADMIN){
+				throw new Exception("您没有权限登录该系统");
+			}
+			session.put(ConfigUtil.loginUserKey, user);
 			j.setSuccess(true);
 			j.setMsg("欢迎使用福建旅游后台管理系统");
 		} catch (Exception e) {

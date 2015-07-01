@@ -49,7 +49,7 @@ public class UserAction extends BaseAction<User>{
 	 * 列表显示
 	 */
 	public void doList() {
-		Grid grid=userService.getUserGrid(p,model);
+		Grid grid=userService.getUserGrid(p,model,loginUser.getId());
 		write2Response(grid);
 		
 	}
@@ -74,6 +74,20 @@ public class UserAction extends BaseAction<User>{
 		
 	}
 
+	
+	public void canRegister(){
+		j=new Json();
+		try{			
+			this.userService.canRegister(model);
+			j.setSuccess(true);
+			j.setValid(true);
+			j.setMsg("注册成功");
+		}catch(Exception e){
+			j.setMsg("失败："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+	}
 	
 	/**
 	 * 保存/更新操作(不包括修改用户名和密码)

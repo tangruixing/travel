@@ -230,7 +230,7 @@ $(document).ready(function() {
             // Use Ajax to submit form data
             $.post($form.attr('action'), $form.serialize(), function(data) {
             	if(data&&data.success){
-        			parent.mainDlg.close("#news_grid");
+        			parent.mainDlg.close();
         			jSuccess(data.msg);
         		}else{
         			jError(data.msg);

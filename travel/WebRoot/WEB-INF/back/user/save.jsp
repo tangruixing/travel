@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head lang="en">
-    <title>新闻管理</title>
+    <title>用户管理</title>
 </head>
 <body>
  <div class="container">
@@ -103,12 +103,19 @@ $(document).ready(function() {
         	mobile: {
               
                 validators: {
-                	  notEmpty: {
+                	  	notEmpty: {
                           /*   message: 'default' */
                         },
                         phone: {
                         	country: 'CN'
-                        }
+                        },
+                        remote: {
+                            type: 'POST',
+                            url: '<%=contextPath%>/user_canRegister.do',
+                            message: '该手机已经注册',
+                            delay: 1000,
+                            dataType: "json"           //接受数据格式
+                        },
                 }
             },
             role: {

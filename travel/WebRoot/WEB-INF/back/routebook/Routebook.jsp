@@ -8,9 +8,7 @@
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
 	 <div id="toolbar">
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="routebook_saveBtn">添加</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="routebook_updateBtn">修改</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="routebook_deleteBtn">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="routebook_deleteBtn">取消</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" id="routebook_reloadBtn">刷新</a>
     </div>
 	
@@ -29,13 +27,13 @@
                         sortable : true,// 鼠标点击可以升序/降序切换
                         checkbox : true
                     },{
-					title : '线路ID',
-					field : 'rouId',
+					title : '线路',
+					field : 'routeName',
 					width : 100,
 					sortable : true
 					},{
-					title : '用户编号id',
-					field : 'useid',
+					title : '用户',
+					field : 'username',
 					width : 100,
 					sortable : true
 					},{

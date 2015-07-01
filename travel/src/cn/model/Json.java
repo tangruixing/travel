@@ -17,6 +17,8 @@ public class Json implements java.io.Serializable {
 
 	private Object obj = null;
 
+	private boolean valid=false;
+	
 	public boolean isSuccess() {
 		return success;
 	}
@@ -41,4 +43,13 @@ public class Json implements java.io.Serializable {
 		this.obj = obj;
 	}
 
+	public boolean isValid() {
+		return valid;
+	}
+
+	public void setValid(boolean valid) {
+		this.valid = valid;
+	}
+
+	
 }

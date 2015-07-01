@@ -78,7 +78,7 @@ public class MessageAction extends BaseAction<Message>{
 	/**
 	 * 保存/更新操作
 	 */
-	public void doSaveOrUpdate() {
+	public void doSave() {
 		
 		j=new Json();
 		try{			
@@ -90,6 +90,27 @@ public class MessageAction extends BaseAction<Message>{
 		}finally{
 			write2Response(j);
 		}
+	}
+	
+	
+	/*普通方式*/
+	/**
+	 * 添加操作跳转
+	 * @return
+	 */
+	public String toSave(){
+		
+		return goUI("adminReply.jsp");
+	}
+	
+	/**
+	 * 修改操作跳转
+	 * @return
+	 */
+	public String toUpdate(){
+		
+		this.model=messageService.getEntity(model.getId());
+		return goUI("save.jsp");
 	}
 	
 	public String browseMsg(){

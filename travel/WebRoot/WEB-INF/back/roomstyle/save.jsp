@@ -1,8 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/pub/inc.jspf"%>  
-<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>  
-<%@ include file="/WEB-INF/pub/ueditor.jspf"%>  
-<%@ include file="/WEB-INF/pub/webuploader.jspf"%>  
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%		
+	String contextPath=request.getContextPath();
+%>
+
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head lang="en">
@@ -18,7 +19,7 @@
                         <h2>${hotname}房型管理</h2>
                     </div>
 
-                    <s:form id="hotelForm" method="post" cssClass="form-horizontal" action="roomstyle_doSaveOrUpdateAction.do">
+                    <s:form id="roomstyleForm" method="post" cssClass="form-horizontal" action="roomstyle_doSaveOrUpdate.do">
                     	<s:hidden name="id"/><!-- 房型/景点 id -->
                     	<s:hidden name="hotId" />
                     	<s:hidden name="hotname" />
@@ -145,7 +146,7 @@
 $(document).ready(function() {
  
 
-    $('#hotelForm').bootstrapValidator({
+    $('#roomstyleForm').bootstrapValidator({
 //        live: 'disabled',\
        /*  message: default, */
         feedbackIcons: {
@@ -227,11 +228,31 @@ $(document).ready(function() {
                 }
             }
         }
-    });
+    })
+     .on('success.form.bv', function(e) {
+            // Prevent form submission
+            e.preventDefault();
+
+            // Get the form instance
+            var $form = $(e.target);
+
+            // Get the BootstrapValidator instance
+            var bv = $form.data('bootstrapValidator');
+
+            // Use Ajax to submit form data
+            $.post($form.attr('action'), $form.serialize(), function(data) {
+            	if(data&&data.success){
+        			parent.mainDlg.close();
+        			jSuccess(data.msg);
+        		}else{
+        			jError(data.msg);
+        		}
+            }, 'json');
+     });
 
    
 
-	//new uploadSimpleImage('hotel_logo_img','hotel_logo_input','hotel_logo_picker');
+	//new uploadSimpleImage('roomstyle_logo_img','roomstyle_logo_input','roomstyle_logo_picker');
 	
            var oldData = new uploadManyImages('wrapper',$('#filelist2'),5);//后台可编辑回显示
         	oldData.initEcho('filelist2','${picture}');//把图片回显
@@ -258,7 +279,7 @@ $(document).ready(function() {
       	});
  
     $('#resetBtn').click(function() {
-        $('#hotelForm').data('bootstrapValidator').resetForm(true);
+        $('#roomstyleForm').data('bootstrapValidator').resetForm(true);
     });
     
 	
