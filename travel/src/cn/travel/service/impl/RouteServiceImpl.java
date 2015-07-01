@@ -6,11 +6,15 @@ import javax.annotation.Resource;
 import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
+import cn.model.Constant;
 import cn.model.Grid;
 import cn.model.Page;
 import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
+import cn.travel.dao.CollectDao;
+import cn.travel.model.Collect;
 import cn.travel.model.Route;
+import cn.travel.model.User;
 import cn.travel.service.RouteService;
 import cn.util.HqlHelper;
 
@@ -31,6 +35,9 @@ public class RouteServiceImpl extends BaseServiceImpl<Route> implements RouteSer
 	@Resource(name="newsDao")
 	private NewsDao newsDao;
 	*/
+	
+	@Resource(name="collectDao")
+	private CollectDao collectDao;
 
 	public Grid getRouteGrid(Page p, Route model) {
 		
@@ -51,6 +58,7 @@ public class RouteServiceImpl extends BaseServiceImpl<Route> implements RouteSer
 
 	public PageBean getRoutePageList(int page, int rows, Route model) {
 		HqlHelper hql=new HqlHelper(Route.class, "u")//
+					.addWhereCondition(StringUtils.isNotEmpty(model.getRealName()), "u.realName like '%"+model.getRealName()+"%'")//
 					.addWhereCondition("u.routeType=?", model.getRouteType());
 		return this.getPageBean(page, rows, hql);
 	}
@@ -60,6 +68,20 @@ public class RouteServiceImpl extends BaseServiceImpl<Route> implements RouteSer
 					.addWhereCondition("u.routeType=?", model.getRouteType())//
 					.addWhereCondition("u.hot=true");
 		return this.getPageBean(page, rows, hql);
+	}
+
+	public Route getRouteDetail(Integer id, User loginUser) {
+		Route model = this.getEntity(id);
+		
+		//自由行：登录用户是否已收藏
+		if(loginUser!=null&&model.getRouteType()==Constant.ROUTER_NOPAY){
+			Collect col = this.collectDao.canCollect(loginUser.getId(),model.getId());
+			if(col!=null){//已经收藏
+				model.setCanCollect(false);
+			}
+		}
+		
+		return model;
 	}
 	
 	

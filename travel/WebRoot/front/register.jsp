@@ -256,12 +256,12 @@ a:hover{
             <td colspan="2"><input type="email" name="email"></td>
         </tr>
         <tr>
-        	<td>姓名：</td>
+        	<td>用户名：</td>
             <td colspan="2"><input type="text" name="realName"></td>
         </tr>
         <tr>
         	<td>性别：</td>
-            <td colspan="2"><input type="radio" name="sex" value="1">男<input type="radio" name="sex" value="女">女</td>
+            <td colspan="2"><input type="radio" name="sex" value="1">男<input type="radio" name="sex" value="2">女</td>
         </tr>
         <tr>
         	<td>生日：</td>

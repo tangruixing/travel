@@ -32,7 +32,7 @@
 
 		<global-results>
 			<result name="toLogin">/login.jsp</result><!-- 后台登陆页面 -->
-			<result name="toFrontLogin">/index.jsp</result><!-- 前台页面 -->
+			<result name="toIndex" type="redirect">/index.jsp</result><!-- 前台页面 -->
 			<result name="error">/500.html</result>
 		</global-results>
 		

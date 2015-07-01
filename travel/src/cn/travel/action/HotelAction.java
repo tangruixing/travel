@@ -11,6 +11,7 @@ import org.springframework.stereotype.Controller;
 
 import cn.model.Grid;
 import cn.model.Json;
+import cn.model.PageBean;
 import cn.travel.model.Hotel;
 import cn.travel.service.HotelService;
 
@@ -26,6 +27,7 @@ public class HotelAction extends BaseAction<Hotel>{
 	@Resource(name="hotelService")
 	private HotelService hotelService;
 	
+
 	/**
 	 * 
 	 */

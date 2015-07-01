@@ -12,6 +12,7 @@ import cn.model.Grid;
 import cn.model.Json;
 import cn.travel.model.User;
 import cn.travel.service.UserService;
+import cn.util.ConfigUtil;
 
 @Controller("userAction")
 @Scope("prototype")
@@ -115,6 +116,11 @@ public class UserAction extends BaseAction<User>{
 		return goUI("save.jsp");
 	}
 	
+	public String goPerson(){
+
+		return goUI("person.jsp");
+	}
+	
 	
 	/**
 	 * 失去焦点触发
@@ -161,7 +167,47 @@ public class UserAction extends BaseAction<User>{
 	}
 	
 
+	public void changeInfo(){
+		j=new Json();
+		try {
+			User user=userService.getEntity(model.getId());
+			user.setRealName(this.model.getRealName());
+			user.setSex(model.getSex());
+			user.setEmail(model.getEmail());
+			user.setBirth(model.getBirth());
+			userService.updateEntity(user);
+			this.session.remove(ConfigUtil.loginUserKey);
+			this.session.put(ConfigUtil.loginUserKey, user);
+			j.setSuccess(true);	
+		} catch (Exception e) {
+			j.setMsg("出错了："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+		
+	}
 	
+	public void changePsw(){
+		j=new Json();
+		try {
+			User user = userService.getEntity(this.loginUser.getId());
+			oldPwd = DigestUtils.md5Hex(oldPwd);
+			if(user.getPwd().equals(oldPwd)){
+				if(!this.newPwd.equals(this.confirmPwd)){
+					j.setMsg("两次密码不一致");
+				}else{
+					userService.editPassword(this.newPwd,this.loginUser.getId());
+					j.setSuccess(true);	
+				}
+			}else{
+				j.setMsg("原密码不正确");
+			}
+		} catch (Exception e) {
+			j.setMsg("出错了："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+	}
 
 	public String getOldPwd() {
 		return oldPwd;

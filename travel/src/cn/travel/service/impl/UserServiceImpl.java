@@ -62,9 +62,9 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		}
 	}
 
-	public void editPassword(String newPwd,Integer uid) {
+	public void editPassword(String newPwd,Integer uid) {  //有错
 		newPwd=DigestUtils.md5Hex(newPwd);
-		String hql="update User u where u.pwd=? where u.id=?";
+		String hql="update User u set u.pwd=? where u.id=?";
 		this.batchEntityByHQL(hql, newPwd,uid);
 	}
 

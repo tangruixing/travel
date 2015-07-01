@@ -58,8 +58,8 @@ public class FrontUserAction extends BaseAction<User>{
 	}
 	
 	public String logout(){
-		session.clear();
-		return goUI("index.jsp");
+		this.removeSessionUser();
+		return "toIndex";
 		
 	}
 	

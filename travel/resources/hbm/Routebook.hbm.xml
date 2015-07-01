@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         
-        <many-to-one name="route" class="cn.travel.model.Routebook">
+        <many-to-one name="route" class="cn.travel.model.Route">
         	<column name="ROUID" />
         </many-to-one>
       

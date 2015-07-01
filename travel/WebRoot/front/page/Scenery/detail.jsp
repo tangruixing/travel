@@ -15,15 +15,21 @@
 <script language="javascript">
 $(document).ready(
 	function (){
-		var a = [
-				{"image":"images/jiudian-1.jpg","caption":"","link":"http://pikachoose.com","title":"Image 1"},
-				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 2"},
-				{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
-				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"},
-				{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
-				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"}
-				];
-		$(".pikachoose").PikaChoose({data:a});	 
+		$.ajax({
+    		url: '<%=contextPath%>/front/front_Scenery_findImg.do', 
+    		data:{"id": ${id}},//
+	        type:     'post',        
+	        dataType: 'json',     //(依据服务器返回类型进行设置) 
+	        success:function(img){
+	        	console.info(img[0]);
+	        	if(img[0])
+	        		$(".pikachoose").PikaChoose({data:img});
+	        },
+	        error:function(){
+	        	alert("发生错误");
+	        }
+    	});
+			 
 	});
 	
 function showbyID(id){

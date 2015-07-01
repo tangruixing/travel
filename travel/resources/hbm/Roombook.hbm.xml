@@ -12,7 +12,7 @@
         	<column name="USEID"></column>
         </many-to-one>
        
-        <many-to-one  name="roomstyle" class="cn.travel.model.Roomstyle">
+        <many-to-one  name="roomstyle" class="cn.travel.model.Roomstyle" lazy="false">
             <column name="ROOID" />
         </many-to-one>
         
@@ -37,5 +37,9 @@
         <property name="email" type="java.lang.String">
             <column name="EMAIL" />
         </property>
+        
+        <property name="money" type="float"></property>
+        
+        <property name="peopleNum" type="integer"></property>
     </class>
 </hibernate-mapping>

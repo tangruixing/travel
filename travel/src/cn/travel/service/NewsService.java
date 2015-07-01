@@ -12,4 +12,5 @@ public interface NewsService extends BaseService<News>{
 
 	void batchNewsDelete(String deleteIds);
 	PageBean getNewsPageList(int page, int rows);
+	PageBean getNewsPageHot(int page, int rows);
 }
