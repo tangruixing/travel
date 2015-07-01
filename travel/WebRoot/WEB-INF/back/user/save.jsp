@@ -108,7 +108,12 @@ $(document).ready(function() {
                         },
                         phone: {
                         	country: 'CN'
-                        }
+                        },
+                        remote: {
+                            type: 'POST',
+                            url: '<%=contextPath%>/',
+                            message: '该手机已经注册'
+                        },
                 }
             },
             role: {

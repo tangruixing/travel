@@ -6,44 +6,24 @@
     <meta charset="UTF-8">
     <title>Roomstyle管理</title>
 </head>
-<body>
-	<div class="easyui-layout" fit="true" id="gridLayout">
-		<!--搜索 -->
-		<div region="north" border="false" title="过滤" style="height: 130px; overflow: hidden;">
-			<form id="roomstyle_search_fm">
-				<table id="roomstyle_search_table" class="dis" style="width: 100%; height: 100%">
-					<tr>
-						<td >
-							例子:<input name="name" type="text" class="textbox"  /> 
-						</td>
-					
-					</tr>
-					<tr>
-						
-						<td>
-							<a id="roomstyle_search" class="easyui-linkbutton">查询</a> 
-							<a id="roomstyle_clean" class="easyui-linkbutton">清空数据</a> 
-							<a id="roomstyle_refresh" class="easyui-linkbutton">重置</a>
-						</td>
-					</tr>
-				</table>
-			</form>
-		</div>
-
-
-		<div region="center" border="false" title="${hotname}酒店">
-			<!-- 这里不要写fit属性，会看不到分页 -->
-			<table id="roomstyle_dg"></table>
-		</div>
-
-</div>
-
-
+<body class="easyui-layout" data-options="fit:true,border:false">
+	 <div id="toolbar">
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="roomstyle_saveBtn">添加</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="roomstyle_updateBtn">修改</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="roomstyle_deleteBtn">删除</a>
+        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" id="roomstyle_reloadBtn">刷新</a>
+    </div>
+	
+	<div data-options="region:'center',fit:true,border:false">
+		<table id="roomstyle_grid" data-options="fit:true,border:false"></table>
+	</div>
 </body>
+
 
 <script type="text/javascript">
         $(function () {
-            var columns=[[{
+        	var gdOptions={
+        			columns:[[{
                         title : '编号',
                         field : 'id',// 绑定属性名字,后台返回的json数据
                         width : 100,// 必须要给，大于50
@@ -58,7 +38,24 @@
 						title : '床型',
 						field : 'bedStyle',
 						width : 100,
-						sortable : true
+						sortable : true,
+					  	formatter: function (value, row, index) {
+					  		switch(row.bedStyle)
+							{
+							case 1:
+								return "大床";
+							  break;
+							case 2:
+								return "双人床";
+							  break;
+							case 3:
+								return "单床";
+							  break;
+							case 4:
+								return "多人床";
+							  break;
+							}
+                        }
 						},{
 						title : '最多可入住人数',
 						field : 'limitPerson',
@@ -68,17 +65,56 @@
 						title : '早餐',
 						field : 'breakfast',
 						width : 100,
-						sortable : true
+						sortable : true,
+						formatter: function (value, row, index) {
+					  		switch(row.breakfast)
+							{
+							case 1:
+								return "双份";
+							  break;
+							case 2:
+								return "多份";
+							  break;
+							case 3:
+								return "不含";
+							  break;
+							case 4:
+								return "单份";
+							  break;
+							}
+                        }
 						},{
 						title : '宽带',
 						field : 'broadband',
 						width : 100,
-						sortable : true
+						sortable : true,
+						formatter: function (value, row, index) {
+					  		switch(row.broadband)
+							{
+							case 1:
+								return "无线免费";
+							  break;
+							case 2:
+								return "有线免费";
+							  break;
+							}
+                        }
 						},{
 						title : '取消政策',
 						field : 'cancel',
 						width : 100,
-						sortable : true
+						sortable : true,
+						formatter: function (value, row, index) {
+					  		switch(row.cancel)
+							{
+							case 1:
+								return "可取消";
+							  break;
+							case 2:
+								return "不可取消";
+							  break;
+							}
+                        }
 						},{
 						title : '价格',
 						field : 'price',
@@ -99,24 +135,21 @@
 						field : 'introduce',
 						width : 100,
 						sortable : true
-						},{
-                        title : '操作',
-                        field : 'action',
-                        width : 100,
-                        formatter: function (value, row, index) {
-                           /*  var str="";
-                             str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
-                             str+="&nbsp"
-                             str+=sy.fs('<img   src="{0}"  onclick="demo2(\'{1}\')" title="1" />',"../style/images/myIcons/roomstyle_delete.png",row.id);
-                             return str;*/
-                        }
-                    }]];
-                    
-            var roomstyle=new Curd("<%=contextPath%>","roomstyle",columns);
-            roomstyle.useCommon();
+						}]]		
+        	};
+        	var dlgOptions={
+            		title: '房型',
+          		    width: '80%',
+          		    height: '60%',
+          			onClose:function(){
+        		  		parent.UE.getEditor('roomstyle_content').destroy();
+        		  		parent.mainDlg.parentDlg.dialog('destroy');
+        		    },
+        	}         
+        	var roomstyle=new Base("roomstyle",gdOptions,dlgOptions,parent.mainDlg);
             roomstyle.setUrlParam("hotId","${hotId}");
             roomstyle.setUrlParam("hotname","${hotname}");
-            roomstyle.init();
+            roomstyle.loadGrid();
         });
     </script>
 </html>

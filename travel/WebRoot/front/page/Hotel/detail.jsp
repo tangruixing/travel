@@ -326,7 +326,7 @@ function closebyID(id){
 <s:set value="#{1:'大床',2:'双人床',3:'单床',4:'多人床'}" var="bedStyleMap"></s:set>
 <s:set value="#{1:'双份',2:'多份',3:'不含',4:'单份'}" var="breakfastMap"></s:set>
 <s:set value="#{1:'无线免费',2:'有线免费'}" var="broadbandMap"></s:set>
-<s:set value="#{1:'免费取消',2:'可取消',3:'不可取消'}" var="cancelMap"></s:set>
+<s:set value="#{1:'可取消',2:'不可取消'}" var="cancelMap"></s:set>
 
 
 <div id="third">

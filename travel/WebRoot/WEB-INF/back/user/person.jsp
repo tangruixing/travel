@@ -414,7 +414,7 @@ function show(id){
 			</s:action>
         </section> --%>
         
-        <%-- <section id="s08">
+        <section id="s08">
         	<s:action name="travels_toList" executeResult="true">
 				<s:param name="page">1</s:param>
 				<s:param name="rows">5</s:param>
@@ -428,6 +428,6 @@ function show(id){
 	<s:param name="page">1</s:param>
 	<s:param name="rows">18</s:param>
 	</s:action>
-</footer> --%>
+</footer>
 </body>
 </html>

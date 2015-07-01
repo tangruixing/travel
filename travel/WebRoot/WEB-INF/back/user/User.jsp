@@ -50,10 +50,10 @@
 						switch(row.role)
 						{
 						case 1:
-							return "普通用户";
+							return "管理员";
 						  break;
 						case 2:
-							return "管理员";
+							return "普通用户";
 						  break;
 						}
 					}

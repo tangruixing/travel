@@ -63,6 +63,9 @@ public class FrontUserAction extends BaseAction<User>{
 		
 	}
 	
+	/**
+	 * 前台用户登录
+	 */
 	public void login(){
 		j=new Json();
 		try{

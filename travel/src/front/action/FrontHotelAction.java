@@ -37,6 +37,7 @@ public class FrontHotelAction extends BaseAction<Hotel>{
 	 * @return
 	 */
 	public String toMoreList(){
+		
 		pageBean=hotelService.getHotelPageList(page, rows,model);
 		return goUI("more_list.jsp");
 	}
