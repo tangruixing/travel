@@ -2,6 +2,7 @@
 package cn.travel.model;
 
 import java.io.Serializable;
+import java.util.Date;
 
 import cn.model.Constant;
 
@@ -23,6 +24,7 @@ public class Route implements Serializable{
 	private int routeType=Constant.ROUTER_PAY;		/*类型 {0:普通游客,1:自由行用户}*/
 	
 	
+	private java.util.Date regDate;		/*活动报名截止时间 0*/
 	private java.util.Date startDate;		/*出发时间 0*/
 	private java.util.Date endDate;		/*结束时间 0*/
 	
@@ -33,8 +35,13 @@ public class Route implements Serializable{
 	private java.lang.String suggest;		/*行程建议 1 */
  
 	//columns END
-
+	private String msg;
+	private boolean canReg=true;
+	private boolean canCollect=true;
+	
+	
 	private User user;
+	
 	
 	public Route(){
 	}
@@ -159,6 +166,47 @@ public class Route implements Serializable{
 	public void setHot(boolean hot) {
 		this.hot = hot;
 	}
+
+	public java.util.Date getRegDate() {
+		return regDate;
+	}
+
+	public void setRegDate(java.util.Date regDate) {
+		this.regDate = regDate;
+	}
+
+	public String getMsg() {
+		
+		return msg;
+	}
+
+	public void setMsg(String msg) {
+		this.msg = msg;
+	}
+
+	public boolean isCanReg() {
+		if(new Date().getTime()>this.regDate.getTime()){
+			canReg=false;
+			msg="无法报名,已经超过报名截止时间";
+		}
+		return canReg;
+	}
+
+	public void setCanReg(boolean canReg) {
+		this.canReg = canReg;
+	}
+
+	public boolean isCanCollect() {
+		return canCollect;
+	}
+
+	public void setCanCollect(boolean canCollect) {
+		this.canCollect = canCollect;
+	}
+
+	
+	
+	
 	
 	
 	

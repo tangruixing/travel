@@ -4,6 +4,7 @@ import java.util.List;
 
 import cn.model.Grid;
 import cn.model.PageBean;
+import cn.travel.model.Routebook;
 import cn.util.HqlHelper;
 
 public interface BaseService<T> {
@@ -86,5 +87,6 @@ public interface BaseService<T> {
 	public PageBean getPageBean(int pageSize,int start, HqlHelper hqlHelper);
 	
 	public Grid getPageGrid(int page,int rows,HqlHelper hqlHelper);
+	
 	
 }

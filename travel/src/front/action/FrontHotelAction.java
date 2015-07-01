@@ -22,17 +22,25 @@ public class FrontHotelAction extends BaseAction<Hotel>{
 	 */
 	public String toIndexList(){
 		
-		pageBean=hotelService.getHotelPageList(this.page,this.rows);
+		pageBean=hotelService.getHotelPageList(this.page,this.rows,model);
 		return goUI("index_list.jsp");
 	}
 	/**
-	 * 更多列表
+	 * 更多页面
 	 * @return
 	 */
 	public String toMore(){
-		
 		return goUI("more.jsp");
 	}
+	/**
+	 * 更多列表页
+	 * @return
+	 */
+	public String toMoreList(){
+		pageBean=hotelService.getHotelPageList(page, rows,model);
+		return goUI("more_list.jsp");
+	}
+	
 	/**
 	 * 酒店详细列表
 	 * @return
