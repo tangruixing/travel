@@ -31,7 +31,7 @@
         <property name="publicTime" type="java.util.Date">
             <column name="PUBLICTIME" />
         </property>
-        <property name="click" type="java.lang.String">
+        <property name="click" type="java.lang.Integer">
             <column name="CLICK" />
         </property>
         <property name="hot" type="java.lang.Boolean">

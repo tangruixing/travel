@@ -305,7 +305,7 @@ public abstract class BaseAction<T> extends ActionSupport
 	
 	public void removeSessionUser(){
 
-		 if(this.loginUser==null){
+		 if(this.loginUser==null&&session.get(ConfigUtil.loginUserKey)==null){
 			 return;			 
 		 }
 		 session.remove(ConfigUtil.loginUserKey);

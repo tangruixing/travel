@@ -20,6 +20,16 @@
 		
 		<default-interceptor-ref name="frontTravelStack"></default-interceptor-ref>
 		
+		<global-results>
+			<result name="toLogin">/login.jsp</result><!-- 后台登陆页面 -->
+			<result name="toIndex" type="redirect">/index.jsp</result><!-- 前台页面 -->
+			<result name="error">/500.html</result>
+		</global-results>
+		
+		<global-exception-mappings>
+			<exception-mapping result="error" exception="java.lang.Exception" />
+		</global-exception-mappings>
+		
 		<action name="front_*_*" class="front{1}Action" method="{2}" >
 			<result name="goUI">/front/page/{1}/${resultUI}</result>
 		</action> 

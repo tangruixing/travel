@@ -9,8 +9,8 @@ public class Images implements Serializable{
 	private java.lang.Integer id;		/*图片编号*/
 	private java.lang.Integer sceId;		/*风景ID*/
 	private String name;
-	private java.lang.String description;		/*图片描述*/
-	private java.lang.String url;		/*图片路径*/
+	private java.lang.String caption;		/*图片描述*/
+	private java.lang.String image;		/*图片路径*/
 	//columns END
 	
 	private Scenery scenery;
@@ -47,21 +47,6 @@ public class Images implements Serializable{
 			return this.sceId;
 		}
 	
-		public void setDescription(java.lang.String value) {
-			this.description = value;
-		}
-		
-		public java.lang.String getDescription() {
-			return this.description;
-		}
-	
-		public void setUrl(java.lang.String value) {
-			this.url = value;
-		}
-		
-		public java.lang.String getUrl() {
-			return this.url;
-		}
 
 		public Scenery getScenery() {
 			return scenery;
@@ -85,6 +70,22 @@ public class Images implements Serializable{
 
 		public void setName(String name) {
 			this.name = name;
+		}
+
+		public java.lang.String getCaption() {
+			return caption;
+		}
+
+		public void setCaption(java.lang.String caption) {
+			this.caption = caption;
+		}
+
+		public java.lang.String getImage() {
+			return image;
+		}
+
+		public void setImage(java.lang.String image) {
+			this.image = image;
 		}
 
 		

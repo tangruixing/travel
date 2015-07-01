@@ -35,7 +35,7 @@
                 <!-- 单张图片上传 (注意：id) -->
                 <img id="scenery_pic_img" style="width: 200px; height: 100px;float:left;" src='<%=contextPath%>/back/style/images/pixel_0.gif'/>
                 <div style="float:left;margin:56px 0 0 20px;" id="scenery_pic_picker">选择图片</div>
-                <s:hidden class="form-control" name="url" id="scenery_pic_input"/><!-- 单张图片上传结束-->
+                <s:hidden class="form-control" name="image" id="scenery_pic_input"/><!-- 单张图片上传结束-->
             </div>
         </div>
 
@@ -43,7 +43,7 @@
         <div class="form-group">
             <label class="col-lg-3 control-label">描述</label>
             <div class="col-lg-5">
-               <s:textarea cssClass="form-control" rows="3" name="description"></s:textarea>
+               <s:textarea cssClass="form-control" rows="3" name="caption"></s:textarea>
             </div>
         </div>
 

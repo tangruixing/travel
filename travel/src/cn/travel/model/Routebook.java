@@ -18,89 +18,64 @@ public class Routebook implements Serializable{
 	
 	private Route route;
 	private User user;
-	
-	public Routebook(){
+	public java.lang.Integer getId() {
+		return id;
 	}
-
-	public Routebook(
-		java.lang.Integer id
-	){
+	public void setId(java.lang.Integer id) {
 		this.id = id;
 	}
+	public java.lang.Integer getRouId() {
+		return rouId;
+	}
+	public void setRouId(java.lang.Integer rouId) {
+		this.rouId = rouId;
+	}
+	public java.lang.Integer getUseid() {
+		return useid;
+	}
+	public void setUseid(java.lang.Integer useid) {
+		this.useid = useid;
+	}
+	public java.lang.String getLeaveTel() {
+		return leaveTel;
+	}
+	public void setLeaveTel(java.lang.String leaveTel) {
+		this.leaveTel = leaveTel;
+	}
+	public java.lang.Integer getPeopleNum() {
+		return peopleNum;
+	}
+	public void setPeopleNum(java.lang.Integer peopleNum) {
+		this.peopleNum = peopleNum;
+	}
+	public java.lang.String getLeaveName() {
+		return leaveName;
+	}
+	public void setLeaveName(java.lang.String leaveName) {
+		this.leaveName = leaveName;
+	}
+	public java.lang.Float getTotalPrice() {
+		return totalPrice;
+	}
+	public void setTotalPrice(java.lang.Float totalPrice) {
+		this.totalPrice = totalPrice;
+	}
+	public Route getRoute() {
+		return route;
+	}
+	public void setRoute(Route route) {
+		this.route = route;
+	}
+	public User getUser() {
+		return user;
+	}
+	public void setUser(User user) {
+		this.user = user;
+	}
+	
 
-	
-		public void setId(java.lang.Integer value) {
-			this.id = value;
-		}
 		
-		public java.lang.Integer getId() {
-			return this.id;
-		}
-	
-		public void setRouId(java.lang.Integer value) {
-			this.rouId = value;
-		}
 		
-		public java.lang.Integer getRouId() {
-			return this.rouId;
-		}
-	
-		public void setUseid(java.lang.Integer value) {
-			this.useid = value;
-		}
-		
-		public java.lang.Integer getUseid() {
-			return this.useid;
-		}
-	
-		public void setLeaveTel(java.lang.String value) {
-			this.leaveTel = value;
-		}
-		
-		public java.lang.String getLeaveTel() {
-			return this.leaveTel;
-		}
-	
-		public void setPeopleNum(java.lang.Integer value) {
-			this.peopleNum = value;
-		}
-		
-		public java.lang.Integer getPeopleNum() {
-			return this.peopleNum;
-		}
-	
-		public void setLeaveName(java.lang.String value) {
-			this.leaveName = value;
-		}
-		
-		public java.lang.String getLeaveName() {
-			return this.leaveName;
-		}
-	
-		public void setTotalPrice(java.lang.Float value) {
-			this.totalPrice = value;
-		}
-		
-		public java.lang.Float getTotalPrice() {
-			return this.totalPrice;
-		}
-
-		public Route getRoute() {
-			return route;
-		}
-
-		public void setRoute(Route route) {
-			this.route = route;
-		}
-
-		public User getUser() {
-			return user;
-		}
-
-		public void setUser(User user) {
-			this.user = user;
-		}
-
 	
 }
 

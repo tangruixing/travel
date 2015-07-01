@@ -14,13 +14,19 @@ public class Roombook implements Serializable{
 	private java.util.Date leaveDate;		/*离开日期*/
 	private java.lang.String realName;		/*名字*/
 	private java.lang.Integer roomNum;		/*房间数量*/
+	private java.lang.Integer peopleNum;		/*房间数量*/
 	private java.lang.String telphone;		/*手机号*/
 	private java.lang.String email;		/*邮箱*/
+	
+	private float money;
 	//columns END
 
 	
 	private User user;
 	private Roomstyle roomstyle;
+	
+	//
+	private int day=1;
 	
 	public Roombook(){
 	}
@@ -49,6 +55,10 @@ public class Roombook implements Serializable{
 		}
 	
 		public void setRooId(java.lang.Integer value) {
+			if(value!=null){
+				roomstyle=new Roomstyle();
+				roomstyle.setId(value);
+			}
 			this.rooId = value;
 		}
 		
@@ -128,6 +138,42 @@ public class Roombook implements Serializable{
 			this.roomstyle = roomstyle;
 		}
 
+		public java.lang.Integer getPeopleNum() {
+			return peopleNum;
+		}
+
+		public void setPeopleNum(java.lang.Integer peopleNum) {
+			this.peopleNum = peopleNum;
+		}
+
+		public int getDay() {
+			if(this.creatDate!=null&&this.leaveDate!=null){
+				day=(int) ((this.leaveDate.getTime()-this.creatDate.getTime())/(1000*3600*24));
+			}
+			return day<=0?1:day;
+		}
+
+		public void setDay(int day) {
+			if(day<=0){
+				day=1;
+			}
+			this.day = day;
+		}
+
+		public float getMoney() {
+			return money;
+		}
+
+		public void setMoney(float money) {
+			this.money = money;
+		}
+
+		
+		
+		
+		
+		
 	
+		
 }
 

@@ -1,21 +1,23 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/front/lib/inc.jspf" %>
+<%@ include file="/WEB-INF/pub/inc.jspf" %>
+<%@ include file="/WEB-INF/pub/markMap.jspf" %>
 <!doctype html>
 <html><head>
 <meta charset="utf-8">
 <title>福州酒店</title>
-<script type="text/javascript" src="lib/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-1.9.1.js"></script>
 <!-- 图片展示框架 -->
-<script type="text/javascript" src="lib/jquery.jcarousel.min.js"></script>
-<script type="text/javascript" src="lib/jquery.pikachoose.min.js"></script>
-<script type="text/javascript" src="lib/jquery.touchwipe.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery.pikachoose.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery.touchwipe.min.js"></script>
 <!-- 日期输入框架 -->
-<script type="text/javascript" src="lib/jquery-ui-1.10.3.custom.min.js"></script>
-<script type="text/javascript" src="lib/jquery.ui.datepicker-zh-CN.js"></script>
-<link type="text/css" href="lib/bottom.css" rel="stylesheet" />
-<link rel="stylesheet" href="lib/style.css">
-<link href="lib/table.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="lib/jquery-ui-1.10.3.custom.min.css">
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery.ui.datepicker-zh-CN.js"></script>
+<link type="text/css" href="<%=contextPath%>/front/lib/bottom.css" rel="stylesheet" />
+<link rel="stylesheet" href="<%=contextPath%>/front/lib/style.css">
+<link href="<%=contextPath%>/front/lib/table.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<%=contextPath%>/front/lib/jquery-ui-1.10.3.custom.min.css">
+<link rel="stylesheet" href="<%=contextPath %>/front/lib/pages.css">
 <style type="text/css">
 nav ul li:nth-child(2){
 	background-color:#006666;
@@ -194,36 +196,46 @@ input{
 	z-index:1000;
 }
 </style>
-<script language="javascript">
-$(document).ready(
-	function (){	 
-		//调用datepicker插件在鼠标单击时显示日期选择框
-     $("#idDate1").datepicker({
-		 minDate:new Date()
-		 });
-	 $("#idDate2").datepicker({
-		 minDate:new Date($("#idDate1").val())
-		 });
-	$("#idDate1").change(function(e) {
-		$("#idDate2").datepicker('option', 'minDate', new Date($("#idDate1").val())); 
-    });
-});
-function showbyID(id){
+<script type="text/javascript">
+$(function(){
+	Location.showLocation();
+})
+function showMapbyID(id,lng,lat){
+
+	console.info("map");
+	console.info(lng);
+	console.info(lat);
+	Location.showLocation(lng,lat,20);
 	$("#"+id).css("display","block");
-	if(id=="showhotel"){
-			var a = [
-					{"image":"images/jiudian-1.jpg","caption":"","link":"http://pikachoose.com","title":"Image 1"},
-					{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 2"},
-					{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
-					{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"},
-					{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
-					{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"}
-					];
-			$(".pikachoose").PikaChoose({data:a});	
-	}
 }
-function closebyID(id){
+ function closebyID(id){
 	$("#"+id).css("display","none");
+} 
+
+/**
+ * 返回 图片 对象,用于显示图片 modal
+ */
+function getOnlyImages(iamgestr){
+	var arrayImages=[];
+	arrayImages=iamgestr.split("#");
+	var a=[];
+	var obj={};
+	
+	for(var i=0;i<arrayImages.length;i++){
+		console.info(arrayImages[i]);
+		obj={
+			"image":sy.contextPath+"/"+arrayImages[i],
+		}
+		a.push(obj);
+	}
+	return a;
+}
+function showHotelPic(pics){
+	$("#showhotel").css("display","block");
+	//getOnlyImages(images)
+	$(".pikachoose").empty();
+	$(".pikachoose").PikaChoose({data:getOnlyImages(pics)});
+
 }
 </script>
 
@@ -231,145 +243,26 @@ function closebyID(id){
 
 <body>
 <jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
-<div id="search">
-	<div>
-    	<form>
-        	酒店名称：<input name="realName" type="text"><input value="搜索" class="button" type="submit">
-        </form>
-    </div>
+
+	<s:action name="front_Hotel_toMoreList" executeResult="true" namespace="/front">
+		<s:param name="page">1</s:param>
+		<s:param name="rows">5</s:param>
+	</s:action>
+	
+<!-- 地图显示 -->	
+<div id="map">
+	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
+		<div id="l-map"></div>
 </div>
-<div id="third">
-	<div>
-    	<section><a href="javascript:showbyID('showhotel')"><img src="images/hotel-1.jpg" width="100"></a></section>
-        <section>福州名城豪生大酒店<span>电话：3854-66620</span></section>
-        <section>￥<span>130</span>起</section>
-        <section>马尾区马尾区江滨东大道86号，马尾海关大楼。 【 城东地区】</section>
-        <section><a href="javascript:showbyID('map')"><img src="images/didianbiao.png">去这里</a></section>
-		<table class="bordered" border="0" width="100%">
-  			<tbody><tr>
-    			<td>房型</td>
-    			<td>床型</td>
-    			<td>早餐</td>
-    			<td>宽带</td>
-    			<td>政策</td>
-    			<td>房价</td>
-    			<td>&nbsp;</td>
-  			</tr>
-  			<tr>
-   	 			<td><a href="#">时尚大床房</a></td>
-    			<td>大床</td>
-                <td>双早</td>
-                <td>免费</td>
-                <td>免费取消</td>
-                <td>￥<span>130</span></td>
-                <td><aside class="button"><a href="javascript:showbyID('bookroom')">预定</a></aside></td>
-  			</tr>
-              <tr>
-                <td><a href="#">商大床房</a></td>
-                <td>大床</td>
-                <td>无</td>
-                <td>有线免费</td>
-                <td>不可取消</td>
-                <td>￥<span>190</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-              </tr>
-              <tr>
-                <td><a href="#">行政小套房</a></td>
-                <td>大床</td>
-                <td>双早</td>
-                <td>免费</td>
-                <td>不可取消</td>
-                <td>￥<span>1900</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-              </tr>
-		</tbody></table>
-    </div>
-    <div>
-    	<section><img src="images/hotel-1.jpg" width="100"></section>
-        <section>福州名城豪生大酒店<span>电话：3854-66620</span></section>
-        <section>￥<span>130</span>起</section>
-        <section>马尾区马尾区江滨东大道86号，马尾海关大楼。 【 城东地区】</section>
-        <section><a href="#"><img src="images/didianbiao.png">去这里</a></section>
-		<table class="bordered" border="0" width="100%">
-  			<tbody><tr>
-    			<td>房型</td>
-    			<td>床型</td>
-    			<td>早餐</td>
-    			<td>宽带</td>
-    			<td>政策</td>
-    			<td>房价</td>
-    			<td>&nbsp;</td>
-  			</tr>
-  			<tr>
-   	 			<td><a href="#">时尚大床房</a></td>
-    			<td>大床</td>
-                <td>双早</td>
-                <td>免费</td>
-                <td>免费取消</td>
-                <td>￥<span>130</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-  			</tr>
-              <tr>
-                <td><a href="#">商大床房</a></td>
-                <td>大床</td>
-                <td>无</td>
-                <td>有线免费</td>
-                <td>不可取消</td>
-                <td>￥<span>190</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-              </tr>
-              <tr>
-                <td><a href="#">行政小套房</a></td>
-                <td>大床</td>
-                <td>双早</td>
-                <td>免费</td>
-                <td>不可取消</td>
-                <td>￥<span>1900</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-              </tr>
-		</tbody></table>
-    </div>
-</div>
-<footer>
-	<a href="#">首页</a>&nbsp;<a href="#">上一页</a>&nbsp;<a href="#">下一页</a>&nbsp;<a href="#">尾页</a>
-</footer>
+<!-- 图片显示 -->
 <div id="showhotel">
 	<section><a href="javascript:closebyID('showhotel')"><img src="images/close.png"></a></section>
 	<div class="pikachoose"></div>
 </div>
-<div id="bookroom">
-	<section><a href="javascript:closebyID('bookroom')"><img src="images/close.png"></a></section>
-    <form>
-    	<table border="0">
-          <tr>
-            <td width="105px">入住日期：</td>
-            <td><input id="idDate1" name="enterDate" required type="text"></td>
-            <td width="30px">&nbsp;</td>
-            <td width="105px">离开日期：</td>
-            <td><input id="idDate2" name="leaveDate" required type="text"></td>
-          </tr>
-          <tr>
-            <td>姓名：</td>
-            <td><input name="realName" required type="text"></td>
-            <td>&nbsp;</td>
-            <td>房间数：</td>
-            <td><input name="roomNum" required type="text"></td>
-          </tr>
-          <tr>
-            <td>手机：</td>
-            <td><input name="telphone" required type="text"></td>
-            <td>&nbsp;</td>
-            <td>邮箱：</td>
-            <td><input name="email" type="email"></td>
-          </tr>
-          <tr>
-          	<td colspan="5"><center><input value="提交" class="button" style="margin-top:10px;" type="submit"></center></td>
-          </tr>
-        </table>
-    </form>
-</div>
-<div id="map">
-	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
-</div>
+
+<s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">18</s:param>
+</s:action>
 </body>
 </html>
