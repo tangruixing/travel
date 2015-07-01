@@ -67,11 +67,13 @@ public class CollectAction extends BaseAction<Collect>{
 	/**
 	 * 保存/更新操作
 	 */
-	public void doSaveOrUpdate() {
+	public void doSave() {
 		
 		j=new Json();
-		try{			
-			collectService.saveOrUpdateEntity(this.model);
+		try{
+			model.setUser(this.loginUser);
+			collectService.saveCollect(this.model);
+			
 			j.setSuccess(true);
 			j.setMsg("操作成功");
 		}catch(Exception e){

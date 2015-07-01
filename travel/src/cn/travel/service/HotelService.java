@@ -12,7 +12,7 @@ public interface HotelService extends BaseService<Hotel>{
 
 	void batchHotelDelete(String deleteIds);
 
-	PageBean getHotelPageList(int page, int rows);
+	PageBean getHotelPageList(int page, int rows,Hotel hotel);
 
 	Hotel getHotelDetail(Integer id);
 	

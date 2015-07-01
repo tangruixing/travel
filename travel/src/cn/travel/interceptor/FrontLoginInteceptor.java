@@ -55,8 +55,8 @@ public class FrontLoginInteceptor implements Interceptor{
 		}else{
 			return invocation.invoke();
 			
-		}*/
-		
+		}
+		*/
 		return invocation.invoke();
 	}
 }

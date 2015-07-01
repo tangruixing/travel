@@ -195,32 +195,19 @@ input{
 }
 </style>
 <script language="javascript">
-$(document).ready(
-	function (){	 
-		//调用datepicker插件在鼠标单击时显示日期选择框
-     $("#idDate1").datepicker({
-		 minDate:new Date()
-		 });
-	 $("#idDate2").datepicker({
-		 minDate:new Date($("#idDate1").val())
-		 });
-	$("#idDate1").change(function(e) {
-		$("#idDate2").datepicker('option', 'minDate', new Date($("#idDate1").val())); 
-    });
-});
-function showbyID(id){
-	$("#"+id).css("display","block");
-	if(id=="showhotel"){
-			var a = [
-					{"image":"images/jiudian-1.jpg","caption":"","link":"http://pikachoose.com","title":"Image 1"},
-					{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 2"},
-					{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
-					{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"},
-					{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
-					{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"}
-					];
+
+function showHotelPic(){
+	$("#showhotel").css("display","block");
+	var a = [
+				{"image":"images/jiudian-1.jpg","caption":"","link":"http://pikachoose.com","title":"Image 1"},
+				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 2"},
+				{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
+				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"},
+				{"image":"images/jiudian-1.jpg","caption":"Any donation is appreciated. PikaChoose is free to use!","link":"http://pikachoose.com","title":"Image 3"},
+				{"image":"images/jiudian-2.jpg","caption":"Be sure to check out <a href=\"http://www.pikachoose.com\">PikaChoose.com</a> for updates.","link":"http://pikachoose.com","title":"Image 4"}
+				];
+		
 			$(".pikachoose").PikaChoose({data:a});	
-	}
 }
 function closebyID(id){
 	$("#"+id).css("display","none");
@@ -230,163 +217,11 @@ function closebyID(id){
 </head>
 
 <body>
-<header>
-	<img src="images/index_01.jpg">
-</header>
-<div id="second">
-	<nav>
-    	<ul>
-        	<li><a href="<%=contextPath%>/front_Index_index.do">首页</a></li>
-            <li>酒店</li>
-            <li><a href="#">旅游路线</a></li>
-            <li><a href="#">自由行</a></li>
-            <li><a href="<%=contextPath%>/front_Message_index.do">留言</a></li>
-            
-        </ul>
-        <div>
-        	尊敬的会员&nbsp;<a href="javascript:logout()">注销</a>
-        </div>
-	</nav>
-</div>
-<div id="search">
-	<div>
-    	<form>
-        	酒店名称：<input name="realName" type="text"><input value="搜索" class="button" type="submit">
-        </form>
-    </div>
-</div>
-<div id="third">
-	<div>
-    	<section><a href="javascript:showbyID('showhotel')"><img src="images/hotel-1.jpg" width="100"></a></section>
-        <section>福州名城豪生大酒店<span>电话：3854-66620</span></section>
-        <section>￥<span>130</span>起</section>
-        <section>马尾区马尾区江滨东大道86号，马尾海关大楼。 【 城东地区】</section>
-        <section><a href="javascript:showbyID('map')"><img src="images/didianbiao.png">去这里</a></section>
-		<table class="bordered" border="0" width="100%">
-  			<tbody><tr>
-    			<td>房型</td>
-    			<td>床型</td>
-    			<td>早餐</td>
-    			<td>宽带</td>
-    			<td>政策</td>
-    			<td>房价</td>
-    			<td>&nbsp;</td>
-  			</tr>
-  			<tr>
-   	 			<td><a href="#">时尚大床房</a></td>
-    			<td>大床</td>
-                <td>双早</td>
-                <td>免费</td>
-                <td>免费取消</td>
-                <td>￥<span>130</span></td>
-                <td><aside class="button"><a href="javascript:showbyID('bookroom')">预定</a></aside></td>
-  			</tr>
-              <tr>
-                <td><a href="#">商大床房</a></td>
-                <td>大床</td>
-                <td>无</td>
-                <td>有线免费</td>
-                <td>不可取消</td>
-                <td>￥<span>190</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-              </tr>
-              <tr>
-                <td><a href="#">行政小套房</a></td>
-                <td>大床</td>
-                <td>双早</td>
-                <td>免费</td>
-                <td>不可取消</td>
-                <td>￥<span>1900</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-              </tr>
-		</tbody></table>
-    </div>
-    <div>
-    	<section><img src="images/hotel-1.jpg" width="100"></section>
-        <section>福州名城豪生大酒店<span>电话：3854-66620</span></section>
-        <section>￥<span>130</span>起</section>
-        <section>马尾区马尾区江滨东大道86号，马尾海关大楼。 【 城东地区】</section>
-        <section><a href="#"><img src="images/didianbiao.png">去这里</a></section>
-		<table class="bordered" border="0" width="100%">
-  			<tbody><tr>
-    			<td>房型</td>
-    			<td>床型</td>
-    			<td>早餐</td>
-    			<td>宽带</td>
-    			<td>政策</td>
-    			<td>房价</td>
-    			<td>&nbsp;</td>
-  			</tr>
-  			<tr>
-   	 			<td><a href="#">时尚大床房</a></td>
-    			<td>大床</td>
-                <td>双早</td>
-                <td>免费</td>
-                <td>免费取消</td>
-                <td>￥<span>130</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-  			</tr>
-              <tr>
-                <td><a href="#">商大床房</a></td>
-                <td>大床</td>
-                <td>无</td>
-                <td>有线免费</td>
-                <td>不可取消</td>
-                <td>￥<span>190</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-              </tr>
-              <tr>
-                <td><a href="#">行政小套房</a></td>
-                <td>大床</td>
-                <td>双早</td>
-                <td>免费</td>
-                <td>不可取消</td>
-                <td>￥<span>1900</span></td>
-                <td><aside class="button"><a href="#">预定</a></aside></td>
-              </tr>
-		</tbody></table>
-    </div>
-</div>
-<footer>
-	<a href="#">首页</a>&nbsp;<a href="#">上一页</a>&nbsp;<a href="#">下一页</a>&nbsp;<a href="#">尾页</a>
-</footer>
+
+<a href="javascript:showHotelPic()">显示</a>
 <div id="showhotel">
 	<section><a href="javascript:closebyID('showhotel')"><img src="images/close.png"></a></section>
 	<div class="pikachoose"></div>
-</div>
-<div id="bookroom">
-	<section><a href="javascript:closebyID('bookroom')"><img src="images/close.png"></a></section>
-    <form>
-    	<table border="0">
-          <tr>
-            <td width="105px">入住日期：</td>
-            <td><input id="idDate1" name="enterDate" required type="text"></td>
-            <td width="30px">&nbsp;</td>
-            <td width="105px">离开日期：</td>
-            <td><input id="idDate2" name="leaveDate" required type="text"></td>
-          </tr>
-          <tr>
-            <td>姓名：</td>
-            <td><input name="realName" required type="text"></td>
-            <td>&nbsp;</td>
-            <td>房间数：</td>
-            <td><input name="roomNum" required type="text"></td>
-          </tr>
-          <tr>
-            <td>手机：</td>
-            <td><input name="telphone" required type="text"></td>
-            <td>&nbsp;</td>
-            <td>邮箱：</td>
-            <td><input name="email" type="email"></td>
-          </tr>
-          <tr>
-          	<td colspan="5"><center><input value="提交" class="button" style="margin-top:10px;" type="submit"></center></td>
-          </tr>
-        </table>
-    </form>
-</div>
-<div id="map">
-	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
 </div>
 <s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
 	<s:param name="page">1</s:param>

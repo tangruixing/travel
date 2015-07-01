@@ -9,7 +9,7 @@
             <generator class="identity" />
         </id>
         
-        <many-to-one name="user" class="cn.travel.model.User">
+        <many-to-one name="user" class="cn.travel.model.User" lazy="false">
         	<column name="USEID" />
         </many-to-one>
        

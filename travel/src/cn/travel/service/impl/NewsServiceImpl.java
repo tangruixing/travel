@@ -11,6 +11,7 @@ import cn.model.Page;
 import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.model.News;
+import cn.travel.model.Scenery;
 import cn.travel.service.NewsService;
 import cn.util.HqlHelper;
 
@@ -50,7 +51,14 @@ public class NewsServiceImpl extends BaseServiceImpl<News> implements NewsServic
 	
 	
 	public PageBean getNewsPageList(int page, int rows) {
-		HqlHelper hql=new HqlHelper(News.class, "s");	
+		HqlHelper hql=new HqlHelper(News.class, "n")
+				.addOrderByProperty("n.publicTime",false);	
+		return this.getPageBean(page,rows,hql);
+	}
+	
+	public PageBean getNewsPageHot(int page, int rows){
+		HqlHelper hql=new HqlHelper(News.class, "n")
+				.addWhereCondition("n.hot=true");
 		return this.getPageBean(page,rows,hql);
 	}
 }

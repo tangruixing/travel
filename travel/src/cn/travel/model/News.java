@@ -14,7 +14,7 @@ public class News implements Serializable{
 	private java.lang.String summary;		/*摘要*/
 	private java.lang.String content;		/*内容*/
 	private java.util.Date publicTime;		/*发布时间*/
-	private java.lang.String click;		/*浏览量*/
+	private java.lang.Integer click;		/*浏览量*/
 	private boolean hot;		/*热门 {0:'否',1:'是'}*/
 	//columns END
 
@@ -94,11 +94,11 @@ public class News implements Serializable{
 			return this.publicTime;
 		}
 	
-		public void setClick(java.lang.String value) {
+		public void setClick(java.lang.Integer value) {
 			this.click = value;
 		}
 		
-		public java.lang.String getClick() {
+		public java.lang.Integer getClick() {
 			return this.click;
 		}
 	

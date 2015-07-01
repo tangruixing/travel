@@ -9,8 +9,10 @@ import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
 
 import cn.travel.action.BaseAction;
+import cn.travel.model.Images;
 import cn.travel.model.Message;
 import cn.travel.model.Scenery;
+import cn.travel.service.ImagesService;
 import cn.travel.service.SceneryService;
 
 @Controller("frontSceneryAction")
@@ -18,6 +20,9 @@ import cn.travel.service.SceneryService;
 public class FrontSceneryAction extends BaseAction<Scenery>{
 	@Resource(name="sceneryService")
 	private SceneryService sceneryService;
+	
+	@Resource(name="imagesService")
+	private ImagesService imagesService;
 	
 	private List<Scenery> sceneryList;
 	
@@ -36,20 +41,12 @@ public class FrontSceneryAction extends BaseAction<Scenery>{
 	 */
 	public String toIndexList(){
 		
-		pageBean=sceneryService.getSceneryPageList(this.page,this.rows);
+		pageBean=sceneryService.getSceneryPageList(this.page,this.rows);		
 		return goUI("index_list.jsp");
 	}
 	
 	public String toList() {
-		pageBean=sceneryService.getSceneryPageList(this.page,this.rows);
-		List<Scenery> list=pageBean.getRecordList();		
-		List newList=new ArrayList<Scenery>();
-		for (int i = 0; i < list.size(); i++) {
-			Scenery scenery=list.get(i);
-			if(scenery.getScenery()==null)
-				newList.add(scenery);
-		}
-		pageBean.setRecordList(newList);
+		pageBean=sceneryService.getSceneryPageList(this.page,this.rows);		
 		return goUI("list.jsp");
 	}
 	
@@ -70,5 +67,15 @@ public class FrontSceneryAction extends BaseAction<Scenery>{
 	public String toJingDianList(){
 		sceneryList=sceneryService.findEntityByHQL("from Scenery s where s.scenery.id=?",model.getId());
 		return goUI("jingDianList.jsp");
+	}
+	
+	public void findImg(){
+		List<Images> list=imagesService.findEntityByHQL("from Images i where i.scenery.id=?", model.getId());
+		Images img=null;
+		for (int i = 0; i < list.size(); i++) {
+			img=list.get(i);
+			img.setImage(sc.getContextPath()+"/"+img.getImage());
+		}
+		write2Response(list);
 	}
 }

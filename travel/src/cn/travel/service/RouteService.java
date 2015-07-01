@@ -4,6 +4,7 @@ import cn.model.Grid;
 import cn.model.Page;
 import cn.model.PageBean;
 import cn.travel.model.Route;
+import cn.travel.model.User;
 
 public interface RouteService extends BaseService<Route>{
 
@@ -30,5 +31,15 @@ public interface RouteService extends BaseService<Route>{
 	 * @return
 	 */
 	PageBean getRoutePageHot(int page, int rows,Route model);
+
+	/**
+	 * 前台页面的详细路线信息
+	 * 
+	 * 
+	 * @param id
+	 * @param loginUser
+	 * @return
+	 */
+	Route getRouteDetail(Integer id, User loginUser);
 	
 }
