@@ -13,6 +13,8 @@ public interface RoombookService extends BaseService<Roombook>{
 	Grid getRoombookGrid(Page p, Roombook model);
 
 	void batchRoombookDelete(String deleteIds);
+
+	void saveRoombook(Roombook model) throws Exception;
 	
 	PageBean getRoombookPageListed(int page, int rows, Date now,Integer id);
 	PageBean getUnRoombookPageList(int page, int rows, Date now,Integer id);

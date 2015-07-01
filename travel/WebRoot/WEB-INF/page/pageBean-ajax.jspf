@@ -50,11 +50,29 @@
 <div class="clear"></div>
 <script type="text/javascript">
 
+var $list=null;
+var $form=null;
+var $subBtn=null;
+
+$(function(){
+	$list=$("#list");
+	$form=$("#pageForm");
+	$subBtn=$("#pageBtn");
+	
+	$subBtn.off("click");
+	$subBtn.on("click",function(){
+		gotoPageByType(1);
+	});
+	
+})
+
+
+
+
 function gotoPageByType(pageNum){
 	 
 	
-	var $list=$("#list");
-	var $form=$("#pageForm");
+	
 	
 	var url=$form.attr('action')+"?page="+pageNum+"&rows=${rows}";
 	var value=$form.serialize();

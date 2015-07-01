@@ -12,8 +12,9 @@ import cn.model.Grid;
 import cn.model.Page;
 import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
-import cn.travel.model.Hotel;
+import cn.travel.dao.RoomstyleDao;
 import cn.travel.model.Roombook;
+import cn.travel.model.Roomstyle;
 import cn.travel.service.RoombookService;
 import cn.util.HqlHelper;
 
@@ -34,6 +35,9 @@ public class RoombookServiceImpl extends BaseServiceImpl<Roombook> implements Ro
 	@Resource(name="newsDao")
 	private NewsDao newsDao;
 	*/
+	
+	@Resource(name="roomstyleDao")
+	private RoomstyleDao roomstyleDao;
 
 	public Grid getRoombookGrid(Page p, Roombook model) {
 		
@@ -49,6 +53,37 @@ public class RoombookServiceImpl extends BaseServiceImpl<Roombook> implements Ro
 		String hql="delete from Roombook u where u.id in ("+deleteIds+") ";
 		
 		this.dao.batchEntityByHQL(hql);
+	}
+
+	public void saveRoombook(Roombook model) throws Exception {
+		
+		//房型
+		Roomstyle roomstyle = this.roomstyleDao.getEntity(model.getRooId());
+		roomstyle.getId();
+		
+		int updateRoomNum=roomstyle.getNumber()-model.getRoomNum();
+		
+		if(updateRoomNum<0){
+			throw new Exception("没用空房间了");
+		}
+		
+		int totalPeopleNum=roomstyle.getLimitPerson()*model.getRoomNum();
+
+		if(model.getPeopleNum()>totalPeopleNum){
+			throw new Exception("入住人数超过允许最大人数("+totalPeopleNum+")");
+		}
+		
+		
+		roomstyle.setNumber(updateRoomNum);
+		
+		
+		
+		model.setMoney(model.getRoomNum()*model.getDay()*roomstyle.getPrice());
+		
+		this.roomstyleDao.updateEntity(roomstyle);
+		
+		this.saveEntity(model);
+		
 	}
 	
 	public PageBean getRoombookPageListed(int page, int rows, Date now,Integer id){

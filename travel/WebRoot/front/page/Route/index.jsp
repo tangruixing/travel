@@ -76,6 +76,7 @@ footer{
 	width: 700px;
 	margin-bottom:20px;
 }
+
 </style>
 </head>
 

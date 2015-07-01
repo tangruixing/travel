@@ -9,6 +9,7 @@ import org.springframework.stereotype.Controller;
 import cn.model.Grid;
 import cn.model.Json;
 import cn.travel.model.Routebook;
+import cn.travel.model.User;
 import cn.travel.service.RoutebookService;
 
 @Controller("routebookAction")
@@ -65,17 +66,18 @@ public class RoutebookAction extends BaseAction<Routebook>{
 
 	
 	/**
-	 * 保存/更新操作
+	 * 线路报名
 	 */
-	public void doSaveOrUpdate() {
+	public void doSave() {
 		
 		j=new Json();
-		try{			
-			routebookService.saveOrUpdateEntity(this.model);
+		try{
+			this.model.setUser(this.loginUser);
+			routebookService.saveRoombook(this.model);
 			j.setSuccess(true);
-			j.setMsg("操作成功");
+			j.setMsg("报名成功");
 		}catch(Exception e){
-			j.setMsg("操作失败："+e.getMessage());
+			j.setMsg("报名失败："+e.getMessage());
 		}finally{
 			write2Response(j);
 		}

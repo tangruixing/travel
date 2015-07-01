@@ -10,7 +10,7 @@
         <section>
         	<a href="<%=contextPath %>/front/front_Hotel_toDetail.do?id=${id}">
         	${realName}<br>
-            ¥<span>360</span>起</a>
+            <span>预定</span></a>
         </section>
     </section>
     

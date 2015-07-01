@@ -187,14 +187,24 @@ var Location={
            });
           
     },
-    showLocation:function(lg,lt){
-    	  var map = new BMap.Map("l-map");
+    
+    showLocation:function(lg,lt,z){
+    	console.info(lg);
+    	console.info(lt);
+    	  var map=Location.map;
+    	  if(!map){
+    		  map = new BMap.Map("l-map");
+    		  Location.map=map
+    	  }
+    	  
+    	  map.clearOverlays();    //清除地图上所有覆盖物
     	  var lng=lg||119.30304;
     	  var lat=lt||26.1060510;
-    	  var zoom=18;
+    	  var zoom=z||18;
     	  
     	  var startPoint=new BMap.Point(lng,lat);
     	  
+    	  console.info(startPoint);
     	   //标记起始点
           map.centerAndZoom(startPoint, zoom);//必须
           console.info("地图缩放等级："+zoom);
@@ -210,6 +220,7 @@ var Location={
     	console.info($("#l-map"));
     	   //初始化地图
         var map = new BMap.Map("l-map");
+        
         Location.map=map;
 
         //起始点

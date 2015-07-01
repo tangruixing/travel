@@ -27,6 +27,7 @@
             </section>
         </s:if><s:else>
             <s:if test="#session.loginUser.role==2"><a href="<%=contextPath%>/user_goPerson.do"></s:if>
+
             <s:else><a href="<%=contextPath%>/login_toLogin.do"></s:else>尊敬的会员</a>&nbsp;<a href="<%=contextPath%>/front/front_User_logout.do">注销</a>
         </s:else>
         </div>
