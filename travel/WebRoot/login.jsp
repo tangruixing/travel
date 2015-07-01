@@ -66,7 +66,7 @@ input{
 
 <body>
 <div id="back">
-	<span><a href="#">首页</a></span><img src="images/right.png">登录
+	<span><a href="#">首页</a></span><img src="<%=contextPath%>/front/images/right.png">登录
     <hr>
 </div>
 <div id="second">

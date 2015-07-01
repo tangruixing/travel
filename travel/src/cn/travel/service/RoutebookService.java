@@ -10,5 +10,7 @@ public interface RoutebookService extends BaseService<Routebook>{
 	Grid getRoutebookGrid(Page p, Routebook model);
 
 	void batchRoutebookDelete(String deleteIds);
+
+	void saveRoombook(Routebook model) throws Exception;
 	
 }

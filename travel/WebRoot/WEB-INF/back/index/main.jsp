@@ -10,6 +10,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link href="<%=contextPath%>/back/style/css/default.css" rel="stylesheet" type="text/css" />   
+    <link href="<%=contextPath%>/jslib/bootstrap-3.3.4-dist/css/ace.min.css" rel="stylesheet" type="text/css" />   
 	<script type="text/javascript" src="<%=contextPath%>/back/style/js/Layout.js"></script>
 	<script type="text/javascript" src="<%=contextPath%>/back/style/js/editPwd.js"></script>
 	
@@ -23,6 +24,9 @@
 		}
 		.dis{
 			display: none;
+		}
+		li [class^="icon-"], li [class*=" icon-"], .nav-list li [class^="icon-"], .nav-list li [class*=" icon-"] {
+			width: 20px ! important;
 		}
 	</style>
 </head>
@@ -119,27 +123,41 @@
 						{"menuid":"1","icon":"icon-sys","menuname":"基本管理",
 							"menus":[
 									{"menuid":"12","menuname":"用户列表","icon":"icon-add","url":"<%=contextPath%>/user_toIndex.do"},
-									{"menuid":"13","menuname":"留言列表","icon":"icon-users","url":"<%=contextPath%>/message_toIndex.do"}
+									{"menuid":"13","menuname":"留言列表","icon":"icon-users","url":"<%=contextPath%>/message_toIndex.do"},
+									{"menuid":"14","menuname":"友情连接列表","icon":"icon-nav","url":"<%=contextPath%>/friendlink_toIndex.do"}
 
 								]
-						},{"menuid":"8","icon":"icon-sys","menuname":"旅游管理",
+						},{"menuid":"6","icon":"icon-sys","menuname":"风景管理",
+							"menus":[{"menuid":"61","menuname":"景区列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do?type=1"},
+										{"menuid":"62","menuname":"景点列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do?type=2"},
+										{"menuid":"63","menuname":"风景图片","icon":"icon-nav","url":"<%=contextPath%>/images_toIndex.do"}
+									]
+						},{"menuid":"2","icon":"icon-sys","menuname":"旅游线路",
 							"menus":[
-									{"menuid":"21","menuname":"旅游线路","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do?routeType=0"},
-									{"menuid":"22","menuname":"自由行","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do?routeType=1"},
+									{"menuid":"21","menuname":"线路列表","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do?routeType=0"},
+									{"menuid":"22","menuname":"线路报名","icon":"icon-nav","url":"<%=contextPath%>/routebook_toIndex.do?routeType=0"}
+	<%-- 								{"menuid":"22","menuname":"自由行","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do?routeType=1"},
+									{"menuid":"22","menuname":"线路收藏","icon":"icon-nav","url":"<%=contextPath%>/collect_toIndex.do?routeType=1"},
 									{"menuid":"23","menuname":"旅游新闻","icon":"icon-nav","url":"<%=contextPath%>/news_toIndex.do"},
-									{"menuid":"24","menuname":"旅游游记","icon":"icon-nav","url":"<%=contextPath%>/travels_toIndex.do"}
+									{"menuid":"24","menuname":"旅游游记","icon":"icon-nav","url":"<%=contextPath%>/travels_toIndex.do"} --%>
 								]
-						},{"menuid":"56","icon":"icon-sys","menuname":"酒店管理",
+						},{"menuid":"3","icon":"icon-sys","menuname":"线路规划",
 							"menus":[
-									{"menuid":"32","menuname":"酒店列表","icon":"icon-nav","url":"<%=contextPath%>/hotel_toIndex.do"},
-									{"menuid":"32","menuname":"房型列表","icon":"icon-nav","url":"<%=contextPath%>/roomstyle_toIndex.do"}
-								]
-						},{"menuid":"28","icon":"icon-sys","menuname":"旅游景点",
-							"menus":[{"menuid":"41","menuname":"景区列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do?type=1"},
-									{"menuid":"42","menuname":"景点列表","icon":"icon-nav","url":"<%=contextPath%>/scenery_toIndex.do?type=2"},
-									{"menuid":"42","menuname":"景点图片","icon":"icon-nav","url":"<%=contextPath%>/images_toIndex.do"}
-								]
-						},{"menuid":"39","icon":"icon-sys","menuname":"其他 ",
+										{"menuid":"31","menuname":"规划列表","icon":"icon-nav","url":"<%=contextPath%>/route_toIndex.do?routeType=1"},
+										{"menuid":"32","menuname":"收藏列表","icon":"icon-nav","url":"<%=contextPath%>/collect_toIndex.do?routeType=1"}
+									]
+						},{"menuid":"5","icon":"icon-sys","menuname":"酒店管理",
+							"menus":[
+										{"menuid":"51","menuname":"酒店列表","icon":"icon-nav","url":"<%=contextPath%>/hotel_toIndex.do"},
+										{"menuid":"52","menuname":"酒店预定","icon":"icon-nav","url":"<%=contextPath%>/roombook_toIndex.do"},
+										{"menuid":"53","menuname":"房型列表","icon":"icon-nav","url":"<%=contextPath%>/roomstyle_toIndex.do"}
+									]
+						},{"menuid":"4","icon":"icon-sys","menuname":"资讯管理",
+							"menus":[
+										{"menuid":"41","menuname":"旅游新闻","icon":"icon-nav","url":"<%=contextPath%>/news_toIndex.do"},
+										{"menuid":"42","menuname":"旅游游记","icon":"icon-nav","url":"<%=contextPath%>/travels_toIndex.do"}
+									]
+						}<%-- ,{"menuid":"39","icon":"icon-sys","menuname":"其他 ",
 							"menus":[
 							         {"menuid":"51","menuname":"友情连接列表","icon":"icon-nav","url":"<%=contextPath%>/friendlink_toIndex.do"},
 							         {"menuid":"51","menuname":"单张图片演示","icon":"icon-nav","url":"<%=contextPath%>/demo/uploadImage.jsp"},
@@ -150,7 +168,7 @@
 							         {"menuid":"51","menuname":"bootstrap 验证2","icon":"icon-nav","url":"<%=contextPath%>/demo/bootstrap2.jsp"},
 							         {"menuid":"51","menuname":"ueditor演示","icon":"icon-nav","url":"<%=contextPath%>/demo/ueditor.jsp"}
 								]
-						}
+						} --%>
 				]};
 
         $(function() {

@@ -19,15 +19,8 @@
         	<column name="SCEID" />
         </many-to-one>
         
-       <!--  <property name="useid" type="java.lang.Integer">
-            <column name="USEID" />
-        </property>
-        <property name="rouId" type="java.lang.Integer">
-            <column name="ROUID" />
-        </property>
-        <property name="sceId" type="java.lang.Integer">
-            <column name="SCEID" />
-        </property> -->
+		<property name="rouName" formula="(select r.realName from route r where r.id=rouId)"></property>
+        <property name="userName" formula="(select u.realName from user u where u.id=useid)"></property>
         
         <property name="colType" type="java.lang.Integer">
             <column name="COLTYPE" />

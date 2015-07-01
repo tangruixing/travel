@@ -66,7 +66,7 @@ public class FrontRouteAction extends BaseAction<Route> {
 	 * @return
 	 */
 	public String toDetail() {
-		this.model = routeService.getEntity(this.model.getId());
+		this.model = routeService.getRouteDetail(this.model.getId(),this.loginUser);
 		return goUI("detail.jsp");
 	}
 

@@ -8,8 +8,7 @@ public class Collect implements Serializable{
 	//columns START
 	private java.lang.Integer id;		/*收藏Id*/
 	private java.lang.Integer useid;		/*用户编号id*/
-	private java.lang.Integer rouId;		/*线路ID*/
-	private java.lang.Integer sceId;		/*风景ID*/
+
 	private java.lang.Integer colType;		/*收藏类型*/
 	private java.util.Date creatDate;		/*收藏时间*/
 	//columns END
@@ -17,6 +16,11 @@ public class Collect implements Serializable{
 	private User user;
 	private Route route;
 	private Scenery scenery;
+	
+	private String userName;	
+	private String rouName;//收藏线路名字
+	private java.lang.Integer rouId;		/*线路ID*/
+	private java.lang.Integer sceId;		/*风景ID*/
 
 	public Collect(){
 	}
@@ -45,6 +49,10 @@ public class Collect implements Serializable{
 		}
 	
 		public void setRouId(java.lang.Integer value) {
+			if(value!=null){
+				route=new Route();
+				route.setId(value);
+			}
 			this.rouId = value;
 		}
 		
@@ -100,6 +108,24 @@ public class Collect implements Serializable{
 			this.scenery = scenery;
 		}
 
+		public String getRouName() {
+			return rouName;
+		}
+
+		public void setRouName(String rouName) {
+			this.rouName = rouName;
+		}
+
+		public String getUserName() {
+			return userName;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+
+		
+		
 		
 	
 	

@@ -6,20 +6,20 @@
 <html><head>
 <meta charset="utf-8">
 <title>福州酒店</title>
-<script type="text/javascript" src="lib/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/front/lib/jquery-1.9.1.js"></script>
 <!-- 图片展示框架 -->
-<script type="text/javascript" src="lib/jquery.jcarousel.min.js"></script>
-<script type="text/javascript" src="lib/jquery.pikachoose.min.js"></script>
-<script type="text/javascript" src="lib/jquery.touchwipe.min.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/front/lib/jquery.jcarousel.min.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/front/lib/jquery.pikachoose.min.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/front/lib/jquery.touchwipe.min.js"></script>
 <!-- 日期输入框架 -->
-<script type="text/javascript" src="lib/jquery-ui-1.10.3.custom.min.js"></script>
-<script type="text/javascript" src="lib/jquery.ui.datepicker-zh-CN.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/front/lib/jquery-ui-1.10.3.custom.min.js"></script>
+<script type="text/javascript" src="<%=contextPath %>/front/lib/jquery.ui.datepicker-zh-CN.js"></script>
 
-<script type="text/javascript" src="<%=contextPath%>/jslib/html5Validate-master/src/jquery-html5Validate.js"></script>
-<link type="text/css" href="lib/bottom.css" rel="stylesheet" />
-<link rel="stylesheet" href="lib/style.css">
-<link href="lib/table.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" href="lib/jquery-ui-1.10.3.custom.min.css">
+<link type="text/css" href="<%=contextPath %>/front/lib/bottom.css" rel="stylesheet" />
+<link rel="stylesheet" href="<%=contextPath %>/front/lib/style.css">
+<link href="<%=contextPath %>/front/lib/table.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" href="<%=contextPath %>/front/lib/jquery-ui-1.10.3.custom.min.css">
+
 <style type="text/css">
 nav ul li:nth-child(2){
 	background-color:#006666;
@@ -149,34 +149,7 @@ a{
 	margin-right:auto;
 	text-align:right;
 }
-#login{
-	position: fixed;
-	width: 700PX;
-	height: 250px;
-	background-color: #FFF;
-	left: 15%;
-	top: 50px;
-	-webkit-box-shadow: 0px 0px 8px 3px #000000;
-	box-shadow: 0px 0px 8px 3px #000000;
-	display:none;
-	font-size: 20px;
-	font-family: "幼圆", "宋体";
-	margin-top: 20px;
-}
-#login section{
-	float:right;
-	position:relative;
-	left:15px;
-	top:-15px;
-	z-index:1000;
-}
-#login table{
-	margin-top:50px;
-	width:300px;
-	margin-left:auto;
-	margin-right:auto;
-	text-align:right;
-}
+
 input{
 	border-radius: 5px;
 }
@@ -222,10 +195,16 @@ input{
 }
 </style>
 <script language="javascript">
-$(document).ready(
-	function (){	 
-		//调用datepicker插件在鼠标单击时显示日期选择框
-     $("#idDate1").datepicker({
+
+var orderRoomId=null;
+var isLogin="${sessionScope.loginUser.id}";
+
+var lock=false;
+
+$(function(){
+	
+	//调用datepicker插件在鼠标单击时显示日期选择框
+/*     $("#idDate1").datepicker({
 		 minDate:new Date()
 		 });
 	 $("#idDate2").datepicker({
@@ -233,13 +212,57 @@ $(document).ready(
 		 });
 	$("#idDate1").change(function(e) {
 		$("#hotelpika").datepicker('option', 'minDate', new Date($("#idDate1").val())); 
-    });
+   }); */
 	
 	var images="${picture}";
 	
 	$("#hotelpika").PikaChoose({data:getOnlyImages(images)});
-});
+	
+	
+	
+	$("#checkOrderHotelSubmit").off('click');
+	$("#checkOrderHotelSubmit").on('click',function(){
 
+		if(!orderRoomId){
+			jError("出错了");
+			return;
+		}
+		
+		
+		var $form=$("#orderHotelForm");
+		var flag=true;
+		$form.find("input[type='text']").each(function(){
+			var source=$(this).val();
+			if(source == "" || typeof source != "string"){
+				jNotify("必填项不能为空");
+				flag=false;
+				return flase;
+			}
+		});
+		if(!flag){
+			return;
+		}
+		
+		if(lock){
+			 var url='<%=contextPath%>/roombook_doSave.do?rooId='+orderRoomId;
+			   
+			    $.post(url,$form.serialize(),function(data){
+			    	if(data&&data.success){
+						
+						lock=false;
+						$form.find(":reset").trigger("click");
+						$("#bookroom").css("display","none");
+						jSuccess(data.msg);
+			    	}else{
+			    		jError(data.msg);
+			    	}
+			    },'json');
+		}else{
+			jNotify("不能重复提交");
+		}
+		console.info("click");
+	});
+})
 /**
  * 返回 图片 对象,用于显示图片 modal
  */
@@ -265,13 +288,20 @@ function showbyID(id,images){
 	}
 	$("#"+id).css("display","block");
 }
-function showOrderbyID(id){
-	var loginId=${sessionScope.loginUser.id}
-	console.info(loginId);
-	if(!loginId){//没有登录
-		 id="login";
+function showOrder(roomId){
+
+	console.info(isLogin);
+	if(!isLogin||isLogin.length<0){//没有登录
+		 location.href="<%=contextPath%>/login.jsp";
+	}else{	
+		orderRoomId=roomId;
+		lock=true;
+		$("#bookroom").css("display","block");
 	}
-	$("#"+id).css("display","block");
+}
+function closeOrder(){
+	$("input[type=reset]").trigger("click");
+	$("#bookroom").css("display","none");
 }
 function showMapbyID(id,lng,lat){
 
@@ -296,7 +326,7 @@ function closebyID(id){
 <s:set value="#{1:'大床',2:'双人床',3:'单床',4:'多人床'}" var="bedStyleMap"></s:set>
 <s:set value="#{1:'双份',2:'多份',3:'不含',4:'单份'}" var="breakfastMap"></s:set>
 <s:set value="#{1:'无线免费',2:'有线免费'}" var="broadbandMap"></s:set>
-<s:set value="#{1:'免费取消',2:'可取消',3:'不可取消'}" var="cancelMap"></s:set>
+<s:set value="#{1:'可取消',2:'不可取消'}" var="cancelMap"></s:set>
 
 
 <div id="third">
@@ -328,7 +358,7 @@ function closebyID(id){
                 <td>${broadbandMap[broadband]}</td>
                 <td>${cancelMap[cancel]}</td>
                 <td>￥<span>${price}</span></td>
-                <td><aside class="button"><a href="javascript:showOrderbyID('bookroom')">预定</a></aside></td>
+                <td><aside class="button"><a href="javascript:showOrder('${id}')">预定</a></aside></td>
   			</tr>
   			
   				
@@ -349,29 +379,45 @@ function closebyID(id){
 	<div class="pikachoose" id="pika"></div>
 </div>
 <div id="bookroom">
-	<section><a href="javascript:closebyID('bookroom')"><img src="images/close.png"></a></section>
+	<section><a href="javascript:closeOrder()"><img src="images/close.png"></a></section>
     <form id="orderHotelForm">
+    	<input type="reset" style="display:none;" /> 
+    	
     	<table border="0">
           <tr>
-            <td width="105px">入住日期：</td>
-            <td><input id="idDate1" name="enterDate" required type="text"></td>
+            <td width="105px">*入住日期：</td>
+            <td><input id="enterDate"  name="enterDate" type="text"
+               class="Wdate" 
+               onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-{%d}',maxDate:'#F{$dp.$D(\'leaveDate\')}'})"
+           ></td>
             <td width="30px">&nbsp;</td>
-            <td width="105px">离开日期：</td>
-            <td><input id="idDate2" name="leaveDate" required type="text"></td>
+            <td width="105px">*离开日期：</td>
+            <td>
+            	<input type="text" name="leaveDate" id="leaveDate"
+            					 class="Wdate" 
+                                 onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'#F{$dp.$D(\'enterDate\')}'})"
+
+           		/>
+            </td>
           </tr>
           <tr>
-            <td>姓名：</td>
-            <td><input name="realName" required type="text"></td>
+            <td>*姓名：</td>
+            <td><input name="realName" required type="text" ></td>
             <td>&nbsp;</td>
-            <td>房间数：</td>
-            <td><input name="roomNum" required type="text"></td>
+            <td>*房间数：</td>
+            <td><input name="roomNum" required type="text" onchange="checkDigital(this);"></td>
           </tr>
           <tr>
-            <td>手机：</td>
-            <td><input name="telphone" required type="text"></td>
+            <td>*入住人数：</td>
+            <td><input name="peopleNum" required type="text" onchange="checkDigital(this);"></td>
             <td>&nbsp;</td>
-            <td>邮箱：</td>
-            <td><input name="email" type="email"></td>
+          </tr>
+          <tr>
+            <td>*手机：</td>
+            <td><input name="telphone" required type="text" onchange="checkAllPhone(this);"></td>
+            <td>&nbsp;</td>
+            <td>*邮箱：</td>
+            <td><input name="email" type="text" required onchange="checkEmail(this);"></td>
           </tr>
           <tr>
           	<td colspan="5"><center><input value="提交" class="button" style="margin-top:10px;" id="checkOrderHotelSubmit" type="button"></center></td>
@@ -379,26 +425,7 @@ function closebyID(id){
         </table>
     </form>
 </div>
-<div id="login">
-	<section><a href="javascript:closebyID('login')"><img src="images/close.png"></a></section>
-    <form id="loginForm" >
-    	<table border="0">
-          <tr>
-            <td width="105px">手机号：</td>
-            <td><input  name="mobile" required type="tel"></td>
-          </tr>
-          <tr>
-         
-            <td>密码：</td>
-            <td><input name="pwd" required type="password"></td>
-          </tr>
-      
-          <tr>
-          	<td colspan="5"><center><input value="提交" class="button" style="margin-top:10px;" id="checkLoginSubmit" type="submit"></center></td>
-          </tr>
-        </table>
-    </form>
-</div>
+
 <div id="map">
 	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
 	<div id="l-map" style="height:100%" class="dis"></div>			
@@ -408,51 +435,4 @@ function closebyID(id){
 	<s:param name="rows">18</s:param>
 </s:action>
 </body>
-<script type="text/javascript">
-	$(function(){
-		$("#checkLoginSubmit").off('click');
-		$("#checkLoginSubmit").on('click',function(){
-			
-			
-			console.info("click");
-			
-			var $form=$("#loginForm");
-			
-			$form.html5Validate(function() {
-			    // 全部验证通过，该干嘛干嘛~~
-			    console.info("通过校验");
-			    var url='<%=contextPath%>/front/front_User_login.do';
-			   
-			    console.info(url);
-			  	$.post(url,$form.serialize(),function(data){
-			    	if(data&&data.success){
-			    		console.info("登录成功");
-			    		window.location.reload();
-			    	}else{
-			    		jError(data.msg);
-			    	}
-			    },"json");
-			});
-		});
-		$("#checkOrderHotelSubmit").off('click');
-		$("#checkOrderHotelSubmit").on('click',function(){
-			
-			
-			
-			
-			$("#orderHotelForm").html5Validate(function() {
-				<%--  var url=<%=contextPath%>/front/front_Order_doOrderHotel.do;
-				   
-				    $.post(url,$form.serialize(),function(data){
-				    	if(data&&data.success){
-							jSuccess(data.msg);
-				    	}else{
-				    		jError(data.msg);
-				    	}
-				    }); --%>
-			});
-			console.info("click");
-		});
-	})
-</script>
 </html>

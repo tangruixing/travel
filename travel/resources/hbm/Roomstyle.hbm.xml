@@ -8,7 +8,7 @@
             <column name="ID" />
             <generator class="identity" />
         </id>
-        <many-to-one name="hotel" class="cn.travel.model.Hotel">
+        <many-to-one name="hotel" class="cn.travel.model.Hotel" lazy="false">
         	 <column name="HOTID" />
         </many-to-one>
      

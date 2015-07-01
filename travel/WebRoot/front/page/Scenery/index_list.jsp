@@ -5,12 +5,12 @@
     	必玩景区
     </header>
     <s:iterator value="pageBean.recordList">
-    <section><a href="#">
-    	<img src="<%=contextPath %>/${logo}" width="242" height="162">
+    <section>
+    <a href="<%=contextPath %>/front/front_Scenery_toDetail.do?id=${id}"><img src="<%=contextPath %>/${logo}" width="242" height="162"></a>
         <table>
-        	<tr><td><img src="<%=contextPath %>/front/images/jingdianbiao.png">&nbsp;${realName}</td></tr>
+        	<tr><td><img src="<%=contextPath %>/front/images/jingdianbiao.png">&nbsp;<a href="<%=contextPath %>/front/front_Scenery_toDetail.do?id=${id}">${realName}</a></td></tr>
             <tr><td><span>${fn:substring(summary,0,30)}...</span></td></tr>
-         </table></a>
+         </table>
     </section>
     </s:iterator>
     <footer>

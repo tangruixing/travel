@@ -46,5 +46,7 @@
         <property name="suggest" type="string">
             <column name="SUGGEST" />
         </property>
+        
+        <property name="regDate" type="date"></property>
     </class>
 </hibernate-mapping>

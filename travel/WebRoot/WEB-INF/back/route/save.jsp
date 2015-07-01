@@ -51,10 +51,19 @@
                         </div>
 						<s:if test="routeType==0"><!-- 针对普通用户 -->
 							<div class="form-group">
+                            <label class="col-lg-3 control-label">报名截止时间</label>
+                            <div class="col-lg-5">
+                                <input id="regDate" type="text" class="form-control Wdate" name="regDate" id="regDate"
+                                 onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-{%d+1}',maxDate:'#F{$dp.$D(\'startDate\')}'})"
+                                 value="${regDate}"
+                                />
+                            </div>
+                            </div>
+							<div class="form-group">
                             <label class="col-lg-3 control-label">出发时间</label>
                             <div class="col-lg-5">
                                 <input type="text" class="form-control Wdate" name="startDate" id="startDate"
-                                 onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'%y-%M-{%d+1}',maxDate:'#F{$dp.$D(\'endDate\')}'})"
+                                 onFocus="WdatePicker({isShowClear:false,readOnly:true,dateFmt:'yyyy-MM-dd HH:mm:ss',minDate:'regDate',maxDate:'#F{$dp.$D(\'endDate\')}'})"
                                  value="${startDate}"
                                 />
                             </div>
@@ -221,7 +230,7 @@ $(document).ready(function() {
             // Use Ajax to submit form data
             $.post($form.attr('action'), $form.serialize(), function(data) {
             	if(data&&data.success){
-        			parent.mainDlg.close("#news_grid");
+        			parent.mainDlg.close();
         			jSuccess(data.msg);
         		}else{
         			jError(data.msg);
