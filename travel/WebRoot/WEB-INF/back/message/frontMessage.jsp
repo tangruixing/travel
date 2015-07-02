@@ -123,7 +123,7 @@ a:hover{
 <div style="display:none">
 	<div id="inline1">
     	<form id="msgForm" action="<%=contextPath%>/message_addMsg.do">
-        	留言内容：<textarea rows="8" cols="50" name="content"></textarea>
+        	留言内容：<textarea rows="8" cols="50" name="content" required></textarea>
             <center><input type="submit" value="提交留言" class="button" style="margin-top:10px;"></center>
         </form>
     </div>

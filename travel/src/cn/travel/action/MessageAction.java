@@ -34,6 +34,7 @@ public class MessageAction extends BaseAction<Message>{
 	@Resource(name="messageService")
 	private MessageService messageService;
 	
+	
 	/**
 	 * 
 	 */
@@ -115,7 +116,9 @@ public class MessageAction extends BaseAction<Message>{
 	
 	public String browseMsg(){
 		User user=(User)this.session.get(ConfigUtil.loginUserKey);
-		pageBean=messageService.getMessagePageList(this.page,5, user);
+		pageBean=messageService.lookMessagePageList(this.page,5, user);
+		user.setMessage(0);
+		this.session.put(ConfigUtil.loginUserKey, user);
 		List<Message> list=pageBean.getRecordList();
 		List newList=new ArrayList<Message>();
 		for (int i = 0; i < list.size(); i++) {
@@ -135,7 +138,7 @@ public class MessageAction extends BaseAction<Message>{
 		Date now = new Date(); 
 		model.setCreateDate(now);
 		model.setStats(Constant.MESSAGE_UNSTATUS);
-		messageService.saveEntity(model);
+		messageService.saveMsg(model,this.loginUser.getId());
 		return goAction("message_goMsg.do");
 	}
 	

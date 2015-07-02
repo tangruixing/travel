@@ -172,6 +172,9 @@ input{
 .roombook h2 a{
 	color:#33cccc;
 }
+.roombook div{
+	margin-top:5px;
+}
 </style>
 <script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-ui-1.10.3.custom.min.js"></script>
@@ -331,8 +334,8 @@ function cancel(url,id){
                 	<li><a href="javascript:find('<%=contextPath %>/roombook_toListed.do')">已入住</a></li>
                     <li><a href="javascript:find('<%=contextPath %>/roombook_toUnList.do')">未入住</a></li>
                 </ul>
-        <li><a href="javascript:show('s06')">预定的线路</a></li>
-        <li><a href="javascript:show('s07')">收藏的线路</a></li>
+        <li><a href="javascript:javascript:find('<%=contextPath %>/routebook_toPersonList.do')">预定的线路</a></li>
+        <li><a href="javascript:javascript:find('<%=contextPath %>/travels_toPersonList.do')">收藏的线路</a></li>
         <li>我的游记</li>
             	<ul class="ul2">
                 	<li><a href="javascript:find('<%=contextPath %>/travels_toPersonList.do')">查看游记</a></li>
@@ -433,8 +436,7 @@ function cancel(url,id){
         </div>
         
         <div id="list" class="unshow"></div>
-        
-        
+       
     </div>
 </div>
 <footer class="footer">

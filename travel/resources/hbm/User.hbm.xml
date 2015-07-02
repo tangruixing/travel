@@ -29,5 +29,8 @@
         <property name="birth" type="java.util.Date">
             <column name="BIRTH" />
         </property>
+        <property name="message" type="java.lang.Integer">
+            <column name="MESSAGE" />
+        </property>
     </class>
 </hibernate-mapping>
