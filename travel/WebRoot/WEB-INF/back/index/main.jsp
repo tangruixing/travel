@@ -149,8 +149,8 @@
 						},{"menuid":"5","icon":"icon-sys","menuname":"酒店管理",
 							"menus":[
 										{"menuid":"51","menuname":"酒店列表","icon":"icon-nav","url":"<%=contextPath%>/hotel_toIndex.do"},
-										{"menuid":"52","menuname":"酒店预定","icon":"icon-nav","url":"<%=contextPath%>/roombook_toIndex.do"},
-										{"menuid":"53","menuname":"房型列表","icon":"icon-nav","url":"<%=contextPath%>/roomstyle_toIndex.do"}
+										{"menuid":"52","menuname":"酒店预定","icon":"icon-nav","url":"<%=contextPath%>/roombook_toIndex.do"}<%-- ,
+										{"menuid":"53","menuname":"房型列表","icon":"icon-nav","url":"<%=contextPath%>/roomstyle_toIndex.do"} --%>
 									]
 						},{"menuid":"4","icon":"icon-sys","menuname":"资讯管理",
 							"menus":[

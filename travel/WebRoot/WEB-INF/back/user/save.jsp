@@ -4,7 +4,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
 <head lang="en">
-    <title>新闻管理</title>
+    <title>用户管理</title>
 </head>
 <body>
  <div class="container">
@@ -18,6 +18,7 @@
 
                     <form id="userForm" class="form-horizontal" method="post" action="<%=contextPath %>/user_doSaveOrUpdate.do">
                     	<s:hidden name="id" />
+                    	
                         <div class="form-group">
                             <label class="col-lg-3 control-label">手机号</label>
                             <div class="col-lg-5">
@@ -47,7 +48,7 @@
 						<div class="form-group">
                             <label class="col-lg-3 control-label">邮箱</label>
                             <div class="col-lg-9">
-                               	  <s:textfield cssClass="form-control" name="eamil" placeholder="shaonian@qq.com" />
+                               	  <s:textfield cssClass="form-control" name="email" placeholder="shaonian@qq.com" />
                             </div>
                         </div>
                         
@@ -103,17 +104,22 @@ $(document).ready(function() {
         	mobile: {
               
                 validators: {
-                	  notEmpty: {
+                	  	notEmpty: {
                           /*   message: 'default' */
                         },
                         phone: {
                         	country: 'CN'
-                        },
+                        }
+                        ,
+                        <s:if test="id==null">
                         remote: {
                             type: 'POST',
-                            url: '<%=contextPath%>/',
-                            message: '该手机已经注册'
+                            url: '<%=contextPath%>/user_canRegister.do',
+                            message: '该手机已经注册',
+                            delay: 1000,
+                            dataType: "json"           //接受数据格式
                         },
+                        </s:if>
                 }
             },
             role: {

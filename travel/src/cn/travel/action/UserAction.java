@@ -80,7 +80,9 @@ public class UserAction extends BaseAction<User>{
 		try{			
 			this.userService.canRegister(model);
 			j.setSuccess(true);
-			j.setMsg("删除成功");
+			j.setValid(true);
+			j.setMsg("注册成功");
+
 		}catch(Exception e){
 			j.setMsg("失败："+e.getMessage());
 		}finally{

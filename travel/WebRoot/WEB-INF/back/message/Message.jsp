@@ -8,9 +8,6 @@
 </head>
 <body class="easyui-layout" data-options="fit:true,border:false">
 	 <div id="toolbar">
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-add" plain="true" id="message_saveBtn">添加</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-edit" plain="true" id="message_updateBtn">修改</a>
-        <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-remove" plain="true" id="message_deleteBtn">删除</a>
         <a href="javascript:void(0)" class="easyui-linkbutton" iconCls="icon-reload" plain="true" id="message_reloadBtn">刷新</a>
     </div>
 	
@@ -20,45 +17,102 @@
 </body>
 
 <script type="text/javascript">
+		var gdOptions=null,
+			dlgOptions=null,
+			message=null;
         $(function () {
         	var gdOptions={
-        			 columns:[[{
-                         title : '用户编号',
-                         field : '"id"',// 绑定属性名字,后台返回的json数据
-                         width : 100,// 必须要给，大于50
-                         sortable : true,// 鼠标点击可以升序/降序切换
-                         checkbox : true
+        			columns:[[{
+                        title : '用户编号',
+                        field : '"id"',// 绑定属性名字,后台返回的json数据
+                        width : 100,// 必须要给，大于50
+                        sortable : true,// 鼠标点击可以升序/降序切换
+                        checkbox : true
 
-                     },{
- 						title : '用户编号id',
- 						field : 'userId',
- 						width : 100,
- 						sortable : true
- 						},{
- 						title : '用户编号id',
- 						field : 'adminId',
- 						width : 100,
- 						sortable : true
- 						},{
- 						title : '内容',
- 						field : 'content',
- 						width : 100,
- 						sortable : true
- 						},{
- 						title : '状态',
- 						field : 'stats',
- 						width : 100,
- 						sortable : true
- 						},{
- 						title : '回复时间',
- 						field : 'createDate',
- 						width : 100,
- 						sortable : true
- 						},{
+                    },{
+					title : '手机号',
+					field : 'mobile',
+					width : 100,
+					sortable : true
+					},{
+					title : '密码',
+					field : 'pwd',
+					width : 100,
+					sortable : true
+					},{
+					title : '角色',
+					field : 'role',
+					width : 100,
+					sortable : true,
+					formatter : function(value, row, index) {
+						
+						switch(row.role)
+						{
+						case 1:
+							return "管理员";
+						  break;
+						case 2:
+							return "普通用户";
+						  break;
+						}
+					}
+					},{
+					title : '邮箱',
+					field : 'email',
+					width : 100,
+					sortable : true
+					},{
+					title : '名字',
+					field : 'realName',
+					width : 100,
+					sortable : true
+					},{
+					title : '性别',
+					field : 'sex',
+					width : 100,
+					sortable : true,
+					formatter : function(value, row, index) {
+						
+						switch(row.sex)
+						{
+						case 1:
+							return "男";
+						  break;
+						case 2:
+							return "女";
+						  break;
+						default:
+							return "保密";
+						}
+					
+					}
+					},{
+					title : '出生日期',
+					field : 'birth',
+					width : 100,
+					sortable : true
+					},{
                          title : '操作',
                          field : 'action',
                          width : 100,
                          formatter: function (value, row, index) {
+                        	
+                        	 var str="";
+                            
+/*                              str+="&nbsp"
+                             str+=sy.fs('<img   src="{0}"  onclick="demo2(\'{1}\')" title="1" />',"../style/images/myIcons/message_delete.png",row.id);
+                             return str; */
+                        	 switch(row.message)
+     						{
+     						case 1:
+     							return  str+=sy.fs('<input type="button"  onclick="replay(\'{0}\',\'{1}\')"  title="1" value="回复" />',row.id,row.realName);;
+     						  break;
+     					/* 	case 2:
+     							return  str+=sy.fs('<input  type="button"  onclick="look(\'{0}\',\'{1}\')" title="1" value="已回复"/>',row.id,row.realName);
+     						  break; */
+     						}
+                        	 
+
                             /*  var str="";
                               str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
                               str+="&nbsp"
@@ -68,7 +122,7 @@
                      }]]
         	}
            
-        		var dlgOptions={
+        		dlgOptions={
             		title: '回复',
           		    width: '80%',
           		    height: '60%',
@@ -76,8 +130,15 @@
         		  		parent.mainDlg.parentDlg.dialog('destroy');
         		    },
         	}  
-            var message=new Base("message",gdOptions,dlgOptions,parent.mainDlg);
+            message=new Base("message",gdOptions,dlgOptions,parent.mainDlg);
             message.loadGrid();         
         });
+        
+        function replay(id,name){
+        	console.info(id);
+        	console.info(name);
+        	message.dialogOpts.href='<%=contextPath%>/message_toAdminReply.do?userId='+id+'&userName='+name,
+        	message.parentDialog.open(message.dialogOpts, window, message.$grid);
+        }
     </script>
 </html>

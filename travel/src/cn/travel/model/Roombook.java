@@ -25,6 +25,9 @@ public class Roombook implements Serializable{
 	private User user;
 	private Roomstyle roomstyle;
 	
+	private String roomStyleName;
+	private String hotelName;
+	private String userName;
 	//
 	private int day=1;
 	
@@ -167,6 +170,32 @@ public class Roombook implements Serializable{
 		public void setMoney(float money) {
 			this.money = money;
 		}
+
+		public String getRoomStyleName() {
+			return roomStyleName;
+		}
+
+		public void setRoomStyleName(String roomStyleName) {
+			this.roomStyleName = roomStyleName;
+		}
+
+		public String getHotelName() {
+			return hotelName;
+		}
+
+		public void setHotelName(String hotelName) {
+			this.hotelName = hotelName;
+		}
+
+		public String getUserName() {
+			return userName;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+		
+		
 
 		
 		

@@ -44,5 +44,5 @@ public class Constant {
 	public static int MESSAGE_UNSTATUS=0;
 	
 	//留言已被管理员查看
-		public static int MESSAGE_STATUS=1;
+	public static int MESSAGE_STATUS=1;
 }

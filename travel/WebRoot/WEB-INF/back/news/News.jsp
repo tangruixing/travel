@@ -32,11 +32,6 @@
                         checkbox : true
 
                     },{
-					title : '用户编号id',
-					field : 'useid',
-					width : 100,
-					sortable : true
-					},{
 					title : '标题',
 					field : 'title',
 					width : 100,

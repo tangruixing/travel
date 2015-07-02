@@ -7,6 +7,7 @@
         <div class="travels">
             <h2><a href="<%=contextPath %>/front/front_Travels_toDetail.do?id=${id}">${title }</a></h2>       
             	发布时间：<fmt:formatDate value="${publicTime}" pattern="yyyy-MM-dd HH:mm:ss"/>
+            	&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;${userName }
             	<span>浏览量：${click }</span>
         </div>
 </s:iterator>  

@@ -9,8 +9,8 @@ public class Message implements Serializable{
 	private java.lang.Integer id;		/*留言ID*/
 	
 	private java.lang.String content;		/*内容*/
-	private java.lang.Integer stats;		/*状态*/
-	private java.util.Date createDate;		/*停留天数*/
+	private java.lang.Integer stats;		/*状态 */
+	private java.util.Date createDate;		/*留言时间*/
 	//columns END
 
 	private User user;
@@ -19,6 +19,8 @@ public class Message implements Serializable{
 	
 	private java.lang.Integer userId;		/*用户编号id*/
 	private java.lang.Integer adminId;		/*用户编号id*/
+	
+	private String userName;
 	public Message(){
 	}
 
@@ -93,6 +95,16 @@ public class Message implements Serializable{
 			this.admin = admin;
 		}
 
+		public String getUserName() {
+			return userName;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+
+		
+		
 		
 }
 

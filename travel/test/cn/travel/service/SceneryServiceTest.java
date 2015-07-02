@@ -28,6 +28,9 @@ public class SceneryServiceTest extends BaseSpringTest{
 	@Resource(name="hotelService")
 	private HotelService hotelService;
 	
+	@Resource(name="messageService")
+	private MessageService messageService;
+	
 	@Test
 	public void  getScenery(){
 		List<Scenery> list = this.sceneryService.findEntityByHQL("from Scenery");
@@ -81,5 +84,16 @@ public class SceneryServiceTest extends BaseSpringTest{
 		int id=1;
 		Hotel hotelDetail = this.hotelService.getHotelDetail(id);
 		logger.info(JSON.toJSONString(hotelDetail));
+	}
+	
+	@Test
+	public void getMessageGrid(){
+		
+		Page p=new Page();
+		p.setRows(10);
+		p.setPage(1);
+		Grid grid = this.messageService.getMessageGrid(p, null);
+		
+		logger.info(writeJsonByFilter(grid, null, null));
 	}
 }

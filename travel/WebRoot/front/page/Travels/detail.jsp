@@ -56,7 +56,7 @@ a{
     ${content }
     </div>
 </div>
-<div id="publicTime">作者：${user.realName }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<div id="publicTime">作者：${userName }&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 发布时间：<fmt:formatDate value="${publicTime}" pattern="yyyy-MM-dd HH:mm:ss"/></div>
 <!-- 友情链接 -->
   	<s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">

@@ -29,8 +29,8 @@
                          checkbox : true
 
                      },{
- 					title : '用户编号id',
- 					field : 'useid',
+ 					title : '发表游记',
+ 					field : 'userName',
  					width : 100,
  					sortable : true
  					},{
