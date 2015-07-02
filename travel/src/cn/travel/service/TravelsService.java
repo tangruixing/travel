@@ -13,4 +13,6 @@ public interface TravelsService extends BaseService<Travels>{
 	void batchTravelsDelete(String deleteIds);
 	PageBean getTravelsPageList(int page, int rows);
 	PageBean getTravelsPageHot(int page, int rows);
+
+	PageBean getTravelsPageList(int page, int i, Integer id);
 }

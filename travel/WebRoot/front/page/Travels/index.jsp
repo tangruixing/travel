@@ -39,7 +39,7 @@ a{
 #third aside li{
 	margin-bottom:5px;
 }
-#third div{
+#list{
 	border-right: thin solid #33cccc;
 	width:715px;
 }
@@ -62,7 +62,24 @@ a{
 #list:not(h2){
 	color:#666666;
 }
-
+.travels{
+	width: 700px;
+	border-collapse: collapse;
+	border-bottom: thin solid #33cccc;
+	padding-bottom:10px;
+	padding-left:10px;
+}
+.travels:hover{
+	background-color:#ecebeb;
+}
+.travels article{
+	overflow:hidden;
+	margin-bottom:5px;
+}
+.travels span{
+	float:right;
+	margin-right:10px;
+}
 </style>
 </head>
 

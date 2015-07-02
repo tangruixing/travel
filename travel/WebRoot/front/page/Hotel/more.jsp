@@ -52,17 +52,22 @@ a{
 	border-collapse: collapse;
 	padding-bottom: 20px;
 	border-bottom: thin outset #000000;
+	height:80px;
+	padding:20px 0;
+}
+#third div:hover{
+	background-color:#ecebeb;
 }
 #third div section{
 	float: left;
 
 }
 #third div section:nth-child(1){
-	width: 100px;
-	height: 100px;
+	width: 100px;	
 	border-radius: 10px;
 	overflow:hidden;
 	margin-right:10px;
+	clear:both;
 }
 #third div section:nth-child(2){
 	width:600px;
@@ -111,8 +116,11 @@ a{
 	display: inline-block;
 	text-decoration: none;
 	border-radius: 5px;
-	padding:5px 10px;
-	color:#FFF;
+	border-collapse: collapse;
+	padding:4px 8px;
+	word-break:break-all;
+	color: #fff;
+	font-size:14px;
 }
 .button a{
 	color:#FFF !important;
@@ -246,7 +254,7 @@ function showHotelPic(pics){
 
 	<s:action name="front_Hotel_toMoreList" executeResult="true" namespace="/front">
 		<s:param name="page">1</s:param>
-		<s:param name="rows">5</s:param>
+		<s:param name="rows">3</s:param>
 	</s:action>
 	
 <!-- 地图显示 -->	

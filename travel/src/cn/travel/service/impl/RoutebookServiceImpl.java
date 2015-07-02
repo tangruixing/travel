@@ -10,8 +10,10 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.dao.RouteDao;
+import cn.travel.model.Roombook;
 import cn.travel.model.Route;
 import cn.travel.model.Routebook;
 import cn.travel.service.RouteService;
@@ -80,6 +82,10 @@ public class RoutebookServiceImpl extends BaseServiceImpl<Routebook> implements 
 		
 	}
 	
-	
+	public PageBean getRoutebookPageList(int page, int rows,Integer id){
+		HqlHelper hql=new HqlHelper(Routebook.class, "r")
+				.addWhereCondition("r.user.id=?", id);
+		return this.getPageBean(page,rows,hql);
+	};
 	
 }

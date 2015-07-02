@@ -19,6 +19,12 @@ a{
 	margin-right:auto;
 	font-size:18px;
 }
+#third table{
+	font-size:17px;
+}
+#third table td{
+	padding-right:10px;
+}
 #third aside{
 	width:200px;
 	height:150px;
@@ -29,9 +35,6 @@ a{
 }
 #third h1{
 	color:#33cccc;
-}
-#third section{
-	margin-top:15px;
 }
 #third div{
 	width:100%;
@@ -84,15 +87,25 @@ a{
 }
 
 #bookRoute{
-	width:500px;
-	height:300px;
+	width:400px;
+	height:200px;
 	display:none;
 	position:fixed;
-	top:100px;
-	left:260px;
+	top:150px;
+	left:320px;
 	-webkit-box-shadow: 0px 0px 8px 3px #000000;
 	box-shadow: 0px 0px 8px 3px #000000;
 	background-color: #FFF;
+}
+#bookRoute table{
+	width:260px;
+	margin:20px auto;
+}
+#bookRoute table input{
+	border-radius: 5px;
+}
+#bookRoute table span{
+	color:red;
 }
 #bookRoute section{
 	float:right;
@@ -101,6 +114,25 @@ a{
 	top:-15px;
 	z-index:1000;
 }
+#bookRoute .button{
+	float:none;
+}
+.button{
+	background: #006666;
+	display: inline-block;
+	text-decoration: none;
+	border-radius: 5px;
+	border-collapse: collapse;
+	padding:5px 10px;
+	word-break:break-all;
+	float:right;
+	margin-right:10px;
+	color: #fff;
+	margin-top:30px;
+}
+.button a{
+	color: #fff;
+}
 </style>
 
 <script type="text/javascript" src="http://api.map.baidu.com/api?v=2.0&ak=CA3NlRi4BRVc5elDe4l0tXnu"></script>
@@ -108,7 +140,7 @@ a{
 <script type="text/javascript"	src="<%=contextPath%>/back/style/js/line.js"	charset="utf-8"></script>
 
 <script type="text/javascript" src="<%=contextPath%>/jslib/html5Validate-master/src/jquery-html5Validate.js"></script>
-<script language="javascript">
+<script type="text/javascript">
 
 
 var rouId=null;
@@ -227,15 +259,28 @@ function closebyID(id){
 <div id="third">
 	<hr>
 	<aside><img src="images/jing2.jpg" width="200" height="150"></aside>
-	<h1>${realName}</h1>
-	  人均消费：<span>￥</span>${money}
+	
 	<s:if test="routeType==0">
+	<span class="button"><a href="javascript:showRouteOrder('${id}')">预定</a></span>
+		<h1>${realName}</h1>
+		<table>
+			<tr>
+				<td>人均消费：<span>￥</span>${money}</td>
+				<td> 报名截止时间：<span><fmt:formatDate value="${regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></span></td>
+			</tr>
+			<tr>
+				<td>出发时间： <fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+				<td>结束时间： <fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd HH:mm:ss"/></td>
+			</tr>
+		</table> 
 		
-		  报名截止时间：<span><fmt:formatDate value="${regDate}" pattern="yyyy-MM-dd HH:mm:ss"/></span>
-		  <a href="javascript:showRouteOrder('${id}')">预定</a>
-		   <section>出发时间： <fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd HH:mm:ss"/>结束时间： <fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd HH:mm:ss"/></section>
+		
+		<script type="text/javascript">
+			$("nav ul li:eq(2)").css("background-color","#006666");
+		</script>
 	</s:if>
-  	<s:elseif test="routeType==1">
+  	<s:elseif test="routeType==1">	 
+  	<span class="button">
   		<s:if test="canCollect">
   			<a href="javascript:void(0);" id="collectRoute">
 	  		收藏
@@ -246,13 +291,15 @@ function closebyID(id){
 	  		已经收藏
 	  		</a>
   		</s:else>
+  	</span>
+  	<h1>${realName}</h1>
+  	 人均消费：<span>￥</span>${money}
+  	 
+  	 <script type="text/javascript">
+			$("nav ul li:eq(3)").css("background-color","#006666");
+		</script>
   	</s:elseif>
     
-    
-    
-   
- 
- 
 </div>
 
 <div id="route_map">
@@ -269,29 +316,24 @@ function closebyID(id){
 
 <div id="bookRoute">
   <section><a href="javascript:closebyID('book')"><img src="images/close.png"></a></section>
-	预定或收藏弹框
 	
 	 <form id="orderRouteForm">
 	     	<input type="reset" style="display:none;" /> 
     	
     	<table border="0">
           <tr>
-            <td>*姓名：</td>
+            <td><span>*</span>姓名：</td>
             <td><input name="leaveName" required type="text"></td>
           </tr>
-           <td>*联系方式：</td>
+           <td><span>*</span>联系方式：</td>
             <td><input name="leaveTel" required type="text" onchange="checkAllPhone(this);"></td>
           </tr>
           <tr>
-            <td>*人数：</td>
+            <td><span>*</span>人数：</td>
             <td><input name="peopleNum" required type="text" onchange="checkDigital(this);"></td>
           </tr>
-          <tr>           
-         
-          <tr>
-          	<td colspan="5"><center><input value="提交" class="button" style="margin-top:10px;" id="checkOrderRouteSubmit" type="button"></center></td>
-          </tr>
         </table>
+        <center><input value="提交" class="button" style="margin-top:10px;" id="checkOrderRouteSubmit" type="button"></center>
     </form>
 </div>
 <script type="text/javascript">
@@ -303,6 +345,6 @@ function closebyID(id){
 				rid:${id}
 			}
 			line.lineDivMap(url,value,"route_map");
-	})
+	});
 </script>
 </html>

@@ -60,6 +60,13 @@ public class TravelsServiceImpl extends BaseServiceImpl<Travels> implements Trav
 				.addOrderByProperty("t.click",false);	
 		return this.getPageBean(page,rows,hql);
 	}
+
+	public PageBean getTravelsPageList(int page, int i, Integer id) {
+		HqlHelper hql=new HqlHelper(Travels.class, "t")
+				.addWhereCondition("t.user.id=?", id)
+				.addOrderByProperty("t.publicTime",false);	
+		return this.getPageBean(page,i,hql);
+	}
 	
 	
 }

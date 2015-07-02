@@ -8,9 +8,11 @@ import org.springframework.stereotype.Service;
 
 import cn.model.Grid;
 import cn.model.Page;
+import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
 import cn.travel.dao.CollectDao;
 import cn.travel.model.Collect;
+import cn.travel.model.Routebook;
 import cn.travel.service.CollectService;
 import cn.util.HqlHelper;
 
@@ -55,6 +57,12 @@ public class CollectServiceImpl extends BaseServiceImpl<Collect> implements Coll
 			throw new Exception("已经收藏过了,请不要再次收藏");
 		}
 		this.dao.saveEntity(model);
+	}
+
+	public PageBean getRoutePageList(int page, int i, Integer id) {
+		HqlHelper hql=new HqlHelper(Collect.class, "c")
+				.addWhereCondition("c.user.id=?", id);
+		return this.getPageBean(page,i,hql);
 	}
 	
 	

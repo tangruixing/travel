@@ -7,6 +7,7 @@
 <title>旅游线路</title>
 <link rel="stylesheet" href="<%=contextPath %>/front/lib/style.css">
 <link rel="stylesheet" href="<%=contextPath %>/front/lib/pages.css">
+<script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-1.9.1.js"></script>
 <style type="text/css">
 a{
 	text-decoration:none;
@@ -26,7 +27,13 @@ a{
 	width:740px;
 	overflow:hidden;
 	height:120px;
-	margin-top:30px;
+	margin-top:10px;
+	padding:20px 5px;
+	padding-left:0px;
+	border-bottom: thin outset #000000;
+}
+.content:hover{
+	background-color:#ecebeb;
 }
 .content header{
 	border-radius: 10px;
@@ -76,7 +83,24 @@ footer{
 	width: 700px;
 	margin-bottom:20px;
 }
-
+.button{
+	background: #006666;
+	display: inline-block;
+	text-decoration: none;
+	border-radius: 5px;
+	border-collapse: collapse;
+	padding:4px 8px;
+	word-break:break-all;
+	color: #fff;
+	font-size:14px;
+}
+.button a{
+	color: #fff;
+}
+input{
+	font-size:18px;
+	border-radius: 5px;
+}
 </style>
 </head>
 
@@ -85,7 +109,15 @@ footer{
 
 <jsp:include page="${contextPath}/front/nav.jsp"></jsp:include>
 
-
+<s:if test="#request.routeType==0">
+	<script type="text/javascript">
+		$("nav ul li:eq(2)").css("background-color","#006666");
+	</script>
+</s:if><s:else>
+	<script type="text/javascript">
+		$("nav ul li:eq(3)").css("background-color","#006666");
+	</script>
+</s:else>
 
 
 

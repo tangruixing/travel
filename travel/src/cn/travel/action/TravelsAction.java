@@ -118,7 +118,7 @@ public void doSave() {
 	}
 	
 	public String toPersonList(){		
-		pageBean=travelsService.getTravelsPageList(this.page,3);
+		pageBean=travelsService.getTravelsPageList(this.page,3,this.loginUser.getId());
 		return goUI("personList.jsp");
 	}
 }

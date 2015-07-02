@@ -409,7 +409,7 @@ $(function(){
 	})
 
 	//从photos.json这个本地的json文件中加载幻灯片图像
-    slider.setPhotos([{"src":"<%=contextPath%>/front/images/lunbo-1.jpg"},{"src":"<%=contextPath%>/front/images/lunbo-2.jpg"},{"src":"<%=contextPath%>/front/images/lunbo-3.jpg"}]);
+    slider.setPhotos([{"src":"<%=contextPath%>/front/images/lunbo-1.jpg","link":"#"},{"src":"<%=contextPath%>/front/images/lunbo-2.jpg","link":"#"},{"src":"<%=contextPath%>/front/images/lunbo-3.jpg","link":"#"}]);
   });
   
 

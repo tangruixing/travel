@@ -83,6 +83,21 @@ public class CollectAction extends BaseAction<Collect>{
 		}
 	}
 	
+	public String toPersonRouteList(){
+		pageBean=collectService.getRoutePageList(page, 3, this.loginUser.getId());
+		return goUI("personRouteList.jsp");
+	}
 	
-	
+	public void cancel(){
+		j=new Json();
+		try{
+			collectService.batchCollectDelete(this.model.getId().toString());		
+			j.setSuccess(true);
+			j.setMsg("取消成功");
+		}catch(Exception e){
+			j.setMsg("取消失败："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+	}
 }

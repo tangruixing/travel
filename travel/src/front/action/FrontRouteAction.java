@@ -11,8 +11,10 @@ import cn.model.Json;
 import cn.travel.action.BaseAction;
 import cn.travel.model.Route;
 import cn.travel.model.Routeplan;
+import cn.travel.model.User;
 import cn.travel.service.RouteService;
 import cn.travel.service.RouteplanService;
+import cn.util.ConfigUtil;
 
 @Controller("frontRouteAction")
 @Scope("prototype")
@@ -66,7 +68,8 @@ public class FrontRouteAction extends BaseAction<Route> {
 	 * @return
 	 */
 	public String toDetail() {
-		this.model = routeService.getRouteDetail(this.model.getId(),this.loginUser);
+		User user=(User)this.session.get(ConfigUtil.loginUserKey);
+		this.model = routeService.getRouteDetail(this.model.getId(),user);
 		return goUI("detail.jsp");
 	}
 

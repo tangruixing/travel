@@ -156,6 +156,10 @@ a{
 	top:-15px;
 	z-index:1000;
 }
+#l-map{
+	position:relative;
+	top:-30px;
+}
 </style>
 </head>
 
@@ -185,9 +189,13 @@ a{
 
 <div id="map">
 	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
+	<div id="l-map" style="height:100%" class="dis"></div>
 </div>
-<div id="map">
-	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
-</div>
+
+<div style="height:30px;clear:both"></div>
+<s:action name="front_Friendlink_toList" executeResult="true" namespace="/front">
+	<s:param name="page">1</s:param>
+	<s:param name="rows">18</s:param>
+</s:action>
 </body>
 </html>

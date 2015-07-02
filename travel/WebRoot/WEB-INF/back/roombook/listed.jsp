@@ -4,7 +4,7 @@
 <div>
 <form id="pageForm" action="<%=contextPath %>/roombook_toListed.do">
 <s:iterator value="pageBean.recordList">
-        <div class="roombook">   <h2><a href="<%=contextPath %>/front/front_Hotel_toDetail.do?id=${roomstyle.hotel.id}">${roomstyle.hotel.realName }</a></h2><h3>${roomstyle.realName }</h3>           
+        <div class="roombook">   <h2><a href="<%=contextPath %>/front/front_Hotel_toDetail.do?id=${roomstyle.hotel.id}">${roomstyle.hotel.realName }</a></h2><h3 style="margin-left:10px">${roomstyle.realName }</h3>           
             	<div>
             	预定时间：<fmt:formatDate value="${creatDate}" pattern="yyyy-MM-dd HH:mm:ss"/>&nbsp;&nbsp;&nbsp;&nbsp;
             	入住时间：<fmt:formatDate value="${enterDate}" pattern="yyyy-MM-dd HH:mm:ss"/>

@@ -30,6 +30,7 @@ public class FrontUserAction extends BaseAction<User>{
 		try{	
 			String newPwd=DigestUtils.md5Hex(model.getPwd());
 			model.setPwd(newPwd);
+			model.setMessage(0);
 			userService.saveEntity(this.model);
 			j.setSuccess(true);
 			j.setMsg("注册成功");

@@ -4,7 +4,7 @@
 <div id="search">
 	<div>
     	<form id="pageForm" action="<%=contextPath %>/front/front_Route_toList.do">
-        	去哪儿：<s:textfield name="realName" />
+        	<span style="font-size:18px;">去哪儿：</span><s:textfield name="realName" />
         	<s:hidden name="routeType"></s:hidden>
         	<input value="搜索" class="button" id="pageBtn" type="button">
         </form>

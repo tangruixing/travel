@@ -154,7 +154,7 @@ input{
 	border-radius: 5px;
 }
 #hotelpika{
-	margin-top:-20px;
+	width:1000px;
 }
 #map{
 	width:500px;
@@ -192,6 +192,10 @@ input{
 	position:relative;
 	top:5px;
 	margin:0 5px;
+}
+#l-map{
+	position:relative;
+	top:-30px;
 }
 </style>
 <script language="javascript">
@@ -335,7 +339,7 @@ function closebyID(id){
         <section>￥<span>130</span>起</section>
         <section>${address}</section>
         <section><a href="javascript:showMapbyID('map','${longitude}','${latitude}')"><img src="images/didianbiao.png">去这里</a></section>
-        <section class="pikachoose" id="hotelpika"></section>
+        <section class="pikachoose" id="hotelpika" ></section>
 		<table class="bordered" border="0" width="100%">
   			<tbody>
   				<tr>

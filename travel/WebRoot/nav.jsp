@@ -11,7 +11,7 @@
             <li><a href="<%=contextPath%>/front/front_Route_toIndex.do?routeType=0">旅游路线</a></li>
             <li><a href="<%=contextPath%>/front/front_Route_toIndex.do?routeType=1">自由行</a></li>
             <li><a href="<%=contextPath%>/front/front_Travels_toIndex.do">游记</a></li>
-            <li><a href="<%=contextPath%>/message_goMsg.do">留言</a></li>            
+            <li><a href="<%=contextPath%>/message_goMsg.do">留言<s:if test="#session.loginUser.message==2">*</s:if></a></li>            
         </ul>
         <div>
         <s:if test="#session.loginUser==null">
