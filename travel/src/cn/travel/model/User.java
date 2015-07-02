@@ -20,6 +20,15 @@ public class User implements Serializable{
 	private java.lang.Integer sex;		/*性别:男1，女2*/
 	private java.util.Date birth;		/*出生日期*/
 	//columns END
+	
+	private int message=0;  // 0：用户没有问题  1：留言未回复 2：已回复留言
+	public int getMessage() {
+		return message;
+	}
+
+	public void setMessage(int message) {
+		this.message = message;
+	}
 
 	public boolean newMessage=false;//用户是否最新留言
 	

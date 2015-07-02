@@ -72,6 +72,7 @@
      							return "保密";
      						}
                         	 
+
                             /*  var str="";
                               str+=sy.fs('<img   src="{0}"  onclick="demo1(\'{1}\')"  title="1" />',"../style/images/myIcons/key_add.png",row.id);
                               str+="&nbsp"

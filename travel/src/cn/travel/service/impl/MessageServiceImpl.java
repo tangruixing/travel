@@ -10,10 +10,10 @@ import cn.model.Grid;
 import cn.model.Page;
 import cn.model.PageBean;
 import cn.travel.dao.BaseDao;
+import cn.travel.dao.UserDao;
 import cn.travel.model.Message;
 import cn.travel.model.User;
 import cn.travel.service.MessageService;
-import cn.travel.service.UserService;
 import cn.util.HqlHelper;
 
 @Service("messageService")
@@ -29,13 +29,10 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 	/**
 	 * 如果涉及多表操作 spring 注入 dao
 	 */
-	/*
-	@Resource(name="newsDao")
-	private NewsDao newsDao;
-	*/
+
 	
-	@Resource(name="userService")
-	private UserService userService;
+	@Resource(name="userDao")
+	private UserDao userDao;
 
 	public Grid getMessageGrid(Page p, Message model) {
 		
@@ -46,7 +43,7 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 				   .addWhereCondition("u.id =(select m.user.id from Message m order by m.createDate asc)")//
 				  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
 		
-		return userService.getPageGrid(p.getPage(), p.getRows(), hql);
+		return userDao.getPageGrid(p.getPage(), p.getRows(), hql);
 	}
 
 	
@@ -57,13 +54,19 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 		this.dao.batchEntityByHQL(hql);
 	}
 	
-	public PageBean getMessagePageList(int page, int rows, User model) {
-		
+
+	public PageBean lookMessagePageList(int page, int rows, User model) {
+		userDao.batchEntityByHQL("update User u set u.message=0 where u.id=?", model.getId());
 		HqlHelper hql=new HqlHelper(Message.class,"m")//
 					.addWhereCondition("m.user.id=?", model.getId())
-					.addOrderByProperty("m.createDate",false);
-		
+					.addOrderByProperty("m.createDate",false);		
 		return this.getPageBean(page, rows, hql);
+	}
+
+	public void saveMsg(Message model,Integer id) {
+		// TODO Auto-generated method stub
+		dao.saveEntity(model);
+		userDao.batchEntityByHQL("update User u set u.message=1 where u.id=?", id);
 	}
 	
 }

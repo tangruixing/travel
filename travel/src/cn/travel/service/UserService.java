@@ -16,5 +16,6 @@ public interface UserService extends BaseService<User>{
 	void editPassword(String newPwd,Integer uid);
 
 	void canRegister(User model) throws Exception;
+
 	
 }

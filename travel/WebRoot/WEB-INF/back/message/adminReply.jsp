@@ -1,8 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/pub/inc.jspf"%>
-<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>
-<%@ include file="/WEB-INF/pub/ueditor.jspf"%>
-<%@ include file="/WEB-INF/pub/webuploader.jspf"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%		
+	String contextPath=request.getContextPath();
+%>
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -107,14 +108,7 @@
 			});
 
 			// Validate the form manually
-			$("#checkSubmit").on('click', function() {
 
-				var logoUrl = $("#hotel_logo_input").val();
-				if (logoUrl.length <= 0) {
-					jNotify("请上传 LOGO !!");
-					return false;
-				}
-			});
 
 			$('#resetBtn').click(function() {
 				$('#messageForm').data('bootstrapValidator').resetForm(true);

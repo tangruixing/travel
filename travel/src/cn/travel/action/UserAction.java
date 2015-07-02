@@ -82,6 +82,7 @@ public class UserAction extends BaseAction<User>{
 			j.setSuccess(true);
 			j.setValid(true);
 			j.setMsg("注册成功");
+
 		}catch(Exception e){
 			j.setMsg("失败："+e.getMessage());
 		}finally{

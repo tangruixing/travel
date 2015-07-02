@@ -87,17 +87,16 @@ public class RoombookServiceImpl extends BaseServiceImpl<Roombook> implements Ro
 	}
 	
 	public PageBean getRoombookPageListed(int page, int rows, Date now,Integer id){
-		/*HqlHelper hql=new HqlHelper(Roombook.class, "r")
+		HqlHelper hql=new HqlHelper(Roombook.class, "r")
 				.addWhereCondition("r.enterDate<?", now)
 				.addWhereCondition("r.user.id=?", id)
 				.addOrderByProperty("r.creatDate",false);	
-		return this.getPageBean(page,rows,hql);*/
-		return null;
+		return this.getPageBean(page,rows,hql);
 	};
 	
 	public PageBean getUnRoombookPageList(int page, int rows, Date now,Integer id){
 		HqlHelper hql=new HqlHelper(Roombook.class, "r")
-				.addWhereCondition("r.enterDate>?", now)
+				.addWhereCondition("r.enterDate>=?", now)
 				.addWhereCondition("r.user.id=?", id)
 				.addOrderByProperty("r.creatDate",false);	
 		return this.getPageBean(page,rows,hql);
