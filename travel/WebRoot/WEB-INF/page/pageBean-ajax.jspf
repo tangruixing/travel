@@ -88,15 +88,7 @@ function gotoPageByType(pageNum){
 			$list.append(html);
 		}
 	});
-/* 	 $.ajax( {  			 	
-	        url : $form.attr('action') + "?page="+pageNum, 
-	        type: "POST",
-	        cache : false,    
-	        success : function(html) {  
-	        //把结果页面追加到id为lbox的DIV   
-	       
-	    	}  
-	    });		  */
+
 }
 
 

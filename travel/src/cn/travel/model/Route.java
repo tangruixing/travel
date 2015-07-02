@@ -38,6 +38,7 @@ public class Route implements Serializable{
 	private String msg;
 	private boolean canReg=true;
 	private boolean canCollect=true;
+	private boolean cancel=true;
 	
 	
 	private User user;
@@ -202,6 +203,18 @@ public class Route implements Serializable{
 
 	public void setCanCollect(boolean canCollect) {
 		this.canCollect = canCollect;
+	}
+
+	public boolean isCancel() {
+		if(new Date().getTime()>=this.startDate.getTime()){
+			cancel=false;
+			msg="无法报名,已经超过报名截止时间";
+		}
+		return cancel;
+	}
+
+	public void setCancel(boolean cancel) {
+		this.cancel = cancel;
 	}
 
 	

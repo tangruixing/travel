@@ -2,17 +2,13 @@ package cn.travel.action;
 
 import java.util.ArrayList;
 import java.util.Date;
-import java.util.Iterator;
 import java.util.List;
-import java.util.Map;
 
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
 import org.springframework.context.annotation.Scope;
 import org.springframework.stereotype.Controller;
-
-import com.opensymphony.xwork2.ActionContext;
 
 import cn.model.Constant;
 import cn.model.Grid;
@@ -33,6 +29,7 @@ public class MessageAction extends BaseAction<Message>{
 	
 	@Resource(name="messageService")
 	private MessageService messageService;
+	
 	
 	/**
 	 * 
@@ -81,8 +78,13 @@ public class MessageAction extends BaseAction<Message>{
 	public void doSave() {
 		
 		j=new Json();
-		try{			
-			messageService.saveOrUpdateEntity(this.model);
+		try{
+			User user=new User();
+			user.setId(model.getUserId());
+			this.model.setAdmin(this.loginUser);
+			this.model.setCreateDate(new Date());
+			this.model.setUser(user);
+			messageService.adminReply(this.model);
 			j.setSuccess(true);
 			j.setMsg("操作成功");
 		}catch(Exception e){
@@ -98,9 +100,23 @@ public class MessageAction extends BaseAction<Message>{
 	 * 添加操作跳转
 	 * @return
 	 */
-	public String toSave(){
-		
+	public String toAdminReply(){
 		return goUI("adminReply.jsp");
+	}
+	
+	public String adminLookMessageList(){
+		pageBean=this.messageService.adminLookMessageList(this.page,rows,model);
+		List<Message> list=pageBean.getRecordList();
+		List newList=new ArrayList<Message>();
+		for (int i = 0; i < list.size(); i++) {
+			Message message=list.get(i);
+			if(message.getAdmin()!=null){
+				message.setAdminId(message.getAdmin().getId());				
+			}
+			newList.add(message);
+		}
+		pageBean.setRecordList(newList);
+		return goUI("adminReplyList.jsp");
 	}
 	
 	/**
@@ -112,10 +128,13 @@ public class MessageAction extends BaseAction<Message>{
 		this.model=messageService.getEntity(model.getId());
 		return goUI("save.jsp");
 	}
+
 	
 	public String browseMsg(){
 		User user=(User)this.session.get(ConfigUtil.loginUserKey);
-		pageBean=messageService.getMessagePageList(this.page,5, user);
+		pageBean=messageService.lookMessagePageList(this.page,5, user);
+		user.setMessage(0);
+		this.session.put(ConfigUtil.loginUserKey, user);
 		List<Message> list=pageBean.getRecordList();
 		List newList=new ArrayList<Message>();
 		for (int i = 0; i < list.size(); i++) {
@@ -135,7 +154,7 @@ public class MessageAction extends BaseAction<Message>{
 		Date now = new Date(); 
 		model.setCreateDate(now);
 		model.setStats(Constant.MESSAGE_UNSTATUS);
-		messageService.saveEntity(model);
+		messageService.saveMsg(model,this.loginUser.getId());
 		return goAction("message_goMsg.do");
 	}
 	

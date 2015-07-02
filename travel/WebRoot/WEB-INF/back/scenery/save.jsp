@@ -19,7 +19,7 @@
 	<c:set value="景点" var="stitle"></c:set>
 </s:else>
 
- <s:set value="#{0:'否',1:'是'}" var="booleanMap"></s:set>
+ <s:set value="#{false:'否',true:'是'}" var="booleanMap"></s:set>
 <s:set value="#{1:'A',2:'AA',3:'AAA',4:'AAAA',5:'AAAAA'}" var="gradeMap"></s:set>
  <div class="container">
  

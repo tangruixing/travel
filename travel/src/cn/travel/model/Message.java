@@ -19,6 +19,8 @@ public class Message implements Serializable{
 	
 	private java.lang.Integer userId;		/*用户编号id*/
 	private java.lang.Integer adminId;		/*用户编号id*/
+	
+	private String userName;
 	public Message(){
 	}
 
@@ -93,6 +95,16 @@ public class Message implements Serializable{
 			this.admin = admin;
 		}
 
+		public String getUserName() {
+			return userName;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+
+		
+		
 		
 }
 

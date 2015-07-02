@@ -12,7 +12,7 @@
         <many-to-one name="user" class="cn.travel.model.User">
         	<column name="USEID" />
         </many-to-one>
-        <many-to-one name="route" class="cn.travel.model.Route">
+        <many-to-one name="route" class="cn.travel.model.Route" lazy="false">
         	<column name="ROUID" />
         </many-to-one>
         <many-to-one name="scenery" class="cn.travel.model.Scenery">

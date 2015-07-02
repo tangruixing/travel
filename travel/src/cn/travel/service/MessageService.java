@@ -12,5 +12,11 @@ public interface MessageService extends BaseService<Message>{
 	Grid getMessageGrid(Page p, Message model);
 
 	void batchMessageDelete(String deleteIds);
-	PageBean getMessagePageList(int page, int rows, User model);
+	PageBean lookMessagePageList(int page, int rows, User model);
+
+	void saveMsg(Message model, Integer id);
+
+	PageBean adminLookMessageList(int page, int rows, Message model);
+
+	void adminReply(Message model);
 }

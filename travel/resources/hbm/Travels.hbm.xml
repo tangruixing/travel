@@ -9,10 +9,12 @@
             <generator class="identity" />
         </id>
         
-        <many-to-one name="user" class="cn.travel.model.User" lazy="false">
+        <many-to-one name="user" class="cn.travel.model.User">
         	<column name="USEID" />
         </many-to-one>
        
+        <property name="userName" formula="(select u.realName from user u where u.id=useid)"></property>
+        
         <property name="title" type="java.lang.String">
             <column name="TITLE" />
         </property>

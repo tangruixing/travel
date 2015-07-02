@@ -16,6 +16,7 @@
             <column name="ROOID" />
         </many-to-one>
         
+         <property name="userName" formula="(select u.realName from user u where u.id=useid)"></property>
         <property name="creatDate" type="java.util.Date">
             <column name="CREATDATE" />
         </property>

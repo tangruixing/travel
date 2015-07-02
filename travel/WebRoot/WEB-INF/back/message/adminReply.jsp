@@ -1,8 +1,9 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-<%@ include file="/WEB-INF/pub/inc.jspf"%>
-<%@ include file="/WEB-INF/pub/bootstrap.jspf"%>
-<%@ include file="/WEB-INF/pub/ueditor.jspf"%>
-<%@ include file="/WEB-INF/pub/webuploader.jspf"%>
+<%@ taglib prefix="s" uri="/struts-tags"%>
+<%		
+	String contextPath=request.getContextPath();
+%>
+
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 <html>
@@ -19,25 +20,16 @@
 					<h2>回复</h2>
 				</div>
 
+				<s:action name="message_adminLookMessageList" executeResult="true">
+					<s:param name="userId">${userId}</s:param>
+					<s:param name="userName">${userName}</s:param>
+					<s:param name="page">1</s:param>
+					<s:param name="rows">5</s:param>
+				</s:action>
 
-
-				<blockquote>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Integer posuere erat a ante.</p>
-					<footer>Someone famous in <cite title="Source Title">Source
-						Title</cite></footer>
-				</blockquote>
-
-				<blockquote class="blockquote-reverse">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Integer posuere erat a ante.</p>
-					<footer>Someone famous in <cite title="Source Title">Source
-						Title</cite></footer>
-				</blockquote>
 
 				<form id="messageForm" method="post" class="form-horizontal"
 					action="<%=contextPath%>/message_doSave.do">
-					<s:hidden name="adminId" />
 					<!-- 管理员回复-->
 					<s:hidden name="userId" />
 					<!-- 给用户-->
@@ -107,14 +99,7 @@
 			});
 
 			// Validate the form manually
-			$("#checkSubmit").on('click', function() {
 
-				var logoUrl = $("#hotel_logo_input").val();
-				if (logoUrl.length <= 0) {
-					jNotify("请上传 LOGO !!");
-					return false;
-				}
-			});
 
 			$('#resetBtn').click(function() {
 				$('#messageForm').data('bootstrapValidator').resetForm(true);

@@ -95,13 +95,31 @@ public class RoombookAction extends BaseAction<Roombook>{
 		}
 	}
 	
-	public String toList(){	
+	public String toListed(){	
 		Date now=new Date();
-		if(type==1)
-			pageBean=roombookService.getRoombookPageListed(this.page,this.rows,now,this.loginUser.getId());
-		else
-			pageBean=roombookService.getUnRoombookPageList(this.page,this.rows,now,this.loginUser.getId());
-		return goUI("list.jsp");
+		pageBean=roombookService.getRoombookPageListed(this.page,2,now,this.loginUser.getId());
+		return goUI("listed.jsp");
+	}
+	
+	public String toUnList(){	
+		Date now=new Date();
+		pageBean=roombookService.getUnRoombookPageList(this.page,2,now,this.loginUser.getId());
+		return goUI("unlist.jsp");
+	}
+	
+	public void cancel(){
+		j=new Json();
+		try{
+			roombookService.batchRoombookDelete(model.getId().toString());
+			j.setSuccess(true);
+			j.setMsg("取消成功");
+		}catch(Exception e){
+			j.setMsg("取消失败："+e.getMessage());
+			e.printStackTrace();
+			logger.info(e.getMessage());
+		}finally{
+			write2Response(j);
+		}
 	}
 	
 }

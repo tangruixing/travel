@@ -215,14 +215,7 @@ function closebyID(id){
 	$("#bookRoute").css("display","none");
 	$("#orderRouteForm").find(":reset").trigger("click");
 }
-<<<<<<< HEAD
 </script>
-=======
-</script>
->>>>>>> refs/heads/gx
->>>>>>> refs/remotes/origin/develop
->>>>>>> refs/heads/develop
->>>>>>> refs/heads/jun
 </head>
 
 <body>

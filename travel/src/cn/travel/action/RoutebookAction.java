@@ -83,6 +83,22 @@ public class RoutebookAction extends BaseAction<Routebook>{
 		}
 	}
 	
+	public String toPersonList(){
+		pageBean=routebookService.getRoutebookPageList(page, 2, this.loginUser.getId());
+		return goUI("personList.jsp");
+	}
 	
+	public void cancel(){
+		j=new Json();
+		try{
+			routebookService.batchRoutebookDelete(model.getId().toString());
+			j.setSuccess(true);
+			j.setMsg("取消成功");
+		}catch(Exception e){
+			j.setMsg("取消失败："+e.getMessage());
+		}finally{
+			write2Response(j);
+		}
+	}
 	
 }

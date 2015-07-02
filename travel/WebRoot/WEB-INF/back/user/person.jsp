@@ -156,6 +156,25 @@ input{
 .travels span{
 	float:right;
 }
+.unshow{
+	display:none;
+}
+.roombook{
+	margin-top:10px;
+	padding-bottom:10px;
+	border-collapse: collapse;
+	border-bottom: thin solid #33cccc;
+}
+.roombook h2,h3{
+	display:inline;
+	color:#33cccc;
+}
+.roombook h2 a{
+	color:#33cccc;
+}
+.roombook div{
+	margin-top:5px;
+}
 </style>
 <script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-1.9.1.js"></script>
 <script type="text/javascript" src="<%=contextPath%>/front/lib/jquery-ui-1.10.3.custom.min.js"></script>
@@ -265,8 +284,39 @@ $(document).ready(function(){
 		    $('#changePsw').ajaxForm(options2); 
 	});
 function show(id){
-	$("#third section").css("display","none");
+	$(".unshow").css("display","none");
 	$("#"+id).css("display","block");
+}
+
+function find(url){
+	$(".unshow").css("display","none");
+	$.post(url,function(html){
+		//console.info(html);
+		if(html){
+			$("#list").empty(); 
+			$("#list").append(html);
+		}
+	});
+	$("#list").css("display","block");
+}
+
+function cancel(url,id){
+	$.ajax({
+		url: url, 
+		data:{"id": id},//
+        type:     'post',        
+        dataType: 'json',     //(依据服务器返回类型进行设置) 
+        success:function(json){
+        	if(json.success)
+        		alert("取消成功！");	         	 
+        	else
+        		alert(json.msg);
+    		history.go(0);
+        },
+        error:function(){
+        	alert("发生错误");
+        }
+	});
 }
 </script>
 </head>
@@ -281,20 +331,20 @@ function show(id){
             <li><a href="javascript:show('s03')">修改密码</a></li>
             <li>我的酒店订单</li>
        	<ul class="ul2">
-                	<li><a href="javascript:show('s04')">已入住</a></li>
-                    <li><a href="javascript:show('s05')">未入住</a></li>
+                	<li><a href="javascript:find('<%=contextPath %>/roombook_toListed.do')">已入住</a></li>
+                    <li><a href="javascript:find('<%=contextPath %>/roombook_toUnList.do')">未入住</a></li>
                 </ul>
-        <li><a href="javascript:show('s06')">预定的线路</a></li>
-        <li><a href="javascript:show('s07')">收藏的线路</a></li>
+        <li><a href="javascript:javascript:find('<%=contextPath %>/routebook_toPersonList.do')">预定的线路</a></li>
+        <li><a href="javascript:javascript:find('<%=contextPath %>/travels_toPersonList.do')">收藏的线路</a></li>
         <li>我的游记</li>
             	<ul class="ul2">
-                	<li><a href="javascript:show('s08')">查看游记</a></li>
+                	<li><a href="javascript:find('<%=contextPath %>/travels_toPersonList.do')">查看游记</a></li>
                     <li><a href="<%=contextPath%>/travels_goNewTravel.do">编写游记</a></li>
                 </ul>
         </ul>
     </aside>
     <div class="thridiv">
-    	<section id="s01" style="display:block">
+    	<div id="s01" style="display:block" class="unshow">
         	<h2>个人信息</h2>
             <hr>
             <table>
@@ -321,8 +371,8 @@ function show(id){
              </table>
              <hr>
              <span class="button"><a href="javascript:show('s02')">编辑</a></span>
-        </section>
-        <section id="s02">
+        </div>
+        <div id="s02" class="unshow">
         	<h2>个人信息修改</h2>
             <hr>
             <form id="changeInfoform">
@@ -353,8 +403,8 @@ function show(id){
              <span><input type="submit" value="提交" class="button"></span>
              
           </form>
-        </section>
-        <section id="s03">
+        </div>
+        <div id="s03" class="unshow">
         	<h2>修改密码</h2>
             <hr>
             <form id="changePsw">
@@ -383,43 +433,10 @@ function show(id){
                 <tr><td colspan="2"><input type="submit" value="修改" class="button"></td></tr>
             </table>
             </form>
-        </section>
+        </div>
         
-        <section id="s04">
-        	<s:action name="roombook_toList" executeResult="true">
-				<s:param name="page">1</s:param>
-				<s:param name="type">1</s:param>
-				<s:param name="rows">5</s:param>
-			</s:action>
-        </section>
-        
-        <%-- <section id="s05">
-        	<s:action name="travels_toList" executeResult="true">
-				<s:param name="page">1</s:param>
-				<s:param name="rows">5</s:param>
-			</s:action>
-        </section>
-         
-        <section id="s06">
-        	<s:action name="travels_toList" executeResult="true">
-				<s:param name="page">1</s:param>
-				<s:param name="rows">5</s:param>
-			</s:action>
-        </section>
-          
-        <section id="s07">
-        	<s:action name="travels_toList" executeResult="true">
-				<s:param name="page">1</s:param>
-				<s:param name="rows">5</s:param>
-			</s:action>
-        </section> --%>
-        
-        <section id="s08">
-        	<s:action name="travels_toList" executeResult="true">
-				<s:param name="page">1</s:param>
-				<s:param name="rows">5</s:param>
-			</s:action>
-        </section>
+        <div id="list" class="unshow"></div>
+       
     </div>
 </div>
 <footer class="footer">

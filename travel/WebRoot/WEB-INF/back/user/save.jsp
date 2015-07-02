@@ -18,6 +18,7 @@
 
                     <form id="userForm" class="form-horizontal" method="post" action="<%=contextPath %>/user_doSaveOrUpdate.do">
                     	<s:hidden name="id" />
+                    	
                         <div class="form-group">
                             <label class="col-lg-3 control-label">手机号</label>
                             <div class="col-lg-5">
@@ -47,7 +48,7 @@
 						<div class="form-group">
                             <label class="col-lg-3 control-label">邮箱</label>
                             <div class="col-lg-9">
-                               	  <s:textfield cssClass="form-control" name="eamil" placeholder="shaonian@qq.com" />
+                               	  <s:textfield cssClass="form-control" name="email" placeholder="shaonian@qq.com" />
                             </div>
                         </div>
                         
@@ -108,7 +109,9 @@ $(document).ready(function() {
                         },
                         phone: {
                         	country: 'CN'
-                        },
+                        }
+                        ,
+                        <s:if test="id==null">
                         remote: {
                             type: 'POST',
                             url: '<%=contextPath%>/user_canRegister.do',
@@ -116,6 +119,7 @@ $(document).ready(function() {
                             delay: 1000,
                             dataType: "json"           //接受数据格式
                         },
+                        </s:if>
                 }
             },
             role: {

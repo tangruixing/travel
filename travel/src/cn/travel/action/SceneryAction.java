@@ -106,7 +106,9 @@ public class SceneryAction extends BaseAction<Scenery>{
 	public String toUpdate(){
 		
 		this.model=sceneryService.getEntity(model.getId());
-		this.model.setSceId(this.model.getScenery().getId());
+		if(this.model.getScenery()!=null){
+			this.model.setSceId(this.model.getScenery().getId());
+		}
 		return goUI("save.jsp");
 	}
 	
