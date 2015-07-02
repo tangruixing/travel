@@ -78,8 +78,13 @@ public class MessageAction extends BaseAction<Message>{
 	public void doSave() {
 		
 		j=new Json();
-		try{			
-			messageService.saveOrUpdateEntity(this.model);
+		try{
+			User user=new User();
+			user.setId(model.getUserId());
+			this.model.setAdmin(this.loginUser);
+			this.model.setCreateDate(new Date());
+			this.model.setUser(user);
+			messageService.adminReply(this.model);
 			j.setSuccess(true);
 			j.setMsg("操作成功");
 		}catch(Exception e){
@@ -95,9 +100,24 @@ public class MessageAction extends BaseAction<Message>{
 	 * 添加操作跳转
 	 * @return
 	 */
-	public String toSave(){
 
+	public String toAdminReply(){
 		return goUI("adminReply.jsp");
+	}
+	
+	public String adminLookMessageList(){
+		pageBean=this.messageService.adminLookMessageList(this.page,rows,model);
+		List<Message> list=pageBean.getRecordList();
+		List newList=new ArrayList<Message>();
+		for (int i = 0; i < list.size(); i++) {
+			Message message=list.get(i);
+			if(message.getAdmin()!=null){
+				message.setAdminId(message.getAdmin().getId());				
+			}
+			newList.add(message);
+		}
+		pageBean.setRecordList(newList);
+		return goUI("adminReplyList.jsp");
 	}
 	
 	/**

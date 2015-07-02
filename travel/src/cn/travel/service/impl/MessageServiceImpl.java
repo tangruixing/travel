@@ -40,7 +40,7 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());*/
 		
 		HqlHelper hql=new HqlHelper(User.class,"u")//
-				   .addWhereCondition("u.id =(select m.user.id from Message m order by m.createDate asc)")//
+				   .addWhereCondition("u.message=1")//
 				  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
 		
 		return userDao.getPageGrid(p.getPage(), p.getRows(), hql);
@@ -56,7 +56,10 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 	
 
 	public PageBean lookMessagePageList(int page, int rows, User model) {
-		userDao.batchEntityByHQL("update User u set u.message=0 where u.id=?", model.getId());
+
+		if(model.getMessage()==2){
+			userDao.batchEntityByHQL("update User u set u.message=0 where u.id=?", model.getId());			
+		}
 		HqlHelper hql=new HqlHelper(Message.class,"m")//
 					.addWhereCondition("m.user.id=?", model.getId())
 					.addOrderByProperty("m.createDate",false);		
@@ -68,5 +71,23 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 		dao.saveEntity(model);
 		userDao.batchEntityByHQL("update User u set u.message=1 where u.id=?", id);
 	}
+
+
+	public PageBean adminLookMessageList(int page, int rows,Message model) {
+		HqlHelper hql=new HqlHelper(Message.class,"m")//
+				.addWhereCondition("m.user.id=?", model.getUserId())
+				.addOrderByProperty("m.createDate",false);		
+		return this.getPageBean(page,rows,hql);
+	}
+
+
+	public void adminReply(Message model) {
+		
+		Integer userId = model.getUserId();
+		userDao.batchEntityByHQL("update User u set u.message=2 where u.id=?",userId);
+		this.saveEntity(model);
+	}
+	
+	
 	
 }

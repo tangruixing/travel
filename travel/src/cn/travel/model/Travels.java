@@ -15,6 +15,7 @@ public class Travels implements Serializable{
 	//columns END
 	
 	private User user;
+	private String userName;
 
 	public Travels(){
 	}
@@ -82,6 +83,16 @@ public class Travels implements Serializable{
 			this.user = user;
 		}
 
+		public String getUserName() {
+			return userName;
+		}
+
+		public void setUserName(String userName) {
+			this.userName = userName;
+		}
+
+		
+		
 	
 }
 

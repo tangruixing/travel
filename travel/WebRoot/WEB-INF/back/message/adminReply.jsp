@@ -20,25 +20,16 @@
 					<h2>回复</h2>
 				</div>
 
+				<s:action name="message_adminLookMessageList" executeResult="true">
+					<s:param name="userId">${userId}</s:param>
+					<s:param name="userName">${userName}</s:param>
+					<s:param name="page">1</s:param>
+					<s:param name="rows">5</s:param>
+				</s:action>
 
-
-				<blockquote>
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Integer posuere erat a ante.</p>
-					<footer>Someone famous in <cite title="Source Title">Source
-						Title</cite></footer>
-				</blockquote>
-
-				<blockquote class="blockquote-reverse">
-					<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-						Integer posuere erat a ante.</p>
-					<footer>Someone famous in <cite title="Source Title">Source
-						Title</cite></footer>
-				</blockquote>
 
 				<form id="messageForm" method="post" class="form-horizontal"
 					action="<%=contextPath%>/message_doSave.do">
-					<s:hidden name="adminId" />
 					<!-- 管理员回复-->
 					<s:hidden name="userId" />
 					<!-- 给用户-->
