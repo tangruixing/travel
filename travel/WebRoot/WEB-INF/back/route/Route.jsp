@@ -37,7 +37,7 @@
 
 <script type="text/javascript">
         $(function () {
-        	var gdOptions={
+        	var pay_gdOptions={
         			columns:[[{
                         title : '用户编号',
                         field : 'id',// 绑定属性名字,后台返回的json数据
@@ -61,6 +61,11 @@
                             str+=sy.fs('<img   src="{0}"  style="width:50px;height:50px"/>',path);
                             return str;
                        }
+						},{
+						title : '报名截止',
+						field : 'regDate',
+						width : 100,
+						sortable : true
 						},{
 						title : '出发时间',
 						field : 'startDate',
@@ -101,7 +106,49 @@
                     }]]
         	};
         	
-        	
+        	var free_gdOptions={
+        			columns:[[{
+                        title : '用户编号',
+                        field : 'id',// 绑定属性名字,后台返回的json数据
+                        width : 100,// 必须要给，大于50
+                        sortable : true,// 鼠标点击可以升序/降序切换
+                        checkbox : true
+                    	},{
+						title : '名称',
+						field : 'realName',
+						width : 100,
+						sortable : true
+						},{
+						title : 'logo',
+						field : 'logo',
+						width : 100,
+						sortable : true,
+						formatter: function (value, row, index) {
+							console.info(sy.contextPath+"/"+row.logo);
+							var path=sy.contextPath+"/"+row.logo;
+                      		var str="";
+                            str+=sy.fs('<img   src="{0}"  style="width:50px;height:50px"/>',path);
+                            return str;
+                       }
+						},{
+						title : '预计人均消费',
+						field : 'money',
+						width : 100,
+						sortable : true
+						},{
+                        title : '操作',
+                        field : 'action',
+                        width : 200,
+                        formatter: function (value, row, index) {
+                        	
+                       		 var str="";
+                             str+=sy.fs('<a href="{0}?rouId={1}&rname={2}">地点</a>',"<%=contextPath%>/routeplan_toIndex.do",row.id,row.realName);
+                             str+="&nbsp"
+                             str+=sy.fs('<input  type="button" onclick="showMap(\'{0}\')" class="easyui-linkbutton" value="地图" />',row.id);
+                             return str;
+                        }
+                    }]]
+        	};
                     
         	var pay_dlgOptions={
             		title: '旅游线路',
@@ -123,10 +170,13 @@
         		    },
         	};
         	var dlgOptions=null;
+        	var gdOptions=null;
         	if(${routeType}==0){//旅游线路
+        		gdOptions=pay_gdOptions;
         		dlgOptions=pay_dlgOptions;
         	}
         	if(${routeType}==1){//自由行
+        		gdOptions=free_gdOptions;
         		dlgOptions=free_dlgOptions;
         	}
         	

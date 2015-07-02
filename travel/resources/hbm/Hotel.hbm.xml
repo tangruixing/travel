@@ -29,12 +29,14 @@
         <property name="grade" type="java.lang.Integer">
             <column name="GRADE" />
         </property>
-        <property name="picture" type="java.lang.String">
+        <property name="picture" type="text">
             <column name="PICTURE" />
         </property>
         <property name="telphone" type="java.lang.String">
             <column name="TELPHONE" />
         </property>
+        
+        <property name="introduction" type="text" column="introduction"></property>
         
         <set name="roomstyles" lazy="true" inverse="true">
         	<key column="HOTID"></key>

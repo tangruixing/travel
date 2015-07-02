@@ -336,6 +336,8 @@ function closebyID(id){
         <center><input value="提交" class="button" style="margin-top:10px;" id="checkOrderRouteSubmit" type="button"></center>
     </form>
 </div>
+
+
 <script type="text/javascript">
 	$(function(){
 		  var url=sy.contextPath + '/front/front_Route_loadRouteplanWithRid.do';
@@ -347,4 +349,6 @@ function closebyID(id){
 			line.lineDivMap(url,value,"route_map");
 	});
 </script>
+
+
 </html>

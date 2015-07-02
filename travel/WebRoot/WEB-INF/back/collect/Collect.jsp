@@ -59,7 +59,7 @@
         	var dlgOptions={
             		title: '收藏',
           		    width: '80%',
-          		    height: '60%',
+          		    height: '80%',
           			onClose:function(){
         		  		parent.UE.getEditor('collect_content').destroy();
         		  		parent.mainDlg.parentDlg.dialog('destroy');

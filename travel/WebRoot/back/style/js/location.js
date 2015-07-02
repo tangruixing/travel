@@ -188,6 +188,15 @@ var Location={
           
     },
     
+    showDlgMap:function(lg, lz,z) {
+		var dlg=$("#mapDlg");//地图显示dialog
+		 dlg.show().dialog('open').dialog('setTitle','活动路线地图');//['+row.name+']
+		 Location.showLocation(lg,lz,z);
+	
+
+	},
+    
+    
     showLocation:function(lg,lt,z){
     	console.info(lg);
     	console.info(lt);

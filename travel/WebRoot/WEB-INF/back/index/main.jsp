@@ -10,7 +10,7 @@
     <meta charset="UTF-8">
     <title></title>
     <link href="<%=contextPath%>/back/style/css/default.css" rel="stylesheet" type="text/css" />   
-    <link href="<%=contextPath%>/jslib/bootstrap-3.3.4-dist/css/ace.min.css" rel="stylesheet" type="text/css" />   
+   <%--  <link href="<%=contextPath%>/jslib/bootstrap-3.3.4-dist/css/ace.min.css" rel="stylesheet" type="text/css" />    --%>
 	<script type="text/javascript" src="<%=contextPath%>/back/style/js/Layout.js"></script>
 	<script type="text/javascript" src="<%=contextPath%>/back/style/js/editPwd.js"></script>
 	
@@ -25,9 +25,37 @@
 		.dis{
 			display: none;
 		}
-		li [class^="icon-"], li [class*=" icon-"], .nav-list li [class^="icon-"], .nav-list li [class*=" icon-"] {
-			width: 20px ! important;
-		}
+		#edui149{
+	z-index:9999 ! important;
+}
+	/* 	.form-group select, .form-group textarea, .form-group input[type="text"], .form-group input[type="password"], .form-group input[type="datetime"], .form-group input[type="datetime-local"], .form-group input[type="date"], .form-group input[type="month"], .form-group input[type="time"], .form-group input[type="week"], .form-group input[type="number"], .form-group input[type="email"], .form-group input[type="url"], .form-group input[type="search"], .form-group input[type="tel"], .form-group input[type="color"] {
+  background: #FFF;
+}
+textarea:hover, input[type="text"]:hover, input[type="password"]:hover, input[type="datetime"]:hover, input[type="datetime-local"]:hover, input[type="date"]:hover, input[type="month"]:hover, input[type="time"]:hover, input[type="week"]:hover, input[type="number"]:hover, input[type="email"]:hover, input[type="url"]:hover, input[type="search"]:hover, input[type="tel"]:hover, input[type="color"]:hover {
+  border-color: #b5b5b5;
+}
+textarea, input[type="text"], input[type="password"], input[type="datetime"], input[type="datetime-local"], input[type="date"], input[type="month"], input[type="time"], input[type="week"], input[type="number"], input[type="email"], input[type="url"], input[type="search"], input[type="tel"], input[type="color"] {
+  border-radius: 0!important;
+  color: #858585;
+  background-color: #fff;
+  border: 1px solid #d5d5d5;
+  padding: 5px 4px;
+  line-height: 1.2;
+  font-size: 14px;
+  font-family: inherit;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+  -webkit-transition-duration: .1s;
+  transition-duration: .1s;
+}
+.form-control, select {
+  border-radius: 0;
+  -webkit-box-shadow: none!important;
+  box-shadow: none!important;
+  color: #858585;
+  background-color: #fff;
+  border: 1px solid #d5d5d5;
+} */
 	</style>
 </head>
 
@@ -149,8 +177,8 @@
 						},{"menuid":"5","icon":"icon-sys","menuname":"酒店管理",
 							"menus":[
 										{"menuid":"51","menuname":"酒店列表","icon":"icon-nav","url":"<%=contextPath%>/hotel_toIndex.do"},
-										{"menuid":"52","menuname":"酒店预定","icon":"icon-nav","url":"<%=contextPath%>/roombook_toIndex.do"},
-										{"menuid":"53","menuname":"房型列表","icon":"icon-nav","url":"<%=contextPath%>/roomstyle_toIndex.do"}
+										{"menuid":"52","menuname":"酒店预定","icon":"icon-nav","url":"<%=contextPath%>/roombook_toIndex.do"}<%-- ,
+										{"menuid":"53","menuname":"房型列表","icon":"icon-nav","url":"<%=contextPath%>/roomstyle_toIndex.do"} --%>
 									]
 						},{"menuid":"4","icon":"icon-sys","menuname":"资讯管理",
 							"menus":[

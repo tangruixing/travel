@@ -39,7 +39,8 @@ public class NewsAction extends BaseAction<News>{
 	 */
 	public void doList() {
 		Grid grid=newsService.getNewsGrid(p,model);
-		write2Response(grid);
+		String [] ext={"summary","content"};
+		writeJsonByFilter(grid, null, ext);
 		
 	}
 

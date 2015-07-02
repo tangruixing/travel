@@ -27,7 +27,6 @@ public class ImagesAction extends BaseAction<Images>{
 	@Resource(name="sceneryService")
 	private SceneryService sceneryService;
 	
-	private String pointName;
 	private String areaName;
 
 	
@@ -50,7 +49,7 @@ public class ImagesAction extends BaseAction<Images>{
 	 * 景区/景点 LOGO 显示
 	 */
 	public String doSeceryList() {
-		pageBean=sceneryService.getSceneryPageList(this.page,pointName,areaName);
+		pageBean=sceneryService.getSceneryPageList(this.page,areaName);
 		return goUI("listLogo.jsp");
 	}
 	
@@ -146,13 +145,6 @@ public class ImagesAction extends BaseAction<Images>{
 		}
 	}
 
-	public String getPointName() {
-		return pointName;
-	}
-
-	public void setPointName(String pointName) {
-		this.pointName = pointName;
-	}
 
 	public String getAreaName() {
 		return areaName;

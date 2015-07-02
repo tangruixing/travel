@@ -43,7 +43,8 @@ public class TravelsAction extends BaseAction<Travels>{
 	 */
 	public void doList() {
 		Grid grid=travelsService.getTravelsGrid(p,model);
-		write2Response(grid);
+		String [] ext={"content"};
+		writeJsonByFilter(grid, null,ext);
 		
 	}
 

@@ -18,20 +18,15 @@
 
 <body>
 <s:if test="pageBean.pageCount>0">
-	<form class="form-inline" id="scenery_logo_form">
-        <div class="form-group">
-            <label for="exampleInputName2">景区名</label>
-            <input type="text" class="form-control" id="exampleInputName2" placeholder="Jane Doe">
-        </div>
-        <div class="form-group">
-            <label for="exampleInputEmail2">景点名</label>
-            <input type="email" class="form-control" id="exampleInputEmail2" placeholder="jane.doe@example.com">
-        </div>
-        <button type="submit" class="btn btn-default">搜索</button>
-    </form>
    <div class="row">
 	
-
+<form class="form-inline" id="scenery_logo_form" action="<%=contextPath %>/images_doSeceryList.do">
+        <div class="form-group">
+            <label for="exampleInputName2">景区名</label>
+            <input type="text" class="form-control" id="sceId" name="areaName" placeholder="请输入景区名字">
+        </div>
+        <button type="button" class="btn btn-default" onclick="goPage(${pageBean.currentPage});">搜索</button>
+    </form>
 		
 	
 		<s:iterator value="pageBean.recordList">

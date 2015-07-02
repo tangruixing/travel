@@ -17,7 +17,7 @@
         </many-to-one>
         
         
-        <property name="content" type="java.lang.String">
+        <property name="content" type="java.lang.String" length="1024">
             <column name="CONTENT" />
         </property>
         <property name="stats" type="java.lang.Integer">

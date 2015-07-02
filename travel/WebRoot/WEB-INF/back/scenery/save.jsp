@@ -19,7 +19,7 @@
 	<c:set value="景点" var="stitle"></c:set>
 </s:else>
 
- <s:set value="#{0:'否',1:'是'}" var="booleanMap"></s:set>
+ <s:set value="#{false:'否',true:'是'}" var="booleanMap"></s:set>
 <s:set value="#{1:'A',2:'AA',3:'AAA',4:'AAAA',5:'AAAAA'}" var="gradeMap"></s:set>
  <div class="container">
  
@@ -120,14 +120,14 @@
                             </div>
                         </div>
                         
-                          
+                      <%--     
 						 <div class="form-group">
                             <label class="col-md-3 control-label">轮播</label>
                             <div class="col-md-5">
                               
                                	<s:select cssClass="form-control" list="#booleanMap" listKey="key" listValue="value" name="viwepager" value="0" ></s:select>
                             </div>
-                        </div>
+                        </div> --%>
                </s:elseif> 
 
                     
@@ -139,13 +139,13 @@
                             </div>
                         </div>
                       
-						 <div class="form-group">
+					<%-- 	 <div class="form-group">
                             <label class="col-md-3 control-label">${stitle}推荐</label>
                             <div class="col-md-5">
                                	
                                	<s:select cssClass="form-control" list="#booleanMap" listKey="key" listValue="value" name="suggest" value="0" ></s:select>
                             </div>
-                        </div>
+                        </div> --%>
                         
                        
                         
@@ -237,11 +237,6 @@ $(document).ready(function() {
 				},{
 				title : '景区联系电话',
 				field : 'telphone',
-				width : 100,
-				sortable : true
-				},{
-				title : '推荐',
-				field : 'suggest',
 				width : 100,
 				sortable : true
 				}]]

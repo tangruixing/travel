@@ -139,8 +139,8 @@
         	};
         	var dlgOptions={
             		title: '房型',
-          		    width: '80%',
-          		    height: '60%',
+          		    width: '90%',
+          		    height: '80%',
           			onClose:function(){
         		  		parent.UE.getEditor('roomstyle_content').destroy();
         		  		parent.mainDlg.parentDlg.dialog('destroy');

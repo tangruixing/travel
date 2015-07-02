@@ -35,7 +35,7 @@
                         
                         <div class="form-group">
                             <label class="col-lg-3 control-label">图片</label>
-                            <div class="col-lg-5">
+                            <div class="col-lg-8">
                             	<!-- 多张图片 -->
                             	<div id="wrapper">
 							<div id="container">
@@ -106,7 +106,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">取消政策</label>
                             <div class="col-lg-5">
-                            	<s:set value="#{1:'免费取消',2:'可取消',3:'不可取消'}" var="cancelMap"></s:set>
+                            	<s:set value="#{1:'可取消',2:'不可取消'}" var="cancelMap"></s:set>
                                	<s:select cssClass="form-control" list="#cancelMap" listKey="key" listValue="value" name="cancel" ></s:select>
                             </div>
                         </div> 

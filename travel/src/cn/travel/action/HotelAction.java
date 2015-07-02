@@ -44,7 +44,10 @@ public class HotelAction extends BaseAction<Hotel>{
 	 */
 	public void doList() {
 		Grid grid=hotelService.getHotelGrid(p,model);
-		write2Response(grid);
+		
+		String [] ext={"introduction","picture"};
+		//write2Response(grid);
+		writeJsonByFilter(grid, null, ext);
 		
 	}
 

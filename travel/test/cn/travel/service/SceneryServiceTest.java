@@ -12,6 +12,7 @@ import cn.model.Grid;
 import cn.model.Page;
 import cn.travel.model.Hotel;
 import cn.travel.model.Roomstyle;
+import cn.travel.model.Route;
 import cn.travel.model.Routeplan;
 import cn.travel.model.Scenery;
 
@@ -27,6 +28,12 @@ public class SceneryServiceTest extends BaseSpringTest{
 	
 	@Resource(name="hotelService")
 	private HotelService hotelService;
+	
+	@Resource(name="messageService")
+	private MessageService messageService;
+	
+	@Resource(name="routeService")
+	private RouteService routeService;
 	
 	@Test
 	public void  getScenery(){
@@ -81,5 +88,29 @@ public class SceneryServiceTest extends BaseSpringTest{
 		int id=1;
 		Hotel hotelDetail = this.hotelService.getHotelDetail(id);
 		logger.info(JSON.toJSONString(hotelDetail));
+	}
+	
+	@Test
+	public void getMessageGrid(){
+		
+		Page p=new Page();
+		p.setRows(10);
+		p.setPage(1);
+		Grid grid = this.messageService.getMessageGrid(p, null);
+		
+		logger.info(writeJsonByFilter(grid, null, null));
+	}
+	
+	@Test
+	public void getNopayRoute(){
+		Page p=new Page();
+		p.setRows(10);
+		p.setPage(1);
+		Route r=new Route();
+		r.setRouteType(1);
+		Grid grid=routeService.getRouteGrid(p,r);
+		String [] ext={"regDate","startDate","endDate"};
+		//write2Response(grid);
+		logger.info(writeJsonByFilter(grid, null, null));
 	}
 }

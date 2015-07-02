@@ -36,10 +36,14 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 
 	public Grid getMessageGrid(Page p, Message model) {
 		
-		HqlHelper hql=new HqlHelper(Message.class, "u")//
-					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
+	/*	HqlHelper hql=new HqlHelper(Message.class, "u")// 0：用户没有问题  1：留言未回复 2：已回复留言
+					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());*/
 		
-		return this.getPageGrid(p.getPage(), p.getRows(), hql);
+		HqlHelper hql=new HqlHelper(User.class,"u")//
+				   .addWhereCondition("u.message=1")//
+				  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
+		
+		return userDao.getPageGrid(p.getPage(), p.getRows(), hql);
 	}
 
 	
@@ -50,8 +54,12 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 		this.dao.batchEntityByHQL(hql);
 	}
 	
+
 	public PageBean lookMessagePageList(int page, int rows, User model) {
-		userDao.batchEntityByHQL("update User u set u.message=0 where u.id=?", model.getId());
+
+		if(model.getMessage()==2){
+			userDao.batchEntityByHQL("update User u set u.message=0 where u.id=?", model.getId());			
+		}
 		HqlHelper hql=new HqlHelper(Message.class,"m")//
 					.addWhereCondition("m.user.id=?", model.getId())
 					.addOrderByProperty("m.createDate",false);		
@@ -63,5 +71,22 @@ public class MessageServiceImpl extends BaseServiceImpl<Message> implements Mess
 		dao.saveEntity(model);
 		userDao.batchEntityByHQL("update User u set u.message=1 where u.id=?", id);
 	}
+
+
+	public PageBean adminLookMessageList(int page, int rows,Message model) {
+		HqlHelper hql=new HqlHelper(Message.class,"m")//
+				.addWhereCondition("m.user.id=?", model.getUserId())
+				.addOrderByProperty("m.createDate",false);		
+		return this.getPageBean(page,rows,hql);
+	}
+
+
+	public void adminReply(Message model) {
+		
+		Integer userId = model.getUserId();
+		userDao.batchEntityByHQL("update User u set u.message=2 where u.id=?",userId);
+		this.saveEntity(model);
+	}
+
 	
 }

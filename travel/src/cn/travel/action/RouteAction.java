@@ -43,7 +43,9 @@ public class RouteAction extends BaseAction<Route>{
 	 */
 	public void doList() {
 		Grid grid=routeService.getRouteGrid(p,model);
-		write2Response(grid);
+		String [] ext={"summary","description","suggest"};
+		//write2Response(grid);
+		writeJsonByFilter(grid, null, ext);
 		
 	}
 

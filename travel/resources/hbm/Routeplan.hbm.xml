@@ -26,7 +26,7 @@
         <property name="day" type="integer">
             <column name="DAY" />
         </property>
-        <property name="description" type="java.lang.String">
+        <property name="description" type="text">
             <column name="DESCRIPTION" />
         </property>
     </class>

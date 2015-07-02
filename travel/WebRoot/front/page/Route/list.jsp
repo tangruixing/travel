@@ -22,7 +22,11 @@
             <section>
             	${fn:substring(description,0,35) }...
             </section>
-        	人均消费：￥${money }<span>出发时间 ： <fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd"/> 结束时间：<fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd"/></span>
+        	人均消费：￥${money }
+        	<s:if test="routeType==0"><!-- 旅游路线 -->
+        	
+        		<span>出发时间 ： <fmt:formatDate value="${startDate}" pattern="yyyy-MM-dd"/> 结束时间：<fmt:formatDate value="${endDate}" pattern="yyyy-MM-dd"/></span>
+        	</s:if>
         </article>
     </div>
 </s:iterator>

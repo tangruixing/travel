@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/inc.jspf" %>
+<%@ include file="/WEB-INF/pub/markMap.jspf" %>
 <!doctype html>
 <html>
 <head>
@@ -175,7 +176,7 @@ a{
     <s:if test="grade!=0">
         	<aside>级别：<span>${Sgrade[grade]}</span></aside> 
     </s:if>                 
-    <section><img src="<%=contextPath %>/front/images/didianbiao.png"><a href="javascript:showbyID('map')">${address }</a></section>
+    <section><img src="<%=contextPath %>/front/images/didianbiao.png"><a href="javascript:showMapbyID('map','${longitude}','${latitude}')">${address }</a></section>
     <section>开放时间：${startTime }-${endTime }&nbsp;联系电话：${telphone }</section>
     <div class="pikachoose"></div>
     <section>
@@ -189,7 +190,7 @@ a{
 
 <div id="map">
 	<section><a href="javascript:closebyID('map')"><img src="images/close.png"></a></section>
-	<div id="l-map" style="height:100%" class="dis"></div>
+	<div id="l-map" style="height:100%" class="dis"></div>			
 </div>
 
 <div style="height:30px;clear:both"></div>
@@ -197,5 +198,15 @@ a{
 	<s:param name="page">1</s:param>
 	<s:param name="rows">18</s:param>
 </s:action>
+
+<script type="text/javascript">
+function showMapbyID(id,lng,lat){
+
+	console.info("map");
+	Location.showLocation(lng,lat);
+	$("#"+id).css("display","block");
+}
+
+</script>
 </body>
 </html>

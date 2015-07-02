@@ -36,11 +36,6 @@
 					width : 100,
 					sortable : true
 					},{
-					title : '密码',
-					field : 'pwd',
-					width : 100,
-					sortable : true
-					},{
 					title : '角色',
 					field : 'role',
 					width : 100,
@@ -104,7 +99,7 @@
         	var dlgOptions={
             		title: '用户',
           		    width: '80%',
-          		    height: '60%',
+          		    height: '80%',
         	}  
             var user=new Base("user",gdOptions,dlgOptions,parent.mainDlg);
             user.loadGrid();

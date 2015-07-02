@@ -29,18 +29,13 @@
                          checkbox : true
 
                      },{
- 					title : '用户编号id',
- 					field : 'useid',
+ 					title : '发表游记',
+ 					field : 'userName',
  					width : 100,
  					sortable : true
  					},{
  					title : '标题',
  					field : 'title',
- 					width : 100,
- 					sortable : true
- 					},{
- 					title : '内容',
- 					field : 'content',
  					width : 100,
  					sortable : true
  					},{
@@ -57,8 +52,8 @@
         	 };
         	 var dlgOptions={
              		title: '游记',
-           		    width: '80%',
-           		    height: '60%',
+           		    width: '60%',
+           		    height: '80%',
            			onClose:function(){
          		  		parent.UE.getEditor('travels_content').destroy();
          		  		parent.mainDlg.parentDlg.dialog('destroy');

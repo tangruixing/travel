@@ -16,7 +16,7 @@ public class Hotel implements Serializable{
 	private double longitude;		/*经度*/
 	private double latitude;		/*纬度*/
 	private java.lang.Integer grade;		/*酒店级别*/
-	private java.lang.String picture;		/*图片*/
+	private java.lang.String picture;		/*图片集*/
 	private java.lang.String telphone;		/*酒店电话*/
 	private String introduction;
 	//columns END

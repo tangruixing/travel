@@ -119,16 +119,6 @@ $(function() {
 			field : 'telphone',
 			width : 100,
 			sortable : true
-			},{
-			title : '轮播',
-			field : 'viwepager',
-			width : 100,
-			sortable : true
-			},{
-			title : '推荐',
-			field : 'suggest',
-			width : 100,
-			sortable : true
 			}]]
     });  
  

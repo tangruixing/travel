@@ -51,7 +51,8 @@ public class RouteplanAction extends BaseAction<Routeplan>{
 	 */
 	public void doList() {
 		Grid grid=routeplanService.getRouteplanGrid(p,model);
-		write2Response(grid);
+		String [] ext={"description"};
+		writeJsonByFilter(grid,null,ext);
 		
 	}
 

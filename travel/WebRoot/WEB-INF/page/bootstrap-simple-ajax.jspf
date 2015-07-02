@@ -1,0 +1,63 @@
+<%@ page language="java" pageEncoding="UTF-8"%>
+
+ <!--分页-->
+  <s:if test="pageBean.pageCount<=0">
+		<div class="alert alert-danger" role="alert">暂时没有记录</div>
+  </s:if>
+  <s:else>
+  	
+  	<nav>
+      <ul class="pager">
+          <li class="previous ${pageBean.currentPage==1?'disabled':''}"><a href="javascript:void(0);" onclick="gotoPageByType(${pageBean.currentPage-1})"><span aria-hidden="true">&larr;</span>上一页</a></li>
+          <li class="next ${pageBean.currentPage==pageBean.pageCount?'disabled':''}"><a href="javascript:void(0);" onclick="gotoPageByType(${pageBean.currentPage+1})">下一页 <span aria-hidden="true">&rarr;</span></a></li>
+      </ul>
+   </nav>
+  </s:else>
+ 
+
+<div class="clear"></div>
+<script type="text/javascript">
+
+var $list=null;
+var $form=null;
+var $subBtn=null;
+
+$(function(){
+	$list=$("#list");
+	$form=$("#pageForm");
+	$subBtn=$("#pageBtn");
+	
+	$subBtn.off("click");
+	$subBtn.on("click",function(){
+		gotoPageByType(1);
+	});
+	
+})
+
+
+
+
+function gotoPageByType(pageNum){
+	 
+	
+	
+	
+	var url=$form.attr('action')+"?page="+pageNum+"&rows=${rows}";
+	var value=$form.serialize();
+	
+	console.info(url);
+		
+	
+	$.post(url,value,function(html){
+		console.info(html);
+		if(html){
+			$list.empty(); 
+			console.info($list)
+			$list.append(html);
+		}
+	});
+
+}
+
+
+</script>

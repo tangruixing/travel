@@ -15,4 +15,8 @@ public interface MessageService extends BaseService<Message>{
 	PageBean lookMessagePageList(int page, int rows, User model);
 
 	void saveMsg(Message model, Integer id);
+
+	PageBean adminLookMessageList(int page, int rows, Message model);
+
+	void adminReply(Message model);
 }

@@ -1,5 +1,7 @@
 package cn.travel.action;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -72,6 +74,7 @@ public class CollectAction extends BaseAction<Collect>{
 		j=new Json();
 		try{
 			model.setUser(this.loginUser);
+			model.setCreatDate(new Date());
 			collectService.saveCollect(this.model);
 			
 			j.setSuccess(true);

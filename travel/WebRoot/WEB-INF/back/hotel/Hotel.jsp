@@ -1,5 +1,6 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ include file="/WEB-INF/pub/back.jspf" %>
+<%@ include file="/WEB-INF/pub/markMap.jspf" %>
 <!DOCTYPE html>
 <html>
 <head lang="en">
@@ -17,6 +18,12 @@
 	<div data-options="region:'center',fit:true,border:false">
 		<table id="hotel_grid" data-options="fit:true,border:false"></table>
 	</div>
+	
+<!-- 地图显示-->
+<div id="mapDlg" class="easyui-dialog dis" style="width:80%;height:60%;"
+     closed="true" buttons="#dlg-map-buttons"  modal="true">
+    <div id="show-map" style="width:100%;height:100%"></div>
+</div>	
 </body>
 
 
@@ -35,9 +42,13 @@
 				title : 'logo',
 				field : 'logo',
 				width : 100,
-				sortable : true
+				formatter: function (value, row, index) {
+	             	   var str="";
+	                   str+=sy.fs('<img   src="{0}"  style="width:50px;height:50px"/>','<%=contextPath%>/'+row.logo);
+	                   return str;
+	            }
 				},{
-				title : '名字',
+				title : '名称',
 				field : 'realName',
 				width : 100,
 				sortable : true
@@ -47,25 +58,13 @@
 				width : 100,
 				sortable : true
 				},{
-				title : '经度',
-				field : 'longitude',
-				width : 100,
-				sortable : true
-				},{
-				title : '纬度',
-				field : 'latitude',
-				width : 100,
-				sortable : true
-				},{
 				title : '酒店级别',
 				field : 'grade',
 				width : 100,
-				sortable : true
-				},{
-				title : '图片',
-				field : 'picture',
-				width : 100,
-				sortable : true
+				sortable : true,
+				  formatter: function (value, row, index) {
+                       return row.grade+"星级";
+                 }
 				},{
 				title : '酒店电话',
 				field : 'telphone',
@@ -79,7 +78,7 @@
                     	 var str="";
                           str+=sy.fs('<a class="easyui-linkbutton" href="{0}?hotId={1}&hotname={2}">房型</a>',"<%=contextPath%>/roomstyle_toIndex.do",row.id,row.realName);
                           str+="&nbsp"
-                          str+=sy.fs('<input  type="button" onclick="showMap(\'{0}\')" class="easyui-linkbutton" value="地图" />',row.id);
+                          str+=sy.fs('<input  type="button" onclick="showMap(\'{0}\',\'{1}\')" class="easyui-linkbutton" value="地图" />',row.longitude,row.latitude);
                           return str;
                     }
                 }]]	
@@ -88,7 +87,7 @@
         	var dlgOptions={
             		title: '酒店',
           		    width: '80%',
-          		    height: '60%',
+          		    height: '80%',
           		    onClose:function(){
           		  		parent.UE.getEditor('hotel_content').destroy();
           		  		parent.mainDlg.parentDlg.dialog('destroy');
@@ -96,6 +95,12 @@
         	}  
             var hotel=new Base("hotel",gdOptions,dlgOptions,parent.mainDlg);
             hotel.loadGrid();
+            Location.showLocation();
         });
+        
+        function showMap(lg,lz){
+        	Location.showDlgMap(lg,lz,18);
+        }
     </script>
+    
 </html>

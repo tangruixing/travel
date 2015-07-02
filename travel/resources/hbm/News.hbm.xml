@@ -22,10 +22,10 @@
         <property name="author" type="java.lang.String">
             <column name="AUTHOR" />
         </property>
-        <property name="summary" type="java.lang.String">
+        <property name="summary" type="text">
             <column name="SUMMARY" />
         </property>
-        <property name="content" type="java.lang.String">
+        <property name="content" type="text">
             <column name="CONTENT" />
         </property>
         <property name="publicTime" type="java.util.Date">

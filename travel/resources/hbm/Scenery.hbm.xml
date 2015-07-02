@@ -47,14 +47,8 @@
         <property name="telphone" type="java.lang.String">
             <column name="TELPHONE" />
         </property>
-        <property name="viwepager" type="java.lang.Boolean">
-            <column name="VIWEPAGER" />
-        </property>
-        <property name="suggest" type="java.lang.Boolean">
-            <column name="SUGGEST" />
-        </property>
         
-        <property name="summary" type="string" length="1024">
+        <property name="summary" type="text">
         	<column name="summary"></column>
         </property>
     </class>

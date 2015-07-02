@@ -15,8 +15,9 @@ public class UserServiceTest extends BaseSpringTest {
 	private UserService userService;
 	
 	@Test
-	public void saveUser(){
+	public void saveSuperUser(){
 		  User admin=new User(ConfigUtil.getAdminName(),DigestUtils.md5Hex(ConfigUtil.getAdminPwd()),Constant.ROLE_SUPER);
+		  admin.setRealName("少年");
 		  userService.saveEntity(admin);
 	}
 	

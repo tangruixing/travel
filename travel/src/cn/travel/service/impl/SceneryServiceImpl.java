@@ -53,10 +53,10 @@ public class SceneryServiceImpl extends BaseServiceImpl<Scenery> implements Scen
 	}
 	
 	
-	public PageBean getSceneryPageList(int page, String pointName,
-			String areaName) {
+	public PageBean getSceneryPageList(int page,String areaName) {
 		HqlHelper hql=new HqlHelper(Scenery.class, "s")//
-					 .addWhereCondition(StringUtils.isNotBlank(pointName),"s.realName=?", pointName);
+					 .addWhereCondition(StringUtils.isNotBlank(areaName),"s.realName like '%"+areaName+"%'")//
+					 .addWhereCondition("s.scenery.id is null");
 /*					 .addWhereCondition(StringUtils.isNotBlank(areaName),"s.realName", params)*/
 		
 		return this.getPageBean(page, 4,hql);

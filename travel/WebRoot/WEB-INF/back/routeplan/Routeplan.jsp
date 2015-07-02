@@ -68,7 +68,7 @@
         	var dlgOptions={
             		title: '线路',
           		    width: '80%',
-          		    height: '60%',
+          		    height: '80%',
         	}  
             var routeplan=new Base("routeplan",gdOptions,dlgOptions,parent.mainDlg);
         	routeplan.setUrlParam("rouId","${rouId}");

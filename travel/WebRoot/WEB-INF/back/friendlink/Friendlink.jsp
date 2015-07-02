@@ -61,7 +61,7 @@
         	var dlgOptions={
             		title: '友情链接',
           		    width: '80%',
-          		    height: '60%',
+          		    height: '80%',
           		    onClose:function(){
           		  		parent.mainDlg.parentDlg.dialog('destroy');
           		    }

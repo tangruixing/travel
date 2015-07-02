@@ -1,6 +1,8 @@
 
 package cn.travel.service.impl;
 
+import java.util.List;
+
 import javax.annotation.Resource;
 
 import org.apache.commons.codec.digest.DigestUtils;
@@ -13,7 +15,7 @@ import cn.model.Page;
 import cn.travel.dao.BaseDao;
 import cn.travel.model.User;
 import cn.travel.service.UserService;
-import cn.util.HqlHelper;
+import cn.util.HqlHelper;	
 
 @Service("userService")
 public class UserServiceImpl extends BaseServiceImpl<User> implements UserService{
@@ -71,9 +73,14 @@ public class UserServiceImpl extends BaseServiceImpl<User> implements UserServic
 		this.batchEntityByHQL(hql, newPwd,uid);
 	}
 
-	public void canRegister(User model) {
+	public void canRegister(User model) throws Exception {
 		// TODO Auto-generated method stub
+		String hql="from User u where u.mobile =?";
+		List<User> list = this.findEntityByHQL(hql, model.getMobile());
 		
+		if(!list.isEmpty()){
+			throw new Exception("该手机号已经注册");
+		}
 	}
 
 	

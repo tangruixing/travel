@@ -1,7 +1,9 @@
 
 package cn.travel.service.impl;
 
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.List;
 
 import javax.annotation.Resource;
 
@@ -44,6 +46,20 @@ public class RoombookServiceImpl extends BaseServiceImpl<Roombook> implements Ro
 		HqlHelper hql=new HqlHelper(Roombook.class, "u")//
 					  .addOrderByProperty(StringUtils.isNotBlank(p.getSort()),p.getSort(),p.getOrder());
 		
+		Grid gd = this.getPageGrid(p.getPage(), p.getRows(), hql);
+		List<Roombook> list = gd.getRows();
+		List<Roombook> newList=new ArrayList<Roombook>(0);
+		Roombook rb=null;
+		for (int i = 0; i < list.size(); i++) {
+			rb = list.get(i);
+			if(rb.getRoomstyle()!=null&&rb.getRoomstyle().getHotel()!=null){
+				rb.setRoomStyleName(rb.getRoomstyle().getRealName());
+				rb.setHotelName(rb.getRoomstyle().getHotel().getRealName());
+			}
+			newList.add(rb);
+			
+		}
+		gd.setRows(newList);
 		return this.getPageGrid(p.getPage(), p.getRows(), hql);
 	}
 

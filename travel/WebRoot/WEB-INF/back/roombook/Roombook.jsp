@@ -27,13 +27,18 @@
                          sortable : true,// 鼠标点击可以升序/降序切换
                          checkbox : true
                      },{
-					 title : '用户编号id',
-					 field : 'useid',
+					 title : '用户',
+					 field : 'userName',
 					 width : 100,
 					 sortable : true
 					 },{
-					 title : '房型ID',
-					 field : 'rooId',
+						 title : '酒店',
+						 field : 'hotelName',
+						 width : 100,
+						 sortable : true
+					 },{
+					 title : '房型',
+					 field : 'roomStyleName',
 					 width : 100,
 					 sortable : true
 					 },{

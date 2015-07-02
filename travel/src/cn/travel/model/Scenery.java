@@ -18,7 +18,7 @@ public class Scenery implements Serializable{
 
 	private java.lang.String logo;		/*logo*/
 	private String summary;
-	private java.lang.String introduction;		/*介绍*/
+	private java.lang.String introduction;		/*介绍*/ 
 	private java.lang.String url;		/*网址*/
 
 	private String startTime;
@@ -26,8 +26,7 @@ public class Scenery implements Serializable{
 
 	private int grade;		/*景区级别*/
 	private java.lang.String telphone;		/*景区联系电话*/
-	private boolean viwepager;		/*轮播*/
-	private boolean suggest;		/*推荐*/
+	
 	//columns END
 
 	private Scenery scenery;
@@ -161,22 +160,6 @@ public class Scenery implements Serializable{
 
 	public void setTelphone(java.lang.String telphone) {
 		this.telphone = telphone;
-	}
-
-	public boolean isViwepager() {
-		return viwepager;
-	}
-
-	public void setViwepager(boolean viwepager) {
-		this.viwepager = viwepager;
-	}
-
-	public boolean isSuggest() {
-		return suggest;
-	}
-
-	public void setSuggest(boolean suggest) {
-		this.suggest = suggest;
 	}
 
 	public Scenery getScenery() {

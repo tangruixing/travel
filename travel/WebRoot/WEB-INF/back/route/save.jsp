@@ -113,7 +113,7 @@
                         <div class="form-group">
                             <label class="col-lg-3 control-label">热门</label>
                             <div class="col-lg-5">
-                            		<s:set value="#{0:'否',1:'是'}" var="hotMap"></s:set>
+                            		<s:set value="#{false:'否',true:'是'}" var="hotMap"></s:set>
                                	<s:select cssClass="form-control" list="#hotMap" listKey="key" listValue="value" name="hot" ></s:select>
                             </div>
                         </div>
@@ -267,8 +267,6 @@ $(document).ready(function() {
 		
 	
 		if(routeType=='1'){
-			var str=suggest.getContent();
-			console.info(str);
 			if(str.length<=0){
 				jNotify("行程建议不能为空");
 				return false;

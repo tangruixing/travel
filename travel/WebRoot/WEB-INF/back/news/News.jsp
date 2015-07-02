@@ -32,11 +32,6 @@
                         checkbox : true
 
                     },{
-					title : '用户编号id',
-					field : 'useid',
-					width : 100,
-					sortable : true
-					},{
 					title : '标题',
 					field : 'title',
 					width : 100,
@@ -49,11 +44,6 @@
 					},{
 					title : '作者',
 					field : 'author',
-					width : 100,
-					sortable : true
-					},{
-					title : '摘要',
-					field : 'summary',
 					width : 100,
 					sortable : true
 					},{
@@ -87,7 +77,7 @@
         	var dlgOptions={
             		title: '新闻',
           		    width: '80%',
-          		    height: '60%',
+          		    height: '80%',
           			onClose:function(){
         		  		parent.UE.getEditor('news_content').destroy();
         		  		parent.mainDlg.parentDlg.dialog('destroy');

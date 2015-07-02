@@ -13,7 +13,7 @@
 <s:hidden name="sceId"></s:hidden>
 <div class="modal-header">
     <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
-    <h4 class="modal-title" id="myModalLabel">图片浏览</h4>
+    <h4 class="modal-title" id="myModalLabel">图片上传</h4>
 
 
 </div>
@@ -59,6 +59,7 @@
 </body>
 
 <script type="text/javascript">
+	var lock=false;
     $(document).ready(function() {
         $('#routeForm').bootstrapValidator({
 //        live: 'disabled',\
@@ -86,6 +87,7 @@
 
         $("#checkSubmit").on('click',function(){
 
+        	lock=true;
             var logoUrl=$("#scenery_pic_input").val();
        		if(logoUrl.length<=0){
                 jNotify("请上传 LOGO !!");
@@ -93,19 +95,27 @@
 
             };
 
+            
             var url="<%=contextPath%>/images_doAddPic.do";
             var redirUrl="<%=contextPath%>/images_toIndex.do?page=${page}"
             var data=$("#routeForm").serialize();
             console.info($("#addPicModal"));
-            $('#addPicModal').modal('hide');
-            $.post(url,data,function(data){
-            	if(data&&data.success){
-            		jNotify(data.msg);
-            		window.location.href=redirUrl;
-            	}else{
-            		jError("操作出错了");
-            	}
-            },'json');
+         
+            if(lock){
+            	 $.post(url,data,function(data){
+                 	if(data&&data.success){
+                 		lock=false;
+                 		jNotify(data.msg);
+                 		$('#addPicModal').modal('hide');
+                 		window.location.href=redirUrl;
+                            
+                 	}else{
+                 		jError("操作出错了");
+                 		lock=true;
+                 	}
+                 },'json');
+            }
+           
 
         });
 

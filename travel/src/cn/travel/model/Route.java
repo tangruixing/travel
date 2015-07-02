@@ -186,7 +186,8 @@ public class Route implements Serializable{
 	}
 
 	public boolean isCanReg() {
-		if(new Date().getTime()>this.regDate.getTime()){
+		
+		if(this.routeType==Constant.ROUTER_PAY&&new Date().getTime()>this.regDate.getTime()){
 			canReg=false;
 			msg="无法报名,已经超过报名截止时间";
 		}
@@ -206,7 +207,7 @@ public class Route implements Serializable{
 	}
 
 	public boolean isCancel() {
-		if(new Date().getTime()>=this.startDate.getTime()){
+		if(this.routeType==Constant.ROUTER_PAY&&new Date().getTime()>=this.startDate.getTime()){
 			cancel=false;
 			msg="无法报名,已经超过报名截止时间";
 		}
