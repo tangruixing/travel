@@ -18,24 +18,20 @@
     <param-name>contextConfigLocation</param-name>
     <param-value>classpath:applicationContext.xml</param-value>
   </context-param>
-  
-  <filter>  
-    <filter-name>encodingFilter</filter-name>  
-        <filter-class>  
+  <filter>
+    <filter-name>encodingFilter</filter-name>
+    <filter-class>  
             org.springframework.web.filter.CharacterEncodingFilter  
-        </filter-class>  
-    <init-param>  
-        <param-name>encoding</param-name>  
-        <param-value>UTF-8</param-value>  
-    </init-param>  
-</filter>  
-  
-<filter-mapping>  
-    <filter-name>encodingFilter</filter-name>  
-    <url-pattern>/*</url-pattern>  
-</filter-mapping> 
-  
-  
+        </filter-class>
+    <init-param>
+      <param-name>encoding</param-name>
+      <param-value>UTF-8</param-value>
+    </init-param>
+  </filter>
+  <filter-mapping>
+    <filter-name>encodingFilter</filter-name>
+    <url-pattern>/*</url-pattern>
+  </filter-mapping>
   <filter>
     <filter-name>struts2</filter-name>
     <filter-class>org.apache.struts2.dispatcher.ng.filter.StrutsPrepareAndExecuteFilter</filter-class>
@@ -61,20 +57,26 @@
     <servlet-name>UploadImageServlet</servlet-name>
     <url-pattern>/UploadImageServlet</url-pattern>
   </servlet-mapping>
-
-	<error-page>
-		<error-code>404</error-code>
-		<location>/404.html</location>
-	</error-page>
-	
-	<error-page>
+  <error-page>
+    <error-code>404</error-code>
+    <location>/404.html</location>
+  </error-page>
+  <error-page>
     <error-code>500</error-code>
     <location>/500.html</location>
-</error-page>
-	
-	
-	<error-page>
-	<exception-type>java.lang.Exception</exception-type>
-	<location>/500.html</location>
-	</error-page>
+  </error-page>
+  <error-page>
+    <exception-type>java.lang.Exception</exception-type>
+    <location>/500.html</location>
+  </error-page>
+  <servlet>
+    <description></description>
+    <display-name>UeditorServlet</display-name>
+    <servlet-name>UeditorServlet</servlet-name>
+    <servlet-class>cn.servlet.UeditorServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>UeditorServlet</servlet-name>
+    <url-pattern>/UeditorServlet</url-pattern>
+  </servlet-mapping>
 </web-app>

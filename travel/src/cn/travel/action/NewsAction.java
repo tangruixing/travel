@@ -1,5 +1,7 @@
 package cn.travel.action;
 
+import java.util.Date;
+
 import javax.annotation.Resource;
 
 import org.apache.log4j.Logger;
@@ -71,7 +73,10 @@ public class NewsAction extends BaseAction<News>{
 	public void doSaveOrUpdate() {
 		
 		j=new Json();
-		try{			
+		try{
+			if(model.getId()==null){
+				this.model.setPublicTime(new Date());
+			}
 			newsService.saveOrUpdateEntity(this.model);
 			j.setSuccess(true);
 			j.setMsg("操作成功");
