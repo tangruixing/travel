@@ -114,6 +114,8 @@
                  		lock=true;
                  	}
                  },'json');
+            }else{
+            	jError("请不要重复提交");
             }
            
 

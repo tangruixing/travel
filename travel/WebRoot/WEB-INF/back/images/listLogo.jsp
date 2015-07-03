@@ -37,8 +37,8 @@
 		                 <h3>${fn:substring(realName,0,5)}</h3>
 		                 <small>${fn:substring(summary,0,10)}...</small>
 		                <p>
-		                     <a class="btn btn-primary" data-toggle="modal" href="<%=contextPath %>/images_toPicIndex.do?sceId=${id}" data-target="#listAndAddModal">浏览</a>
-		                     <a class="btn btn-primary" data-toggle="modal" href="<%=contextPath %>/images_toAddPic.do?sceId=${id}&page=${pageBean.currentPage}" data-target="#listAndAddModal">上传</a>
+		                     <a class="btn btn-primary" data-toggle="modal" href="<%=contextPath %>/images_toPicIndex.do?sceId=${id}" data-target="#listModal">浏览</a>
+		                     <a class="btn btn-primary" data-toggle="modal" href="<%=contextPath %>/images_toAddPic.do?sceId=${id}&page=${pageBean.currentPage}" data-target="#addModal">上传</a>
 		                </p>
 		            </div>
 		        </div>
@@ -46,9 +46,16 @@
 		</s:iterator>
 	
 	<!--景点图片浏览/添加-->
-    <div class="row">
+    <div class="row" id="add_pic_modal">
         <!-- Modal -->
-        <div class="modal fade" id="listAndAddModal" tabindex="-1" role="dialog" aria-labelledby="listAndAddModal">
+        <div class="modal fade" id="listModal" tabindex="-1" role="dialog" aria-labelledby="listModal">
+            <div class="modal-dialog" role="document">
+                <div class="modal-content">
+					
+                </div>
+            </div>
+        </div>
+        <div class="modal fade" id="addModal" tabindex="-1" role="dialog" aria-labelledby="addModal">
             <div class="modal-dialog" role="document">
                 <div class="modal-content">
 					
@@ -88,13 +95,27 @@
 		page.gotoPage(num);
 	}
 	
+	var html=$("#add_pic_modal").html();
+	console.info(html);
 	/**
 	 * modal 框
 	 */
-	$("#listAndAddModal").on("hidden.bs.modal", function(){
-		console.info("清除");
+	$("#listModal").on("hidden.bs.modal", function(){
+		console.info("清除");		
 		$(this).find(".modal-content").empty();
 		$(this).removeData("bs.modal"); 
+		$("#add_pic_modal").empty();
+		$("#add_pic_modal").append(html);
+	});
+	/**
+	 * modal 框
+	 */
+	$("#addModal").on("hidden.bs.modal", function(){
+		console.info("清除");		
+		$(this).find(".modal-content").empty();
+		$(this).removeData("bs.modal"); 
+		$("#add_pic_modal").empty();
+		$("#add_pic_modal").append(html);
 	});
 </script>
 </body>
